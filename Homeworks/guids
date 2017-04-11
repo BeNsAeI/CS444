@@ -1,3 +1,19 @@
 - Compile on OS class
 - deploy on VM
-- 
+
+
+Instructions:
+- os-class@engr.oregonstate.edu
+- /scratch/spring2017/<GROUPNAME>
+- clone the repo
+- checkout v3.14.26 tag: git checkout tag/v3.14.26
+- cp /scratch/spring2017/files/config-3.14.26-yocto-qemu .config
+- Check permission
+
+- make menuconfig
+  - make menuconfig
+  - /
+  - LOCALVERSION
+  - 1
+  - Enter
+  - change the name to -<groupName>-hw1
