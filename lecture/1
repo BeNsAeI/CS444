@@ -1,0 +1,36 @@
+History:
+First generation of computers
+- MCU micro controllers
+- single process
+- relays or vacuum tubes
+
+Transistor Revolution
+- Core memory: magnetic memory core
+
+Third generation:
+- multics -> unix
+- Multiprogrammed
+- spooling -> Simultananous prepheral operation on line
+- Daemon: Disk arbitration and execution monitor
+
+fourth generation:
+- Modern PCs
+
+___________________________________________
+OS: (Kernal)
+- resource manager
+- Abstract machine (Drivers)
+
+
+Tools:
+- Putty or ssh
+- Kernel
+- Config file -> .config
+- make menuconfig (check general and set your name so you know you get the right kernel loaded)
+- make TAGS
+- Linux cross refrencer LXR for non VIM and emacs
+- Git
+- Screen
+- gdb
+- qemu (use only 4 threads)
+
