@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
+#include <sys/syscall.h>
 #include <fstream>
 #include <iostream>
 #define MAXBUFFER 32
@@ -55,7 +56,7 @@ int getRandomInt(){
 
 void *producer(void *tid_x){
 	// Produces items and puts them in the buffer.
-	unsigned int tid = pthread_self();
+    pid_t tid = syscall(SYS_gettid);
 	int rand_num, cons_sleep_time, prod_sleep_time;
 	struct bufferItem newItem;
 	printf("Starting producer thread %d..\n", tid);
@@ -93,11 +94,12 @@ void *producer(void *tid_x){
 
 void *consumer(void *tid_x){
 	// Consumes items out of the buffer.
-	unsigned int tid = pthread_self();
+	pid_t tid = syscall(SYS_gettid);
 	printf("Starting consumer thread %d..\n", tid);
 	bufferItem consumedItem;
 	// To-do: end this thread eventually (not specified?)
 	for(int i=0; i<3; i++){
+        printf("Consumer beginning to consume.");
 		// Consume exactly one item for every sleep cycle
 		bool has_consumed = false;
 		do{
@@ -134,7 +136,8 @@ int main(int argc, char **argv){
 
 	int num_producers = atoi(argv[1]);
 	int num_consumers = atoi(argv[2]);
-	pthread_t threads[num_producers+num_consumers];
+    int totalThreads = num_producers+num_consumers;
+	pthread_t threads[totalThreads+10];
 
 	// Create all producers
 	for(int i=0; i<num_producers; i++){
@@ -152,14 +155,15 @@ int main(int argc, char **argv){
 		}
 	}
 
+    printf("going into joining threads.\n");
 	// Wait for all threads to finish
-	for(int i=0; i<(num_producers+num_consumers); i++){
+	for(int i=0; i<totalThreads; i++){
 		if(pthread_join(threads[i], NULL)){
 			fprintf(stderr, "Error joining thread.\n");
 			return 2;
 		}
 	}
-
+    printf("MAXBUFFER = %d, totalThreads = %d\n", MAXBUFFER, totalThreads);
 	// Debug what happened to the buffer
 	printf("Non-empty buffer contents:\n");
 	for(int i=0; i<MAXBUFFER; i++){
