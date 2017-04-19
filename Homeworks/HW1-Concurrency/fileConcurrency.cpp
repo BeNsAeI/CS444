@@ -13,8 +13,30 @@
 #include <sys/syscall.h>
 #include <fstream>
 #include <iostream>
-#include "color.h"
-#define MAXBUFFER 320
+#define MAXBUFFER 32
+
+class FileIO{
+public:
+    void get(char ** data);
+    void set(char ** data);
+};
+
+void FileIO::get(char ** num, char ** sleep)
+{
+    char buff[80];
+    FILE *fp;
+    fp=fopen("tmp.dat", "r");
+    fscanf(fp, "%s %s", buff);
+    *data = buff;
+    fclose(fp);
+}
+void FileIO::set(char ** num, char ** sleep)
+{
+    FILE *fp;
+    fp=fopen("tmp.dat", "w");
+    fprintf(fp, "%s %s",*data);
+    fclose(fp);
+}
 
 pthread_mutex_t bufferLock;
 
@@ -60,64 +82,50 @@ void *producer(void *tid_x){
     pid_t tid = syscall(SYS_gettid);
 	int rand_num, cons_sleep_time, prod_sleep_time;
 	struct bufferItem newItem;
-	printf(ANSI_COLOR_GREEN"Starting producer thread %d..\n"ANSI_COLOR_RESET, tid);
+	printf("Starting producer thread %d..\n", tid);
 
 	// To-do: end this thread eventually (not specified?)
-	for(int i=0; i<10; i++){
+	for(int i=0; i<3; i++){
 		// Make a new item for the buffer
 		rand_num = getRandomInt();							// value inside the item
 		cons_sleep_time = getRandomInt() % 7+2; // consumer sleeps 2-9 sec
 		prod_sleep_time = getRandomInt() % 3+4; // producer sleeps for 3-7 sec
 		newItem = {rand_num, cons_sleep_time};	// package into a struct
 
-		printf(ANSI_COLOR_GREEN"Producer"ANSI_COLOR_RESET" (%d) sleeping for %d seconds.\n", tid, prod_sleep_time);
+		printf("Producer (%d) sleeping for %d seconds.\n", tid, prod_sleep_time);
 		sleep(prod_sleep_time);
 
 		// Produce exactly one item for every sleep cycle
 		bool has_produced = false;
-		while(!has_produced){
-            if(bufferIndex > 31 || bufferIndex < 0)
-            {
-                printf("\tHCF!\n");
-                exit(-1);
-            }
-	        // Ensure the buffer is not full before producing
+		do{
+			// Ensure the buffer is not full before producing
 			pthread_mutex_lock(&bufferLock);
 			if(bufferIndex>=MAXBUFFER){
 				// Release lock and try again later
 				pthread_mutex_unlock(&bufferLock);
-                continue;
+				continue;
 			}
-			printf(ANSI_COLOR_GREEN"Producer"ANSI_COLOR_RESET" (%d) waking up..\n", tid);
-			printf(ANSI_COLOR_GREEN"Producer"ANSI_COLOR_RESET" (%d) has the buffer. %d\n", tid, bufferIndex);
-			buffer[bufferIndex] = newItem;
-            if(bufferIndex < MAXBUFFER -1)
-                bufferIndex++;
+			printf("Producer (%d) waking up..\n", tid);
+			printf("Producer (%d) has the buffer. %d\n", tid, bufferIndex);
+			buffer[bufferIndex++] = newItem;
 			pthread_mutex_unlock(&bufferLock);
-			printf(ANSI_COLOR_GREEN"Producer"ANSI_COLOR_RESET" (%d) relenquished the buffer.\n", tid);
+			printf("Producer (%d) relenquished the buffer.\n", tid);
 			has_produced = true;
-	    }
-    }
-    printf(ANSI_COLOR_GREEN"Producer"ANSI_COLOR_RED" (%d) is done.\n"ANSI_COLOR_RESET, tid);
-    sleep(1);
+		}while(!has_produced);
+	}
 }
 
 void *consumer(void *tid_x){
 	// Consumes items out of the buffer.
 	pid_t tid = syscall(SYS_gettid);
-	printf(ANSI_COLOR_YELLOW"Starting consumer thread %d..\n"ANSI_COLOR_RESET, tid);
+	printf("Starting consumer thread %d..\n", tid);
 	bufferItem consumedItem;
 	// To-do: end this thread eventually (not specified?)
 	for(int i=0; i<3; i++){
-        printf(ANSI_COLOR_YELLOW"Consumer"ANSI_COLOR_RESET" beginning to consume.");
+        printf("Consumer beginning to consume.");
 		// Consume exactly one item for every sleep cycle
 		bool has_consumed = false;
 		do{
-            if(bufferIndex > 31 || bufferIndex < 0)
-            {
-                printf("\tHCF!\n");
-                exit(-1);
-            }
 			// Ensure the buffer has something in it before consuming
 			pthread_mutex_lock(&bufferLock);
 			if(bufferIndex<=0){
@@ -125,27 +133,26 @@ void *consumer(void *tid_x){
 				pthread_mutex_unlock(&bufferLock);
 				continue;
 			}
-			printf(ANSI_COLOR_YELLOW"Consumer"ANSI_COLOR_RESET" (%d) has the buffer. %d\n", tid, bufferIndex);
+			printf("Consumer (%d) has the buffer. %d\n", tid, bufferIndex);
 			// Take an item out of the buffer and consume (discard) it
 			consumedItem = buffer[bufferIndex];
-			buffer[bufferIndex] = {0, 0};
-            bufferIndex--;
+			buffer[bufferIndex--] = {0, 0};
 			pthread_mutex_unlock(&bufferLock);
-			printf(ANSI_COLOR_YELLOW"Consumer"ANSI_COLOR_RESET" (%d) consumed and relenquished the buffer.\n", tid);
+			printf("Consumer (%d) consumed and relenquished the buffer.\n", tid);
 			has_consumed = true;
 		}while(!has_consumed);
 
-		printf(ANSI_COLOR_YELLOW"Consumer"ANSI_COLOR_CYAN" (%d) sleeping for %d seconds.\n"ANSI_COLOR_RESET,
+		printf("Consumer (%d) sleeping for %d seconds.\n",
 					 tid, consumedItem.consumer_sleep
 		);
 		sleep(consumedItem.consumer_sleep);
-		printf(ANSI_COLOR_YELLOW"Consumer"ANSI_COLOR_RESET" (%d) waking up..\n", tid);
+		printf("Consumer (%d) waking up..\n", tid);
 	}
-    printf(ANSI_COLOR_YELLOW"Consumer"ANSI_COLOR_RED" (%d) is done.\n"ANSI_COLOR_RESET, tid);
-    sleep(1);
 }
 
 int main(int argc, char **argv){
+    FileIO myfile;
+
 	// Validate inputs
 	if(argc < 2 || !isdigit(*argv[1]) || !isdigit(*argv[2])){
 		printf("Usage: %s [number of producers] [number of consumers]\n", argv[0]);
