@@ -141,6 +141,11 @@ void *consumer(void *tid_x){
 		sleep(consumedItem.consumer_sleep);
 		printf(ANSI_COLOR_YELLOW"Consumer"ANSI_COLOR_RESET" (%d) waking up..\n", tid);
 	}
+    if(bufferIndex > 31 || bufferIndex < 0)
+    {
+          printf(ANSI_COLOR_RED"\tHCF!\n"ANSI_COLOR_RESET);
+          exit(-1);
+    }
     printf(ANSI_COLOR_YELLOW"Consumer"ANSI_COLOR_RED" (%d) is done.\n"ANSI_COLOR_RESET, tid);
     sleep(1);
 }
@@ -166,7 +171,7 @@ int main(int argc, char **argv){
 	}
 
 	// Create all consumers
-	for(int i=0; i<num_consumers; i++){
+	for(int i=num_producers; i<totalThreads; i++){
 		if(pthread_create(&threads[i], NULL, consumer, NULL)){
 			fprintf(stderr, "Error creating consumer thread.\n");
 			return 2;
