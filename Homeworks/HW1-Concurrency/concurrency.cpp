@@ -25,13 +25,32 @@ struct bufferItem buffer[MAXBUFFER];
 volatile int bufferIndex = 0;
 
 int getRandomInt(){
-  // Update this to choose between mt and rdrand
-  // Seems like this seeds the mersenne twister somehow?
-  unsigned long init[4] = {0x123, 0x234, 0x345, 0x456};
-  unsigned long length = 4;
-  init_by_array(init, length);
-  // Return a random number
-  return genrand_int32();
+  unsigned int eax;
+	unsigned int ebx;
+	unsigned int ecx;
+	unsigned int edx;
+  int num;
+
+  eax = 0x01;
+
+	__asm__ __volatile__(
+	                     "cpuid;"
+	                     : "=a"(eax), "=b"(ebx), "=c"(ecx), "=d"(edx)
+	                     : "a"(eax)
+	                     );
+
+	if(ecx & 0x40000000){
+		__asm__ __volatile__(
+                        "rdrand %0"
+                        :"=r" (num)
+                      );
+      return abs(num);
+	}
+	else{
+		  num = genrand_int32();
+      return num;
+	}
+
 }
 
 void *producer(void *tid_x){
@@ -40,7 +59,6 @@ void *producer(void *tid_x){
   int rand_num, cons_sleep_time, prod_sleep_time;
   struct bufferItem newItem;
   printf("Starting producer thread %d..\n", tid);
-
 
   // To-do: end this thread eventually (not specified?)
   for(int i=0; i<3; i++){
