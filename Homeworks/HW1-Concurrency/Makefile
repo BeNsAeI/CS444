@@ -1,4 +1,5 @@
 all:
-	g++ -pthread concurrency.cpp -o out -std=c++0x
+	g++ -pthread concurrency.cpp -o out
+	./out
 clean:
 	rm -f out
