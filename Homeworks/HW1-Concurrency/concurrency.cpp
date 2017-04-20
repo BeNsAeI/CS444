@@ -55,7 +55,7 @@ int getRandomInt(){
 
 void *producer(void *tid_x){
 	// Produces items and puts them in the buffer.
-    pid_t tid = syscall(SYS_gettid);
+	pid_t tid = syscall(SYS_gettid);
 	int rand_num, cons_sleep_time, prod_sleep_time;
 	struct bufferItem newItem;
 	printf(ANSI_COLOR_GREEN"Starting producer thread %d..\n"ANSI_COLOR_RESET, tid);
@@ -107,11 +107,6 @@ void *consumer(void *tid_x){
 		// Consume exactly one item for every sleep cycle
 		bool has_consumed = false;
 		do{
-            if(bufferIndex > 31 || bufferIndex < 0)
-            {
-                printf("\tHCF!\n");
-                exit(-1);
-            }
 			// Ensure the buffer has something in it before consuming
 			pthread_mutex_lock(&bufferLock);
 			if(bufferIndex<=0){
@@ -124,24 +119,16 @@ void *consumer(void *tid_x){
 			consumedItem = buffer[bufferIndex];
 			buffer[bufferIndex].number=0;
 			buffer[bufferIndex].consumer_sleep = 0;
-            bufferIndex--;
+			bufferIndex--;
 			pthread_mutex_unlock(&bufferLock);
 			printf(ANSI_COLOR_YELLOW"Consumer"ANSI_COLOR_RESET" (%d) consumed and relenquished the buffer.\n", tid);
 			has_consumed = true;
 		}while(!has_consumed);
-
-		printf(ANSI_COLOR_YELLOW"Consumer"ANSI_COLOR_CYAN" (%d) sleeping for %d seconds.\n"ANSI_COLOR_RESET,
-					 tid, consumedItem.consumer_sleep
-		);
+		printf(ANSI_COLOR_YELLOW"Consumer"ANSI_COLOR_CYAN" (%d) sleeping for %d seconds.\n"ANSI_COLOR_RESET,tid, consumedItem.consumer_sleep);
 		sleep(consumedItem.consumer_sleep);
 		printf(ANSI_COLOR_YELLOW"Consumer"ANSI_COLOR_RESET" (%d) waking up..\n", tid);
 	}
-    if(bufferIndex > 31 || bufferIndex < 0)
-    {
-          printf(ANSI_COLOR_RED"\tHCF!\n"ANSI_COLOR_RESET);
-          exit(-1);
-    }
-    printf(ANSI_COLOR_YELLOW"Consumer"ANSI_COLOR_RED" (%d) is done.\n"ANSI_COLOR_RESET, tid);
+	printf(ANSI_COLOR_YELLOW"Consumer"ANSI_COLOR_RED" (%d) is done.\n"ANSI_COLOR_RESET, tid);
 }
 
 int main(int argc, char **argv){
@@ -154,7 +141,7 @@ int main(int argc, char **argv){
 	printf("This program will go through "ANSI_COLOR_RED"5"ANSI_COLOR_RESET" production and consumtion cycles.\n");
 	int num_producers = atoi(argv[1]);
 	int num_consumers = atoi(argv[2]);
-    int totalThreads = num_producers+num_consumers;
+	int totalThreads = num_producers+num_consumers;
 	pthread_t threads[totalThreads+10];
 
 	// Create all producers
@@ -173,7 +160,7 @@ int main(int argc, char **argv){
 		}
 	}
 
-    printf("going into joining threads.\n");
+	printf("going into joining threads.\n");
 	// Wait for all threads to finish
 	for(int i=0; i<totalThreads; i++){
 		if(pthread_join(threads[i], NULL)){
@@ -181,15 +168,12 @@ int main(int argc, char **argv){
 			return 2;
 		}
 	}
-    printf("MAXBUFFER = %d, totalThreads = %d\n", MAXBUFFER, totalThreads);
+	printf("MAXBUFFER = %d, totalThreads = %d\n", MAXBUFFER, totalThreads);
 	if(DEBUG)
-	printf("Non-empty buffer contents:\n");
+		printf("Non-empty buffer contents:\n");
 	if(DEBUG)
-	for(int i=0; i<MAXBUFFER; i++){
-		printf("%i\tNumber=%d, sleep=%d\n",
-					 i, buffer[i].number, buffer[i].consumer_sleep
-		);
-	}
-
+		for(int i=0; i<MAXBUFFER; i++){
+			printf("%i\tNumber=%d, sleep=%d\n",i, buffer[i].number, buffer[i].consumer_sleep);
+		}
 	return 0;
 }
