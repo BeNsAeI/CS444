@@ -1,0 +1,404 @@
+\documentclass[journal,10pt,onecolumn,compsoc,letterpaper,draftclsnofoot,table,xcdraw]{IEEEtran} \usepackage[margin=0.75in]{geometry}
+\usepackage{pdfpages}
+\usepackage{minted}
+\usepackage{graphicx,float} 
+\usepackage{listings}
+\usepackage{verbatim}
+\usepackage{url}
+\usepackage{nameref}
+\usepackage{setspace} \singlespacing
+\graphicspath{/graphics} \setlength{\parskip}{\baselineskip} \setlength\parindent{24pt}
+\usepackage[english]{babel}
+\usepackage{fullpage}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+\title{Project 1 - Getting Acquainted}
+\author{Group 10-03: Behnam Saeedi, zhaoheng wang, Levi Willmeth \\ CS444: Operating systems II}
+\date{\today}
+\begin{document}
+\maketitle
+\begin{centering}
+Spring 2017
+\begin{abstract}
+
+\end{abstract}
+\end{centering}
+%--------------------------------------------------------------
+\newpage
+\tableofcontents
+\newpage 
+%--------------------------------------------------------------
+\section{Kernel QEMU Logs}
+\subsection{Instructions}
+\noindent Purpose of this portion of the assignment was to familiarize ourselves with the environment which we will be developing on kernel. We were instructed to perform the following tasks by our TA:
+\begin{itemize}
+\item Use os-class server at os-class.oregonstate.edu
+\item Create a folder for our group at /scratch/spring2017/
+\item clone Yocto project for linux-yocto-3.14 the switch to tag v3.14.26 
+\item source /scratch/opt/environment-setup-i586-poky-linux.csh. For bash/zsh, Or source /scratch/opt/environment-setup-i586-poky-linux 
+\item Copy config-3.14.26-yocto-qemu to .config
+\item Run make menuconfig and change the local version to-10-03-hw1
+\item Run make -j4 to build the kernel
+\item Test a pre-compiled kernel to test QEMU for comparison
+\item Test our kernel and check the local version to confirm that the version is indead what we set it to be
+\end{itemize}
+\noindent The instructions provided by the TA were very clear an easy to follow. It allowed us to source, compile and test our first kernel using Yacto, QEMU and gbd. There were few mistakes in the original instructions provided that was later addressed by the TA.
+\subsection{Tools Used}
+In this project we will be using the following tools:
+\begin{itemize}
+\item \textbf{Git: } Git was used in order to retreive the kernel destribution that is used for this class. The only complexity we faced with using this tool was the tag selection. Later we found out that the tags are a folder in branches and we need to use "checkout /tag/tag name" in order to access that specific tag.\\
+\item \textbf{Yacto Project: } Yacto project was where we received our distribution of the kernel for build.\\
+\item \textbf{gbd: } gdb or The GNU Project Debugger is one of the tools we will be using this term for our kernel debugging purposes. This tool can connect through a remote channel to QEMU in order to monitor and debug it.\\
+\item \textbf{QEMU: } QEMU is the virtual machine which we will be using this term to test our kernel development.\\
+\end{itemize}
+\subsection{Commands}
+\noindent Following shell commands were used in order to accomplish the first portion of the project:
+\begin{minted}{bash}
+ssh saeedib@os-class@engr.oregonstate.edu
+# if you are oof campus ssh to access.engr.oregonstate.edu first
+#Two terminals are needed:
+screen
+mkdir /scratch/spring2017/10-03
+#terminal 1:
+cd /scratch/spring2017/
+chmod u+rwx,g+rwx,o+rx 10-03
+git clone git://git.yoctoproject.org/linux-yocto-3.14
+cd linux-yocto-3.14
+checkout tag/v3.14.26
+source /scratch/opt/environment-setup-i586-poky-linux
+cp /scratch/spring2017/files/config-3.14.26-yocto-qemu .config
+make menuconfig
+# Press /
+# Type LOCALVERSION
+# Hit Enter
+# Hit 1
+# Hit Enter
+# Change the name to : -10-03-hw1
+make -j4 all
+cp /scratch/spring2017/files/bzImage-qemux86.bin
+cp /scratch/spring2017/files/core-image-lsb-sdk-qemux86.ext3
+qemu-system-i386 -gdb tcp::6503 -S -nographic -kernel bzImage-qemux86.bin
+-drive file=core-image-lsb-sdk-qemux86.ext3,if=virtio -enable-kvm -net none -usb 
+-localtime --no-reboot --append "root=/dev/vda rw console=ttyS0 debug"
+#in terminal 2:
+source /scratch/opt/environment-setup-i586-poky-linux
+gdb
+# enter: target remote :6503
+# hit Enter
+# back at terminal 1: (QEMU booting into the kernel)
+#username is root with no password
+uname -a
+# Notice the local version is not our home work (it is not supposed to be)
+shutdown -r now
+#QEMU exits
+qemu-system-i386 -gdb tcp::6503 -S -nographic -kernel linux-yocto-3.14/arch/x86/boot/bzImage
+-drive file=core-image-lsb-sdk-qemux86.ext3,if=virtio -enable-kvm -net none -usb -localtime
+--no-reboot --append "root=/dev/vda rw console=ttyS0 debug"
+#in terminal 2:
+# enter: target remote :6503
+# hit Enter
+# back at terminal 1: (QEMU booting into the kernel)
+#username is root with no password
+uname -a
+# Notice the local version IS our home work (it is supposed to be "-10-03-hw1")
+shutdown -r now
+\end{minted}
+%--------------------------------------------------------------
+\section{Concurrency}
+\subsection{Introduction}
+\noindent In this portion of Homework one we are suppose to create a model of interaction between consumer and a producer where the producer generates some data and the consumer uses them. The producers and consumers start up on different threads and generate n products and at the same time, the consumers start on different threads and start processing the data and removing it from the buffer. The purpose of this homework is to create a code that models this behavior without any data synchronization or lock down issues.
+
+\subsection{Procedure}
+\begin{itemize}
+\item Get the number of consumers and producers
+\item Set up threads
+\item Set up the buffer size to max number of 32
+\item Check the system for method of generating the random variable
+\item We start up the required number of threads
+\item In Producer threads:
+	\begin{itemize}
+	\item Generate a random number and a consumer delay time
+    \item Wait 3 to 7 seconds
+    \item Generates the object using struct
+    \item If the buffer is not full and the number of cycles is not met, Push the object to the buffer array
+    \item If buffer is full wait!
+    \item If the number of cycles is met, stop and return
+	\end{itemize}
+\item In Consumer threads:
+	\begin{itemize}
+	\item Check the buffer
+    \item If the buffer is empty, wait and check again!
+    \item If there is an Item in the buffer, "consume" the item
+    \item Based on the item, wait 2 to 9 seconds
+    \item If the number of cycles is met, stop and return
+	\end{itemize}
+\end{itemize}
+\subsection{Code}
+\begin{minted}{c++}
+/*
+	OSU - CS444
+	Homework 1 - Concurrency
+	Behnam Saeedi, Levi Willmeth, Zhaoheng Wang
+*/
+
+#include <unistd.h>
+#include "mt19937ar.c"
+#include <pthread.h>
+#include <ctype.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/syscall.h>
+#include "color.h"
+#define MAXBUFFER 32
+#define MAXCYCLES 5
+#define true 1
+#define false 0
+pthread_mutex_t bufferLock;
+
+struct bufferItem{
+	int number;
+	int consumer_sleep;
+};
+
+struct bufferItem buffer[MAXBUFFER];
+volatile int bufferIndex = 0;
+
+int getRandomInt(){
+	unsigned int eax;
+	unsigned int ebx;
+	unsigned int ecx;
+	unsigned int edx;
+	int num;
+
+	eax = 0x01;
+
+	__asm__ __volatile__("cpuid;"
+			 : "=a"(eax), "=b"(ebx), "=c"(ecx), "=d"(edx)
+			 : "a"(eax)
+			 );
+
+	if(ecx & 0x40000000){
+	__asm__ __volatile__("rdrand %0"
+			:"=r" (num)
+			);
+	return abs(num);
+	}
+	else{
+	num = genrand_int32();
+	return num;
+	}
+
+}
+
+void *producer(void *tid_x){
+	// Produces items and puts them in the buffer.
+	//pid_t tid = syscall(SYS_gettid);
+	pid_t tid = pthread_self();
+    int rand_num, cons_sleep_time, prod_sleep_time;
+	struct bufferItem newItem;
+	printf(ANSI_COLOR_GREEN"Starting producer thread %d..\n"ANSI_COLOR_RESET, tid);
+
+	// To-do: end this thread eventually (not specified?)
+    for(int i=0; i<MAXCYCLES; i++)
+	{
+		// Make a new item for the buffer
+		rand_num = getRandomInt();							// value inside the item
+		cons_sleep_time = getRandomInt() % 7+2; // consumer sleeps 2-9 sec
+		prod_sleep_time = getRandomInt() % 3+4; // producer sleeps for 3-7 sec
+		newItem.number = rand_num;
+		newItem.consumer_sleep=cons_sleep_time;	// package into a struct
+
+		printf(ANSI_COLOR_GREEN"Producer"ANSI_COLOR_RESET" 
+        		(%d) sleeping for %d seconds.\n", tid, prod_sleep_time);
+		sleep(prod_sleep_time);
+
+		// Produce exactly one item for every sleep cycle
+		int has_produced = false;
+		while(!has_produced){
+		        // Ensure the buffer is not full before producing
+			pthread_mutex_lock(&bufferLock);
+			if(bufferIndex>=MAXBUFFER){
+				// Release lock and try again later
+				pthread_mutex_unlock(&bufferLock);
+	                	continue;
+			}
+			printf(ANSI_COLOR_GREEN"Producer"ANSI_COLOR_RESET" 
+            			(%d) waking up..\n", tid);
+			printf(ANSI_COLOR_GREEN"Producer"ANSI_COLOR_RESET" 
+            		(%d) has the buffer. %d\n", tid, bufferIndex);
+			buffer[bufferIndex] = newItem;
+			if(bufferIndex < MAXBUFFER -1)
+        	        	bufferIndex++;
+			pthread_mutex_unlock(&bufferLock);
+			printf(ANSI_COLOR_GREEN"Producer"ANSI_COLOR_RESET" 
+            			(%d) relenquished the buffer.\n", tid);
+			has_produced = true;
+		}
+	}
+	printf(ANSI_COLOR_GREEN"Producer"ANSI_COLOR_RED" 
+    			(%d) is done.\n"ANSI_COLOR_RESET, tid);
+}
+
+void *consumer(void *tid_x){
+	// Consumes items out of the buffer.
+	pid_t tid = pthread_self();
+    printf(ANSI_COLOR_YELLOW"Starting consumer thread
+				 %d.\n"ANSI_COLOR_RESET, tid);
+	//bufferItem consumedItem;
+	// To-do: end this thread eventually (not specified?)
+	int consumed_number;
+    int consumed_sleep;
+    for(int i=0; i<MAXCYCLES; i++){
+        printf(ANSI_COLOR_YELLOW"Consumer"ANSI_COLOR_RESET" beginning to consume.\n");
+		// Consume exactly one item for every sleep cycle
+		int has_consumed = false;
+		do{
+			// Ensure the buffer has something in it before consuming
+			pthread_mutex_lock(&bufferLock);
+			if(bufferIndex<=0){
+				// Release lock and try again later
+				pthread_mutex_unlock(&bufferLock);
+				continue;
+			}
+			printf(ANSI_COLOR_YELLOW"Consumer"ANSI_COLOR_RESET" 
+            		(%d) has the buffer. %d\n", tid, bufferIndex);
+			// Take an item out of the buffer and consume (discard) it
+			consumed_number = buffer[bufferIndex].number;
+            consumed_sleep = buffer[bufferIndex].consumer_sleep;
+			buffer[bufferIndex].number=0;
+			buffer[bufferIndex].consumer_sleep = 0;
+			bufferIndex--;
+			pthread_mutex_unlock(&bufferLock);
+			printf(ANSI_COLOR_YELLOW"Consumer"ANSI_COLOR_RESET" 
+            		(%d) consumed and relenquished the buffer.\n", tid);
+			has_consumed = true;
+		}while(!has_consumed);
+		printf(ANSI_COLOR_YELLOW"Consumer"ANSI_COLOR_CYAN" 
+        		(%d) sleeping for %d seconds.\n"
+                		ANSI_COLOR_RESET,tid, consumed_sleep);
+		sleep(consumed_sleep);
+		printf(ANSI_COLOR_YELLOW"Consumer"ANSI_COLOR_RESET"
+        			(%d) waking up..\n", tid);
+	}
+	printf(ANSI_COLOR_YELLOW"Consumer"ANSI_COLOR_RED" 
+    			(%d) is done.\n"ANSI_COLOR_RESET, tid);
+}
+
+int main(int argc, char **argv){
+	// Validate inputs
+	int DEBUG = 0;
+	if(argc < 2 || !isdigit(*argv[1]) || !isdigit(*argv[2])){
+		printf("Usage: %s [number of producers] 
+        		[number of consumers]\n", argv[0]);
+		return 0;
+	}
+	printf("This program will go through 
+    		"ANSI_COLOR_RED"5"ANSI_COLOR_RESET" 
+            		production and consumtion cycles.\n");
+	int num_producers = atoi(argv[1]);
+	int num_consumers = atoi(argv[2]);
+	int totalThreads = num_producers+num_consumers;
+	pthread_t threads[totalThreads+10];
+
+	// Create all producers
+	for(int i=0; i<num_producers; i++){
+		if(pthread_create(&threads[i], NULL, producer, NULL)){
+			fprintf(stderr, "Error creating producer thread.\n");
+			return 2;
+		}
+	}
+
+	// Create all consumers
+	for(int i=num_producers; i<totalThreads; i++){
+		if(pthread_create(&threads[i], NULL, consumer, NULL)){
+			fprintf(stderr, "Error creating consumer thread.\n");
+			return 2;
+		}
+	}
+
+	printf("going into joining threads.\n");
+	// Wait for all threads to finish
+	for(int i=0; i<totalThreads; i++){
+		if(pthread_join(threads[i], NULL)){
+			fprintf(stderr, "Error joining thread.\n");
+			return 2;
+		}
+	}
+	printf("MAXBUFFER = %d, totalThreads = 
+    				%d\n", MAXBUFFER, totalThreads);
+	if(DEBUG)
+		printf("Non-empty buffer contents:\n");
+	if(DEBUG)
+		for(int i=0; i<MAXBUFFER; i++){
+			printf("%i\tNumber=%d, sleep=%d\n",i, 
+            			buffer[i].number, buffer[i].consumer_sleep);
+		}
+	return 0;
+}
+}
+\end{minted}
+\subsection{Answers to Questions}
+\noindent Answer the following questions in sufficient detail (for the concurrency):
+\begin{enumerate}
+\item \textbf{What do you think the main point of this assignment is?} \\
+To understand how pthread works and how it behaves when it shares variables with other threads.
+\item \textbf{How did you personally approach the problem? Design decisions, algorithm, etc.} \\
+We decided to create a lock down on memory when a thread is modifying the memory. This will allow us to assure that the 
+data is not changing while we are reading from it. In other words we will not have a synchronization issue between the
+producers and the consumers.
+\item \textbf{How did you ensure your solution was correct? Testing details, for instance.} \\
+We cretaed several output logs in order to monitor the behavior of each thread while also monitoring the data flow 
+in our memory that was affected by different threads. This allowed us to follow the data path and assure that the program
+was indeed behaving as intended.
+\item \textbf{What did you learn?} \\
+It is not feasible to manage the memory properly when more than one thread is modifying a memory location. There needs 
+to be a proper plan in order to avoid collisions.
+\end{enumerate}
+%--------------------------------------------------------------
+\section{Work Log}
+\subsection{Work Flow}
+\noindent All members of the group met and engaged in pair programming activity. We used vim and git to produce a local draft of the program and then push it to the repository. Then we worked together to code, test and debug the code on one computer. Finally, we went through the spacing and programming style to make sure it is tidy. The final solution was committed back to GitHub.
+\subsection{Schedule}
+\noindent All members me on Mondays, Wednesdays and Fridays from 2 to 6 in order to contribute to the programming and writeup of the assignment. All members contributed to the solutions. Furthermore, All group members also worked during the recitation and after recitations on Tuesdays and Thursdays from 10:00 to 13:00.
+\subsection{Version Control Log}
+\noindent Excluding merges, 3 authors have pushed 15 commits to master and 15 commits to all branches. On master, 13,952 files have changed and there have been 2,541,770 additions and 625,054 deletions. The following table is the Version control Log of this project. (Table \ref{git-log}).
+\begin{table}
+\centering
+\caption{Git Log}
+\label{git-log}
+\begin{tabular}{|
+>{\columncolor[HTML]{BBDAFF}}l |l|l|l|}
+\hline
+\cellcolor[HTML]{329A9D}{\color[HTML]{FFFFFF} Hash} & \cellcolor[HTML]{329A9D}{\color[HTML]{FFFFFF} Author} & \cellcolor[HTML]{329A9D}{\color[HTML]{FFFFFF} Comment}           & \cellcolor[HTML]{329A9D}{\color[HTML]{FFFFFF} Date and Time} \\ \hline
+b5dab5b                                             & wangdaye123                                           & add file                                                         & 2017-04-19 18:50:50                                    \\ \hline
+655d6f2                                             & BeNsAeI                                               & fixed for spacing nazi                                           & 2017-04-19 17:05:19                                    \\ \hline
+2b403c8                                             & BeNsAeI                                               & fixed spacing and presentation                                   & 2017-04-19 17:00:57                                    \\ \hline
+5511b9e                                             & BeNsAeI                                               & fixed the bounds                                                 & 2017-04-19 16:41:59                                    \\ \hline
+b02a0e4                                             & BeNsAeI                                               & fixed makefile                                                   & 2017-04-19 16:29:44                                    \\ \hline
+98c13f9                                             & BeNsAeI                                               & fixed makefile                                                   & 2017-04-19 16:29:21                                    \\ \hline
+57c8851                                             & Levi Willmeth                                         & Attempts to solve problem using coloring and debugging.          & 2017-04-19 16:27:15                                    \\ \hline
+d48ba1f                                             & Levi Willmeth                                         & Saving progress to test on another machine.                      & 2017-04-19 15:33:45                                    \\ \hline
+37b8146                                             & Levi Willmeth                                         & Convert spaces to tabs.                                          & 2017-04-19 14:27:11                                    \\ \hline
+8474d77                                             & Levi Willmeth                                         & Add rdrand function                                              & 2017-04-19 14:21:55                                    \\ \hline
+1aa80df                                             & Levi Willmeth                                         & Update concurrency program to use producer and consumer threads. & 2017-04-19 13:17:03                                    \\ \hline
+067fa87                                             & BeNsAeI                                               & recitation task done                                             & 2017-04-19 13:14:07                                    \\ \hline
+55133a9                                             & BeNsAeI                                               & recitation task done                                             & 2017-04-18 15:19:23                                    \\ \hline
+8f83152                                             & Levi Willmeth                                         & Update concurrency, add McGrath's library instead.               & 2017-04-18 11:42:21                                    \\ \hline
+316287f                                             & Levi Willmeth                                         & Begin writing HW1 - Concurrency assignment                       & 2017-04-18 11:18:18                                    \\ \hline
+f074972                                             & Behnam Saeedi                                         & tested and myMakefile update                                     & 2017-04-17 15:35:32                                    \\ \hline
+66ba1d6                                             & Behnam Saeedi                                         & added new compiled kernel files                                  & 2017-04-17 15:26:35                                    \\ \hline
+187e784                                             & Behnam Saeedi                                         & Hoemwork folder for yacto added                                  & 2017-04-11 11:13:07                                    \\ \hline
+a4d4d0e                                             & BeNsAeI                                               & guide to homework added                                          & 2017-04-11 10:56:30                                    \\ \hline
+aced63e                                             & BeNsAeI                                               & lec 2 added                                                      & 2017-04-11 09:45:18                                    \\ \hline
+88db3d0                                             & BeNsAeI                                               & initiated repo                                                   & 2017-04-11 08:50:12                                    \\ \hline
+\end{tabular}
+\end{table}
+%--------------------------------------------------------------
+\end{document}
