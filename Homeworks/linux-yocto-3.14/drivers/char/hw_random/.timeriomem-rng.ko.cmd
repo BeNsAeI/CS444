@@ -1,0 +1,1 @@
+cmd_drivers/char/hw_random/timeriomem-rng.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o drivers/char/hw_random/timeriomem-rng.ko drivers/char/hw_random/timeriomem-rng.o drivers/char/hw_random/timeriomem-rng.mod.o

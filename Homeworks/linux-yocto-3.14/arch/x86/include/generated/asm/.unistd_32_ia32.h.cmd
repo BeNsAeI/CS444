@@ -1,0 +1,1 @@
+cmd_arch/x86/syscalls/../include/generated/asm/unistd_32_ia32.h := /bin/sh '/scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/syscalls/syscallhdr.sh' '/scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/syscalls/syscall_32.tbl' 'arch/x86/syscalls/../include/generated/asm/unistd_32_ia32.h' 'i386' 'ia32_' ''

@@ -1,0 +1,1 @@
+cmd_drivers/mmc/card/mmc_block.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/mmc/card/mmc_block.o drivers/mmc/card/block.o drivers/mmc/card/queue.o ; scripts/mod/modpost drivers/mmc/card/mmc_block.o

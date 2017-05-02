@@ -1,1 +1,1 @@
-cmd_block/partitions/built-in.o :=  i586-poky-linux-ld -m elf_i386   -r -o block/partitions/built-in.o block/partitions/check.o block/partitions/msdos.o block/partitions/efi.o 
+cmd_block/partitions/built-in.o :=  i586-poky-linux-ld -m elf_x86_64   -r -o block/partitions/built-in.o block/partitions/check.o block/partitions/amiga.o block/partitions/mac.o block/partitions/msdos.o block/partitions/osf.o block/partitions/sgi.o block/partitions/sun.o block/partitions/efi.o block/partitions/karma.o ; scripts/mod/modpost block/partitions/built-in.o

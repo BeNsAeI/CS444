@@ -1,0 +1,1 @@
+cmd_drivers/net/wireless/ti/built-in.o :=  i586-poky-linux-ld -m elf_x86_64   -r -o drivers/net/wireless/ti/built-in.o drivers/net/wireless/ti/wilink_platform_data.o ; scripts/mod/modpost drivers/net/wireless/ti/built-in.o

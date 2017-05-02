@@ -1,0 +1,1 @@
+cmd_drivers/tty/ipwireless/ipwireless.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/tty/ipwireless/ipwireless.o drivers/tty/ipwireless/hardware.o drivers/tty/ipwireless/main.o drivers/tty/ipwireless/network.o drivers/tty/ipwireless/tty.o ; scripts/mod/modpost drivers/tty/ipwireless/ipwireless.o

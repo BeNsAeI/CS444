@@ -1,0 +1,1 @@
+cmd_drivers/mtd/mtdblock_ro.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o drivers/mtd/mtdblock_ro.ko drivers/mtd/mtdblock_ro.o drivers/mtd/mtdblock_ro.mod.o

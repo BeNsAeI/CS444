@@ -1,0 +1,1 @@
+cmd_drivers/hwmon/via-cputemp.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o drivers/hwmon/via-cputemp.ko drivers/hwmon/via-cputemp.o drivers/hwmon/via-cputemp.mod.o

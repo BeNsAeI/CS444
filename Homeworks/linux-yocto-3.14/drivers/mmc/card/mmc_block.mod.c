@@ -1,0 +1,136 @@
+#include <linux/module.h>
+#include <linux/vermagic.h>
+#include <linux/compiler.h>
+
+MODULE_INFO(vermagic, VERMAGIC_STRING);
+
+__visible struct module __this_module
+__attribute__((section(".gnu.linkonce.this_module"))) = {
+	.name = KBUILD_MODNAME,
+	.init = init_module,
+#ifdef CONFIG_MODULE_UNLOAD
+	.exit = cleanup_module,
+#endif
+	.arch = MODULE_ARCH_INIT,
+};
+
+MODULE_INFO(intree, "Y");
+
+static const struct modversion_info ____versions[]
+__used
+__attribute__((section("__versions"))) = {
+	{ 0x43804739, __VMLINUX_SYMBOL_STR(module_layout) },
+	{ 0x602b88ce, __VMLINUX_SYMBOL_STR(blk_init_queue) },
+	{ 0x5400c05e, __VMLINUX_SYMBOL_STR(mmc_can_sanitize) },
+	{ 0x268e8663, __VMLINUX_SYMBOL_STR(device_remove_file) },
+	{ 0x44cedbf6, __VMLINUX_SYMBOL_STR(kmalloc_caches) },
+	{ 0x65e75cb6, __VMLINUX_SYMBOL_STR(__list_del_entry) },
+	{ 0xd2b09ce5, __VMLINUX_SYMBOL_STR(__kmalloc) },
+	{ 0xc897c382, __VMLINUX_SYMBOL_STR(sg_init_table) },
+	{ 0x37c00f2b, __VMLINUX_SYMBOL_STR(mmc_set_blockcount) },
+	{ 0x4b719758, __VMLINUX_SYMBOL_STR(alloc_disk) },
+	{ 0xc1cbf392, __VMLINUX_SYMBOL_STR(blk_cleanup_queue) },
+	{ 0x7fe38f48, __VMLINUX_SYMBOL_STR(sg_copy_to_buffer) },
+	{ 0x4ae04c08, __VMLINUX_SYMBOL_STR(blk_queue_prep_rq) },
+	{ 0x762e8791, __VMLINUX_SYMBOL_STR(__pm_runtime_disable) },
+	{ 0xb6b46a7c, __VMLINUX_SYMBOL_STR(param_ops_int) },
+	{ 0x889cc81e, __VMLINUX_SYMBOL_STR(__pm_runtime_use_autosuspend) },
+	{ 0x1c6f0368, __VMLINUX_SYMBOL_STR(dev_set_drvdata) },
+	{ 0xdab92ff0, __VMLINUX_SYMBOL_STR(blk_queue_max_hw_sectors) },
+	{ 0x1bdc26cf, __VMLINUX_SYMBOL_STR(sg_copy_from_buffer) },
+	{ 0xa038529c, __VMLINUX_SYMBOL_STR(mmc_hw_reset) },
+	{ 0x94974212, __VMLINUX_SYMBOL_STR(mmc_wait_for_cmd) },
+	{ 0x278283b7, __VMLINUX_SYMBOL_STR(mmc_erase) },
+	{ 0x20000329, __VMLINUX_SYMBOL_STR(simple_strtoul) },
+	{ 0xa1dcfab0, __VMLINUX_SYMBOL_STR(blk_dump_rq_flags) },
+	{ 0xf087137d, __VMLINUX_SYMBOL_STR(__dynamic_pr_debug) },
+	{ 0xee31b4d9, __VMLINUX_SYMBOL_STR(mmc_put_card) },
+	{ 0x3fec048f, __VMLINUX_SYMBOL_STR(sg_next) },
+	{ 0x1f1eeaaa, __VMLINUX_SYMBOL_STR(mmc_start_req) },
+	{ 0x79c59ec3, __VMLINUX_SYMBOL_STR(mutex_unlock) },
+	{ 0x216a3ab7, __VMLINUX_SYMBOL_STR(__pm_runtime_resume) },
+	{ 0xb28f589e, __VMLINUX_SYMBOL_STR(mmc_can_discard) },
+	{ 0x61d15812, __VMLINUX_SYMBOL_STR(mmc_app_cmd) },
+	{ 0x3ddd7ac7, __VMLINUX_SYMBOL_STR(mmc_can_trim) },
+	{ 0x5087c92a, __VMLINUX_SYMBOL_STR(blk_queue_flush) },
+	{ 0xc66f4fbf, __VMLINUX_SYMBOL_STR(blk_start_queue) },
+	{ 0xfdb275ec, __VMLINUX_SYMBOL_STR(mmc_register_driver) },
+	{ 0xb550b14e, __VMLINUX_SYMBOL_STR(kthread_create_on_node) },
+	{ 0x7d11c268, __VMLINUX_SYMBOL_STR(jiffies) },
+	{ 0x343a1a8, __VMLINUX_SYMBOL_STR(__list_add) },
+	{ 0x4b86e6b9, __VMLINUX_SYMBOL_STR(mmc_switch) },
+	{ 0xc671e369, __VMLINUX_SYMBOL_STR(_copy_to_user) },
+	{ 0xc8222c61, __VMLINUX_SYMBOL_STR(mmc_release_host) },
+	{ 0x64bc9bbc, __VMLINUX_SYMBOL_STR(mmc_wait_for_req) },
+	{ 0x1562fb7a, __VMLINUX_SYMBOL_STR(blk_queue_max_segments) },
+	{ 0x60ea2d6, __VMLINUX_SYMBOL_STR(kstrtoull) },
+	{ 0xcc7f75ed, __VMLINUX_SYMBOL_STR(mmc_detect_card_removed) },
+	{ 0xa8a5196c, __VMLINUX_SYMBOL_STR(mmc_flush_cache) },
+	{ 0xeec87996, __VMLINUX_SYMBOL_STR(dev_err) },
+	{ 0x8f64aa4, __VMLINUX_SYMBOL_STR(_raw_spin_unlock_irqrestore) },
+	{ 0x260617f2, __VMLINUX_SYMBOL_STR(current_task) },
+	{ 0x1065bcd, __VMLINUX_SYMBOL_STR(check_disk_change) },
+	{ 0x27e1a049, __VMLINUX_SYMBOL_STR(printk) },
+	{ 0xde6ac026, __VMLINUX_SYMBOL_STR(mmc_can_secure_erase_trim) },
+	{ 0xbfb3f5f4, __VMLINUX_SYMBOL_STR(kthread_stop) },
+	{ 0x720442f4, __VMLINUX_SYMBOL_STR(del_gendisk) },
+	{ 0x4c9d28b0, __VMLINUX_SYMBOL_STR(phys_base) },
+	{ 0x832b5cd2, __VMLINUX_SYMBOL_STR(mmc_set_data_timeout) },
+	{ 0xe1504556, __VMLINUX_SYMBOL_STR(mutex_lock) },
+	{ 0x521445b, __VMLINUX_SYMBOL_STR(list_del) },
+	{ 0x68aca4ad, __VMLINUX_SYMBOL_STR(down) },
+	{ 0x71a50dbc, __VMLINUX_SYMBOL_STR(register_blkdev) },
+	{ 0x3c9d1211, __VMLINUX_SYMBOL_STR(string_get_size) },
+	{ 0xf11543ff, __VMLINUX_SYMBOL_STR(find_first_zero_bit) },
+	{ 0xed0d3520, __VMLINUX_SYMBOL_STR(device_create_file) },
+	{ 0xb5a459dc, __VMLINUX_SYMBOL_STR(unregister_blkdev) },
+	{ 0xc077e3b6, __VMLINUX_SYMBOL_STR(blk_queue_bounce_limit) },
+	{ 0xc6cbbc89, __VMLINUX_SYMBOL_STR(capable) },
+	{ 0x12a38747, __VMLINUX_SYMBOL_STR(usleep_range) },
+	{ 0xbd0e0e0b, __VMLINUX_SYMBOL_STR(pm_runtime_enable) },
+	{ 0x571fe4c9, __VMLINUX_SYMBOL_STR(mmc_fixup_device) },
+	{ 0x3bd1b1f6, __VMLINUX_SYMBOL_STR(msecs_to_jiffies) },
+	{ 0xfcf33860, __VMLINUX_SYMBOL_STR(__mmc_claim_host) },
+	{ 0x1000e51, __VMLINUX_SYMBOL_STR(schedule) },
+	{ 0xba0dccd0, __VMLINUX_SYMBOL_STR(put_disk) },
+	{ 0x43261dca, __VMLINUX_SYMBOL_STR(_raw_spin_lock_irq) },
+	{ 0x4776e26b, __VMLINUX_SYMBOL_STR(__pm_runtime_set_status) },
+	{ 0xb9220d93, __VMLINUX_SYMBOL_STR(blk_end_request) },
+	{ 0x16e47a24, __VMLINUX_SYMBOL_STR(blk_rq_map_sg) },
+	{ 0x73926539, __VMLINUX_SYMBOL_STR(blk_fetch_request) },
+	{ 0x374e0d31, __VMLINUX_SYMBOL_STR(wake_up_process) },
+	{ 0xbb0e6cdb, __VMLINUX_SYMBOL_STR(__blk_end_request_all) },
+	{ 0xbdfb6dbb, __VMLINUX_SYMBOL_STR(__fentry__) },
+	{ 0x3bfce3c9, __VMLINUX_SYMBOL_STR(kmem_cache_alloc_trace) },
+	{ 0x9327f5ce, __VMLINUX_SYMBOL_STR(_raw_spin_lock_irqsave) },
+	{ 0xcf21d241, __VMLINUX_SYMBOL_STR(__wake_up) },
+	{ 0xcd4b1ea0, __VMLINUX_SYMBOL_STR(blk_stop_queue) },
+	{ 0xb3f7646e, __VMLINUX_SYMBOL_STR(kthread_should_stop) },
+	{ 0x4e54ce10, __VMLINUX_SYMBOL_STR(mmc_erase_group_aligned) },
+	{ 0xb6244511, __VMLINUX_SYMBOL_STR(sg_init_one) },
+	{ 0x37a0cba, __VMLINUX_SYMBOL_STR(kfree) },
+	{ 0xade5819a, __VMLINUX_SYMBOL_STR(add_disk) },
+	{ 0xc16c3873, __VMLINUX_SYMBOL_STR(blk_end_request_all) },
+	{ 0x71e3cecb, __VMLINUX_SYMBOL_STR(up) },
+	{ 0x564e248, __VMLINUX_SYMBOL_STR(blk_requeue_request) },
+	{ 0x4b09f7b1, __VMLINUX_SYMBOL_STR(mmc_can_erase) },
+	{ 0xcab74331, __VMLINUX_SYMBOL_STR(mmc_get_card) },
+	{ 0x68444928, __VMLINUX_SYMBOL_STR(pm_runtime_set_autosuspend_delay) },
+	{ 0x8803563a, __VMLINUX_SYMBOL_STR(mmc_calc_max_discard) },
+	{ 0x28318305, __VMLINUX_SYMBOL_STR(snprintf) },
+	{ 0x73880ed, __VMLINUX_SYMBOL_STR(blk_queue_max_segment_size) },
+	{ 0xc58ce7ee, __VMLINUX_SYMBOL_STR(mmc_send_ext_csd) },
+	{ 0xd3cf9783, __VMLINUX_SYMBOL_STR(blk_queue_logical_block_size) },
+	{ 0xb5419b40, __VMLINUX_SYMBOL_STR(_copy_from_user) },
+	{ 0xc1138708, __VMLINUX_SYMBOL_STR(dev_get_drvdata) },
+	{ 0x35020f93, __VMLINUX_SYMBOL_STR(mmc_unregister_driver) },
+	{ 0xb31e52e0, __VMLINUX_SYMBOL_STR(set_disk_ro) },
+};
+
+static const char __module_depends[]
+__used
+__attribute__((section(".modinfo"))) =
+"depends=mmc_core";
+
+
+MODULE_INFO(srcversion, "A6AB825880C3B44B2389D4B");

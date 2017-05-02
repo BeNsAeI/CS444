@@ -1,0 +1,1 @@
+cmd_sound/drivers/mpu401/snd-mpu401.o := i586-poky-linux-ld -m elf_x86_64   -r -o sound/drivers/mpu401/snd-mpu401.o sound/drivers/mpu401/mpu401.o ; scripts/mod/modpost sound/drivers/mpu401/snd-mpu401.o

@@ -1,0 +1,1 @@
+cmd_drivers/usb/storage/ums-usbat.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/usb/storage/ums-usbat.o drivers/usb/storage/shuttle_usbat.o ; scripts/mod/modpost drivers/usb/storage/ums-usbat.o

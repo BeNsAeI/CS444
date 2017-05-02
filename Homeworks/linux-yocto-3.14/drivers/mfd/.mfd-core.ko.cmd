@@ -1,0 +1,1 @@
+cmd_drivers/mfd/mfd-core.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o drivers/mfd/mfd-core.ko drivers/mfd/mfd-core.o drivers/mfd/mfd-core.mod.o

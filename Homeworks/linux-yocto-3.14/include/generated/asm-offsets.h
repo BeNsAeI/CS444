@@ -7,73 +7,61 @@
  *
  */
 
-#define IA32_SIGCONTEXT_ax 44 /* offsetof(struct sigcontext, ax)	# */
-#define IA32_SIGCONTEXT_bx 32 /* offsetof(struct sigcontext, bx)	# */
-#define IA32_SIGCONTEXT_cx 40 /* offsetof(struct sigcontext, cx)	# */
-#define IA32_SIGCONTEXT_dx 36 /* offsetof(struct sigcontext, dx)	# */
-#define IA32_SIGCONTEXT_si 20 /* offsetof(struct sigcontext, si)	# */
-#define IA32_SIGCONTEXT_di 16 /* offsetof(struct sigcontext, di)	# */
-#define IA32_SIGCONTEXT_bp 24 /* offsetof(struct sigcontext, bp)	# */
-#define IA32_SIGCONTEXT_sp 28 /* offsetof(struct sigcontext, sp)	# */
-#define IA32_SIGCONTEXT_ip 56 /* offsetof(struct sigcontext, ip)	# */
+#define TI_sysenter_return 88 /* offsetof(struct thread_info, sysenter_return)	# */
 
-#define CPUINFO_x86 0 /* offsetof(struct cpuinfo_x86, x86)	# */
-#define CPUINFO_x86_vendor 1 /* offsetof(struct cpuinfo_x86, x86_vendor)	# */
-#define CPUINFO_x86_model 2 /* offsetof(struct cpuinfo_x86, x86_model)	# */
-#define CPUINFO_x86_mask 3 /* offsetof(struct cpuinfo_x86, x86_mask)	# */
-#define CPUINFO_cpuid_level 16 /* offsetof(struct cpuinfo_x86, cpuid_level)	# */
-#define CPUINFO_x86_capability 20 /* offsetof(struct cpuinfo_x86, x86_capability)	# */
-#define CPUINFO_x86_vendor_id 64 /* offsetof(struct cpuinfo_x86, x86_vendor_id)	# */
+#define IA32_SIGCONTEXT_ax 44 /* offsetof(struct sigcontext_ia32, ax)	# */
+#define IA32_SIGCONTEXT_bx 32 /* offsetof(struct sigcontext_ia32, bx)	# */
+#define IA32_SIGCONTEXT_cx 40 /* offsetof(struct sigcontext_ia32, cx)	# */
+#define IA32_SIGCONTEXT_dx 36 /* offsetof(struct sigcontext_ia32, dx)	# */
+#define IA32_SIGCONTEXT_si 20 /* offsetof(struct sigcontext_ia32, si)	# */
+#define IA32_SIGCONTEXT_di 16 /* offsetof(struct sigcontext_ia32, di)	# */
+#define IA32_SIGCONTEXT_bp 24 /* offsetof(struct sigcontext_ia32, bp)	# */
+#define IA32_SIGCONTEXT_sp 28 /* offsetof(struct sigcontext_ia32, sp)	# */
+#define IA32_SIGCONTEXT_ip 56 /* offsetof(struct sigcontext_ia32, ip)	# */
 
-#define TI_sysenter_return 60 /* offsetof(struct thread_info, sysenter_return)	# */
-#define TI_cpu 16 /* offsetof(struct thread_info, cpu)	# */
+#define IA32_RT_SIGFRAME_sigcontext 164 /* offsetof(struct rt_sigframe_ia32, uc.uc_mcontext)	# */
 
-#define PT_EBX 0 /* offsetof(struct pt_regs, bx)	# */
-#define PT_ECX 4 /* offsetof(struct pt_regs, cx)	# */
-#define PT_EDX 8 /* offsetof(struct pt_regs, dx)	# */
-#define PT_ESI 12 /* offsetof(struct pt_regs, si)	# */
-#define PT_EDI 16 /* offsetof(struct pt_regs, di)	# */
-#define PT_EBP 20 /* offsetof(struct pt_regs, bp)	# */
-#define PT_EAX 24 /* offsetof(struct pt_regs, ax)	# */
-#define PT_DS 28 /* offsetof(struct pt_regs, ds)	# */
-#define PT_ES 32 /* offsetof(struct pt_regs, es)	# */
-#define PT_FS 36 /* offsetof(struct pt_regs, fs)	# */
-#define PT_GS 40 /* offsetof(struct pt_regs, gs)	# */
-#define PT_ORIG_EAX 44 /* offsetof(struct pt_regs, orig_ax)	# */
-#define PT_EIP 48 /* offsetof(struct pt_regs, ip)	# */
-#define PT_CS 52 /* offsetof(struct pt_regs, cs)	# */
-#define PT_EFLAGS 56 /* offsetof(struct pt_regs, flags)	# */
-#define PT_OLDESP 60 /* offsetof(struct pt_regs, sp)	# */
-#define PT_OLDSS 64 /* offsetof(struct pt_regs, ss)	# */
+#define pt_regs_bx 40 /* offsetof(struct pt_regs, bx)	# */
+#define pt_regs_bx 40 /* offsetof(struct pt_regs, bx)	# */
+#define pt_regs_cx 88 /* offsetof(struct pt_regs, cx)	# */
+#define pt_regs_dx 96 /* offsetof(struct pt_regs, dx)	# */
+#define pt_regs_sp 152 /* offsetof(struct pt_regs, sp)	# */
+#define pt_regs_bp 32 /* offsetof(struct pt_regs, bp)	# */
+#define pt_regs_si 104 /* offsetof(struct pt_regs, si)	# */
+#define pt_regs_di 112 /* offsetof(struct pt_regs, di)	# */
+#define pt_regs_r8 72 /* offsetof(struct pt_regs, r8)	# */
+#define pt_regs_r9 64 /* offsetof(struct pt_regs, r9)	# */
+#define pt_regs_r10 56 /* offsetof(struct pt_regs, r10)	# */
+#define pt_regs_r11 48 /* offsetof(struct pt_regs, r11)	# */
+#define pt_regs_r12 24 /* offsetof(struct pt_regs, r12)	# */
+#define pt_regs_r13 16 /* offsetof(struct pt_regs, r13)	# */
+#define pt_regs_r14 8 /* offsetof(struct pt_regs, r14)	# */
+#define pt_regs_r15 0 /* offsetof(struct pt_regs, r15)	# */
+#define pt_regs_flags 144 /* offsetof(struct pt_regs, flags)	# */
 
-#define IA32_RT_SIGFRAME_sigcontext 164 /* offsetof(struct rt_sigframe, uc.uc_mcontext)	# */
+#define saved_context_cr0 202 /* offsetof(struct saved_context, cr0)	# */
+#define saved_context_cr2 210 /* offsetof(struct saved_context, cr2)	# */
+#define saved_context_cr3 218 /* offsetof(struct saved_context, cr3)	# */
+#define saved_context_cr4 226 /* offsetof(struct saved_context, cr4)	# */
+#define saved_context_cr8 234 /* offsetof(struct saved_context, cr8)	# */
+#define saved_context_gdt_desc 261 /* offsetof(struct saved_context, gdt_desc)	# */
 
-#define saved_context_gdt_desc 33 /* offsetof(struct saved_context, gdt_desc)	# */
+#define TSS_ist 36 /* offsetof(struct tss_struct, x86_tss.ist)	# */
 
-#define TSS_sysenter_sp0 -8572 /* offsetof(struct tss_struct, x86_tss.sp0) - sizeof(struct tss_struct)	# */
+#define __NR_syscall_max 315 /* sizeof(syscalls_64) - 1	# */
+#define NR_syscalls 316 /* sizeof(syscalls_64)	# */
+#define __NR_ia32_syscall_max 352 /* sizeof(syscalls_ia32) - 1	# */
+#define IA32_NR_syscalls 353 /* sizeof(syscalls_ia32)	# */
 
-#define __NR_syscall_max 352 /* sizeof(syscalls) - 1	# */
-#define NR_syscalls 353 /* sizeof(syscalls)	# */
+#define TI_flags 16 /* offsetof(struct thread_info, flags)	# */
+#define TI_status 20 /* offsetof(struct thread_info, status)	# */
+#define TI_addr_limit 32 /* offsetof(struct thread_info, addr_limit)	# */
 
-#define TI_flags 8 /* offsetof(struct thread_info, flags)	# */
-#define TI_status 12 /* offsetof(struct thread_info, status)	# */
-#define TI_addr_limit 24 /* offsetof(struct thread_info, addr_limit)	# */
-
-#define crypto_tfm_ctx_offset 48 /* offsetof(struct crypto_tfm, __crt_ctx)	# */
+#define crypto_tfm_ctx_offset 88 /* offsetof(struct crypto_tfm, __crt_ctx)	# */
 
 #define pbe_address 0 /* offsetof(struct pbe, address)	# */
-#define pbe_orig_address 4 /* offsetof(struct pbe, orig_address)	# */
-#define pbe_next 8 /* offsetof(struct pbe, next)	# */
-
-#define PARAVIRT_enabled 8 /* offsetof(struct pv_info, paravirt_enabled)	# */
-#define PARAVIRT_PATCH_pv_cpu_ops 16 /* offsetof(struct paravirt_patch_template, pv_cpu_ops)	# */
-#define PARAVIRT_PATCH_pv_irq_ops 164 /* offsetof(struct paravirt_patch_template, pv_irq_ops)	# */
-#define PV_IRQ_irq_disable 8 /* offsetof(struct pv_irq_ops, irq_disable)	# */
-#define PV_IRQ_irq_enable 12 /* offsetof(struct pv_irq_ops, irq_enable)	# */
-#define PV_CPU_iret 132 /* offsetof(struct pv_cpu_ops, iret)	# */
-#define PV_CPU_irq_enable_sysexit 120 /* offsetof(struct pv_cpu_ops, irq_enable_sysexit)	# */
-#define PV_CPU_read_cr0 12 /* offsetof(struct pv_cpu_ops, read_cr0)	# */
-#define PV_MMU_read_cr2 0 /* offsetof(struct pv_mmu_ops, read_cr2)	# */
+#define pbe_orig_address 8 /* offsetof(struct pbe, orig_address)	# */
+#define pbe_next 16 /* offsetof(struct pbe, next)	# */
 
 #define BP_scratch 484 /* offsetof(struct boot_params, scratch)	# */
 #define BP_loadflags 529 /* offsetof(struct boot_params, hdr.loadflags)	# */
@@ -83,6 +71,6 @@
 #define BP_pref_address 600 /* offsetof(struct boot_params, hdr.pref_address)	# */
 #define BP_code32_start 532 /* offsetof(struct boot_params, hdr.code32_start)	# */
 
-#define PTREGS_SIZE 68 /* sizeof(struct pt_regs)	# */
+#define PTREGS_SIZE 168 /* sizeof(struct pt_regs)	# */
 
 #endif

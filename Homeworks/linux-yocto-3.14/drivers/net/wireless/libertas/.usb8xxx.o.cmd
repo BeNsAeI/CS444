@@ -1,0 +1,1 @@
+cmd_drivers/net/wireless/libertas/usb8xxx.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/net/wireless/libertas/usb8xxx.o drivers/net/wireless/libertas/if_usb.o ; scripts/mod/modpost drivers/net/wireless/libertas/usb8xxx.o

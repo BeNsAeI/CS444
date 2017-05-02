@@ -1,0 +1,1 @@
+cmd_net/bluetooth/bnep/bnep.o := i586-poky-linux-ld -m elf_x86_64   -r -o net/bluetooth/bnep/bnep.o net/bluetooth/bnep/core.o net/bluetooth/bnep/sock.o net/bluetooth/bnep/netdev.o ; scripts/mod/modpost net/bluetooth/bnep/bnep.o

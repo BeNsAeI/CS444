@@ -1,0 +1,1 @@
+cmd_drivers/net/can/built-in.o :=  i586-poky-linux-ld -m elf_x86_64   -r -o drivers/net/can/built-in.o drivers/net/can/usb/built-in.o drivers/net/can/softing/built-in.o ; scripts/mod/modpost drivers/net/can/built-in.o

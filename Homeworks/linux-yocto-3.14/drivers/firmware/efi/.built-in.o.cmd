@@ -1,1 +1,1 @@
-cmd_drivers/firmware/efi/built-in.o :=  i586-poky-linux-ld -m elf_i386   -r -o drivers/firmware/efi/built-in.o drivers/firmware/efi/efi.o drivers/firmware/efi/vars.o 
+cmd_drivers/firmware/efi/built-in.o :=  i586-poky-linux-ld -m elf_x86_64   -r -o drivers/firmware/efi/built-in.o drivers/firmware/efi/efi.o drivers/firmware/efi/vars.o drivers/firmware/efi/efivars.o drivers/firmware/efi/efi-pstore.o drivers/firmware/efi/cper.o drivers/firmware/efi/runtime-map.o ; scripts/mod/modpost drivers/firmware/efi/built-in.o

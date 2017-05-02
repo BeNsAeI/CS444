@@ -1,0 +1,1 @@
+cmd_drivers/net/phy/marvell.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o drivers/net/phy/marvell.ko drivers/net/phy/marvell.o drivers/net/phy/marvell.mod.o

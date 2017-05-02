@@ -1,0 +1,1 @@
+cmd_drivers/target/tcm_fc/tcm_fc.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o drivers/target/tcm_fc/tcm_fc.ko drivers/target/tcm_fc/tcm_fc.o drivers/target/tcm_fc/tcm_fc.mod.o

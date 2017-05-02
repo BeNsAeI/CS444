@@ -1,0 +1,1 @@
+cmd_drivers/net/wireless/p54/p54common.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/net/wireless/p54/p54common.o drivers/net/wireless/p54/eeprom.o drivers/net/wireless/p54/fwio.o drivers/net/wireless/p54/txrx.o drivers/net/wireless/p54/main.o drivers/net/wireless/p54/led.o ; scripts/mod/modpost drivers/net/wireless/p54/p54common.o

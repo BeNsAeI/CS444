@@ -1,0 +1,1 @@
+cmd_drivers/idle/i7300_idle.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o drivers/idle/i7300_idle.ko drivers/idle/i7300_idle.o drivers/idle/i7300_idle.mod.o

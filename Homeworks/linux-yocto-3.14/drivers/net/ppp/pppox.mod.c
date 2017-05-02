@@ -16,8 +16,27 @@ __attribute__((section(".gnu.linkonce.this_module"))) = {
 
 MODULE_INFO(intree, "Y");
 
+static const struct modversion_info ____versions[]
+__used
+__attribute__((section("__versions"))) = {
+	{ 0x43804739, __VMLINUX_SYMBOL_STR(module_layout) },
+	{ 0x32ce7d44, __VMLINUX_SYMBOL_STR(release_sock) },
+	{ 0x402b8281, __VMLINUX_SYMBOL_STR(__request_module) },
+	{ 0xeca73b43, __VMLINUX_SYMBOL_STR(ppp_unregister_channel) },
+	{ 0xd13f7190, __VMLINUX_SYMBOL_STR(lock_sock_nested) },
+	{ 0x725c9955, __VMLINUX_SYMBOL_STR(module_put) },
+	{ 0xb2fd5ceb, __VMLINUX_SYMBOL_STR(__put_user_4) },
+	{        0, __VMLINUX_SYMBOL_STR(sock_register) },
+	{ 0xbdfb6dbb, __VMLINUX_SYMBOL_STR(__fentry__) },
+	{ 0x62737e1d, __VMLINUX_SYMBOL_STR(sock_unregister) },
+	{ 0x765fd9eb, __VMLINUX_SYMBOL_STR(ppp_channel_index) },
+	{ 0xbb47f84c, __VMLINUX_SYMBOL_STR(try_module_get) },
+};
+
 static const char __module_depends[]
 __used
 __attribute__((section(".modinfo"))) =
 "depends=ppp_generic";
 
+
+MODULE_INFO(srcversion, "07538013A31C6EF3DC2D9DD");

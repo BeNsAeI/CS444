@@ -16,8 +16,22 @@ __attribute__((section(".gnu.linkonce.this_module"))) = {
 
 MODULE_INFO(intree, "Y");
 
+static const struct modversion_info ____versions[]
+__used
+__attribute__((section("__versions"))) = {
+	{ 0x43804739, __VMLINUX_SYMBOL_STR(module_layout) },
+	{ 0x4c8b0a1, __VMLINUX_SYMBOL_STR(xt_unregister_match) },
+	{ 0x36e42b7a, __VMLINUX_SYMBOL_STR(xt_register_match) },
+	{ 0x13f29cdb, __VMLINUX_SYMBOL_STR(skb_find_text) },
+	{ 0xf24b14c4, __VMLINUX_SYMBOL_STR(textsearch_prepare) },
+	{ 0x5a9cf89e, __VMLINUX_SYMBOL_STR(textsearch_destroy) },
+	{ 0xbdfb6dbb, __VMLINUX_SYMBOL_STR(__fentry__) },
+};
+
 static const char __module_depends[]
 __used
 __attribute__((section(".modinfo"))) =
-"depends=x_tables";
+"depends=";
 
+
+MODULE_INFO(srcversion, "FADA26B62DC17307DC32A64");

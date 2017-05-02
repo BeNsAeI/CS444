@@ -1,0 +1,1 @@
+cmd_arch/x86/kernel/cpu/mcheck/mce-inject.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o arch/x86/kernel/cpu/mcheck/mce-inject.ko arch/x86/kernel/cpu/mcheck/mce-inject.o arch/x86/kernel/cpu/mcheck/mce-inject.mod.o

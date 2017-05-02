@@ -1,0 +1,1 @@
+cmd_drivers/video/savage/savagefb.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/video/savage/savagefb.o drivers/video/savage/savagefb_driver.o drivers/video/savage/savagefb-i2c.o drivers/video/savage/savagefb_accel.o ; scripts/mod/modpost drivers/video/savage/savagefb.o

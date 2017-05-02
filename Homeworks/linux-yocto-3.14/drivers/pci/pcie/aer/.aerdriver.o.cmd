@@ -1,1 +1,1 @@
-cmd_drivers/pci/pcie/aer/aerdriver.o := i586-poky-linux-ld -m elf_i386   -r -o drivers/pci/pcie/aer/aerdriver.o drivers/pci/pcie/aer/aerdrv_errprint.o drivers/pci/pcie/aer/aerdrv_core.o drivers/pci/pcie/aer/aerdrv.o drivers/pci/pcie/aer/aerdrv_acpi.o 
+cmd_drivers/pci/pcie/aer/aerdriver.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/pci/pcie/aer/aerdriver.o drivers/pci/pcie/aer/aerdrv_errprint.o drivers/pci/pcie/aer/aerdrv_core.o drivers/pci/pcie/aer/aerdrv.o drivers/pci/pcie/aer/aerdrv_acpi.o ; scripts/mod/modpost drivers/pci/pcie/aer/aerdriver.o

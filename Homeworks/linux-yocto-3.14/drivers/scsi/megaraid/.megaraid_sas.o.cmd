@@ -1,0 +1,1 @@
+cmd_drivers/scsi/megaraid/megaraid_sas.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/scsi/megaraid/megaraid_sas.o drivers/scsi/megaraid/megaraid_sas_base.o drivers/scsi/megaraid/megaraid_sas_fusion.o drivers/scsi/megaraid/megaraid_sas_fp.o ; scripts/mod/modpost drivers/scsi/megaraid/megaraid_sas.o

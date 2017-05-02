@@ -1,0 +1,1 @@
+cmd_drivers/isdn/hisax/hisax_st5481.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/isdn/hisax/hisax_st5481.o drivers/isdn/hisax/st5481_init.o drivers/isdn/hisax/st5481_usb.o drivers/isdn/hisax/st5481_d.o drivers/isdn/hisax/st5481_b.o ; scripts/mod/modpost drivers/isdn/hisax/hisax_st5481.o

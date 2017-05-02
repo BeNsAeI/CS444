@@ -1,0 +1,1 @@
+cmd_drivers/usb/storage/ums-sddr09.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o drivers/usb/storage/ums-sddr09.ko drivers/usb/storage/ums-sddr09.o drivers/usb/storage/ums-sddr09.mod.o

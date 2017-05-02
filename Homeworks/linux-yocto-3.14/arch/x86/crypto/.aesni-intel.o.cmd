@@ -1,0 +1,1 @@
+cmd_arch/x86/crypto/aesni-intel.o := i586-poky-linux-ld -m elf_x86_64   -r -o arch/x86/crypto/aesni-intel.o arch/x86/crypto/aesni-intel_asm.o arch/x86/crypto/aesni-intel_glue.o arch/x86/crypto/fpu.o arch/x86/crypto/aesni-intel_avx-x86_64.o ; scripts/mod/modpost arch/x86/crypto/aesni-intel.o

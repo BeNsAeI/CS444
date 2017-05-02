@@ -1,0 +1,1 @@
+cmd_drivers/usb/misc/ftdi-elan.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o drivers/usb/misc/ftdi-elan.ko drivers/usb/misc/ftdi-elan.o drivers/usb/misc/ftdi-elan.mod.o

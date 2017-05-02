@@ -1,0 +1,1 @@
+cmd_drivers/gpu/drm/savage/savage.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/gpu/drm/savage/savage.o drivers/gpu/drm/savage/savage_drv.o drivers/gpu/drm/savage/savage_bci.o drivers/gpu/drm/savage/savage_state.o ; scripts/mod/modpost drivers/gpu/drm/savage/savage.o

@@ -1,0 +1,1 @@
+cmd_drivers/isdn/gigaset/usb_gigaset.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/isdn/gigaset/usb_gigaset.o drivers/isdn/gigaset/usb-gigaset.o ; scripts/mod/modpost drivers/isdn/gigaset/usb_gigaset.o

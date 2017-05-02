@@ -1,0 +1,1 @@
+cmd_drivers/hwmon/lm80.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o drivers/hwmon/lm80.ko drivers/hwmon/lm80.o drivers/hwmon/lm80.mod.o

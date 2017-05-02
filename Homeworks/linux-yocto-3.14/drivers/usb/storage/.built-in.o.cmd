@@ -1,1 +1,1 @@
-cmd_drivers/usb/storage/built-in.o :=  i586-poky-linux-ld -m elf_i386   -r -o drivers/usb/storage/built-in.o drivers/usb/storage/usb-storage.o 
+cmd_drivers/usb/storage/built-in.o :=  rm -f drivers/usb/storage/built-in.o; i586-poky-linux-ar rcsD drivers/usb/storage/built-in.o

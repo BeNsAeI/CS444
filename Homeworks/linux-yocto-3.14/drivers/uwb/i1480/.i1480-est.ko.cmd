@@ -1,0 +1,1 @@
+cmd_drivers/uwb/i1480/i1480-est.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o drivers/uwb/i1480/i1480-est.ko drivers/uwb/i1480/i1480-est.o drivers/uwb/i1480/i1480-est.mod.o

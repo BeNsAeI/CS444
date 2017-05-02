@@ -1,0 +1,1 @@
+cmd_drivers/net/wireless/libertas/libertas_cs.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/net/wireless/libertas/libertas_cs.o drivers/net/wireless/libertas/if_cs.o ; scripts/mod/modpost drivers/net/wireless/libertas/libertas_cs.o

@@ -1,0 +1,1 @@
+cmd_drivers/pci/pcie/aer/aer_inject.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o drivers/pci/pcie/aer/aer_inject.ko drivers/pci/pcie/aer/aer_inject.o drivers/pci/pcie/aer/aer_inject.mod.o

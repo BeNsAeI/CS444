@@ -1,1 +1,1 @@
-cmd_drivers/char/hw_random/built-in.o :=  rm -f drivers/char/hw_random/built-in.o; i586-poky-linux-ar rcsD drivers/char/hw_random/built-in.o
+cmd_drivers/char/hw_random/built-in.o :=  i586-poky-linux-ld -m elf_x86_64   -r -o drivers/char/hw_random/built-in.o drivers/char/hw_random/rng-core.o drivers/char/hw_random/tpm-rng.o ; scripts/mod/modpost drivers/char/hw_random/built-in.o

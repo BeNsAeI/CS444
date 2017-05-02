@@ -1,0 +1,1 @@
+cmd_drivers/uwb/i1480/dfu/i1480-dfu-usb.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/uwb/i1480/dfu/i1480-dfu-usb.o drivers/uwb/i1480/dfu/dfu.o drivers/uwb/i1480/dfu/mac.o drivers/uwb/i1480/dfu/phy.o drivers/uwb/i1480/dfu/usb.o ; scripts/mod/modpost drivers/uwb/i1480/dfu/i1480-dfu-usb.o

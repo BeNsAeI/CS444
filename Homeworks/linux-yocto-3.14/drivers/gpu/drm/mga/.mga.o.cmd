@@ -1,0 +1,1 @@
+cmd_drivers/gpu/drm/mga/mga.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/gpu/drm/mga/mga.o drivers/gpu/drm/mga/mga_drv.o drivers/gpu/drm/mga/mga_dma.o drivers/gpu/drm/mga/mga_state.o drivers/gpu/drm/mga/mga_warp.o drivers/gpu/drm/mga/mga_irq.o drivers/gpu/drm/mga/mga_ioc32.o ; scripts/mod/modpost drivers/gpu/drm/mga/mga.o

@@ -1,0 +1,137 @@
+#include <linux/module.h>
+#include <linux/vermagic.h>
+#include <linux/compiler.h>
+
+MODULE_INFO(vermagic, VERMAGIC_STRING);
+
+__visible struct module __this_module
+__attribute__((section(".gnu.linkonce.this_module"))) = {
+	.name = KBUILD_MODNAME,
+	.init = init_module,
+#ifdef CONFIG_MODULE_UNLOAD
+	.exit = cleanup_module,
+#endif
+	.arch = MODULE_ARCH_INIT,
+};
+
+MODULE_INFO(intree, "Y");
+
+static const struct modversion_info ____versions[]
+__used
+__attribute__((section("__versions"))) = {
+	{ 0x43804739, __VMLINUX_SYMBOL_STR(module_layout) },
+	{ 0xf19ab26c, __VMLINUX_SYMBOL_STR(rdma_resolve_ip) },
+	{ 0x44cedbf6, __VMLINUX_SYMBOL_STR(kmalloc_caches) },
+	{ 0x65e75cb6, __VMLINUX_SYMBOL_STR(__list_del_entry) },
+	{ 0xd2b09ce5, __VMLINUX_SYMBOL_STR(__kmalloc) },
+	{ 0x46878863, __VMLINUX_SYMBOL_STR(ib_send_cm_rej) },
+	{ 0x7cc24061, __VMLINUX_SYMBOL_STR(iw_cm_listen) },
+	{ 0x78a6eab2, __VMLINUX_SYMBOL_STR(ib_find_cached_gid) },
+	{ 0x4bf051b8, __VMLINUX_SYMBOL_STR(ib_attach_mcast) },
+	{ 0x8724d8ca, __VMLINUX_SYMBOL_STR(ib_query_gid) },
+	{ 0x43a53735, __VMLINUX_SYMBOL_STR(__alloc_workqueue_key) },
+	{ 0xebdbc905, __VMLINUX_SYMBOL_STR(rdma_port_get_link_layer) },
+	{ 0xb96f9db1, __VMLINUX_SYMBOL_STR(vlan_dev_vlan_id) },
+	{ 0x79aa04a2, __VMLINUX_SYMBOL_STR(get_random_bytes) },
+	{ 0xb1055f37, __VMLINUX_SYMBOL_STR(ib_sa_join_multicast) },
+	{ 0x8dac937b, __VMLINUX_SYMBOL_STR(ib_send_cm_req) },
+	{ 0xf820f778, __VMLINUX_SYMBOL_STR(ib_send_cm_dreq) },
+	{ 0xc7a4fbed, __VMLINUX_SYMBOL_STR(rtnl_lock) },
+	{ 0xac704bf3, __VMLINUX_SYMBOL_STR(ib_send_cm_rtu) },
+	{ 0xf9262daf, __VMLINUX_SYMBOL_STR(iw_cm_init_qp_attr) },
+	{ 0xd90236a4, __VMLINUX_SYMBOL_STR(ib_destroy_qp) },
+	{ 0xf241a80c, __VMLINUX_SYMBOL_STR(ib_init_ah_from_path) },
+	{ 0xd2da1048, __VMLINUX_SYMBOL_STR(register_netdevice_notifier) },
+	{ 0x5403b6c2, __VMLINUX_SYMBOL_STR(iw_cm_reject) },
+	{ 0x448eac3e, __VMLINUX_SYMBOL_STR(kmemdup) },
+	{ 0x79c59ec3, __VMLINUX_SYMBOL_STR(mutex_unlock) },
+	{ 0xd57f7167, __VMLINUX_SYMBOL_STR(iw_cm_accept) },
+	{ 0x343a1a8, __VMLINUX_SYMBOL_STR(__list_add) },
+	{ 0x9d0d6206, __VMLINUX_SYMBOL_STR(unregister_netdevice_notifier) },
+	{ 0x3bbd7ed, __VMLINUX_SYMBOL_STR(ib_get_cached_gid) },
+	{ 0xbbbad606, __VMLINUX_SYMBOL_STR(ib_modify_qp) },
+	{ 0xdc0b5d81, __VMLINUX_SYMBOL_STR(ib_send_cm_mra) },
+	{ 0x576fdbac, __VMLINUX_SYMBOL_STR(ib_sa_free_multicast) },
+	{ 0xf432dd3d, __VMLINUX_SYMBOL_STR(__init_waitqueue_head) },
+	{ 0xdd72e078, __VMLINUX_SYMBOL_STR(ib_create_qp) },
+	{ 0x6d0aba34, __VMLINUX_SYMBOL_STR(wait_for_completion) },
+	{ 0x7331f138, __VMLINUX_SYMBOL_STR(ib_send_cm_drep) },
+	{ 0xd6f92c50, __VMLINUX_SYMBOL_STR(ib_cm_init_qp_attr) },
+	{ 0x45c92723, __VMLINUX_SYMBOL_STR(idr_destroy) },
+	{ 0x8f64aa4, __VMLINUX_SYMBOL_STR(_raw_spin_unlock_irqrestore) },
+	{ 0x260617f2, __VMLINUX_SYMBOL_STR(current_task) },
+	{ 0xd1c42aa1, __VMLINUX_SYMBOL_STR(ib_query_device) },
+	{ 0x5d9fa7a3, __VMLINUX_SYMBOL_STR(__mutex_init) },
+	{ 0x27e1a049, __VMLINUX_SYMBOL_STR(printk) },
+	{ 0x5e068534, __VMLINUX_SYMBOL_STR(iw_cm_disconnect) },
+	{ 0x70860adc, __VMLINUX_SYMBOL_STR(ibnl_put_attr) },
+	{ 0x449ad0a7, __VMLINUX_SYMBOL_STR(memcmp) },
+	{ 0x85625697, __VMLINUX_SYMBOL_STR(ib_get_client_data) },
+	{ 0x7c94b14e, __VMLINUX_SYMBOL_STR(__ethtool_get_settings) },
+	{ 0x3dd64e92, __VMLINUX_SYMBOL_STR(ib_send_cm_rep) },
+	{ 0xa5a282a, __VMLINUX_SYMBOL_STR(ib_query_port) },
+	{ 0x16305289, __VMLINUX_SYMBOL_STR(warn_slowpath_null) },
+	{ 0xe1504556, __VMLINUX_SYMBOL_STR(mutex_lock) },
+	{ 0x8c03d20c, __VMLINUX_SYMBOL_STR(destroy_workqueue) },
+	{ 0x521445b, __VMLINUX_SYMBOL_STR(list_del) },
+	{ 0xa297c20, __VMLINUX_SYMBOL_STR(iw_destroy_cm_id) },
+	{ 0x82d31360, __VMLINUX_SYMBOL_STR(dev_get_by_index) },
+	{ 0xa735db59, __VMLINUX_SYMBOL_STR(prandom_u32) },
+	{ 0x4fd5cfb9, __VMLINUX_SYMBOL_STR(idr_alloc) },
+	{ 0x4e2ee8ac, __VMLINUX_SYMBOL_STR(ib_get_cached_pkey) },
+	{ 0x724f0b57, __VMLINUX_SYMBOL_STR(init_net) },
+	{ 0x1139206d, __VMLINUX_SYMBOL_STR(ib_set_client_data) },
+	{ 0x5123c519, __VMLINUX_SYMBOL_STR(ib_init_ah_from_mcmember) },
+	{ 0x2fd0e42f, __VMLINUX_SYMBOL_STR(ib_sa_unregister_client) },
+	{ 0x323756a3, __VMLINUX_SYMBOL_STR(vlan_dev_real_dev) },
+	{ 0x9520fc85, __VMLINUX_SYMBOL_STR(ib_create_cm_id) },
+	{ 0x3f31cba3, __VMLINUX_SYMBOL_STR(ib_sa_path_rec_get) },
+	{ 0xcaef1b77, __VMLINUX_SYMBOL_STR(idr_remove) },
+	{ 0x8c2bcc53, __VMLINUX_SYMBOL_STR(ib_register_client) },
+	{ 0xda0d50ec, __VMLINUX_SYMBOL_STR(ib_sa_cancel_query) },
+	{ 0xc6cbbc89, __VMLINUX_SYMBOL_STR(capable) },
+	{ 0x6f36c782, __VMLINUX_SYMBOL_STR(idr_find_slowpath) },
+	{ 0xc4ceccb8, __VMLINUX_SYMBOL_STR(ib_sa_get_mcmember_rec) },
+	{ 0x77172547, __VMLINUX_SYMBOL_STR(ib_detach_mcast) },
+	{ 0x657e6ffd, __VMLINUX_SYMBOL_STR(ib_cm_notify) },
+	{ 0x273f4cca, __VMLINUX_SYMBOL_STR(rdma_addr_cancel) },
+	{ 0x49ace30, __VMLINUX_SYMBOL_STR(rdma_addr_find_smac_by_sgid) },
+	{ 0xa1c7e103, __VMLINUX_SYMBOL_STR(iw_cm_connect) },
+	{ 0x1fbd16da, __VMLINUX_SYMBOL_STR(ip_tos2prio) },
+	{ 0x43261dca, __VMLINUX_SYMBOL_STR(_raw_spin_lock_irq) },
+	{ 0x9ab79d9f, __VMLINUX_SYMBOL_STR(ib_find_cached_pkey) },
+	{ 0x6f6ee97c, __VMLINUX_SYMBOL_STR(rdma_addr_register_client) },
+	{ 0xbdfb6dbb, __VMLINUX_SYMBOL_STR(__fentry__) },
+	{ 0x2107de5f, __VMLINUX_SYMBOL_STR(rdma_addr_unregister_client) },
+	{ 0xac217df9, __VMLINUX_SYMBOL_STR(rdma_node_get_transport) },
+	{ 0x3bfce3c9, __VMLINUX_SYMBOL_STR(kmem_cache_alloc_trace) },
+	{ 0xc393a2e8, __VMLINUX_SYMBOL_STR(ib_destroy_cm_id) },
+	{ 0xd52bf1ce, __VMLINUX_SYMBOL_STR(_raw_spin_lock) },
+	{ 0x9327f5ce, __VMLINUX_SYMBOL_STR(_raw_spin_lock_irqsave) },
+	{ 0xea9c1e53, __VMLINUX_SYMBOL_STR(ibnl_add_client) },
+	{ 0x1c3c0ad3, __VMLINUX_SYMBOL_STR(rdma_addr_size) },
+	{ 0x158ec99d, __VMLINUX_SYMBOL_STR(ib_cm_listen) },
+	{ 0x4b8b6d7, __VMLINUX_SYMBOL_STR(rdma_translate_ip) },
+	{ 0x37a0cba, __VMLINUX_SYMBOL_STR(kfree) },
+	{ 0x69acdf38, __VMLINUX_SYMBOL_STR(memcpy) },
+	{ 0xc1955a3f, __VMLINUX_SYMBOL_STR(ib_sa_register_client) },
+	{ 0xc67f14a5, __VMLINUX_SYMBOL_STR(ibnl_remove_client) },
+	{ 0x2e0d2f7f, __VMLINUX_SYMBOL_STR(queue_work_on) },
+	{ 0x4b06d2e7, __VMLINUX_SYMBOL_STR(complete) },
+	{ 0x11f82226, __VMLINUX_SYMBOL_STR(ibnl_put_msg) },
+	{ 0x41874439, __VMLINUX_SYMBOL_STR(ib_send_cm_sidr_rep) },
+	{ 0xe4793ba6, __VMLINUX_SYMBOL_STR(ib_unregister_client) },
+	{ 0xd542439, __VMLINUX_SYMBOL_STR(__ipv6_addr_type) },
+	{ 0xf218f7f5, __VMLINUX_SYMBOL_STR(inet_get_local_port_range) },
+	{ 0x65978e01, __VMLINUX_SYMBOL_STR(iw_create_cm_id) },
+	{ 0x6e720ff2, __VMLINUX_SYMBOL_STR(rtnl_unlock) },
+	{ 0xc0fb6144, __VMLINUX_SYMBOL_STR(ib_send_cm_sidr_req) },
+};
+
+static const char __module_depends[]
+__used
+__attribute__((section(".modinfo"))) =
+"depends=ib_addr,ib_cm,iw_cm,ib_core,ib_sa";
+
+
+MODULE_INFO(srcversion, "F03D06F08AFB5D5F85BD9F3");

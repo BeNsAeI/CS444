@@ -1,0 +1,1 @@
+cmd_arch/x86/crypto/sha512-ssse3.o := i586-poky-linux-ld -m elf_x86_64   -r -o arch/x86/crypto/sha512-ssse3.o arch/x86/crypto/sha512-ssse3-asm.o arch/x86/crypto/sha512-avx-asm.o arch/x86/crypto/sha512-avx2-asm.o arch/x86/crypto/sha512_ssse3_glue.o ; scripts/mod/modpost arch/x86/crypto/sha512-ssse3.o

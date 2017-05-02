@@ -1,1 +1,1 @@
-cmd_drivers/i2c/algos/built-in.o :=  i586-poky-linux-ld -m elf_i386   -r -o drivers/i2c/algos/built-in.o drivers/i2c/algos/i2c-algo-bit.o 
+cmd_drivers/i2c/algos/built-in.o :=  rm -f drivers/i2c/algos/built-in.o; i586-poky-linux-ar rcsD drivers/i2c/algos/built-in.o

@@ -1,0 +1,1 @@
+cmd_drivers/hwmon/asus_atk0110.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o drivers/hwmon/asus_atk0110.ko drivers/hwmon/asus_atk0110.o drivers/hwmon/asus_atk0110.mod.o

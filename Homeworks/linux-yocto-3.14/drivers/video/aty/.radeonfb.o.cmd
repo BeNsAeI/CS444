@@ -1,0 +1,1 @@
+cmd_drivers/video/aty/radeonfb.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/video/aty/radeonfb.o drivers/video/aty/radeon_base.o drivers/video/aty/radeon_pm.o drivers/video/aty/radeon_monitor.o drivers/video/aty/radeon_accel.o drivers/video/aty/radeon_i2c.o drivers/video/aty/radeon_backlight.o ; scripts/mod/modpost drivers/video/aty/radeonfb.o

@@ -1,0 +1,1 @@
+cmd_drivers/gpu/drm/drm_kms_helper.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o drivers/gpu/drm/drm_kms_helper.ko drivers/gpu/drm/drm_kms_helper.o drivers/gpu/drm/drm_kms_helper.mod.o

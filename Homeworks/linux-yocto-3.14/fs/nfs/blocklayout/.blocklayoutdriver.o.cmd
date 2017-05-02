@@ -1,0 +1,1 @@
+cmd_fs/nfs/blocklayout/blocklayoutdriver.o := i586-poky-linux-ld -m elf_x86_64   -r -o fs/nfs/blocklayout/blocklayoutdriver.o fs/nfs/blocklayout/blocklayout.o fs/nfs/blocklayout/extents.o fs/nfs/blocklayout/blocklayoutdev.o fs/nfs/blocklayout/blocklayoutdm.o ; scripts/mod/modpost fs/nfs/blocklayout/blocklayoutdriver.o

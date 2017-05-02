@@ -1,0 +1,1 @@
+cmd_drivers/infiniband/core/ib_uverbs.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/infiniband/core/ib_uverbs.o drivers/infiniband/core/uverbs_main.o drivers/infiniband/core/uverbs_cmd.o drivers/infiniband/core/uverbs_marshall.o ; scripts/mod/modpost drivers/infiniband/core/ib_uverbs.o

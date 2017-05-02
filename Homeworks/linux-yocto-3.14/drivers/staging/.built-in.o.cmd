@@ -1,0 +1,1 @@
+cmd_drivers/staging/built-in.o :=  i586-poky-linux-ld -m elf_x86_64   -r -o drivers/staging/built-in.o drivers/staging/staging.o drivers/staging/media/built-in.o drivers/staging/silicom/built-in.o ; scripts/mod/modpost drivers/staging/built-in.o

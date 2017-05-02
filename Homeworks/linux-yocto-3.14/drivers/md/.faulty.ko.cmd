@@ -1,0 +1,1 @@
+cmd_drivers/md/faulty.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o drivers/md/faulty.ko drivers/md/faulty.o drivers/md/faulty.mod.o

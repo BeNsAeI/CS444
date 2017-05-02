@@ -1,1 +1,1 @@
-cmd_drivers/pci/pcie/pcieportdrv.o := i586-poky-linux-ld -m elf_i386   -r -o drivers/pci/pcie/pcieportdrv.o drivers/pci/pcie/portdrv_core.o drivers/pci/pcie/portdrv_pci.o drivers/pci/pcie/portdrv_bus.o drivers/pci/pcie/portdrv_acpi.o 
+cmd_drivers/pci/pcie/pcieportdrv.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/pci/pcie/pcieportdrv.o drivers/pci/pcie/portdrv_core.o drivers/pci/pcie/portdrv_pci.o drivers/pci/pcie/portdrv_bus.o drivers/pci/pcie/portdrv_acpi.o ; scripts/mod/modpost drivers/pci/pcie/pcieportdrv.o

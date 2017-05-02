@@ -1,0 +1,1 @@
+cmd_drivers/net/ethernet/intel/igbvf/igbvf.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/net/ethernet/intel/igbvf/igbvf.o drivers/net/ethernet/intel/igbvf/vf.o drivers/net/ethernet/intel/igbvf/mbx.o drivers/net/ethernet/intel/igbvf/ethtool.o drivers/net/ethernet/intel/igbvf/netdev.o ; scripts/mod/modpost drivers/net/ethernet/intel/igbvf/igbvf.o

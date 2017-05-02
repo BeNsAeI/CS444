@@ -1,0 +1,1 @@
+cmd_drivers/misc/tifm_7xx1.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o drivers/misc/tifm_7xx1.ko drivers/misc/tifm_7xx1.o drivers/misc/tifm_7xx1.mod.o

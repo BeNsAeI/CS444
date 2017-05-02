@@ -1,0 +1,1 @@
+cmd_drivers/i2c/busses/i2c-ismt.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o drivers/i2c/busses/i2c-ismt.ko drivers/i2c/busses/i2c-ismt.o drivers/i2c/busses/i2c-ismt.mod.o

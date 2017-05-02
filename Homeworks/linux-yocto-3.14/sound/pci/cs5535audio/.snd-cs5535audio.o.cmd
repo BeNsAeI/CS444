@@ -1,0 +1,1 @@
+cmd_sound/pci/cs5535audio/snd-cs5535audio.o := i586-poky-linux-ld -m elf_x86_64   -r -o sound/pci/cs5535audio/snd-cs5535audio.o sound/pci/cs5535audio/cs5535audio.o sound/pci/cs5535audio/cs5535audio_pcm.o sound/pci/cs5535audio/cs5535audio_pm.o ; scripts/mod/modpost sound/pci/cs5535audio/snd-cs5535audio.o

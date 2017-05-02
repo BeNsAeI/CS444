@@ -1,0 +1,1 @@
+cmd_drivers/scsi/bnx2i/bnx2i.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/scsi/bnx2i/bnx2i.o drivers/scsi/bnx2i/bnx2i_init.o drivers/scsi/bnx2i/bnx2i_hwi.o drivers/scsi/bnx2i/bnx2i_iscsi.o drivers/scsi/bnx2i/bnx2i_sysfs.o ; scripts/mod/modpost drivers/scsi/bnx2i/bnx2i.o

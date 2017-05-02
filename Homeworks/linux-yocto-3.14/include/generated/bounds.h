@@ -7,10 +7,10 @@
  *
  */
 
-#define NR_PAGEFLAGS 23 /* __NR_PAGEFLAGS	# */
+#define NR_PAGEFLAGS 25 /* __NR_PAGEFLAGS	# */
 #define MAX_NR_ZONES 4 /* __MAX_NR_ZONES	# */
 #define NR_PCG_FLAGS 3 /* __NR_PCG_FLAGS	# */
-#define NR_CPUS_BITS 3 /* ilog2(CONFIG_NR_CPUS)	# */
-#define SPINLOCK_SIZE 2 /* sizeof(spinlock_t)	# */
+#define NR_CPUS_BITS 13 /* ilog2(CONFIG_NR_CPUS)	# */
+#define SPINLOCK_SIZE 4 /* sizeof(spinlock_t)	# */
 
 #endif

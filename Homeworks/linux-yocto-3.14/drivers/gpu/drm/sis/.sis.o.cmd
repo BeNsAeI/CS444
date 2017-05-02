@@ -1,0 +1,1 @@
+cmd_drivers/gpu/drm/sis/sis.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/gpu/drm/sis/sis.o drivers/gpu/drm/sis/sis_drv.o drivers/gpu/drm/sis/sis_mm.o ; scripts/mod/modpost drivers/gpu/drm/sis/sis.o

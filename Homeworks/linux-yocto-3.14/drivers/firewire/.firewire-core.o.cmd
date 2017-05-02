@@ -1,0 +1,1 @@
+cmd_drivers/firewire/firewire-core.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/firewire/firewire-core.o drivers/firewire/core-card.o drivers/firewire/core-cdev.o drivers/firewire/core-device.o drivers/firewire/core-iso.o drivers/firewire/core-topology.o drivers/firewire/core-transaction.o ; scripts/mod/modpost drivers/firewire/firewire-core.o

@@ -1,0 +1,1 @@
+cmd_drivers/infiniband/core/rdma_cm.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/infiniband/core/rdma_cm.o drivers/infiniband/core/cma.o ; scripts/mod/modpost drivers/infiniband/core/rdma_cm.o

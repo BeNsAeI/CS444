@@ -60,11 +60,9 @@ deps_arch/x86/boot/compressed/vmlinux.lds := \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/bitsperlong.h \
   include/asm-generic/bitsperlong.h \
   include/uapi/asm-generic/bitsperlong.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/page_32_types.h \
-    $(wildcard include/config/highmem4g.h) \
-    $(wildcard include/config/highmem64g.h) \
-    $(wildcard include/config/page/offset.h) \
-    $(wildcard include/config/x86/pae.h) \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/page_64_types.h \
+    $(wildcard include/config/randomize/base.h) \
+    $(wildcard include/config/randomize/base/max/offset.h) \
 
 arch/x86/boot/compressed/vmlinux.lds: $(deps_arch/x86/boot/compressed/vmlinux.lds)
 

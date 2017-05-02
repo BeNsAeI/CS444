@@ -1,0 +1,1 @@
+cmd_drivers/net/wireless/rtlwifi/rtl8192se/rtl8192se.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o drivers/net/wireless/rtlwifi/rtl8192se/rtl8192se.ko drivers/net/wireless/rtlwifi/rtl8192se/rtl8192se.o drivers/net/wireless/rtlwifi/rtl8192se/rtl8192se.mod.o

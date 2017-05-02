@@ -1,0 +1,1 @@
+cmd_drivers/video/aty/atyfb.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/video/aty/atyfb.o drivers/video/aty/atyfb_base.o drivers/video/aty/mach64_accel.o drivers/video/aty/mach64_cursor.o drivers/video/aty/mach64_gx.o drivers/video/aty/mach64_ct.o ; scripts/mod/modpost drivers/video/aty/atyfb.o

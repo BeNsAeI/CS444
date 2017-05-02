@@ -1,0 +1,1 @@
+cmd_drivers/net/wimax/i2400m/i2400m-usb.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/net/wimax/i2400m/i2400m-usb.o drivers/net/wimax/i2400m/usb-fw.o drivers/net/wimax/i2400m/usb-notif.o drivers/net/wimax/i2400m/usb-tx.o drivers/net/wimax/i2400m/usb-rx.o drivers/net/wimax/i2400m/usb.o ; scripts/mod/modpost drivers/net/wimax/i2400m/i2400m-usb.o

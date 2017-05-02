@@ -1,0 +1,1 @@
+cmd_drivers/block/rsxx/rsxx.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o drivers/block/rsxx/rsxx.ko drivers/block/rsxx/rsxx.o drivers/block/rsxx/rsxx.mod.o

@@ -1,0 +1,1 @@
+cmd_net/802/garp.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o net/802/garp.ko net/802/garp.o net/802/garp.mod.o

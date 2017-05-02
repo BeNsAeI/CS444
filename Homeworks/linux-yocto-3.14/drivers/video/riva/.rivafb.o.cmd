@@ -1,0 +1,1 @@
+cmd_drivers/video/riva/rivafb.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/video/riva/rivafb.o drivers/video/riva/fbdev.o drivers/video/riva/riva_hw.o drivers/video/riva/nv_driver.o ; scripts/mod/modpost drivers/video/riva/rivafb.o

@@ -1,0 +1,1 @@
+cmd_drivers/net/wireless/p54/p54common.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o drivers/net/wireless/p54/p54common.ko drivers/net/wireless/p54/p54common.o drivers/net/wireless/p54/p54common.mod.o

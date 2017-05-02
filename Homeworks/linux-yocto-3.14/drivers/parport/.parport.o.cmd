@@ -1,1 +1,1 @@
-cmd_drivers/parport/parport.o := i586-poky-linux-ld -m elf_i386   -r -o drivers/parport/parport.o drivers/parport/share.o drivers/parport/ieee1284.o drivers/parport/ieee1284_ops.o drivers/parport/procfs.o 
+cmd_drivers/parport/parport.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/parport/parport.o drivers/parport/share.o drivers/parport/ieee1284.o drivers/parport/ieee1284_ops.o drivers/parport/procfs.o drivers/parport/daisy.o drivers/parport/probe.o ; scripts/mod/modpost drivers/parport/parport.o

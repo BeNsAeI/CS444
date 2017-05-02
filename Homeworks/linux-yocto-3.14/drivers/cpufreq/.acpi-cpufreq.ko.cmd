@@ -1,0 +1,1 @@
+cmd_drivers/cpufreq/acpi-cpufreq.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o drivers/cpufreq/acpi-cpufreq.ko drivers/cpufreq/acpi-cpufreq.o drivers/cpufreq/acpi-cpufreq.mod.o

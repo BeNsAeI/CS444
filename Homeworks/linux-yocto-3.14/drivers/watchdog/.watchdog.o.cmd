@@ -1,1 +1,1 @@
-cmd_drivers/watchdog/watchdog.o := i586-poky-linux-ld -m elf_i386   -r -o drivers/watchdog/watchdog.o drivers/watchdog/watchdog_core.o drivers/watchdog/watchdog_dev.o 
+cmd_drivers/watchdog/watchdog.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/watchdog/watchdog.o drivers/watchdog/watchdog_core.o drivers/watchdog/watchdog_dev.o ; scripts/mod/modpost drivers/watchdog/watchdog.o

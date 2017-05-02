@@ -1,1 +1,1 @@
-cmd_drivers/net/wireless/brcm80211/brcmutil/brcmutil.o := i586-poky-linux-ld -m elf_i386   -r -o drivers/net/wireless/brcm80211/brcmutil/brcmutil.o drivers/net/wireless/brcm80211/brcmutil/utils.o drivers/net/wireless/brcm80211/brcmutil/d11.o 
+cmd_drivers/net/wireless/brcm80211/brcmutil/brcmutil.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/net/wireless/brcm80211/brcmutil/brcmutil.o drivers/net/wireless/brcm80211/brcmutil/utils.o drivers/net/wireless/brcm80211/brcmutil/d11.o ; scripts/mod/modpost drivers/net/wireless/brcm80211/brcmutil/brcmutil.o
