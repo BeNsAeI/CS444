@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYGZdl{} Htop
+\PYG{c+c1}{\PYGZsh{} or}
+\PYGZdl{} top \PYGZhy{}H
+\PYG{c+c1}{\PYGZsh{} or}
+\PYGZdl{} ps \PYGZhy{}T \PYGZhy{}p 1
+\end{Verbatim}

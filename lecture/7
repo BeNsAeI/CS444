@@ -1,0 +1,94 @@
+Data Structures:
+Elevator:
+- Linus elevator:
+ - it sucks! it is deprecated
+ - sorts and merges
+ - merge on front and back
+ - primitive aging
+  - if "old" request exists then queue into fifo
+  - could be achieved maliciously! ^
+  - it kills hard drive
+
+Deadline scheduler:
+- prevent starvation
+- read-write (read is faster, write is more important)
+ - write has to be prioretized
+- each request has an expiration
+- 3 queues:
+ - read (points to sorted queue)
+ - write (points to sorted queue)
+ - sorted queue (contains all the data)
+- all three feed the dispatch queue
+ - where we pull request from
+- by default pulls from sorted unless r/w queue head expires
+
+Sorted:
+ _
+|r|<
+|w|-
+|w|-
+|r|-
+|w|-
+|r|-
+|r|-
+|r|-
+|_|
+
+read:
+ _
+|r|<
+|r|-
+|r|-
+|r|-
+|r|-
+|_|
+
+write:
+ _
+|w|- 
+|w|- 
+|w|- 
+|_|
+
+Anticipatory scheduler:
+ - deadline with a pause
+ - pauses after every process
+ - if next request is related to that section, it immediatly process it
+
+CFQ: completely fair queuing
+- round-robin for some number of requests
+- typically deadline
+- queue per process and not not user
+
+Data structures:
+- linked list:
+ - single, double* , linear, circular*
+  - (* in kernel, it is called list head)
+
+struct list_head{
+	struct list_head * prev;
+	struct list_head * next;
+};
+
+int data -> struct data:
+- int stuff;
+- struct list_head lh;
+
+struct access foo.data = *(&foo + offset(data))
+	      a[b] = *(a+b)
+
+a[b] = *(a + b*(size of a))
+
+- container_of() macro returns pointer:
+ - it needs to be macro
+- list_entry() is another pre-compiler macro
+- INIT_LIST_HEAD
+- LIST_HEAD
+- <linux/list.h>
+
+list_del(struct list_head * entry)
+list_del_init(...) / pops but keeps the data
+
+movement
+splice -> combine two lists (list head and next)
+iteration -> list_for_each (p,list) (macro) // safe version, allows you to delete without breaking

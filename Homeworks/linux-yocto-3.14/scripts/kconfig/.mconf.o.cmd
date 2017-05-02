@@ -1,4 +1,4 @@
-cmd_scripts/kconfig/mconf.o := gcc -Wp,-MD,scripts/kconfig/.mconf.o.d -Wall -Wmissing-prototypes -Wstrict-prototypes -O2 -fomit-frame-pointer   -I/usr/include/ncursesw -DCURSES_LOC="<curses.h>"  -DNCURSES_WIDECHAR=1 -DLOCALE   -c -o scripts/kconfig/mconf.o scripts/kconfig/mconf.c
+cmd_scripts/kconfig/mconf.o := gcc -Wp,-MD,scripts/kconfig/.mconf.o.d -Wall -Wmissing-prototypes -Wstrict-prototypes -O2 -fomit-frame-pointer   -DCURSES_LOC="<ncurses.h>" -DLOCALE   -c -o scripts/kconfig/mconf.o scripts/kconfig/mconf.c
 
 source_scripts/kconfig/mconf.o := scripts/kconfig/mconf.c
 
@@ -6,66 +6,76 @@ deps_scripts/kconfig/mconf.o := \
     $(wildcard include/config/mode.h) \
     $(wildcard include/config/color.h) \
     $(wildcard include/config/.h) \
+  /usr/include/stdc-predef.h \
   /usr/include/ctype.h \
   /usr/include/features.h \
-  /usr/include/sys/cdefs.h \
-  /usr/include/bits/wordsize.h \
-  /usr/include/gnu/stubs.h \
-  /usr/include/gnu/stubs-64.h \
-  /usr/include/bits/types.h \
-  /usr/include/bits/typesizes.h \
+  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
+  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
+  /usr/include/x86_64-linux-gnu/gnu/stubs.h \
+  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
+  /usr/include/x86_64-linux-gnu/bits/types.h \
+  /usr/include/x86_64-linux-gnu/bits/typesizes.h \
   /usr/include/endian.h \
-  /usr/include/bits/endian.h \
-  /usr/include/bits/byteswap.h \
+  /usr/include/x86_64-linux-gnu/bits/endian.h \
+  /usr/include/x86_64-linux-gnu/bits/byteswap.h \
+  /usr/include/x86_64-linux-gnu/bits/byteswap-16.h \
   /usr/include/xlocale.h \
   /usr/include/errno.h \
-  /usr/include/bits/errno.h \
+  /usr/include/x86_64-linux-gnu/bits/errno.h \
   /usr/include/linux/errno.h \
-  /usr/include/asm/errno.h \
+  /usr/include/x86_64-linux-gnu/asm/errno.h \
   /usr/include/asm-generic/errno.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/fcntl.h \
-  /usr/include/bits/fcntl.h \
-  /usr/include/sys/types.h \
+  /usr/include/x86_64-linux-gnu/bits/fcntl.h \
+  /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h \
   /usr/include/time.h \
-  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/include/stddef.h \
-  /usr/include/sys/select.h \
-  /usr/include/bits/select.h \
-  /usr/include/bits/sigset.h \
-  /usr/include/bits/time.h \
-  /usr/include/sys/sysmacros.h \
-  /usr/include/bits/pthreadtypes.h \
-  /usr/include/bits/stat.h \
-  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/include/limits.h \
-  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/include/syslimits.h \
+  /usr/include/x86_64-linux-gnu/bits/stat.h \
+  /usr/include/x86_64-linux-gnu/bits/fcntl2.h \
+  /usr/lib/gcc/x86_64-linux-gnu/5/include-fixed/limits.h \
+  /usr/lib/gcc/x86_64-linux-gnu/5/include-fixed/syslimits.h \
   /usr/include/limits.h \
-  /usr/include/bits/posix1_lim.h \
-  /usr/include/bits/local_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/local_lim.h \
   /usr/include/linux/limits.h \
-  /usr/include/bits/posix2_lim.h \
-  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/include/stdarg.h \
+  /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
+  /usr/lib/gcc/x86_64-linux-gnu/5/include/stdarg.h \
   /usr/include/stdlib.h \
-  /usr/include/bits/waitflags.h \
-  /usr/include/bits/waitstatus.h \
+  /usr/lib/gcc/x86_64-linux-gnu/5/include/stddef.h \
+  /usr/include/x86_64-linux-gnu/bits/waitflags.h \
+  /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
+  /usr/include/x86_64-linux-gnu/sys/types.h \
+  /usr/include/x86_64-linux-gnu/sys/select.h \
+  /usr/include/x86_64-linux-gnu/bits/select.h \
+  /usr/include/x86_64-linux-gnu/bits/sigset.h \
+  /usr/include/x86_64-linux-gnu/bits/time.h \
+  /usr/include/x86_64-linux-gnu/bits/select2.h \
+  /usr/include/x86_64-linux-gnu/sys/sysmacros.h \
+  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
   /usr/include/alloca.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib.h \
   /usr/include/string.h \
-  /usr/include/bits/string.h \
-  /usr/include/bits/string2.h \
+  /usr/include/x86_64-linux-gnu/bits/string.h \
+  /usr/include/x86_64-linux-gnu/bits/string2.h \
+  /usr/include/x86_64-linux-gnu/bits/string3.h \
   /usr/include/signal.h \
-  /usr/include/bits/signum.h \
-  /usr/include/bits/siginfo.h \
-  /usr/include/bits/sigaction.h \
-  /usr/include/bits/sigcontext.h \
-  /usr/include/bits/sigstack.h \
-  /usr/include/sys/ucontext.h \
-  /usr/include/bits/sigthread.h \
+  /usr/include/x86_64-linux-gnu/bits/signum.h \
+  /usr/include/x86_64-linux-gnu/bits/siginfo.h \
+  /usr/include/x86_64-linux-gnu/bits/sigaction.h \
+  /usr/include/x86_64-linux-gnu/bits/sigcontext.h \
+  /usr/include/x86_64-linux-gnu/bits/sigstack.h \
+  /usr/include/x86_64-linux-gnu/sys/ucontext.h \
+  /usr/include/x86_64-linux-gnu/bits/sigthread.h \
   /usr/include/unistd.h \
-  /usr/include/bits/posix_opt.h \
-  /usr/include/bits/environments.h \
-  /usr/include/bits/confname.h \
+  /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
+  /usr/include/x86_64-linux-gnu/bits/environments.h \
+  /usr/include/x86_64-linux-gnu/bits/confname.h \
   /usr/include/getopt.h \
+  /usr/include/x86_64-linux-gnu/bits/unistd.h \
   /usr/include/locale.h \
-  /usr/include/bits/locale.h \
+  /usr/include/x86_64-linux-gnu/bits/locale.h \
   scripts/kconfig/lkc.h \
     $(wildcard include/config/prefix.h) \
     $(wildcard include/config/list.h) \
@@ -76,17 +86,22 @@ deps_scripts/kconfig/mconf.o := \
   /usr/include/libio.h \
   /usr/include/_G_config.h \
   /usr/include/wchar.h \
-  /usr/include/bits/stdio_lim.h \
-  /usr/include/bits/sys_errlist.h \
-  /usr/include/bits/stdio.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/sys_errlist.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio2.h \
   scripts/kconfig/list.h \
-  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/include/stdbool.h \
+  /usr/lib/gcc/x86_64-linux-gnu/5/include/stdbool.h \
   /usr/include/libintl.h \
   scripts/kconfig/lkc_proto.h \
   scripts/kconfig/lxdialog/dialog.h \
-  /usr/include/ncursesw/curses.h \
-  /usr/include/ncursesw/ncurses_dll.h \
-  /usr/include/ncursesw/unctrl.h \
+  /usr/include/curses.h \
+  /usr/include/ncurses_dll.h \
+  /usr/lib/gcc/x86_64-linux-gnu/5/include/stdint.h \
+  /usr/include/stdint.h \
+  /usr/include/x86_64-linux-gnu/bits/wchar.h \
+  /usr/include/unctrl.h \
+  /usr/include/curses.h \
 
 scripts/kconfig/mconf.o: $(deps_scripts/kconfig/mconf.o)
 
