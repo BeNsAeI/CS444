@@ -4,8 +4,11 @@
 #include <omp.h>
 #include <sys/time.h>
 #include <ctime>
+#include <time.h>
 
 #include "color.h"
+
+#define NUM_THREADS 4
 
 using std::cin;
 using std::cout;
@@ -14,24 +17,22 @@ using std::string;
 
 class FileIO{
 public:
-	void get(char ** data);
-	void set(char ** data);
+	void get(char *data);
+	void set(char *data);
 };
 
-void FileIO::get(char ** data)
+void FileIO::get(char * data)
 {
-	char buff[4];
 	FILE *fp;
 	fp=fopen("tmp.dat", "r");
-	fscanf(fp, "%s", buff);
-	*data = buff;
+	fscanf(fp, "%s", data);
 	fclose(fp);
 }
-void FileIO::set(char ** data)
+void FileIO::set(char * data)
 {
 	FILE *fp;
 	fp=fopen("tmp.dat", "w");
-	fprintf(fp, "%s",*data);
+	fprintf(fp, "%s",data);
 	fclose(fp);
 }
 
@@ -66,17 +67,44 @@ bool Philosopher::dine(int left_fork_index, int right_fork_index, int P)
 		myTimer.Stop();
 	FileIO myfile;
 	bool timer_is_set = false;
-	char * data = "0000";
-	bool left_fork, right_fork;
+	char backup[NUM_THREADS];
+	for(int i = 0; i < NUM_THREADS; i++)
+		backup[i] = '1';
+	char data[NUM_THREADS];
+	myfile.get(data);
+	bool left_fork = 0;
+	bool right_fork = 0;
+	srand(time(NULL));
+	has_left_fork = false;
+	has_right_fork = false;
+	//cout << "*->" << P << ": " << "LFI: " << left_fork_index << ", RFI: " << right_fork_index << endl;
 	while(true)
 	{
-		myfile.get(&data);
-		if(data[left_fork_index] == '1')
-			left_fork = true;
-		if(data[right_fork_index] == '1')
-			right_fork = true;
+		myfile.get(data);
+		for(int i = 0; i < 4; i++)
+		{
+			if (data[i] != '0' && data[i] != '1')
+			{
+				data[left_fork_index] = backup[left_fork_index];
+				data[right_fork_index] = backup[right_fork_index];
+				myfile.set(data);
+			}
+			else
+			{
+				backup[i] = data[i];
+			}
+		}
+		left_fork = (data[left_fork_index] == '1');
+		right_fork = (data[right_fork_index] == '1');
+
 		if(has_left_fork && has_right_fork)
 		{
+			data[right_fork_index]='0';
+			data[left_fork_index]='0';
+			myfile.set(data);
+			myfile.get(data);
+			left_fork = (data[left_fork_index] == '1');
+			right_fork = (data[right_fork_index] == '1');
 			this->think = false;
 			this->eat = true;
 			if(!timer_is_set)
@@ -84,16 +112,27 @@ bool Philosopher::dine(int left_fork_index, int right_fork_index, int P)
 				myTimer.Start();
 				timer_is_set = true;
 				printf("\t- Philosopher %d got his "ANSI_COLOR_YELLOW"is dining.\n" ANSI_COLOR_RESET,P);
+				printf("Forks of %d -> left = %d, right = %d.\n",P,has_left_fork,has_right_fork);
 			}
 			myTimer.Stop();
-			if(myTimer.Time() > 2)
+			if(myTimer.Time() > rand() %7 + 2)
 			{
 				printf("\t- Philosopher %d got his "ANSI_COLOR_RED"is done dining.\n"ANSI_COLOR_RESET,P);
 				put_fork();
 				data[right_fork_index]='1';
 				data[left_fork_index]='1';
-				myfile.set(&data);
-				return true;
+				has_left_fork=false;
+				has_right_fork=false;
+				myfile.set(data);
+				myfile.get(data);
+				left_fork = (data[left_fork_index] == '1');
+				right_fork = (data[right_fork_index] == '1');
+				timer_is_set = false;
+				this->think = true;
+				this->eat = false;
+				sleep(rand() %19 + 1);
+				printf("Forks of %d -> left = %d, right = %d.\n",P,has_left_fork,has_right_fork);
+				//return true;
 			}
 		}
 		if(!has_left_fork && !has_right_fork)
@@ -101,9 +140,14 @@ bool Philosopher::dine(int left_fork_index, int right_fork_index, int P)
 			if(left_fork)
 			{
 				get_left_fork();
-				data[left_fork_index];
-				myfile.set(&data);
+				has_left_fork=true;
+				data[left_fork_index]='0';
+				myfile.set(data);
+				myfile.get(data);
+				left_fork = (data[left_fork_index] == '1');
+				right_fork = (data[right_fork_index] == '1');
 				printf("\t- Philosopher %d got his "ANSI_COLOR_YELLOW"left"ANSI_COLOR_RESET" fork!\n",P);
+				printf("Forks of %d -> left = %d, right = %d.\n",P,has_left_fork,has_right_fork);
 			}
 			else
 			{
@@ -116,9 +160,14 @@ bool Philosopher::dine(int left_fork_index, int right_fork_index, int P)
 			if(right_fork)
 			{
 				get_right_fork();
+				has_right_fork=true;
 				data[right_fork_index] = '0';
-				myfile.set(&data);
+				myfile.set(data);
+				myfile.get(data);
+				left_fork = (data[left_fork_index] == '1');
+				right_fork = (data[right_fork_index] == '1');
 				printf("\t- Philosopher %d got his "ANSI_COLOR_YELLOW"right"ANSI_COLOR_RESET" fork!\n",P);
+				printf("Forks of %d -> left = %d, right = %d.\n",P,has_left_fork,has_right_fork);
 			}
 			else
 			{
@@ -132,15 +181,16 @@ bool Philosopher::dine(int left_fork_index, int right_fork_index, int P)
 int main(int argc, char ** argv)
 {
 	cout << "Dining philosophers problem:" << endl;
-	int numP = omp_get_max_threads();
+	int numP = NUM_THREADS;//omp_get_max_threads();
 	int numF = numP;
-	cout << "Number of available threads is " << omp_get_max_threads() << "." << endl;
-	omp_set_num_threads(omp_get_max_threads());
+	cout << "Number of available threads is " << NUM_THREADS/*omp_get_max_threads()*/ << "." << endl;
+	omp_set_num_threads(NUM_THREADS/*omp_get_max_threads()*/);
 	cout << "setting up the forks..." << endl;
 	Philosopher myPhilosopher[numP];
 	FileIO myfile;
+	char * backup = "1111";
 	char * data = "1111";
-	myfile.set(&data);
+	myfile.set(data);
 	for(int i = 0; i < numF; i++)
 	{
 		myPhilosopher[i].think = true;
