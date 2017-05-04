@@ -12,13 +12,9 @@
 #include <stdlib.h>
 #include <sys/types.h>
 #include <sys/syscall.h>
-#define MAXPHILOSOPHERS 4
+#define MAXPHILOSOPHERS 5
 
 pthread_mutex_t forks[MAXPHILOSOPHERS];
-
-struct workaround{
-  int name;
-};
 
 int think(int philosopher)
 {
