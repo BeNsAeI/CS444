@@ -1,1 +1,0 @@
-cmd_drivers/net/wireless/libertas_tf/libertas_tf.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/net/wireless/libertas_tf/libertas_tf.o drivers/net/wireless/libertas_tf/main.o drivers/net/wireless/libertas_tf/cmd.o ; scripts/mod/modpost drivers/net/wireless/libertas_tf/libertas_tf.o

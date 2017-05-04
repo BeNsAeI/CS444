@@ -1,1 +1,0 @@
-cmd_drivers/i2c/busses/i2c-sis96x.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o drivers/i2c/busses/i2c-sis96x.ko drivers/i2c/busses/i2c-sis96x.o drivers/i2c/busses/i2c-sis96x.mod.o

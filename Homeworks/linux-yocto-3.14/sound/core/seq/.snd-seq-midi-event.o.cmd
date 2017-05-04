@@ -1,1 +1,1 @@
-cmd_sound/core/seq/snd-seq-midi-event.o := i586-poky-linux-ld -m elf_x86_64   -r -o sound/core/seq/snd-seq-midi-event.o sound/core/seq/seq_midi_event.o ; scripts/mod/modpost sound/core/seq/snd-seq-midi-event.o
+cmd_sound/core/seq/snd-seq-midi-event.o := i586-poky-linux-ld -m elf_i386   -r -o sound/core/seq/snd-seq-midi-event.o sound/core/seq/seq_midi_event.o 

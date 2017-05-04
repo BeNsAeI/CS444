@@ -1,1 +1,0 @@
-cmd_drivers/isdn/gigaset/gigaset.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/isdn/gigaset/gigaset.o drivers/isdn/gigaset/common.o drivers/isdn/gigaset/interface.o drivers/isdn/gigaset/proc.o drivers/isdn/gigaset/ev-layer.o drivers/isdn/gigaset/asyncdata.o drivers/isdn/gigaset/i4l.o ; scripts/mod/modpost drivers/isdn/gigaset/gigaset.o

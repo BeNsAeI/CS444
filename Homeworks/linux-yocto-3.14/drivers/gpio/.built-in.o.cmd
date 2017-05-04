@@ -1,1 +1,1 @@
-cmd_drivers/gpio/built-in.o :=  i586-poky-linux-ld -m elf_x86_64   -r -o drivers/gpio/built-in.o drivers/gpio/devres.o drivers/gpio/gpiolib.o drivers/gpio/gpiolib-acpi.o ; scripts/mod/modpost drivers/gpio/built-in.o
+cmd_drivers/gpio/built-in.o :=  rm -f drivers/gpio/built-in.o; i586-poky-linux-ar rcsD drivers/gpio/built-in.o

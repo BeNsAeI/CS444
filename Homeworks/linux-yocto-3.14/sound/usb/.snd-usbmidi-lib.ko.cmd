@@ -1,1 +1,0 @@
-cmd_sound/usb/snd-usbmidi-lib.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o sound/usb/snd-usbmidi-lib.ko sound/usb/snd-usbmidi-lib.o sound/usb/snd-usbmidi-lib.mod.o

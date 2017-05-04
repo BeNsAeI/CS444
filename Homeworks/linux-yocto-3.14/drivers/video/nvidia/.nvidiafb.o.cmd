@@ -1,1 +1,0 @@
-cmd_drivers/video/nvidia/nvidiafb.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/video/nvidia/nvidiafb.o drivers/video/nvidia/nvidia.o drivers/video/nvidia/nv_hw.o drivers/video/nvidia/nv_setup.o drivers/video/nvidia/nv_accel.o drivers/video/nvidia/nv_i2c.o drivers/video/nvidia/nv_backlight.o ; scripts/mod/modpost drivers/video/nvidia/nvidiafb.o

@@ -1,1 +1,0 @@
-cmd_sound/pci/ice1712/snd-ice1724.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o sound/pci/ice1712/snd-ice1724.ko sound/pci/ice1712/snd-ice1724.o sound/pci/ice1712/snd-ice1724.mod.o

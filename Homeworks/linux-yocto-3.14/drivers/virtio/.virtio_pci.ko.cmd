@@ -1,1 +1,0 @@
-cmd_drivers/virtio/virtio_pci.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o drivers/virtio/virtio_pci.ko drivers/virtio/virtio_pci.o drivers/virtio/virtio_pci.mod.o

@@ -1,1 +1,0 @@
-cmd_arch/x86/crypto/ghash-clmulni-intel.o := i586-poky-linux-ld -m elf_x86_64   -r -o arch/x86/crypto/ghash-clmulni-intel.o arch/x86/crypto/ghash-clmulni-intel_asm.o arch/x86/crypto/ghash-clmulni-intel_glue.o ; scripts/mod/modpost arch/x86/crypto/ghash-clmulni-intel.o

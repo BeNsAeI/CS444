@@ -1,1 +1,1 @@
-cmd_drivers/scsi/built-in.o :=  i586-poky-linux-ld -m elf_x86_64   -r -o drivers/scsi/built-in.o drivers/scsi/pcmcia/built-in.o drivers/scsi/scsi_mod.o drivers/scsi/device_handler/built-in.o drivers/scsi/megaraid/built-in.o ; scripts/mod/modpost drivers/scsi/built-in.o
+cmd_drivers/scsi/built-in.o :=  i586-poky-linux-ld -m elf_i386   -r -o drivers/scsi/built-in.o drivers/scsi/scsi_mod.o drivers/scsi/sd_mod.o drivers/scsi/sr_mod.o 

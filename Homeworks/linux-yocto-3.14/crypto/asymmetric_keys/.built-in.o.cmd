@@ -1,1 +1,0 @@
-cmd_crypto/asymmetric_keys/built-in.o :=  i586-poky-linux-ld -m elf_x86_64   -r -o crypto/asymmetric_keys/built-in.o crypto/asymmetric_keys/asymmetric_keys.o crypto/asymmetric_keys/public_key.o crypto/asymmetric_keys/rsa.o crypto/asymmetric_keys/x509_key_parser.o ; scripts/mod/modpost crypto/asymmetric_keys/built-in.o

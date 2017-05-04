@@ -1,1 +1,0 @@
-cmd_arch/x86/syscalls/../include/generated/asm/syscalls_64.h := /bin/sh '/scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/syscalls/syscalltbl.sh' /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/syscalls/syscall_64.tbl arch/x86/syscalls/../include/generated/asm/syscalls_64.h

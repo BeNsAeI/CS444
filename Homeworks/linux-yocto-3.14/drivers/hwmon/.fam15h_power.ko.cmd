@@ -1,1 +1,0 @@
-cmd_drivers/hwmon/fam15h_power.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o drivers/hwmon/fam15h_power.ko drivers/hwmon/fam15h_power.o drivers/hwmon/fam15h_power.mod.o

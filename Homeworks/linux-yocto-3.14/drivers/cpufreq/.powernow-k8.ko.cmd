@@ -1,1 +1,0 @@
-cmd_drivers/cpufreq/powernow-k8.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o drivers/cpufreq/powernow-k8.ko drivers/cpufreq/powernow-k8.o drivers/cpufreq/powernow-k8.mod.o

@@ -1,1 +1,0 @@
-cmd_drivers/net/ethernet/chelsio/cxgb4/built-in.o :=  rm -f drivers/net/ethernet/chelsio/cxgb4/built-in.o; i586-poky-linux-ar rcsD drivers/net/ethernet/chelsio/cxgb4/built-in.o

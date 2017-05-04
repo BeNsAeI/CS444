@@ -1,1 +1,0 @@
-cmd_drivers/target/target_core_pscsi.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o drivers/target/target_core_pscsi.ko drivers/target/target_core_pscsi.o drivers/target/target_core_pscsi.mod.o

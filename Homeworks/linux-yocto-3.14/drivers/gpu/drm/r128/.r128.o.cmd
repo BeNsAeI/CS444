@@ -1,1 +1,0 @@
-cmd_drivers/gpu/drm/r128/r128.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/gpu/drm/r128/r128.o drivers/gpu/drm/r128/r128_drv.o drivers/gpu/drm/r128/r128_cce.o drivers/gpu/drm/r128/r128_state.o drivers/gpu/drm/r128/r128_irq.o drivers/gpu/drm/r128/r128_ioc32.o ; scripts/mod/modpost drivers/gpu/drm/r128/r128.o

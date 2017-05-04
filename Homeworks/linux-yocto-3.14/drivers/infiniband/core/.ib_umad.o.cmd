@@ -1,1 +1,0 @@
-cmd_drivers/infiniband/core/ib_umad.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/infiniband/core/ib_umad.o drivers/infiniband/core/user_mad.o ; scripts/mod/modpost drivers/infiniband/core/ib_umad.o

@@ -1,1 +1,0 @@
-cmd_drivers/scsi/mvsas/mvsas.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/scsi/mvsas/mvsas.o drivers/scsi/mvsas/mv_init.o drivers/scsi/mvsas/mv_sas.o drivers/scsi/mvsas/mv_64xx.o drivers/scsi/mvsas/mv_94xx.o ; scripts/mod/modpost drivers/scsi/mvsas/mvsas.o

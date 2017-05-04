@@ -1,1 +1,0 @@
-cmd_drivers/usb/wusbcore/wusb-wa.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/usb/wusbcore/wusb-wa.o drivers/usb/wusbcore/wa-hc.o drivers/usb/wusbcore/wa-nep.o drivers/usb/wusbcore/wa-rpipe.o drivers/usb/wusbcore/wa-xfer.o ; scripts/mod/modpost drivers/usb/wusbcore/wusb-wa.o

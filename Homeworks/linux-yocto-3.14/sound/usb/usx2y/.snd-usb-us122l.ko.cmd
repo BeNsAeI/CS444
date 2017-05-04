@@ -1,1 +1,0 @@
-cmd_sound/usb/usx2y/snd-usb-us122l.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o sound/usb/usx2y/snd-usb-us122l.ko sound/usb/usx2y/snd-usb-us122l.o sound/usb/usx2y/snd-usb-us122l.mod.o

@@ -1,1 +1,0 @@
-cmd_drivers/net/ethernet/3com/typhoon.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o drivers/net/ethernet/3com/typhoon.ko drivers/net/ethernet/3com/typhoon.o drivers/net/ethernet/3com/typhoon.mod.o

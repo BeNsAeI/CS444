@@ -1,1 +1,0 @@
-cmd_sound/core/seq/snd-seq-midi-emul.o := i586-poky-linux-ld -m elf_x86_64   -r -o sound/core/seq/snd-seq-midi-emul.o sound/core/seq/seq_midi_emul.o ; scripts/mod/modpost sound/core/seq/snd-seq-midi-emul.o

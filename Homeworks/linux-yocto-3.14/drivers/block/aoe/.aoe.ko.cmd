@@ -1,1 +1,0 @@
-cmd_drivers/block/aoe/aoe.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o drivers/block/aoe/aoe.ko drivers/block/aoe/aoe.o drivers/block/aoe/aoe.mod.o

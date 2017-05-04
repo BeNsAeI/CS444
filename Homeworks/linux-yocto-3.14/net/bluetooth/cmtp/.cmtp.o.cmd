@@ -1,1 +1,0 @@
-cmd_net/bluetooth/cmtp/cmtp.o := i586-poky-linux-ld -m elf_x86_64   -r -o net/bluetooth/cmtp/cmtp.o net/bluetooth/cmtp/core.o net/bluetooth/cmtp/sock.o net/bluetooth/cmtp/capi.o ; scripts/mod/modpost net/bluetooth/cmtp/cmtp.o

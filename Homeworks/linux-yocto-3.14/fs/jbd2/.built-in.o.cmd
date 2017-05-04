@@ -1,1 +1,1 @@
-cmd_fs/jbd2/built-in.o :=  rm -f fs/jbd2/built-in.o; i586-poky-linux-ar rcsD fs/jbd2/built-in.o
+cmd_fs/jbd2/built-in.o :=  i586-poky-linux-ld -m elf_i386   -r -o fs/jbd2/built-in.o fs/jbd2/jbd2.o 

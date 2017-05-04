@@ -1,1 +1,1 @@
-cmd_net/dns_resolver/dns_resolver.o := i586-poky-linux-ld -m elf_x86_64   -r -o net/dns_resolver/dns_resolver.o net/dns_resolver/dns_key.o net/dns_resolver/dns_query.o ; scripts/mod/modpost net/dns_resolver/dns_resolver.o
+cmd_net/dns_resolver/dns_resolver.o := i586-poky-linux-ld -m elf_i386   -r -o net/dns_resolver/dns_resolver.o net/dns_resolver/dns_key.o net/dns_resolver/dns_query.o 

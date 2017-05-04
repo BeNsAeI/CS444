@@ -1,1 +1,0 @@
-cmd_drivers/misc/eeprom/at24.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o drivers/misc/eeprom/at24.ko drivers/misc/eeprom/at24.o drivers/misc/eeprom/at24.mod.o

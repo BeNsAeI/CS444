@@ -1,1 +1,0 @@
-cmd_net/sunrpc/xprtrdma/xprtrdma.o := i586-poky-linux-ld -m elf_x86_64   -r -o net/sunrpc/xprtrdma/xprtrdma.o net/sunrpc/xprtrdma/transport.o net/sunrpc/xprtrdma/rpc_rdma.o net/sunrpc/xprtrdma/verbs.o ; scripts/mod/modpost net/sunrpc/xprtrdma/xprtrdma.o

@@ -1,1 +1,0 @@
-cmd_drivers/net/wireless/rtlwifi/rtl_usb.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/net/wireless/rtlwifi/rtl_usb.o drivers/net/wireless/rtlwifi/usb.o ; scripts/mod/modpost drivers/net/wireless/rtlwifi/rtl_usb.o

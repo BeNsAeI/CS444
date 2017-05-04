@@ -1,1 +1,1 @@
-cmd_drivers/usb/misc/built-in.o :=  rm -f drivers/usb/misc/built-in.o; i586-poky-linux-ar rcsD drivers/usb/misc/built-in.o
+cmd_drivers/usb/misc/built-in.o :=  i586-poky-linux-ld -m elf_i386   -r -o drivers/usb/misc/built-in.o drivers/usb/misc/ezusb.o 

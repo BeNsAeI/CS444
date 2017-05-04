@@ -1,1 +1,0 @@
-cmd_net/ieee802154/af_802154.o := i586-poky-linux-ld -m elf_x86_64   -r -o net/ieee802154/af_802154.o net/ieee802154/af_ieee802154.o net/ieee802154/raw.o net/ieee802154/dgram.o ; scripts/mod/modpost net/ieee802154/af_802154.o

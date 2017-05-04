@@ -1,1 +1,1 @@
-cmd_sound/pci/ac97/snd-ac97-codec.o := i586-poky-linux-ld -m elf_x86_64   -r -o sound/pci/ac97/snd-ac97-codec.o sound/pci/ac97/ac97_codec.o sound/pci/ac97/ac97_pcm.o sound/pci/ac97/ac97_proc.o ; scripts/mod/modpost sound/pci/ac97/snd-ac97-codec.o
+cmd_sound/pci/ac97/snd-ac97-codec.o := i586-poky-linux-ld -m elf_i386   -r -o sound/pci/ac97/snd-ac97-codec.o sound/pci/ac97/ac97_codec.o sound/pci/ac97/ac97_pcm.o sound/pci/ac97/ac97_proc.o 

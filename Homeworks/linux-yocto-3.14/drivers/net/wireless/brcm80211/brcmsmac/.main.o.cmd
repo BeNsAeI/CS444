@@ -1,4 +1,4 @@
-cmd_drivers/net/wireless/brcm80211/brcmsmac/main.o := i586-poky-linux-gcc -Wp,-MD,drivers/net/wireless/brcm80211/brcmsmac/.main.o.d  -nostdinc -isystem /scratch/opt/sysroots/x86_64-pokysdk-linux/usr/bin/i586-poky-linux/../../lib/i586-poky-linux/gcc/i586-poky-linux/4.9.1/include -I/scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include -Iarch/x86/include/generated  -Iinclude -I/scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi -Iarch/x86/include/generated/uapi -I/scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi -Iinclude/generated/uapi -include /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/linux/kconfig.h -D__KERNEL__ -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -O2 -m64 -mno-mmx -mno-sse -mpreferred-stack-boundary=3 -mtune=generic -mno-red-zone -mcmodel=kernel -funit-at-a-time -maccumulate-outgoing-args -DCONFIG_AS_CFI=1 -DCONFIG_AS_CFI_SIGNAL_FRAME=1 -DCONFIG_AS_CFI_SECTIONS=1 -DCONFIG_AS_FXSAVEQ=1 -DCONFIG_AS_CRC32=1 -DCONFIG_AS_AVX=1 -DCONFIG_AS_AVX2=1 -pipe -Wno-sign-compare -fno-asynchronous-unwind-tables -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -mno-avx -Wframe-larger-than=2048 -fno-stack-protector -Wno-unused-but-set-variable -fno-omit-frame-pointer -fno-optimize-sibling-calls -fno-var-tracking-assignments -g -pg -mfentry -DCC_USING_FENTRY -fno-inline-functions-called-once -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -Werror=implicit-int -Werror=strict-prototypes -Werror=date-time -DCC_HAVE_ASM_GOTO --sysroot=/scratch/opt/sysroots/i586-poky-linux -D__CHECK_ENDIAN__ -Idrivers/net/wireless/brcm80211/brcmsmac -Idrivers/net/wireless/brcm80211/brcmsmac/phy -Idrivers/net/wireless/brcm80211/include  -DMODULE  -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(main)"  -D"KBUILD_MODNAME=KBUILD_STR(brcmsmac)" -c -o drivers/net/wireless/brcm80211/brcmsmac/.tmp_main.o drivers/net/wireless/brcm80211/brcmsmac/main.c
+cmd_drivers/net/wireless/brcm80211/brcmsmac/main.o := i586-poky-linux-gcc -Wp,-MD,drivers/net/wireless/brcm80211/brcmsmac/.main.o.d  -nostdinc -isystem /scratch/opt/sysroots/x86_64-pokysdk-linux/usr/bin/i586-poky-linux/../../lib/i586-poky-linux/gcc/i586-poky-linux/4.9.1/include -I/scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include -Iarch/x86/include/generated  -Iinclude -I/scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi -Iarch/x86/include/generated/uapi -I/scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi -Iinclude/generated/uapi -include /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/linux/kconfig.h -D__KERNEL__ -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -O2 -m32 -msoft-float -mregparm=3 -freg-struct-return -mno-mmx -mno-sse -fno-pic -mpreferred-stack-boundary=2 -march=i686 -mtune=pentium3 -mtune=generic -maccumulate-outgoing-args -Wa,-mtune=generic32 -ffreestanding -DCONFIG_AS_CFI=1 -DCONFIG_AS_CFI_SIGNAL_FRAME=1 -DCONFIG_AS_CFI_SECTIONS=1 -DCONFIG_AS_CRC32=1 -DCONFIG_AS_AVX=1 -DCONFIG_AS_AVX2=1 -pipe -Wno-sign-compare -fno-asynchronous-unwind-tables -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -mno-avx -Wframe-larger-than=1024 -fno-stack-protector -Wno-unused-but-set-variable -fno-omit-frame-pointer -fno-optimize-sibling-calls -fno-var-tracking-assignments -g -pg -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -Werror=implicit-int -Werror=strict-prototypes -Werror=date-time -DCC_HAVE_ASM_GOTO --sysroot=/scratch/opt/sysroots/i586-poky-linux -D__CHECK_ENDIAN__ -Idrivers/net/wireless/brcm80211/brcmsmac -Idrivers/net/wireless/brcm80211/brcmsmac/phy -Idrivers/net/wireless/brcm80211/include  -DMODULE  -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(main)"  -D"KBUILD_MODNAME=KBUILD_STR(brcmsmac)" -c -o drivers/net/wireless/brcm80211/brcmsmac/main.o drivers/net/wireless/brcm80211/brcmsmac/main.c
 
 source_drivers/net/wireless/brcm80211/brcmsmac/main.o := drivers/net/wireless/brcm80211/brcmsmac/main.c
 
@@ -69,7 +69,7 @@ deps_drivers/net/wireless/brcm80211/brcmsmac/main.o := \
   include/uapi/asm-generic/bitsperlong.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/posix_types.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/posix_types.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/posix_types_64.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/posix_types_32.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/asm-generic/posix_types.h \
   include/linux/bitops.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/bitops.h \
@@ -84,33 +84,52 @@ deps_drivers/net/wireless/brcm80211/brcmsmac/main.o := \
     $(wildcard include/config/cc/stackprotector.h) \
     $(wildcard include/config/x86/32/lazy/gs.h) \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/const.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/cache.h \
-    $(wildcard include/config/x86/l1/cache/shift.h) \
-    $(wildcard include/config/x86/internode/cache/shift.h) \
-    $(wildcard include/config/x86/vsmp.h) \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/page_types.h \
     $(wildcard include/config/physical/start.h) \
     $(wildcard include/config/physical/align.h) \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/page_64_types.h \
-    $(wildcard include/config/randomize/base.h) \
-    $(wildcard include/config/randomize/base/max/offset.h) \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/page_32_types.h \
+    $(wildcard include/config/highmem4g.h) \
+    $(wildcard include/config/highmem64g.h) \
+    $(wildcard include/config/page/offset.h) \
+    $(wildcard include/config/x86/pae.h) \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/ptrace.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/ptrace-abi.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/processor-flags.h \
     $(wildcard include/config/vm86.h) \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/processor-flags.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/paravirt_types.h \
+    $(wildcard include/config/x86/local/apic.h) \
+    $(wildcard include/config/paravirt/debug.h) \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/desc_defs.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/kmap_types.h \
+    $(wildcard include/config/debug/highmem.h) \
+  include/asm-generic/kmap_types.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/pgtable_types.h \
+    $(wildcard include/config/kmemcheck.h) \
+    $(wildcard include/config/mem/soft/dirty.h) \
+    $(wildcard include/config/compat/vdso.h) \
+    $(wildcard include/config/proc/fs.h) \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/pgtable_32_types.h \
+    $(wildcard include/config/highmem.h) \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/pgtable-2level_types.h \
+  include/asm-generic/pgtable-nopud.h \
+  include/asm-generic/pgtable-nopmd.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/spinlock_types.h \
+    $(wildcard include/config/paravirt/spinlocks.h) \
+    $(wildcard include/config/nr/cpus.h) \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/rwlock.h \
   include/asm-generic/ptrace.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/cpufeature.h \
     $(wildcard include/config/x86/debug/static/cpu/has.h) \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/required-features.h \
     $(wildcard include/config/x86/minimum/cpu/family.h) \
     $(wildcard include/config/math/emulation.h) \
-    $(wildcard include/config/x86/pae.h) \
     $(wildcard include/config/x86/cmpxchg64.h) \
     $(wildcard include/config/x86/use/3dnow.h) \
     $(wildcard include/config/x86/p6/nop.h) \
     $(wildcard include/config/matom.h) \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/rmwcc.h \
+  include/asm-generic/bitops/fls64.h \
   include/asm-generic/bitops/find.h \
     $(wildcard include/config/generic/find/first/bit.h) \
   include/asm-generic/bitops/sched.h \
@@ -140,9 +159,23 @@ deps_drivers/net/wireless/brcm80211/brcmsmac/main.o := \
     $(wildcard include/config/arch/has/cache/line/size.h) \
   include/uapi/linux/kernel.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/sysinfo.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/cache.h \
+    $(wildcard include/config/x86/l1/cache/shift.h) \
+    $(wildcard include/config/x86/internode/cache/shift.h) \
+    $(wildcard include/config/x86/vsmp.h) \
   include/linux/dynamic_debug.h \
+  include/linux/string.h \
+    $(wildcard include/config/binary/printf.h) \
+  include/uapi/linux/string.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/string.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/string_32.h \
+  include/linux/errno.h \
+  include/uapi/linux/errno.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/errno.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/asm-generic/errno.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/asm-generic/errno-base.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/div64.h \
   include/linux/kmemcheck.h \
-    $(wildcard include/config/kmemcheck.h) \
   include/linux/mm_types.h \
     $(wildcard include/config/split/ptlock/cpus.h) \
     $(wildcard include/config/arch/enable/split/pmd/ptlock.h) \
@@ -162,7 +195,6 @@ deps_drivers/net/wireless/brcm80211/brcmsmac/main.o := \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/auxvec.h \
     $(wildcard include/config/ia32/emulation.h) \
   include/linux/threads.h \
-    $(wildcard include/config/nr/cpus.h) \
     $(wildcard include/config/base/small.h) \
   include/linux/list.h \
     $(wildcard include/config/debug/list.h) \
@@ -198,9 +230,10 @@ deps_drivers/net/wireless/brcm80211/brcmsmac/main.o := \
     $(wildcard include/config/generic/bug/relative/pointers.h) \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/thread_info.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/page.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/page_64.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/page_32.h \
     $(wildcard include/config/debug/virtual.h) \
     $(wildcard include/config/flatmem.h) \
+    $(wildcard include/config/x86/3dnow.h) \
   include/linux/range.h \
   include/asm-generic/memory_model.h \
     $(wildcard include/config/discontigmem.h) \
@@ -216,12 +249,6 @@ deps_drivers/net/wireless/brcm80211/brcmsmac/main.o := \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/sigcontext.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/sigcontext.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/current.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/pgtable_types.h \
-    $(wildcard include/config/mem/soft/dirty.h) \
-    $(wildcard include/config/compat/vdso.h) \
-    $(wildcard include/config/proc/fs.h) \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/pgtable_64_types.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/sparsemem.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/msr.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/msr.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/msr-index.h \
@@ -229,23 +256,13 @@ deps_drivers/net/wireless/brcm80211/brcmsmac/main.o := \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/ioctl.h \
   include/asm-generic/ioctl.h \
   include/uapi/asm-generic/ioctl.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/errno.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/asm-generic/errno.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/asm-generic/errno-base.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/cpumask.h \
   include/linux/cpumask.h \
     $(wildcard include/config/hotplug/cpu.h) \
     $(wildcard include/config/debug/per/cpu/maps.h) \
     $(wildcard include/config/disable/obsolete/cpumask/functions.h) \
   include/linux/bitmap.h \
-  include/linux/string.h \
-    $(wildcard include/config/binary/printf.h) \
-  include/uapi/linux/string.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/string.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/string_64.h \
-  include/linux/errno.h \
-  include/uapi/linux/errno.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/desc_defs.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/paravirt.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/nops.h \
     $(wildcard include/config/mk7.h) \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/special_insns.h \
@@ -253,8 +270,6 @@ deps_drivers/net/wireless/brcm80211/brcmsmac/main.o := \
   include/uapi/linux/personality.h \
   include/linux/math64.h \
     $(wildcard include/config/arch/supports/int128.h) \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/div64.h \
-  include/asm-generic/div64.h \
   include/linux/err.h \
   include/linux/irqflags.h \
     $(wildcard include/config/trace/irqflags.h) \
@@ -266,17 +281,14 @@ deps_drivers/net/wireless/brcm80211/brcmsmac/main.o := \
     $(wildcard include/config/generic/atomic64.h) \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/atomic.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/cmpxchg.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/cmpxchg_64.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/atomic64_64.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/cmpxchg_32.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/atomic64_32.h \
   include/asm-generic/atomic-long.h \
   include/linux/bottom_half.h \
   include/linux/preempt_mask.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/barrier.h \
     $(wildcard include/config/x86/ppro/fence.h) \
   include/linux/spinlock_types.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/spinlock_types.h \
-    $(wildcard include/config/paravirt/spinlocks.h) \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/rwlock.h \
   include/linux/lockdep.h \
     $(wildcard include/config/lockdep.h) \
     $(wildcard include/config/lock/stat.h) \
@@ -285,7 +297,6 @@ deps_drivers/net/wireless/brcm80211/brcmsmac/main.o := \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/spinlock.h \
   include/linux/jump_label.h \
     $(wildcard include/config/jump/label.h) \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/paravirt.h \
   include/linux/rwlock.h \
   include/linux/spinlock_api_smp.h \
     $(wildcard include/config/inline/spin/lock.h) \
@@ -330,29 +341,12 @@ deps_drivers/net/wireless/brcm80211/brcmsmac/main.o := \
     $(wildcard include/config/page/debug/something/else.h) \
   include/linux/uprobes.h \
     $(wildcard include/config/uprobes.h) \
-  include/linux/page-flags-layout.h \
-  include/linux/numa.h \
-    $(wildcard include/config/nodes/shift.h) \
-  include/generated/bounds.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/mmu.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/uprobes.h \
+  include/linux/notifier.h \
   include/linux/mutex.h \
     $(wildcard include/config/debug/mutexes.h) \
     $(wildcard include/config/mutex/spin/on/owner.h) \
-  include/linux/time.h \
-    $(wildcard include/config/arch/uses/gettimeoffset.h) \
-  include/linux/seqlock.h \
-  include/uapi/linux/time.h \
-  include/linux/net.h \
-  include/linux/random.h \
-    $(wildcard include/config/arch/random.h) \
-  include/uapi/linux/random.h \
-  include/linux/irqnr.h \
-  include/uapi/linux/irqnr.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/archrandom.h \
-  include/linux/fcntl.h \
-  include/uapi/linux/fcntl.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/fcntl.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/asm-generic/fcntl.h \
+  include/linux/srcu.h \
   include/linux/rcupdate.h \
     $(wildcard include/config/rcu/torture/test.h) \
     $(wildcard include/config/tree/rcu.h) \
@@ -364,10 +358,50 @@ deps_drivers/net/wireless/brcm80211/brcmsmac/main.o := \
     $(wildcard include/config/debug/objects/rcu/head.h) \
     $(wildcard include/config/rcu/nocb/cpu.h) \
     $(wildcard include/config/no/hz/full/sysidle.h) \
+  include/linux/seqlock.h \
   include/linux/debugobjects.h \
     $(wildcard include/config/debug/objects.h) \
     $(wildcard include/config/debug/objects/free.h) \
   include/linux/rcutree.h \
+  include/linux/workqueue.h \
+    $(wildcard include/config/debug/objects/work.h) \
+    $(wildcard include/config/freezer.h) \
+    $(wildcard include/config/sysfs.h) \
+  include/linux/timer.h \
+    $(wildcard include/config/timer/stats.h) \
+    $(wildcard include/config/debug/objects/timers.h) \
+  include/linux/ktime.h \
+    $(wildcard include/config/ktime/scalar.h) \
+  include/linux/time.h \
+    $(wildcard include/config/arch/uses/gettimeoffset.h) \
+  include/uapi/linux/time.h \
+  include/linux/jiffies.h \
+  include/linux/timex.h \
+  include/uapi/linux/timex.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/param.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/param.h \
+  include/asm-generic/param.h \
+    $(wildcard include/config/hz.h) \
+  include/uapi/asm-generic/param.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/timex.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/tsc.h \
+    $(wildcard include/config/x86/tsc.h) \
+  include/linux/page-flags-layout.h \
+  include/linux/numa.h \
+    $(wildcard include/config/nodes/shift.h) \
+  include/generated/bounds.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/mmu.h \
+  include/linux/net.h \
+  include/linux/random.h \
+    $(wildcard include/config/arch/random.h) \
+  include/uapi/linux/random.h \
+  include/linux/irqnr.h \
+  include/uapi/linux/irqnr.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/archrandom.h \
+  include/linux/fcntl.h \
+  include/uapi/linux/fcntl.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/fcntl.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/asm-generic/fcntl.h \
   include/uapi/linux/net.h \
   include/linux/socket.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/socket.h \
@@ -388,7 +422,6 @@ deps_drivers/net/wireless/brcm80211/brcmsmac/main.o := \
     $(wildcard include/config/zone/dma.h) \
     $(wildcard include/config/debug/slab.h) \
   include/linux/gfp.h \
-    $(wildcard include/config/highmem.h) \
     $(wildcard include/config/zone/dma32.h) \
     $(wildcard include/config/pm/sleep.h) \
     $(wildcard include/config/cma.h) \
@@ -421,32 +454,15 @@ deps_drivers/net/wireless/brcm80211/brcmsmac/main.o := \
     $(wildcard include/config/memory/hotremove.h) \
     $(wildcard include/config/have/arch/nodedata/extension.h) \
     $(wildcard include/config/have/bootmem/info/node.h) \
-  include/linux/notifier.h \
-  include/linux/srcu.h \
-  include/linux/workqueue.h \
-    $(wildcard include/config/debug/objects/work.h) \
-    $(wildcard include/config/freezer.h) \
-    $(wildcard include/config/sysfs.h) \
-  include/linux/timer.h \
-    $(wildcard include/config/timer/stats.h) \
-    $(wildcard include/config/debug/objects/timers.h) \
-  include/linux/ktime.h \
-    $(wildcard include/config/ktime/scalar.h) \
-  include/linux/jiffies.h \
-  include/linux/timex.h \
-  include/uapi/linux/timex.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/param.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/param.h \
-  include/asm-generic/param.h \
-    $(wildcard include/config/hz.h) \
-  include/uapi/asm-generic/param.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/timex.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/tsc.h \
-    $(wildcard include/config/x86/tsc.h) \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/mmzone.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/mmzone_64.h \
+  include/linux/topology.h \
+    $(wildcard include/config/sched/smt.h) \
+    $(wildcard include/config/sched/mc.h) \
+    $(wildcard include/config/sched/book.h) \
+    $(wildcard include/config/use/percpu/numa/node/id.h) \
+  include/linux/smp.h \
+  include/linux/llist.h \
+    $(wildcard include/config/arch/have/nmi/safe/cmpxchg.h) \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/smp.h \
-    $(wildcard include/config/x86/local/apic.h) \
     $(wildcard include/config/x86/io/apic.h) \
     $(wildcard include/config/x86/32/smp.h) \
     $(wildcard include/config/debug/nmi/selftest.h) \
@@ -499,6 +515,7 @@ deps_drivers/net/wireless/brcm80211/brcmsmac/main.o := \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/topology.h \
     $(wildcard include/config/x86/ht.h) \
   include/asm-generic/topology.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/numa_32.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/realmode.h \
     $(wildcard include/config/acpi/sleep.h) \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/io.h \
@@ -516,53 +533,21 @@ deps_drivers/net/wireless/brcm80211/brcmsmac/main.o := \
     $(wildcard include/config/arch/clocksource/data.h) \
     $(wildcard include/config/clocksource/watchdog.h) \
     $(wildcard include/config/clksrc/of.h) \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/clocksource.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/pvclock-abi.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/vsyscall.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/vsyscall.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/vvar.h \
   include/asm-generic/fixmap.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/idle.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/io_apic.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/irq_vectors.h \
     $(wildcard include/config/have/kvm.h) \
-  include/linux/topology.h \
-    $(wildcard include/config/sched/smt.h) \
-    $(wildcard include/config/sched/mc.h) \
-    $(wildcard include/config/sched/book.h) \
-    $(wildcard include/config/use/percpu/numa/node/id.h) \
-  include/linux/smp.h \
-  include/linux/llist.h \
-    $(wildcard include/config/arch/have/nmi/safe/cmpxchg.h) \
   include/linux/percpu.h \
     $(wildcard include/config/need/per/cpu/embed/first/chunk.h) \
     $(wildcard include/config/need/per/cpu/page/first/chunk.h) \
   include/linux/pfn.h \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slab_def.h \
+  include/linux/slub_def.h \
+    $(wildcard include/config/slub/stats.h) \
     $(wildcard include/config/memcg/kmem.h) \
-  include/linux/reciprocal_div.h \
-  include/net/checksum.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/uaccess.h \
-    $(wildcard include/config/x86/intel/usercopy.h) \
-    $(wildcard include/config/debug/strict/user/copy/checks.h) \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/smap.h \
-    $(wildcard include/config/x86/smap.h) \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/uaccess_64.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/checksum.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/checksum_64.h \
-  include/linux/dmaengine.h \
-    $(wildcard include/config/async/tx/enable/channel/switch.h) \
-    $(wildcard include/config/dma/engine.h) \
-    $(wildcard include/config/rapidio/dma/engine.h) \
-    $(wildcard include/config/async/tx/dma.h) \
-  include/linux/device.h \
-    $(wildcard include/config/debug/devres.h) \
-    $(wildcard include/config/pinctrl.h) \
-    $(wildcard include/config/dma/cma.h) \
-    $(wildcard include/config/devtmpfs.h) \
-    $(wildcard include/config/sysfs/deprecated.h) \
   include/linux/kobject.h \
     $(wildcard include/config/debug/kobject/release.h) \
   include/linux/sysfs.h \
@@ -576,6 +561,29 @@ deps_drivers/net/wireless/brcm80211/brcmsmac/main.o := \
     $(wildcard include/config/user/ns.h) \
   include/linux/highuid.h \
   include/linux/kref.h \
+  include/net/checksum.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/uaccess.h \
+    $(wildcard include/config/x86/intel/usercopy.h) \
+    $(wildcard include/config/debug/strict/user/copy/checks.h) \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/smap.h \
+    $(wildcard include/config/x86/smap.h) \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/uaccess_32.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/checksum.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/checksum_32.h \
+  include/linux/in6.h \
+  include/uapi/linux/in6.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/libc-compat.h \
+  include/linux/dmaengine.h \
+    $(wildcard include/config/async/tx/enable/channel/switch.h) \
+    $(wildcard include/config/dma/engine.h) \
+    $(wildcard include/config/rapidio/dma/engine.h) \
+    $(wildcard include/config/async/tx/dma.h) \
+  include/linux/device.h \
+    $(wildcard include/config/debug/devres.h) \
+    $(wildcard include/config/pinctrl.h) \
+    $(wildcard include/config/dma/cma.h) \
+    $(wildcard include/config/devtmpfs.h) \
+    $(wildcard include/config/sysfs/deprecated.h) \
   include/linux/klist.h \
   include/linux/pinctrl/devinfo.h \
   include/linux/ratelimit.h \
@@ -603,7 +611,9 @@ deps_drivers/net/wireless/brcm80211/brcmsmac/main.o := \
   include/linux/bit_spinlock.h \
   include/linux/shrinker.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/pgtable.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/pgtable_64.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/pgtable_32.h \
+    $(wildcard include/config/highpte.h) \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/pgtable-2level.h \
   include/asm-generic/pgtable.h \
     $(wildcard include/config/have/arch/soft/dirty.h) \
     $(wildcard include/config/arch/uses/numa/prot/none.h) \
@@ -692,19 +702,44 @@ deps_drivers/net/wireless/brcm80211/brcmsmac/main.o := \
   include/linux/compat.h \
     $(wildcard include/config/compat/old/sigaction.h) \
     $(wildcard include/config/odd/rt/sigaction.h) \
-  include/linux/sem.h \
-    $(wildcard include/config/sysvipc.h) \
-  include/uapi/linux/sem.h \
-  include/linux/ipc.h \
-  include/uapi/linux/ipc.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/ipcbuf.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/asm-generic/ipcbuf.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/sembuf.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/if.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/hdlc/ioctl.h \
+  include/uapi/linux/ethtool.h \
+  include/net/net_namespace.h \
+    $(wildcard include/config/ipv6.h) \
+    $(wildcard include/config/ip/sctp.h) \
+    $(wildcard include/config/ip/dccp.h) \
+    $(wildcard include/config/netfilter.h) \
+    $(wildcard include/config/nf/defrag/ipv6.h) \
+    $(wildcard include/config/wext/core.h) \
+    $(wildcard include/config/ip/vs.h) \
+  include/linux/sysctl.h \
+  include/uapi/linux/sysctl.h \
+  include/net/netns/core.h \
+  include/net/netns/mib.h \
+    $(wildcard include/config/xfrm/statistics.h) \
+  include/net/snmp.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/snmp.h \
+  include/linux/u64_stats_sync.h \
+  include/net/netns/unix.h \
+  include/net/netns/packet.h \
+  include/net/netns/ipv4.h \
+    $(wildcard include/config/ip/multiple/tables.h) \
+    $(wildcard include/config/ip/route/classid.h) \
+    $(wildcard include/config/security.h) \
+    $(wildcard include/config/ip/mroute.h) \
+    $(wildcard include/config/ip/mroute/multiple/tables.h) \
+  include/net/inet_frag.h \
+  include/linux/percpu_counter.h \
+  include/net/netns/ipv6.h \
+    $(wildcard include/config/ipv6/multiple/tables.h) \
+    $(wildcard include/config/ipv6/mroute.h) \
+    $(wildcard include/config/ipv6/mroute/multiple/tables.h) \
+  include/net/dst_ops.h \
+  include/net/netns/sctp.h \
+  include/net/netns/dccp.h \
+  include/net/netns/netfilter.h \
+  include/linux/proc_fs.h \
   include/linux/fs.h \
     $(wildcard include/config/fs/posix/acl.h) \
-    $(wildcard include/config/security.h) \
     $(wildcard include/config/quota.h) \
     $(wildcard include/config/fsnotify.h) \
     $(wildcard include/config/ima.h) \
@@ -738,7 +773,6 @@ deps_drivers/net/wireless/brcm80211/brcmsmac/main.o := \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/limits.h \
   include/linux/quota.h \
     $(wildcard include/config/quota/netlink/interface.h) \
-  include/linux/percpu_counter.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/dqblk_xfs.h \
   include/linux/dqblk_v1.h \
   include/linux/dqblk_v2.h \
@@ -746,128 +780,12 @@ deps_drivers/net/wireless/brcm80211/brcmsmac/main.o := \
   include/linux/projid.h \
   include/uapi/linux/quota.h \
   include/linux/nfs_fs_i.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/aio_abi.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/compat.h \
-    $(wildcard include/config/x86/x32/abi.h) \
-  include/linux/sched.h \
-    $(wildcard include/config/sched/debug.h) \
-    $(wildcard include/config/no/hz/common.h) \
-    $(wildcard include/config/lockup/detector.h) \
-    $(wildcard include/config/detect/hung/task.h) \
-    $(wildcard include/config/core/dump/default/elf/headers.h) \
-    $(wildcard include/config/sched/autogroup.h) \
-    $(wildcard include/config/virt/cpu/accounting/native.h) \
-    $(wildcard include/config/bsd/process/acct.h) \
-    $(wildcard include/config/taskstats.h) \
-    $(wildcard include/config/audit.h) \
-    $(wildcard include/config/cgroups.h) \
-    $(wildcard include/config/inotify/user.h) \
-    $(wildcard include/config/fanotify.h) \
-    $(wildcard include/config/posix/mqueue.h) \
-    $(wildcard include/config/keys.h) \
-    $(wildcard include/config/perf/events.h) \
-    $(wildcard include/config/schedstats.h) \
-    $(wildcard include/config/task/delay/acct.h) \
-    $(wildcard include/config/fair/group/sched.h) \
-    $(wildcard include/config/rt/group/sched.h) \
-    $(wildcard include/config/cgroup/sched.h) \
-    $(wildcard include/config/blk/dev/io/trace.h) \
-    $(wildcard include/config/rcu/boost.h) \
-    $(wildcard include/config/compat/brk.h) \
-    $(wildcard include/config/virt/cpu/accounting/gen.h) \
-    $(wildcard include/config/rt/mutexes.h) \
-    $(wildcard include/config/task/xacct.h) \
-    $(wildcard include/config/cpusets.h) \
-    $(wildcard include/config/futex.h) \
-    $(wildcard include/config/fault/injection.h) \
-    $(wildcard include/config/latencytop.h) \
-    $(wildcard include/config/function/graph/tracer.h) \
-    $(wildcard include/config/bcache.h) \
-    $(wildcard include/config/have/unstable/sched/clock.h) \
-    $(wildcard include/config/irq/time/accounting.h) \
-    $(wildcard include/config/no/hz/full.h) \
-  include/uapi/linux/sched.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/cputime.h \
-  include/asm-generic/cputime.h \
-    $(wildcard include/config/virt/cpu/accounting.h) \
-  include/asm-generic/cputime_jiffies.h \
-  include/linux/signal.h \
-    $(wildcard include/config/old/sigaction.h) \
-  include/uapi/linux/signal.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/signal.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/signal.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/asm-generic/signal-defs.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/siginfo.h \
-  include/asm-generic/siginfo.h \
-  include/uapi/asm-generic/siginfo.h \
-  include/linux/proportions.h \
-  include/linux/seccomp.h \
-    $(wildcard include/config/seccomp.h) \
-    $(wildcard include/config/seccomp/filter.h) \
-  include/uapi/linux/seccomp.h \
-  include/linux/rtmutex.h \
-    $(wildcard include/config/debug/rt/mutexes.h) \
-  include/linux/resource.h \
-  include/uapi/linux/resource.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/resource.h \
-  include/asm-generic/resource.h \
-  include/uapi/asm-generic/resource.h \
-  include/linux/task_io_accounting.h \
-    $(wildcard include/config/task/io/accounting.h) \
-  include/linux/latencytop.h \
-  include/linux/cred.h \
-    $(wildcard include/config/debug/credentials.h) \
-  include/linux/key.h \
-  include/linux/sysctl.h \
-  include/uapi/linux/sysctl.h \
-  include/linux/assoc_array.h \
-    $(wildcard include/config/associative/array.h) \
-  include/linux/selinux.h \
-    $(wildcard include/config/security/selinux.h) \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/user32.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/unistd.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/unistd.h \
-  arch/x86/include/generated/uapi/asm/unistd_64.h \
-  arch/x86/include/generated/asm/unistd_64_x32.h \
-  include/uapi/linux/ethtool.h \
-  include/net/net_namespace.h \
-    $(wildcard include/config/ipv6.h) \
-    $(wildcard include/config/ip/sctp.h) \
-    $(wildcard include/config/ip/dccp.h) \
-    $(wildcard include/config/netfilter.h) \
-    $(wildcard include/config/nf/defrag/ipv6.h) \
-    $(wildcard include/config/wext/core.h) \
-    $(wildcard include/config/ip/vs.h) \
-  include/net/netns/core.h \
-  include/net/netns/mib.h \
-    $(wildcard include/config/xfrm/statistics.h) \
-  include/net/snmp.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/snmp.h \
-  include/linux/u64_stats_sync.h \
-  include/net/netns/unix.h \
-  include/net/netns/packet.h \
-  include/net/netns/ipv4.h \
-    $(wildcard include/config/ip/multiple/tables.h) \
-    $(wildcard include/config/ip/route/classid.h) \
-    $(wildcard include/config/ip/mroute.h) \
-    $(wildcard include/config/ip/mroute/multiple/tables.h) \
-  include/net/inet_frag.h \
-  include/net/netns/ipv6.h \
-    $(wildcard include/config/ipv6/multiple/tables.h) \
-    $(wildcard include/config/ipv6/mroute.h) \
-    $(wildcard include/config/ipv6/mroute/multiple/tables.h) \
-  include/net/dst_ops.h \
-  include/net/netns/sctp.h \
-  include/net/netns/dccp.h \
-  include/net/netns/netfilter.h \
-  include/linux/proc_fs.h \
   include/linux/netfilter.h \
     $(wildcard include/config/nf/nat/needed.h) \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/if.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/hdlc/ioctl.h \
   include/linux/in.h \
   include/uapi/linux/in.h \
-  include/linux/in6.h \
-  include/uapi/linux/in6.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/libc-compat.h \
   include/uapi/linux/netfilter.h \
   include/net/flow.h \
   include/net/netns/x_tables.h \
@@ -886,10 +804,96 @@ deps_drivers/net/wireless/brcm80211/brcmsmac/main.o := \
   include/linux/seq_file_net.h \
   include/linux/seq_file.h \
   include/net/dsa.h \
-  include/net/dcbnl.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/dcbnl.h \
   include/net/netprio_cgroup.h \
   include/linux/cgroup.h \
+    $(wildcard include/config/cgroups.h) \
+  include/linux/sched.h \
+    $(wildcard include/config/sched/debug.h) \
+    $(wildcard include/config/no/hz/common.h) \
+    $(wildcard include/config/lockup/detector.h) \
+    $(wildcard include/config/detect/hung/task.h) \
+    $(wildcard include/config/core/dump/default/elf/headers.h) \
+    $(wildcard include/config/sched/autogroup.h) \
+    $(wildcard include/config/virt/cpu/accounting/native.h) \
+    $(wildcard include/config/bsd/process/acct.h) \
+    $(wildcard include/config/taskstats.h) \
+    $(wildcard include/config/audit.h) \
+    $(wildcard include/config/inotify/user.h) \
+    $(wildcard include/config/fanotify.h) \
+    $(wildcard include/config/posix/mqueue.h) \
+    $(wildcard include/config/keys.h) \
+    $(wildcard include/config/perf/events.h) \
+    $(wildcard include/config/schedstats.h) \
+    $(wildcard include/config/task/delay/acct.h) \
+    $(wildcard include/config/fair/group/sched.h) \
+    $(wildcard include/config/rt/group/sched.h) \
+    $(wildcard include/config/cgroup/sched.h) \
+    $(wildcard include/config/blk/dev/io/trace.h) \
+    $(wildcard include/config/rcu/boost.h) \
+    $(wildcard include/config/compat/brk.h) \
+    $(wildcard include/config/virt/cpu/accounting/gen.h) \
+    $(wildcard include/config/sysvipc.h) \
+    $(wildcard include/config/rt/mutexes.h) \
+    $(wildcard include/config/task/xacct.h) \
+    $(wildcard include/config/cpusets.h) \
+    $(wildcard include/config/futex.h) \
+    $(wildcard include/config/fault/injection.h) \
+    $(wildcard include/config/latencytop.h) \
+    $(wildcard include/config/function/graph/tracer.h) \
+    $(wildcard include/config/bcache.h) \
+    $(wildcard include/config/have/unstable/sched/clock.h) \
+    $(wildcard include/config/irq/time/accounting.h) \
+    $(wildcard include/config/no/hz/full.h) \
+  include/uapi/linux/sched.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/cputime.h \
+  include/asm-generic/cputime.h \
+    $(wildcard include/config/virt/cpu/accounting.h) \
+  include/asm-generic/cputime_jiffies.h \
+  include/linux/sem.h \
+  include/uapi/linux/sem.h \
+  include/linux/ipc.h \
+  include/uapi/linux/ipc.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/ipcbuf.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/asm-generic/ipcbuf.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/sembuf.h \
+  include/linux/signal.h \
+    $(wildcard include/config/old/sigaction.h) \
+  include/uapi/linux/signal.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/signal.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/signal.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/asm-generic/signal-defs.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/siginfo.h \
+  include/asm-generic/siginfo.h \
+  include/uapi/asm-generic/siginfo.h \
+  include/linux/proportions.h \
+  include/linux/seccomp.h \
+    $(wildcard include/config/seccomp.h) \
+    $(wildcard include/config/seccomp/filter.h) \
+  include/uapi/linux/seccomp.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/seccomp.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/seccomp_32.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/unistd.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/unistd.h \
+    $(wildcard include/config/x86/x32/abi.h) \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/unistd.h \
+  arch/x86/include/generated/uapi/asm/unistd_32.h \
+  include/linux/rtmutex.h \
+    $(wildcard include/config/debug/rt/mutexes.h) \
+  include/linux/resource.h \
+  include/uapi/linux/resource.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/resource.h \
+  include/asm-generic/resource.h \
+  include/uapi/asm-generic/resource.h \
+  include/linux/task_io_accounting.h \
+    $(wildcard include/config/task/io/accounting.h) \
+  include/linux/latencytop.h \
+  include/linux/cred.h \
+    $(wildcard include/config/debug/credentials.h) \
+  include/linux/key.h \
+  include/linux/assoc_array.h \
+    $(wildcard include/config/associative/array.h) \
+  include/linux/selinux.h \
+    $(wildcard include/config/security/selinux.h) \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/cgroupstats.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/taskstats.h \
   include/linux/prio_heap.h \
@@ -984,8 +988,6 @@ deps_drivers/net/wireless/brcm80211/brcmsmac/main.o := \
   include/linux/pci-dma.h \
   include/linux/dmapool.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/pci.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/pci_64.h \
-    $(wildcard include/config/calgary/iommu.h) \
   include/asm-generic/pci-dma-compat.h \
   include/asm-generic/pci.h \
   include/linux/bcma/bcma_driver_chipcommon.h \
@@ -999,67 +1001,7 @@ deps_drivers/net/wireless/brcm80211/brcmsmac/main.o := \
   include/linux/gpio.h \
     $(wildcard include/config/gpiolib.h) \
     $(wildcard include/config/arch/have/custom/gpio/h.h) \
-  include/asm-generic/gpio.h \
-  include/linux/of.h \
-    $(wildcard include/config/sparc.h) \
-    $(wildcard include/config/of/dynamic.h) \
-    $(wildcard include/config/attach/node.h) \
-    $(wildcard include/config/detach/node.h) \
-    $(wildcard include/config/add/property.h) \
-    $(wildcard include/config/remove/property.h) \
-    $(wildcard include/config/update/property.h) \
-    $(wildcard include/config/proc/devicetree.h) \
   include/linux/pinctrl/pinctrl.h \
-  include/linux/gpio/driver.h \
-    $(wildcard include/config/of/gpio.h) \
-  include/linux/module.h \
-    $(wildcard include/config/module/sig.h) \
-    $(wildcard include/config/kallsyms.h) \
-    $(wildcard include/config/tracepoints.h) \
-    $(wildcard include/config/event/tracing.h) \
-    $(wildcard include/config/module/unload.h) \
-    $(wildcard include/config/constructors.h) \
-    $(wildcard include/config/debug/set/module/ronx.h) \
-  include/linux/kmod.h \
-  include/linux/elf.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/elf.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/user.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/user_64.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/vdso.h \
-  include/uapi/linux/elf.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/elf-em.h \
-  include/linux/moduleparam.h \
-    $(wildcard include/config/alpha.h) \
-    $(wildcard include/config/ppc64.h) \
-  include/linux/tracepoint.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/module.h \
-    $(wildcard include/config/m586.h) \
-    $(wildcard include/config/m586tsc.h) \
-    $(wildcard include/config/m586mmx.h) \
-    $(wildcard include/config/mcore2.h) \
-    $(wildcard include/config/m686.h) \
-    $(wildcard include/config/mpentiumii.h) \
-    $(wildcard include/config/mpentiumiii.h) \
-    $(wildcard include/config/mpentiumm.h) \
-    $(wildcard include/config/mpentium4.h) \
-    $(wildcard include/config/mk6.h) \
-    $(wildcard include/config/mk8.h) \
-    $(wildcard include/config/melan.h) \
-    $(wildcard include/config/mcrusoe.h) \
-    $(wildcard include/config/mefficeon.h) \
-    $(wildcard include/config/mwinchipc6.h) \
-    $(wildcard include/config/mwinchip3d.h) \
-    $(wildcard include/config/mcyrixiii.h) \
-    $(wildcard include/config/mviac3/2.h) \
-    $(wildcard include/config/mviac7.h) \
-    $(wildcard include/config/mgeodegx1.h) \
-    $(wildcard include/config/mgeode/lx.h) \
-  include/asm-generic/module.h \
-    $(wildcard include/config/have/mod/arch/specific.h) \
-    $(wildcard include/config/modules/use/elf/rel.h) \
-    $(wildcard include/config/modules/use/elf/rela.h) \
-  include/linux/gpio/consumer.h \
-    $(wildcard include/config/gpio/sysfs.h) \
   include/linux/bcma/bcma_driver_pci.h \
     $(wildcard include/config/addr.h) \
     $(wildcard include/config/data.h) \
@@ -1125,6 +1067,8 @@ deps_drivers/net/wireless/brcm80211/brcmsmac/main.o := \
     $(wildcard include/config/brcmdbg.h) \
     $(wildcard include/config/brcm/tracing.h) \
   drivers/net/wireless/brcm80211/brcmsmac/brcms_trace_events.h \
+  include/linux/tracepoint.h \
+    $(wildcard include/config/tracepoints.h) \
 
 drivers/net/wireless/brcm80211/brcmsmac/main.o: $(deps_drivers/net/wireless/brcm80211/brcmsmac/main.o)
 

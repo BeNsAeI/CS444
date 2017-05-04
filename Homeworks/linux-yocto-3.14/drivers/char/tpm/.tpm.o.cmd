@@ -1,1 +1,0 @@
-cmd_drivers/char/tpm/tpm.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/char/tpm/tpm.o drivers/char/tpm/tpm-interface.o drivers/char/tpm/tpm-dev.o drivers/char/tpm/tpm-sysfs.o drivers/char/tpm/tpm_ppi.o drivers/char/tpm/tpm_eventlog.o drivers/char/tpm/tpm_acpi.o ; scripts/mod/modpost drivers/char/tpm/tpm.o

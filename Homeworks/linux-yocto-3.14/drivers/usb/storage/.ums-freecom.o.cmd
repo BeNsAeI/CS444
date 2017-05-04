@@ -1,1 +1,0 @@
-cmd_drivers/usb/storage/ums-freecom.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/usb/storage/ums-freecom.o drivers/usb/storage/freecom.o ; scripts/mod/modpost drivers/usb/storage/ums-freecom.o

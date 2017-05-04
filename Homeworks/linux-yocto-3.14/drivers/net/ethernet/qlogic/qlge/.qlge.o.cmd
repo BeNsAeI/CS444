@@ -1,1 +1,0 @@
-cmd_drivers/net/ethernet/qlogic/qlge/qlge.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/net/ethernet/qlogic/qlge/qlge.o drivers/net/ethernet/qlogic/qlge/qlge_main.o drivers/net/ethernet/qlogic/qlge/qlge_dbg.o drivers/net/ethernet/qlogic/qlge/qlge_mpi.o drivers/net/ethernet/qlogic/qlge/qlge_ethtool.o ; scripts/mod/modpost drivers/net/ethernet/qlogic/qlge/qlge.o

@@ -1,1 +1,1 @@
-cmd_drivers/connector/built-in.o :=  i586-poky-linux-ld -m elf_x86_64   -r -o drivers/connector/built-in.o drivers/connector/cn.o drivers/connector/cn_proc.o ; scripts/mod/modpost drivers/connector/built-in.o
+cmd_drivers/connector/built-in.o :=  i586-poky-linux-ld -m elf_i386   -r -o drivers/connector/built-in.o drivers/connector/cn.o drivers/connector/cn_proc.o 

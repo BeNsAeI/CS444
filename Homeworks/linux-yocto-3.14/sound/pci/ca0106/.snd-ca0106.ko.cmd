@@ -1,1 +1,0 @@
-cmd_sound/pci/ca0106/snd-ca0106.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o sound/pci/ca0106/snd-ca0106.ko sound/pci/ca0106/snd-ca0106.o sound/pci/ca0106/snd-ca0106.mod.o

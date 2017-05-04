@@ -1,1 +1,1 @@
-cmd_drivers/iommu/built-in.o :=  i586-poky-linux-ld -m elf_x86_64   -r -o drivers/iommu/built-in.o drivers/iommu/iommu.o drivers/iommu/iommu-traces.o drivers/iommu/amd_iommu.o drivers/iommu/amd_iommu_init.o ; scripts/mod/modpost drivers/iommu/built-in.o
+cmd_drivers/iommu/built-in.o :=  rm -f drivers/iommu/built-in.o; i586-poky-linux-ar rcsD drivers/iommu/built-in.o

@@ -1,1 +1,0 @@
-cmd_drivers/net/ethernet/atheros/atl1c/atl1c.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/net/ethernet/atheros/atl1c/atl1c.o drivers/net/ethernet/atheros/atl1c/atl1c_main.o drivers/net/ethernet/atheros/atl1c/atl1c_hw.o drivers/net/ethernet/atheros/atl1c/atl1c_ethtool.o ; scripts/mod/modpost drivers/net/ethernet/atheros/atl1c/atl1c.o

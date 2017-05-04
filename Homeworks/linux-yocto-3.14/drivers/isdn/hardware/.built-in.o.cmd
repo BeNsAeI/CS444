@@ -1,1 +1,0 @@
-cmd_drivers/isdn/hardware/built-in.o :=  i586-poky-linux-ld -m elf_x86_64   -r -o drivers/isdn/hardware/built-in.o drivers/isdn/hardware/avm/built-in.o ; scripts/mod/modpost drivers/isdn/hardware/built-in.o

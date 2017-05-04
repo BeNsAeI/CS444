@@ -1,1 +1,0 @@
-cmd_drivers/net/ethernet/chelsio/cxgb4vf/cxgb4vf.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/net/ethernet/chelsio/cxgb4vf/cxgb4vf.o drivers/net/ethernet/chelsio/cxgb4vf/cxgb4vf_main.o drivers/net/ethernet/chelsio/cxgb4vf/t4vf_hw.o drivers/net/ethernet/chelsio/cxgb4vf/sge.o ; scripts/mod/modpost drivers/net/ethernet/chelsio/cxgb4vf/cxgb4vf.o

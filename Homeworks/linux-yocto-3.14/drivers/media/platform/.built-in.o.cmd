@@ -1,1 +1,1 @@
-cmd_drivers/media/platform/built-in.o :=  i586-poky-linux-ld -m elf_x86_64   -r -o drivers/media/platform/built-in.o drivers/media/platform/davinci/built-in.o ; scripts/mod/modpost drivers/media/platform/built-in.o
+cmd_drivers/media/platform/built-in.o :=  i586-poky-linux-ld -m elf_i386   -r -o drivers/media/platform/built-in.o drivers/media/platform/davinci/built-in.o 

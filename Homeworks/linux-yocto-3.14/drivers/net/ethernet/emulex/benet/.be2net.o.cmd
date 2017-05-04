@@ -1,1 +1,0 @@
-cmd_drivers/net/ethernet/emulex/benet/be2net.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/net/ethernet/emulex/benet/be2net.o drivers/net/ethernet/emulex/benet/be_main.o drivers/net/ethernet/emulex/benet/be_cmds.o drivers/net/ethernet/emulex/benet/be_ethtool.o drivers/net/ethernet/emulex/benet/be_roce.o ; scripts/mod/modpost drivers/net/ethernet/emulex/benet/be2net.o

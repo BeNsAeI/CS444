@@ -1,1 +1,0 @@
-cmd_security/integrity/built-in.o :=  i586-poky-linux-ld -m elf_x86_64   -r -o security/integrity/built-in.o security/integrity/integrity.o security/integrity/integrity_audit.o security/integrity/ima/built-in.o ; scripts/mod/modpost security/integrity/built-in.o

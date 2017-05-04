@@ -1,1 +1,1 @@
-cmd_drivers/rtc/rtc-core.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/rtc/rtc-core.o drivers/rtc/class.o drivers/rtc/interface.o drivers/rtc/rtc-dev.o drivers/rtc/rtc-proc.o drivers/rtc/rtc-sysfs.o ; scripts/mod/modpost drivers/rtc/rtc-core.o
+cmd_drivers/rtc/rtc-core.o := i586-poky-linux-ld -m elf_i386   -r -o drivers/rtc/rtc-core.o drivers/rtc/class.o drivers/rtc/interface.o drivers/rtc/rtc-dev.o drivers/rtc/rtc-proc.o drivers/rtc/rtc-sysfs.o 

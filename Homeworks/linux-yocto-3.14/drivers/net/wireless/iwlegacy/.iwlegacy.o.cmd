@@ -1,1 +1,1 @@
-cmd_drivers/net/wireless/iwlegacy/iwlegacy.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/net/wireless/iwlegacy/iwlegacy.o drivers/net/wireless/iwlegacy/common.o ; scripts/mod/modpost drivers/net/wireless/iwlegacy/iwlegacy.o
+cmd_drivers/net/wireless/iwlegacy/iwlegacy.o := i586-poky-linux-ld -m elf_i386   -r -o drivers/net/wireless/iwlegacy/iwlegacy.o drivers/net/wireless/iwlegacy/common.o 

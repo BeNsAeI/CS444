@@ -1,1 +1,0 @@
-cmd_drivers/mmc/card/mmc_block.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o drivers/mmc/card/mmc_block.ko drivers/mmc/card/mmc_block.o drivers/mmc/card/mmc_block.mod.o

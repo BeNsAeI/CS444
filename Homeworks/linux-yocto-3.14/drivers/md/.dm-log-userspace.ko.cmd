@@ -1,1 +1,0 @@
-cmd_drivers/md/dm-log-userspace.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o drivers/md/dm-log-userspace.ko drivers/md/dm-log-userspace.o drivers/md/dm-log-userspace.mod.o

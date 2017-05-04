@@ -1,1 +1,0 @@
-cmd_drivers/net/wireless/atmel.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o drivers/net/wireless/atmel.ko drivers/net/wireless/atmel.o drivers/net/wireless/atmel.mod.o

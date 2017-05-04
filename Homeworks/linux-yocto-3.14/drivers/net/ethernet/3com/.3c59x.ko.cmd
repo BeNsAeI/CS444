@@ -1,1 +1,0 @@
-cmd_drivers/net/ethernet/3com/3c59x.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o drivers/net/ethernet/3com/3c59x.ko drivers/net/ethernet/3com/3c59x.o drivers/net/ethernet/3com/3c59x.mod.o

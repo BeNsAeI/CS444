@@ -1,1 +1,1 @@
-cmd_arch/x86/power/built-in.o :=  i586-poky-linux-ld -m elf_x86_64   -r -o arch/x86/power/built-in.o arch/x86/power/cpu.o arch/x86/power/hibernate_64.o arch/x86/power/hibernate_asm_64.o ; scripts/mod/modpost arch/x86/power/built-in.o
+cmd_arch/x86/power/built-in.o :=  i586-poky-linux-ld -m elf_i386   -r -o arch/x86/power/built-in.o arch/x86/power/cpu.o 

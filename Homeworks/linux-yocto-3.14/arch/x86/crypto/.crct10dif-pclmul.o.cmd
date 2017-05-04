@@ -1,1 +1,0 @@
-cmd_arch/x86/crypto/crct10dif-pclmul.o := i586-poky-linux-ld -m elf_x86_64   -r -o arch/x86/crypto/crct10dif-pclmul.o arch/x86/crypto/crct10dif-pcl-asm_64.o arch/x86/crypto/crct10dif-pclmul_glue.o ; scripts/mod/modpost arch/x86/crypto/crct10dif-pclmul.o

@@ -1,1 +1,0 @@
-cmd_drivers/infiniband/ulp/iser/ib_iser.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/infiniband/ulp/iser/ib_iser.o drivers/infiniband/ulp/iser/iser_verbs.o drivers/infiniband/ulp/iser/iser_initiator.o drivers/infiniband/ulp/iser/iser_memory.o drivers/infiniband/ulp/iser/iscsi_iser.o ; scripts/mod/modpost drivers/infiniband/ulp/iser/ib_iser.o

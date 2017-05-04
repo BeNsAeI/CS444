@@ -1,1 +1,1 @@
-cmd_fs/jbd/jbd.o := i586-poky-linux-ld -m elf_x86_64   -r -o fs/jbd/jbd.o fs/jbd/transaction.o fs/jbd/commit.o fs/jbd/recovery.o fs/jbd/checkpoint.o fs/jbd/revoke.o fs/jbd/journal.o ; scripts/mod/modpost fs/jbd/jbd.o
+cmd_fs/jbd/jbd.o := i586-poky-linux-ld -m elf_i386   -r -o fs/jbd/jbd.o fs/jbd/transaction.o fs/jbd/commit.o fs/jbd/recovery.o fs/jbd/checkpoint.o fs/jbd/revoke.o fs/jbd/journal.o 

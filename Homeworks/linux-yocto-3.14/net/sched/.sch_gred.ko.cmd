@@ -1,1 +1,1 @@
-cmd_net/sched/sch_gred.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o net/sched/sch_gred.ko net/sched/sch_gred.o net/sched/sch_gred.mod.o
+cmd_net/sched/sch_gred.ko := i586-poky-linux-ld -r -m elf_i386 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o net/sched/sch_gred.ko net/sched/sch_gred.o net/sched/sch_gred.mod.o

@@ -1,1 +1,0 @@
-cmd_fs/autofs4/autofs4.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o fs/autofs4/autofs4.ko fs/autofs4/autofs4.o fs/autofs4/autofs4.mod.o

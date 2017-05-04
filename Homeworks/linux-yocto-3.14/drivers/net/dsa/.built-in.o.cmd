@@ -1,1 +1,0 @@
-cmd_drivers/net/dsa/built-in.o :=  i586-poky-linux-ld -m elf_x86_64   -r -o drivers/net/dsa/built-in.o drivers/net/dsa/mv88e6060.o drivers/net/dsa/mv88e6xxx_drv.o ; scripts/mod/modpost drivers/net/dsa/built-in.o

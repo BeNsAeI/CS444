@@ -1,1 +1,0 @@
-cmd_Documentation/connector/cn_test.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o Documentation/connector/cn_test.ko Documentation/connector/cn_test.o Documentation/connector/cn_test.mod.o

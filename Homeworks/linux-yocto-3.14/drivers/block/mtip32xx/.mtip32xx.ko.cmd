@@ -1,1 +1,0 @@
-cmd_drivers/block/mtip32xx/mtip32xx.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o drivers/block/mtip32xx/mtip32xx.ko drivers/block/mtip32xx/mtip32xx.o drivers/block/mtip32xx/mtip32xx.mod.o

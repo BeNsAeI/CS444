@@ -1,1 +1,0 @@
-cmd_drivers/rtc/rtc-m41t80.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o drivers/rtc/rtc-m41t80.ko drivers/rtc/rtc-m41t80.o drivers/rtc/rtc-m41t80.mod.o

@@ -1,1 +1,1 @@
-cmd_arch/x86/kernel/kprobes/built-in.o :=  i586-poky-linux-ld -m elf_x86_64   -r -o arch/x86/kernel/kprobes/built-in.o arch/x86/kernel/kprobes/core.o arch/x86/kernel/kprobes/opt.o arch/x86/kernel/kprobes/ftrace.o ; scripts/mod/modpost arch/x86/kernel/kprobes/built-in.o
+cmd_arch/x86/kernel/kprobes/built-in.o :=  i586-poky-linux-ld -m elf_i386   -r -o arch/x86/kernel/kprobes/built-in.o arch/x86/kernel/kprobes/core.o arch/x86/kernel/kprobes/ftrace.o 

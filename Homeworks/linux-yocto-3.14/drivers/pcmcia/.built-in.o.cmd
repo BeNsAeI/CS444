@@ -1,1 +1,0 @@
-cmd_drivers/pcmcia/built-in.o :=  i586-poky-linux-ld -m elf_x86_64   -r -o drivers/pcmcia/built-in.o drivers/pcmcia/pcmcia_core.o drivers/pcmcia/pcmcia.o drivers/pcmcia/pcmcia_rsrc.o ; scripts/mod/modpost drivers/pcmcia/built-in.o

@@ -1,1 +1,1 @@
-cmd_fs/ext2/built-in.o :=  rm -f fs/ext2/built-in.o; i586-poky-linux-ar rcsD fs/ext2/built-in.o
+cmd_fs/ext2/built-in.o :=  i586-poky-linux-ld -m elf_i386   -r -o fs/ext2/built-in.o fs/ext2/ext2.o 

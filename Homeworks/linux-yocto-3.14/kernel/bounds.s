@@ -8,30 +8,30 @@
 # -I /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi
 # -I arch/x86/include/generated/uapi
 # -I /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi
-# -I include/generated/uapi -imultilib .
+# -I include/generated/uapi
 # -iprefix /scratch/opt/sysroots/x86_64-pokysdk-linux/usr/bin/i586-poky-linux/../../lib/i586-poky-linux/gcc/i586-poky-linux/4.9.1/
 # -isysroot /scratch/opt/sysroots/i586-poky-linux -D __KERNEL__
 # -D CONFIG_AS_CFI=1 -D CONFIG_AS_CFI_SIGNAL_FRAME=1
-# -D CONFIG_AS_CFI_SECTIONS=1 -D CONFIG_AS_FXSAVEQ=1 -D CONFIG_AS_CRC32=1
-# -D CONFIG_AS_AVX=1 -D CONFIG_AS_AVX2=1 -D CC_USING_FENTRY
-# -D CC_HAVE_ASM_GOTO -D KBUILD_STR(s)=#s
+# -D CONFIG_AS_CFI_SECTIONS=1 -D CONFIG_AS_CRC32=1 -D CONFIG_AS_AVX=1
+# -D CONFIG_AS_AVX2=1 -D CC_HAVE_ASM_GOTO -D KBUILD_STR(s)=#s
 # -D KBUILD_BASENAME=KBUILD_STR(bounds)
 # -D KBUILD_MODNAME=KBUILD_STR(bounds)
 # -isystem /scratch/opt/sysroots/x86_64-pokysdk-linux/usr/bin/i586-poky-linux/../../lib/i586-poky-linux/gcc/i586-poky-linux/4.9.1/include
 # -include /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/linux/kconfig.h
-# -MD kernel/.bounds.s.d kernel/bounds.c -m64 -mpreferred-stack-boundary=3
-# -mtune=generic -mno-red-zone -mcmodel=kernel -maccumulate-outgoing-args
-# -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -mno-avx -mfentry -march=x86-64
-# -auxbase-strip kernel/bounds.s -g -O2 -Wall -Wundef -Wstrict-prototypes
-# -Wno-trigraphs -Werror=implicit-function-declaration -Wno-format-security
-# -Wno-sign-compare -Wframe-larger-than=2048 -Wno-unused-but-set-variable
-# -Wdeclaration-after-statement -Wno-pointer-sign -Werror=implicit-int
-# -Werror=strict-prototypes -Werror=date-time -p -fno-strict-aliasing
-# -fno-common -fno-delete-null-pointer-checks -funit-at-a-time
-# -fno-asynchronous-unwind-tables -fno-stack-protector
+# -MD kernel/.bounds.s.d kernel/bounds.c -m32 -msoft-float -mregparm=3
+# -mpreferred-stack-boundary=2 -march=i686 -mtune=pentium3 -mtune=generic
+# -maccumulate-outgoing-args -mno-sse -mno-mmx -mno-sse2 -mno-3dnow
+# -mno-avx -auxbase-strip kernel/bounds.s -g -O2 -Wall -Wundef
+# -Wstrict-prototypes -Wno-trigraphs -Werror=implicit-function-declaration
+# -Wno-format-security -Wno-sign-compare -Wframe-larger-than=1024
+# -Wno-unused-but-set-variable -Wdeclaration-after-statement
+# -Wno-pointer-sign -Werror=implicit-int -Werror=strict-prototypes
+# -Werror=date-time -p -fno-strict-aliasing -fno-common
+# -fno-delete-null-pointer-checks -freg-struct-return -fno-pic
+# -ffreestanding -fno-asynchronous-unwind-tables -fno-stack-protector
 # -fno-omit-frame-pointer -fno-optimize-sibling-calls
-# -fno-var-tracking-assignments -fno-inline-functions-called-once
-# -fno-strict-overflow -fconserve-stack -fverbose-asm
+# -fno-var-tracking-assignments -fno-strict-overflow -fconserve-stack
+# -fverbose-asm
 # options enabled:  -faggressive-loop-optimizations -fauto-inc-dec
 # -fbranch-count-reg -fcaller-saves -fcombine-stack-adjustments
 # -fcompare-elim -fcprop-registers -fcrossjumping -fcse-follow-jumps
@@ -40,9 +40,9 @@
 # -fforward-propagate -ffunction-cse -fgcse -fgcse-lm -fgnu-runtime
 # -fgnu-unique -fguess-branch-probability -fhoist-adjacent-loads -fident
 # -fif-conversion -fif-conversion2 -findirect-inlining -finline
-# -finline-atomics -finline-small-functions -fipa-cp -fipa-profile
-# -fipa-pure-const -fipa-reference -fipa-sra -fira-hoist-pressure
-# -fira-share-save-slots -fira-share-spill-slots
+# -finline-atomics -finline-functions-called-once -finline-small-functions
+# -fipa-cp -fipa-profile -fipa-pure-const -fipa-reference -fipa-sra
+# -fira-hoist-pressure -fira-share-save-slots -fira-share-spill-slots
 # -fisolate-erroneous-paths-dereference -fivopts -fkeep-static-consts
 # -fleading-underscore -fmath-errno -fmerge-constants -fmerge-debug-strings
 # -fmove-loop-invariants -foptimize-strlen -fpartial-inlining -fpeephole
@@ -63,12 +63,11 @@
 # -ftree-pta -ftree-reassoc -ftree-scev-cprop -ftree-sink -ftree-slsr
 # -ftree-sra -ftree-switch-conversion -ftree-tail-merge -ftree-ter
 # -ftree-vrp -funit-at-a-time -fvar-tracking -fverbose-asm
-# -fzero-initialized-in-bss -m128bit-long-double -m64 -m80387
+# -fzero-initialized-in-bss -m32 -m96bit-long-double
 # -maccumulate-outgoing-args -malign-stringops
-# -mavx256-split-unaligned-load -mavx256-split-unaligned-store
-# -mfancy-math-387 -mfentry -mfp-ret-in-387 -mfxsr -mglibc -mieee-fp
-# -mlong-double-80 -mno-red-zone -mno-sse4 -mpush-args
-# -mtls-direct-seg-refs -mvzeroupper
+# -mavx256-split-unaligned-load -mavx256-split-unaligned-store -mglibc
+# -mieee-fp -mlong-double-80 -mno-fancy-math-387 -mno-red-zone -mno-sse4
+# -mpush-args -msahf -mtls-direct-seg-refs -mvzeroupper
 
 	.text
 .Ltext0:
@@ -84,21 +83,22 @@
 	.globl	foo
 	.type	foo, @function
 foo:
-.LFB141:
+.LFB170:
 	.file 1 "kernel/bounds.c"
 	.loc 1 17 0
 	.cfi_startproc
-	call	__fentry__
-	pushq	%rbp	#
-	.cfi_def_cfa_offset 16
-	.cfi_offset 6, -16
-	movq	%rsp, %rbp	#,
-	.cfi_def_cfa_register 6
+	pushl	%ebp	#
+	.cfi_def_cfa_offset 8
+	.cfi_offset 5, -8
+	movl	%esp, %ebp	#,
+	.cfi_def_cfa_register 5
+	call	mcount
+	.loc 1 17 0
 	.loc 1 19 0
 #APP
 # 19 "kernel/bounds.c" 1
 	
-->NR_PAGEFLAGS $25 __NR_PAGEFLAGS	#
+->NR_PAGEFLAGS $23 __NR_PAGEFLAGS	#
 # 0 "" 2
 	.loc 1 20 0
 # 20 "kernel/bounds.c" 1
@@ -113,21 +113,21 @@ foo:
 	.loc 1 23 0
 # 23 "kernel/bounds.c" 1
 	
-->NR_CPUS_BITS $13 ilog2(CONFIG_NR_CPUS)	#
+->NR_CPUS_BITS $3 ilog2(CONFIG_NR_CPUS)	#
 # 0 "" 2
 	.loc 1 25 0
 # 25 "kernel/bounds.c" 1
 	
-->SPINLOCK_SIZE $4 sizeof(spinlock_t)	#
+->SPINLOCK_SIZE $2 sizeof(spinlock_t)	#
 # 0 "" 2
 	.loc 1 27 0
 #NO_APP
-	popq	%rbp	#
-	.cfi_restore 6
-	.cfi_def_cfa 7, 8
+	popl	%ebp	#
+	.cfi_restore 5
+	.cfi_def_cfa 4, 4
 	ret
 	.cfi_endproc
-.LFE141:
+.LFE170:
 	.size	foo, .-foo
 	.section	.text.unlikely
 .LCOLDE0:
@@ -144,17 +144,17 @@ foo:
 	.file 7 "include/linux/page_cgroup.h"
 	.section	.debug_info,"",@progbits
 .Ldebug_info0:
-	.long	0x20c
+	.long	0x1f0
 	.value	0x4
 	.long	.Ldebug_abbrev0
-	.byte	0x8
+	.byte	0x4
 	.uleb128 0x1
-	.long	.LASF59
+	.long	.LASF57
 	.byte	0x1
-	.long	.LASF60
-	.long	.LASF61
-	.quad	.Ltext0
-	.quad	.Letext0-.Ltext0
+	.long	.LASF58
+	.long	.LASF59
+	.long	.Ltext0
+	.long	.Letext0-.Ltext0
 	.long	.Ldebug_line0
 	.uleb128 0x2
 	.byte	0x1
@@ -189,11 +189,11 @@ foo:
 	.byte	0x7
 	.long	.LASF6
 	.uleb128 0x2
-	.byte	0x8
+	.byte	0x4
 	.byte	0x7
 	.long	.LASF7
 	.uleb128 0x2
-	.byte	0x8
+	.byte	0x4
 	.byte	0x7
 	.long	.LASF8
 	.uleb128 0x2
@@ -201,7 +201,7 @@ foo:
 	.byte	0x6
 	.long	.LASF9
 	.uleb128 0x2
-	.byte	0x8
+	.byte	0x4
 	.byte	0x5
 	.long	.LASF10
 	.uleb128 0x2
@@ -209,11 +209,11 @@ foo:
 	.byte	0x2
 	.long	.LASF11
 	.uleb128 0x4
-	.long	.LASF43
+	.long	.LASF41
 	.byte	0x4
 	.byte	0x2
 	.byte	0x4a
-	.long	0x14f
+	.long	0x13b
 	.uleb128 0x5
 	.long	.LASF12
 	.sleb128 0
@@ -288,113 +288,107 @@ foo:
 	.sleb128 23
 	.uleb128 0x5
 	.long	.LASF36
-	.sleb128 24
+	.sleb128 8
 	.uleb128 0x5
 	.long	.LASF37
-	.sleb128 25
+	.sleb128 12
 	.uleb128 0x5
 	.long	.LASF38
 	.sleb128 8
 	.uleb128 0x5
 	.long	.LASF39
-	.sleb128 12
-	.uleb128 0x5
-	.long	.LASF40
-	.sleb128 8
-	.uleb128 0x5
-	.long	.LASF41
 	.sleb128 4
 	.uleb128 0x5
-	.long	.LASF42
+	.long	.LASF40
 	.sleb128 11
 	.byte	0
 	.uleb128 0x6
-	.long	.LASF44
+	.long	.LASF42
 	.byte	0x4
 	.byte	0x3
 	.value	0x109
-	.long	0x17b
+	.long	0x167
 	.uleb128 0x5
-	.long	.LASF45
+	.long	.LASF43
 	.sleb128 0
 	.uleb128 0x5
-	.long	.LASF46
+	.long	.LASF44
 	.sleb128 1
 	.uleb128 0x5
-	.long	.LASF47
+	.long	.LASF45
 	.sleb128 2
 	.uleb128 0x5
-	.long	.LASF48
+	.long	.LASF46
 	.sleb128 3
 	.uleb128 0x5
-	.long	.LASF49
+	.long	.LASF47
 	.sleb128 4
 	.byte	0
 	.uleb128 0x7
 	.byte	0x4
 	.byte	0x7
 	.byte	0x4
-	.long	0x19c
+	.long	0x188
 	.uleb128 0x5
-	.long	.LASF50
+	.long	.LASF48
 	.sleb128 0
 	.uleb128 0x5
-	.long	.LASF51
+	.long	.LASF49
 	.sleb128 1
 	.uleb128 0x5
-	.long	.LASF52
+	.long	.LASF50
 	.sleb128 2
 	.uleb128 0x5
-	.long	.LASF53
+	.long	.LASF51
 	.sleb128 3
 	.byte	0
 	.uleb128 0x8
 	.string	"foo"
 	.byte	0x1
 	.byte	0x10
-	.quad	.LFB141
-	.quad	.LFE141-.LFB141
+	.long	.LFB170
+	.long	.LFE170-.LFB170
 	.uleb128 0x1
 	.byte	0x9c
 	.uleb128 0x9
-	.long	.LASF54
+	.long	.LASF52
 	.byte	0x4
 	.byte	0x34
-	.long	0x65
+	.long	0x5d
 	.uleb128 0xa
-	.long	0x49
-	.long	0x1cb
+	.long	0x41
+	.long	0x1af
 	.uleb128 0xb
 	.byte	0
 	.uleb128 0x9
-	.long	.LASF55
+	.long	.LASF53
 	.byte	0x5
 	.byte	0x25
-	.long	0x1c0
+	.long	0x1a4
 	.uleb128 0xc
-	.long	.LASF56
+	.long	.LASF54
 	.byte	0x6
 	.value	0x1a8
-	.long	0x49
+	.long	0x41
 	.uleb128 0xa
-	.long	0x73
-	.long	0x1ed
+	.long	0x6b
+	.long	0x1d1
 	.uleb128 0xb
 	.byte	0
 	.uleb128 0xc
-	.long	.LASF57
+	.long	.LASF55
 	.byte	0x6
 	.value	0x1d9
-	.long	0x1f9
+	.long	0x1dd
 	.uleb128 0xd
-	.long	0x1e2
+	.long	0x1c6
 	.uleb128 0xc
-	.long	.LASF58
+	.long	.LASF56
 	.byte	0x6
 	.value	0x1e4
-	.long	0x20a
+	.long	0x1ee
 	.uleb128 0xd
-	.long	0x1e2
+	.long	0x1c6
 	.byte	0
 	.section	.debug_abbrev,"",@progbits
 .Ldebug_abbrev0:
@@ -412,7 +406,7 @@ foo:
 	.uleb128 0x11
 	.uleb128 0x1
 	.uleb128 0x12
-	.uleb128 0x7
+	.uleb128 0x6
 	.uleb128 0x10
 	.uleb128 0x17
 	.byte	0
@@ -507,7 +501,7 @@ foo:
 	.uleb128 0x11
 	.uleb128 0x1
 	.uleb128 0x12
-	.uleb128 0x7
+	.uleb128 0x6
 	.uleb128 0x40
 	.uleb128 0x18
 	.uleb128 0x2117
@@ -571,147 +565,143 @@ foo:
 	.byte	0
 	.byte	0
 	.section	.debug_aranges,"",@progbits
-	.long	0x2c
+	.long	0x1c
 	.value	0x2
 	.long	.Ldebug_info0
-	.byte	0x8
+	.byte	0x4
 	.byte	0
 	.value	0
 	.value	0
-	.quad	.Ltext0
-	.quad	.Letext0-.Ltext0
-	.quad	0
-	.quad	0
+	.long	.Ltext0
+	.long	.Letext0-.Ltext0
+	.long	0
+	.long	0
 	.section	.debug_line,"",@progbits
 .Ldebug_line0:
 	.section	.debug_str,"MS",@progbits,1
-.LASF38:
-	.string	"PG_checked"
-.LASF48:
-	.string	"ZONE_MOVABLE"
-.LASF58:
-	.string	"hex_asc_upper"
-.LASF34:
-	.string	"PG_uncached"
-.LASF6:
-	.string	"long long unsigned int"
-.LASF44:
-	.string	"zone_type"
-.LASF37:
-	.string	"__NR_PAGEFLAGS"
-.LASF5:
-	.string	"long long int"
-.LASF0:
-	.string	"signed char"
-.LASF24:
-	.string	"PG_private_2"
-.LASF16:
-	.string	"PG_dirty"
-.LASF43:
-	.string	"pageflags"
-.LASF60:
-	.string	"kernel/bounds.c"
-.LASF10:
-	.string	"long int"
-.LASF21:
-	.string	"PG_arch_1"
-.LASF27:
-	.string	"PG_tail"
-.LASF12:
-	.string	"PG_locked"
-.LASF51:
-	.string	"PCG_USED"
-.LASF17:
-	.string	"PG_lru"
-.LASF14:
-	.string	"PG_referenced"
-.LASF46:
-	.string	"ZONE_DMA32"
-.LASF4:
-	.string	"unsigned int"
-.LASF23:
-	.string	"PG_private"
-.LASF7:
-	.string	"long unsigned int"
-.LASF55:
-	.string	"console_printk"
-.LASF3:
-	.string	"short unsigned int"
-.LASF53:
-	.string	"__NR_PCG_FLAGS"
-.LASF41:
-	.string	"PG_savepinned"
-.LASF30:
-	.string	"PG_reclaim"
-.LASF52:
-	.string	"PCG_MIGRATION"
-.LASF8:
-	.string	"sizetype"
-.LASF40:
-	.string	"PG_pinned"
-.LASF25:
-	.string	"PG_writeback"
-.LASF33:
-	.string	"PG_mlocked"
-.LASF56:
-	.string	"panic_timeout"
 .LASF50:
-	.string	"PCG_LOCK"
-.LASF47:
-	.string	"ZONE_NORMAL"
-.LASF15:
-	.string	"PG_uptodate"
-.LASF36:
-	.string	"PG_compound_lock"
-.LASF11:
-	.string	"_Bool"
-.LASF1:
-	.string	"unsigned char"
-.LASF28:
-	.string	"PG_swapcache"
-.LASF2:
-	.string	"short int"
-.LASF45:
-	.string	"ZONE_DMA"
-.LASF19:
-	.string	"PG_slab"
-.LASF49:
-	.string	"__MAX_NR_ZONES"
-.LASF54:
-	.string	"max_pfn_mapped"
-.LASF9:
-	.string	"char"
-.LASF26:
-	.string	"PG_head"
-.LASF42:
-	.string	"PG_slob_free"
-.LASF13:
-	.string	"PG_error"
-.LASF20:
-	.string	"PG_owner_priv_1"
-.LASF29:
-	.string	"PG_mappedtodisk"
+	.string	"PCG_MIGRATION"
+.LASF37:
+	.string	"PG_fscache"
+.LASF53:
+	.string	"console_printk"
 .LASF22:
 	.string	"PG_reserved"
-.LASF59:
-	.ascii	"GNU C 4.9.1 -m64 -mpreferred-stack-boundary=3 -mtune=generic"
-	.ascii	" -mno-red-zone -mcmodel=kernel -maccumulate-outgoing-args -m"
-	.ascii	"no-sse -mno-mmx -mno-sse2 -mno-3dnow -mno-avx -mfentry -marc"
-	.ascii	"h=x86-64 -g -O2 -p -fno-strict-aliasing -fno-common"
-	.string	" -fno-delete-null-pointer-checks -funit-at-a-time -fno-asynchronous-unwind-tables -fno-stack-protector -fno-omit-frame-pointer -fno-optimize-sibling-calls -fno-var-tracking-assignments -fno-inline-functions-called-once -fno-strict-overflow -fconserve-stack"
-.LASF18:
-	.string	"PG_active"
-.LASF57:
-	.string	"hex_asc"
-.LASF39:
-	.string	"PG_fscache"
-.LASF61:
-	.string	"/scratch/spring2017/10-03/linux-yocto-3.14"
+.LASF44:
+	.string	"ZONE_NORMAL"
+.LASF29:
+	.string	"PG_mappedtodisk"
+.LASF12:
+	.string	"PG_locked"
+.LASF16:
+	.string	"PG_dirty"
+.LASF10:
+	.string	"long int"
+.LASF25:
+	.string	"PG_writeback"
+.LASF23:
+	.string	"PG_private"
 .LASF35:
-	.string	"PG_hwpoison"
+	.string	"__NR_PAGEFLAGS"
+.LASF34:
+	.string	"PG_uncached"
+.LASF47:
+	.string	"__MAX_NR_ZONES"
+.LASF14:
+	.string	"PG_referenced"
+.LASF28:
+	.string	"PG_swapcache"
+.LASF58:
+	.string	"kernel/bounds.c"
+.LASF42:
+	.string	"zone_type"
+.LASF7:
+	.string	"long unsigned int"
+.LASF26:
+	.string	"PG_head"
 .LASF31:
 	.string	"PG_swapbacked"
+.LASF39:
+	.string	"PG_savepinned"
+.LASF52:
+	.string	"max_pfn_mapped"
+.LASF36:
+	.string	"PG_checked"
+.LASF1:
+	.string	"unsigned char"
+.LASF17:
+	.string	"PG_lru"
+.LASF20:
+	.string	"PG_owner_priv_1"
+.LASF3:
+	.string	"short unsigned int"
+.LASF41:
+	.string	"pageflags"
+.LASF48:
+	.string	"PCG_LOCK"
+.LASF45:
+	.string	"ZONE_HIGHMEM"
+.LASF4:
+	.string	"unsigned int"
+.LASF57:
+	.ascii	"GNU C 4.9.1 -m32 -msoft-float -mregparm=3 -mpreferred-stack-"
+	.ascii	"boundary=2 -march=i686 -mtune=pentium3 -mtune=generic -maccu"
+	.ascii	"mulate-outgoing-args -mno-sse -mno-mmx -mno-sse2 -mno-3dnow "
+	.ascii	"-mno-avx -g -O2 -p -fno-strict-aliasing -fno"
+	.string	"-common -fno-delete-null-pointer-checks -freg-struct-return -fno-pic -ffreestanding -fno-asynchronous-unwind-tables -fno-stack-protector -fno-omit-frame-pointer -fno-optimize-sibling-calls -fno-var-tracking-assignments -fno-strict-overflow -fconserve-stack"
+.LASF59:
+	.string	"/scratch/spring2017/10-03/linux-yocto-3.14"
+.LASF6:
+	.string	"long long unsigned int"
+.LASF38:
+	.string	"PG_pinned"
+.LASF56:
+	.string	"hex_asc_upper"
+.LASF18:
+	.string	"PG_active"
+.LASF8:
+	.string	"sizetype"
+.LASF24:
+	.string	"PG_private_2"
+.LASF5:
+	.string	"long long int"
+.LASF9:
+	.string	"char"
 .LASF32:
 	.string	"PG_unevictable"
+.LASF19:
+	.string	"PG_slab"
+.LASF27:
+	.string	"PG_tail"
+.LASF2:
+	.string	"short int"
+.LASF55:
+	.string	"hex_asc"
+.LASF49:
+	.string	"PCG_USED"
+.LASF21:
+	.string	"PG_arch_1"
+.LASF13:
+	.string	"PG_error"
+.LASF40:
+	.string	"PG_slob_free"
+.LASF46:
+	.string	"ZONE_MOVABLE"
+.LASF15:
+	.string	"PG_uptodate"
+.LASF51:
+	.string	"__NR_PCG_FLAGS"
+.LASF0:
+	.string	"signed char"
+.LASF30:
+	.string	"PG_reclaim"
+.LASF54:
+	.string	"panic_timeout"
+.LASF11:
+	.string	"_Bool"
+.LASF33:
+	.string	"PG_mlocked"
+.LASF43:
+	.string	"ZONE_DMA"
 	.ident	"GCC: (GNU) 4.9.1"
 	.section	.note.GNU-stack,"",@progbits

@@ -1,1 +1,0 @@
-cmd_drivers/acpi/apei/built-in.o :=  i586-poky-linux-ld -m elf_x86_64   -r -o drivers/acpi/apei/built-in.o drivers/acpi/apei/apei.o drivers/acpi/apei/ghes.o ; scripts/mod/modpost drivers/acpi/apei/built-in.o

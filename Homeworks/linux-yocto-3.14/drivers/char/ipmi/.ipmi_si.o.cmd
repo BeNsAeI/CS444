@@ -1,1 +1,0 @@
-cmd_drivers/char/ipmi/ipmi_si.o := i586-poky-linux-ld -m elf_x86_64   -r -o drivers/char/ipmi/ipmi_si.o drivers/char/ipmi/ipmi_si_intf.o drivers/char/ipmi/ipmi_kcs_sm.o drivers/char/ipmi/ipmi_smic_sm.o drivers/char/ipmi/ipmi_bt_sm.o ; scripts/mod/modpost drivers/char/ipmi/ipmi_si.o

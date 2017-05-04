@@ -1,1 +1,0 @@
-cmd_drivers/scsi/device_handler/built-in.o :=  i586-poky-linux-ld -m elf_x86_64   -r -o drivers/scsi/device_handler/built-in.o drivers/scsi/device_handler/scsi_dh.o ; scripts/mod/modpost drivers/scsi/device_handler/built-in.o

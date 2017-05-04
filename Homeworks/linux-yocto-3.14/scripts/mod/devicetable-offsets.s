@@ -8,32 +8,31 @@
 # -I /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi
 # -I arch/x86/include/generated/uapi
 # -I /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi
-# -I include/generated/uapi -imultilib .
+# -I include/generated/uapi
 # -iprefix /scratch/opt/sysroots/x86_64-pokysdk-linux/usr/bin/i586-poky-linux/../../lib/i586-poky-linux/gcc/i586-poky-linux/4.9.1/
 # -isysroot /scratch/opt/sysroots/i586-poky-linux -D __KERNEL__
 # -D CONFIG_AS_CFI=1 -D CONFIG_AS_CFI_SIGNAL_FRAME=1
-# -D CONFIG_AS_CFI_SECTIONS=1 -D CONFIG_AS_FXSAVEQ=1 -D CONFIG_AS_CRC32=1
-# -D CONFIG_AS_AVX=1 -D CONFIG_AS_AVX2=1 -D CC_USING_FENTRY
-# -D CC_HAVE_ASM_GOTO -D KBUILD_STR(s)=#s
+# -D CONFIG_AS_CFI_SECTIONS=1 -D CONFIG_AS_CRC32=1 -D CONFIG_AS_AVX=1
+# -D CONFIG_AS_AVX2=1 -D CC_HAVE_ASM_GOTO -D KBUILD_STR(s)=#s
 # -D KBUILD_BASENAME=KBUILD_STR(devicetable_offsets)
 # -D KBUILD_MODNAME=KBUILD_STR(devicetable_offsets)
 # -isystem /scratch/opt/sysroots/x86_64-pokysdk-linux/usr/bin/i586-poky-linux/../../lib/i586-poky-linux/gcc/i586-poky-linux/4.9.1/include
 # -include /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/linux/kconfig.h
 # -MD scripts/mod/.devicetable-offsets.s.d
-# scripts/mod/devicetable-offsets.c -m64 -mpreferred-stack-boundary=3
-# -mtune=generic -mno-red-zone -mcmodel=kernel -maccumulate-outgoing-args
-# -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -mno-avx -mfentry -march=x86-64
-# -auxbase-strip scripts/mod/devicetable-offsets.s -g -O2 -Wall -Wundef
-# -Wstrict-prototypes -Wno-trigraphs -Werror=implicit-function-declaration
-# -Wno-format-security -Wno-sign-compare -Wframe-larger-than=2048
-# -Wno-unused-but-set-variable -Wdeclaration-after-statement
-# -Wno-pointer-sign -Werror=implicit-int -Werror=strict-prototypes
-# -Werror=date-time -p -fno-strict-aliasing -fno-common
-# -fno-delete-null-pointer-checks -funit-at-a-time
-# -fno-asynchronous-unwind-tables -fno-stack-protector
+# scripts/mod/devicetable-offsets.c -m32 -msoft-float -mregparm=3
+# -mpreferred-stack-boundary=2 -march=i686 -mtune=pentium3 -mtune=generic
+# -maccumulate-outgoing-args -mno-sse -mno-mmx -mno-sse2 -mno-3dnow
+# -mno-avx -auxbase-strip scripts/mod/devicetable-offsets.s -g -O2 -Wall
+# -Wundef -Wstrict-prototypes -Wno-trigraphs
+# -Werror=implicit-function-declaration -Wno-format-security
+# -Wno-sign-compare -Wframe-larger-than=1024 -Wno-unused-but-set-variable
+# -Wdeclaration-after-statement -Wno-pointer-sign -Werror=implicit-int
+# -Werror=strict-prototypes -Werror=date-time -p -fno-strict-aliasing
+# -fno-common -fno-delete-null-pointer-checks -freg-struct-return -fno-pic
+# -ffreestanding -fno-asynchronous-unwind-tables -fno-stack-protector
 # -fno-omit-frame-pointer -fno-optimize-sibling-calls
-# -fno-var-tracking-assignments -fno-inline-functions-called-once
-# -fno-strict-overflow -fconserve-stack -fverbose-asm
+# -fno-var-tracking-assignments -fno-strict-overflow -fconserve-stack
+# -fverbose-asm
 # options enabled:  -faggressive-loop-optimizations -fauto-inc-dec
 # -fbranch-count-reg -fcaller-saves -fcombine-stack-adjustments
 # -fcompare-elim -fcprop-registers -fcrossjumping -fcse-follow-jumps
@@ -42,9 +41,9 @@
 # -fforward-propagate -ffunction-cse -fgcse -fgcse-lm -fgnu-runtime
 # -fgnu-unique -fguess-branch-probability -fhoist-adjacent-loads -fident
 # -fif-conversion -fif-conversion2 -findirect-inlining -finline
-# -finline-atomics -finline-small-functions -fipa-cp -fipa-profile
-# -fipa-pure-const -fipa-reference -fipa-sra -fira-hoist-pressure
-# -fira-share-save-slots -fira-share-spill-slots
+# -finline-atomics -finline-functions-called-once -finline-small-functions
+# -fipa-cp -fipa-profile -fipa-pure-const -fipa-reference -fipa-sra
+# -fira-hoist-pressure -fira-share-save-slots -fira-share-spill-slots
 # -fisolate-erroneous-paths-dereference -fivopts -fkeep-static-consts
 # -fleading-underscore -fmath-errno -fmerge-constants -fmerge-debug-strings
 # -fmove-loop-invariants -foptimize-strlen -fpartial-inlining -fpeephole
@@ -65,12 +64,11 @@
 # -ftree-pta -ftree-reassoc -ftree-scev-cprop -ftree-sink -ftree-slsr
 # -ftree-sra -ftree-switch-conversion -ftree-tail-merge -ftree-ter
 # -ftree-vrp -funit-at-a-time -fvar-tracking -fverbose-asm
-# -fzero-initialized-in-bss -m128bit-long-double -m64 -m80387
+# -fzero-initialized-in-bss -m32 -m96bit-long-double
 # -maccumulate-outgoing-args -malign-stringops
-# -mavx256-split-unaligned-load -mavx256-split-unaligned-store
-# -mfancy-math-387 -mfentry -mfp-ret-in-387 -mfxsr -mglibc -mieee-fp
-# -mlong-double-80 -mno-red-zone -mno-sse4 -mpush-args
-# -mtls-direct-seg-refs -mvzeroupper
+# -mavx256-split-unaligned-load -mavx256-split-unaligned-store -mglibc
+# -mieee-fp -mlong-double-80 -mno-fancy-math-387 -mno-red-zone -mno-sse4
+# -mpush-args -msahf -mtls-direct-seg-refs -mvzeroupper
 
 	.text
 .Ltext0:
@@ -86,21 +84,22 @@
 	.globl	main
 	.type	main, @function
 main:
-.LFB6:
+.LFB10:
 	.file 1 "scripts/mod/devicetable-offsets.c"
 	.loc 1 9 0
 	.cfi_startproc
-	call	__fentry__
-	pushq	%rbp	#
-	.cfi_def_cfa_offset 16
-	.cfi_offset 6, -16
-	movq	%rsp, %rbp	#,
-	.cfi_def_cfa_register 6
+	pushl	%ebp	#
+	.cfi_def_cfa_offset 8
+	.cfi_offset 5, -8
+	movl	%esp, %ebp	#,
+	.cfi_def_cfa_register 5
+	call	mcount
+	.loc 1 9 0
 	.loc 1 10 0
 #APP
 # 10 "scripts/mod/devicetable-offsets.c" 1
 	
-->SIZE_usb_device_id $32 sizeof(struct usb_device_id)	#
+->SIZE_usb_device_id $24 sizeof(struct usb_device_id)	#
 # 0 "" 2
 	.loc 1 11 0
 # 11 "scripts/mod/devicetable-offsets.c" 1
@@ -165,7 +164,7 @@ main:
 	.loc 1 24 0
 # 24 "scripts/mod/devicetable-offsets.c" 1
 	
-->SIZE_hid_device_id $24 sizeof(struct hid_device_id)	#
+->SIZE_hid_device_id $16 sizeof(struct hid_device_id)	#
 # 0 "" 2
 	.loc 1 25 0
 # 25 "scripts/mod/devicetable-offsets.c" 1
@@ -190,7 +189,7 @@ main:
 	.loc 1 30 0
 # 30 "scripts/mod/devicetable-offsets.c" 1
 	
-->SIZE_ieee1394_device_id $32 sizeof(struct ieee1394_device_id)	#
+->SIZE_ieee1394_device_id $24 sizeof(struct ieee1394_device_id)	#
 # 0 "" 2
 	.loc 1 31 0
 # 31 "scripts/mod/devicetable-offsets.c" 1
@@ -220,7 +219,7 @@ main:
 	.loc 1 37 0
 # 37 "scripts/mod/devicetable-offsets.c" 1
 	
-->SIZE_pci_device_id $32 sizeof(struct pci_device_id)	#
+->SIZE_pci_device_id $28 sizeof(struct pci_device_id)	#
 # 0 "" 2
 	.loc 1 38 0
 # 38 "scripts/mod/devicetable-offsets.c" 1
@@ -255,7 +254,7 @@ main:
 	.loc 1 45 0
 # 45 "scripts/mod/devicetable-offsets.c" 1
 	
-->SIZE_ccw_device_id $16 sizeof(struct ccw_device_id)	#
+->SIZE_ccw_device_id $12 sizeof(struct ccw_device_id)	#
 # 0 "" 2
 	.loc 1 46 0
 # 46 "scripts/mod/devicetable-offsets.c" 1
@@ -285,7 +284,7 @@ main:
 	.loc 1 52 0
 # 52 "scripts/mod/devicetable-offsets.c" 1
 	
-->SIZE_ap_device_id $16 sizeof(struct ap_device_id)	#
+->SIZE_ap_device_id $8 sizeof(struct ap_device_id)	#
 # 0 "" 2
 	.loc 1 53 0
 # 53 "scripts/mod/devicetable-offsets.c" 1
@@ -295,7 +294,7 @@ main:
 	.loc 1 55 0
 # 55 "scripts/mod/devicetable-offsets.c" 1
 	
-->SIZE_css_device_id $16 sizeof(struct css_device_id)	#
+->SIZE_css_device_id $8 sizeof(struct css_device_id)	#
 # 0 "" 2
 	.loc 1 56 0
 # 56 "scripts/mod/devicetable-offsets.c" 1
@@ -330,7 +329,7 @@ main:
 	.loc 1 64 0
 # 64 "scripts/mod/devicetable-offsets.c" 1
 	
-->SIZE_acpi_device_id $24 sizeof(struct acpi_device_id)	#
+->SIZE_acpi_device_id $16 sizeof(struct acpi_device_id)	#
 # 0 "" 2
 	.loc 1 65 0
 # 65 "scripts/mod/devicetable-offsets.c" 1
@@ -340,7 +339,7 @@ main:
 	.loc 1 67 0
 # 67 "scripts/mod/devicetable-offsets.c" 1
 	
-->SIZE_pnp_device_id $16 sizeof(struct pnp_device_id)	#
+->SIZE_pnp_device_id $12 sizeof(struct pnp_device_id)	#
 # 0 "" 2
 	.loc 1 68 0
 # 68 "scripts/mod/devicetable-offsets.c" 1
@@ -350,17 +349,17 @@ main:
 	.loc 1 70 0
 # 70 "scripts/mod/devicetable-offsets.c" 1
 	
-->SIZE_pnp_card_device_id $80 sizeof(struct pnp_card_device_id)	#
+->SIZE_pnp_card_device_id $76 sizeof(struct pnp_card_device_id)	#
 # 0 "" 2
 	.loc 1 71 0
 # 71 "scripts/mod/devicetable-offsets.c" 1
 	
-->OFF_pnp_card_device_id_devs $16 offsetof(struct pnp_card_device_id, devs)	#
+->OFF_pnp_card_device_id_devs $12 offsetof(struct pnp_card_device_id, devs)	#
 # 0 "" 2
 	.loc 1 73 0
 # 73 "scripts/mod/devicetable-offsets.c" 1
 	
-->SIZE_pcmcia_device_id $80 sizeof(struct pcmcia_device_id)	#
+->SIZE_pcmcia_device_id $52 sizeof(struct pcmcia_device_id)	#
 # 0 "" 2
 	.loc 1 74 0
 # 74 "scripts/mod/devicetable-offsets.c" 1
@@ -400,7 +399,7 @@ main:
 	.loc 1 82 0
 # 82 "scripts/mod/devicetable-offsets.c" 1
 	
-->SIZE_of_device_id $200 sizeof(struct of_device_id)	#
+->SIZE_of_device_id $196 sizeof(struct of_device_id)	#
 # 0 "" 2
 	.loc 1 83 0
 # 83 "scripts/mod/devicetable-offsets.c" 1
@@ -435,7 +434,7 @@ main:
 	.loc 1 91 0
 # 91 "scripts/mod/devicetable-offsets.c" 1
 	
-->SIZE_input_device_id $192 sizeof(struct input_device_id)	#
+->SIZE_input_device_id $160 sizeof(struct input_device_id)	#
 # 0 "" 2
 	.loc 1 92 0
 # 92 "scripts/mod/devicetable-offsets.c" 1
@@ -445,72 +444,72 @@ main:
 	.loc 1 93 0
 # 93 "scripts/mod/devicetable-offsets.c" 1
 	
-->OFF_input_device_id_bustype $8 offsetof(struct input_device_id, bustype)	#
+->OFF_input_device_id_bustype $4 offsetof(struct input_device_id, bustype)	#
 # 0 "" 2
 	.loc 1 94 0
 # 94 "scripts/mod/devicetable-offsets.c" 1
 	
-->OFF_input_device_id_vendor $10 offsetof(struct input_device_id, vendor)	#
+->OFF_input_device_id_vendor $6 offsetof(struct input_device_id, vendor)	#
 # 0 "" 2
 	.loc 1 95 0
 # 95 "scripts/mod/devicetable-offsets.c" 1
 	
-->OFF_input_device_id_product $12 offsetof(struct input_device_id, product)	#
+->OFF_input_device_id_product $8 offsetof(struct input_device_id, product)	#
 # 0 "" 2
 	.loc 1 96 0
 # 96 "scripts/mod/devicetable-offsets.c" 1
 	
-->OFF_input_device_id_version $14 offsetof(struct input_device_id, version)	#
+->OFF_input_device_id_version $10 offsetof(struct input_device_id, version)	#
 # 0 "" 2
 	.loc 1 97 0
 # 97 "scripts/mod/devicetable-offsets.c" 1
 	
-->OFF_input_device_id_evbit $16 offsetof(struct input_device_id, evbit)	#
+->OFF_input_device_id_evbit $12 offsetof(struct input_device_id, evbit)	#
 # 0 "" 2
 	.loc 1 98 0
 # 98 "scripts/mod/devicetable-offsets.c" 1
 	
-->OFF_input_device_id_keybit $24 offsetof(struct input_device_id, keybit)	#
+->OFF_input_device_id_keybit $16 offsetof(struct input_device_id, keybit)	#
 # 0 "" 2
 	.loc 1 99 0
 # 99 "scripts/mod/devicetable-offsets.c" 1
 	
-->OFF_input_device_id_relbit $120 offsetof(struct input_device_id, relbit)	#
+->OFF_input_device_id_relbit $112 offsetof(struct input_device_id, relbit)	#
 # 0 "" 2
 	.loc 1 100 0
 # 100 "scripts/mod/devicetable-offsets.c" 1
 	
-->OFF_input_device_id_absbit $128 offsetof(struct input_device_id, absbit)	#
+->OFF_input_device_id_absbit $116 offsetof(struct input_device_id, absbit)	#
 # 0 "" 2
 	.loc 1 101 0
 # 101 "scripts/mod/devicetable-offsets.c" 1
 	
-->OFF_input_device_id_mscbit $136 offsetof(struct input_device_id, mscbit)	#
+->OFF_input_device_id_mscbit $124 offsetof(struct input_device_id, mscbit)	#
 # 0 "" 2
 	.loc 1 102 0
 # 102 "scripts/mod/devicetable-offsets.c" 1
 	
-->OFF_input_device_id_ledbit $144 offsetof(struct input_device_id, ledbit)	#
+->OFF_input_device_id_ledbit $128 offsetof(struct input_device_id, ledbit)	#
 # 0 "" 2
 	.loc 1 103 0
 # 103 "scripts/mod/devicetable-offsets.c" 1
 	
-->OFF_input_device_id_sndbit $152 offsetof(struct input_device_id, sndbit)	#
+->OFF_input_device_id_sndbit $132 offsetof(struct input_device_id, sndbit)	#
 # 0 "" 2
 	.loc 1 104 0
 # 104 "scripts/mod/devicetable-offsets.c" 1
 	
-->OFF_input_device_id_ffbit $160 offsetof(struct input_device_id, ffbit)	#
+->OFF_input_device_id_ffbit $136 offsetof(struct input_device_id, ffbit)	#
 # 0 "" 2
 	.loc 1 105 0
 # 105 "scripts/mod/devicetable-offsets.c" 1
 	
-->OFF_input_device_id_swbit $176 offsetof(struct input_device_id, swbit)	#
+->OFF_input_device_id_swbit $152 offsetof(struct input_device_id, swbit)	#
 # 0 "" 2
 	.loc 1 107 0
 # 107 "scripts/mod/devicetable-offsets.c" 1
 	
-->SIZE_eisa_device_id $16 sizeof(struct eisa_device_id)	#
+->SIZE_eisa_device_id $12 sizeof(struct eisa_device_id)	#
 # 0 "" 2
 	.loc 1 108 0
 # 108 "scripts/mod/devicetable-offsets.c" 1
@@ -545,7 +544,7 @@ main:
 	.loc 1 116 0
 # 116 "scripts/mod/devicetable-offsets.c" 1
 	
-->SIZE_sdio_device_id $16 sizeof(struct sdio_device_id)	#
+->SIZE_sdio_device_id $12 sizeof(struct sdio_device_id)	#
 # 0 "" 2
 	.loc 1 117 0
 # 117 "scripts/mod/devicetable-offsets.c" 1
@@ -625,7 +624,7 @@ main:
 	.loc 1 136 0
 # 136 "scripts/mod/devicetable-offsets.c" 1
 	
-->SIZE_hv_vmbus_device_id $24 sizeof(struct hv_vmbus_device_id)	#
+->SIZE_hv_vmbus_device_id $20 sizeof(struct hv_vmbus_device_id)	#
 # 0 "" 2
 	.loc 1 137 0
 # 137 "scripts/mod/devicetable-offsets.c" 1
@@ -635,7 +634,7 @@ main:
 	.loc 1 139 0
 # 139 "scripts/mod/devicetable-offsets.c" 1
 	
-->SIZE_i2c_device_id $32 sizeof(struct i2c_device_id)	#
+->SIZE_i2c_device_id $24 sizeof(struct i2c_device_id)	#
 # 0 "" 2
 	.loc 1 140 0
 # 140 "scripts/mod/devicetable-offsets.c" 1
@@ -645,7 +644,7 @@ main:
 	.loc 1 142 0
 # 142 "scripts/mod/devicetable-offsets.c" 1
 	
-->SIZE_spi_device_id $40 sizeof(struct spi_device_id)	#
+->SIZE_spi_device_id $36 sizeof(struct spi_device_id)	#
 # 0 "" 2
 	.loc 1 143 0
 # 143 "scripts/mod/devicetable-offsets.c" 1
@@ -655,17 +654,17 @@ main:
 	.loc 1 145 0
 # 145 "scripts/mod/devicetable-offsets.c" 1
 	
-->SIZE_dmi_system_id $344 sizeof(struct dmi_system_id)	#
+->SIZE_dmi_system_id $332 sizeof(struct dmi_system_id)	#
 # 0 "" 2
 	.loc 1 146 0
 # 146 "scripts/mod/devicetable-offsets.c" 1
 	
-->OFF_dmi_system_id_matches $16 offsetof(struct dmi_system_id, matches)	#
+->OFF_dmi_system_id_matches $8 offsetof(struct dmi_system_id, matches)	#
 # 0 "" 2
 	.loc 1 148 0
 # 148 "scripts/mod/devicetable-offsets.c" 1
 	
-->SIZE_platform_device_id $32 sizeof(struct platform_device_id)	#
+->SIZE_platform_device_id $24 sizeof(struct platform_device_id)	#
 # 0 "" 2
 	.loc 1 149 0
 # 149 "scripts/mod/devicetable-offsets.c" 1
@@ -690,7 +689,7 @@ main:
 	.loc 1 155 0
 # 155 "scripts/mod/devicetable-offsets.c" 1
 	
-->SIZE_zorro_device_id $16 sizeof(struct zorro_device_id)	#
+->SIZE_zorro_device_id $8 sizeof(struct zorro_device_id)	#
 # 0 "" 2
 	.loc 1 156 0
 # 156 "scripts/mod/devicetable-offsets.c" 1
@@ -700,7 +699,7 @@ main:
 	.loc 1 158 0
 # 158 "scripts/mod/devicetable-offsets.c" 1
 	
-->SIZE_isapnp_device_id $16 sizeof(struct isapnp_device_id)	#
+->SIZE_isapnp_device_id $12 sizeof(struct isapnp_device_id)	#
 # 0 "" 2
 	.loc 1 159 0
 # 159 "scripts/mod/devicetable-offsets.c" 1
@@ -735,7 +734,7 @@ main:
 	.loc 1 167 0
 # 167 "scripts/mod/devicetable-offsets.c" 1
 	
-->SIZE_amba_id $16 sizeof(struct amba_id)	#
+->SIZE_amba_id $12 sizeof(struct amba_id)	#
 # 0 "" 2
 	.loc 1 168 0
 # 168 "scripts/mod/devicetable-offsets.c" 1
@@ -750,7 +749,7 @@ main:
 	.loc 1 171 0
 # 171 "scripts/mod/devicetable-offsets.c" 1
 	
-->SIZE_x86_cpu_id $16 sizeof(struct x86_cpu_id)	#
+->SIZE_x86_cpu_id $12 sizeof(struct x86_cpu_id)	#
 # 0 "" 2
 	.loc 1 172 0
 # 172 "scripts/mod/devicetable-offsets.c" 1
@@ -775,7 +774,7 @@ main:
 	.loc 1 177 0
 # 177 "scripts/mod/devicetable-offsets.c" 1
 	
-->SIZE_mei_cl_device_id $40 sizeof(struct mei_cl_device_id)	#
+->SIZE_mei_cl_device_id $36 sizeof(struct mei_cl_device_id)	#
 # 0 "" 2
 	.loc 1 178 0
 # 178 "scripts/mod/devicetable-offsets.c" 1
@@ -810,12 +809,12 @@ main:
 	.loc 1 187 0
 #NO_APP
 	xorl	%eax, %eax	#
-	popq	%rbp	#
-	.cfi_restore 6
-	.cfi_def_cfa 7, 8
+	popl	%ebp	#
+	.cfi_restore 5
+	.cfi_def_cfa 4, 4
 	ret
 	.cfi_endproc
-.LFE6:
+.LFE10:
 	.size	main, .-main
 	.section	.text.unlikely
 .LCOLDE0:
@@ -827,17 +826,17 @@ main:
 .Letext_cold0:
 	.section	.debug_info,"",@progbits
 .Ldebug_info0:
-	.long	0x9e
+	.long	0x92
 	.value	0x4
 	.long	.Ldebug_abbrev0
-	.byte	0x8
+	.byte	0x4
 	.uleb128 0x1
 	.long	.LASF12
 	.byte	0x1
 	.long	.LASF13
 	.long	.LASF14
 	.long	.Ldebug_ranges0+0
-	.quad	0
+	.long	0
 	.long	.Ldebug_line0
 	.uleb128 0x2
 	.byte	0x1
@@ -872,11 +871,11 @@ main:
 	.byte	0x7
 	.long	.LASF6
 	.uleb128 0x2
-	.byte	0x8
+	.byte	0x4
 	.byte	0x7
 	.long	.LASF7
 	.uleb128 0x2
-	.byte	0x8
+	.byte	0x4
 	.byte	0x7
 	.long	.LASF8
 	.uleb128 0x2
@@ -884,7 +883,7 @@ main:
 	.byte	0x6
 	.long	.LASF9
 	.uleb128 0x2
-	.byte	0x8
+	.byte	0x4
 	.byte	0x5
 	.long	.LASF10
 	.uleb128 0x2
@@ -895,9 +894,9 @@ main:
 	.long	.LASF15
 	.byte	0x1
 	.byte	0x8
-	.long	0x45
-	.quad	.LFB6
-	.quad	.LFE6-.LFB6
+	.long	0x41
+	.long	.LFB10
+	.long	.LFE10-.LFB10
 	.uleb128 0x1
 	.byte	0x9c
 	.byte	0
@@ -962,7 +961,7 @@ main:
 	.uleb128 0x11
 	.uleb128 0x1
 	.uleb128 0x12
-	.uleb128 0x7
+	.uleb128 0x6
 	.uleb128 0x40
 	.uleb128 0x18
 	.uleb128 0x2117
@@ -971,23 +970,23 @@ main:
 	.byte	0
 	.byte	0
 	.section	.debug_aranges,"",@progbits
-	.long	0x2c
+	.long	0x1c
 	.value	0x2
 	.long	.Ldebug_info0
-	.byte	0x8
+	.byte	0x4
 	.byte	0
 	.value	0
 	.value	0
-	.quad	.LFB6
-	.quad	.LFE6-.LFB6
-	.quad	0
-	.quad	0
+	.long	.LFB10
+	.long	.LFE10-.LFB10
+	.long	0
+	.long	0
 	.section	.debug_ranges,"",@progbits
 .Ldebug_ranges0:
-	.quad	.LFB6
-	.quad	.LFE6
-	.quad	0
-	.quad	0
+	.long	.LFB10
+	.long	.LFE10
+	.long	0
+	.long	0
 	.section	.debug_line,"",@progbits
 .Ldebug_line0:
 	.section	.debug_str,"MS",@progbits,1
@@ -996,11 +995,11 @@ main:
 .LASF4:
 	.string	"unsigned int"
 .LASF12:
-	.ascii	"GNU C 4.9.1 -m64 -mpreferred-stack-boundary=3 -mtune=generic"
-	.ascii	" -mno-red-zone -mcmodel=kernel -maccumulate-outgoing-args -m"
-	.ascii	"no-sse -mno-mmx -mno-sse2 -mno-3dnow -mno-avx -mfentry -marc"
-	.ascii	"h=x86-64 -g -O2 -p -fno-strict-aliasing -fno-common"
-	.string	" -fno-delete-null-pointer-checks -funit-at-a-time -fno-asynchronous-unwind-tables -fno-stack-protector -fno-omit-frame-pointer -fno-optimize-sibling-calls -fno-var-tracking-assignments -fno-inline-functions-called-once -fno-strict-overflow -fconserve-stack"
+	.ascii	"GNU C 4.9.1 -m32 -msoft-float -mregparm=3 -mpreferred-stack-"
+	.ascii	"boundary=2 -march=i686 -mtune=pentium3 -mtune=generic -maccu"
+	.ascii	"mulate-outgoing-args -mno-sse -mno-mmx -mno-sse2 -mno-3dnow "
+	.ascii	"-mno-avx -g -O2 -p -fno-strict-aliasing -fno"
+	.string	"-common -fno-delete-null-pointer-checks -freg-struct-return -fno-pic -ffreestanding -fno-asynchronous-unwind-tables -fno-stack-protector -fno-omit-frame-pointer -fno-optimize-sibling-calls -fno-var-tracking-assignments -fno-strict-overflow -fconserve-stack"
 .LASF15:
 	.string	"main"
 .LASF7:

@@ -1,4 +1,4 @@
-cmd_kernel/sysctl.o := i586-poky-linux-gcc -Wp,-MD,kernel/.sysctl.o.d  -nostdinc -isystem /scratch/opt/sysroots/x86_64-pokysdk-linux/usr/bin/i586-poky-linux/../../lib/i586-poky-linux/gcc/i586-poky-linux/4.9.1/include -I/scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include -Iarch/x86/include/generated  -Iinclude -I/scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi -Iarch/x86/include/generated/uapi -I/scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi -Iinclude/generated/uapi -include /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/linux/kconfig.h -D__KERNEL__ -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -O2 -m64 -mno-mmx -mno-sse -mpreferred-stack-boundary=3 -mtune=generic -mno-red-zone -mcmodel=kernel -funit-at-a-time -maccumulate-outgoing-args -DCONFIG_AS_CFI=1 -DCONFIG_AS_CFI_SIGNAL_FRAME=1 -DCONFIG_AS_CFI_SECTIONS=1 -DCONFIG_AS_FXSAVEQ=1 -DCONFIG_AS_CRC32=1 -DCONFIG_AS_AVX=1 -DCONFIG_AS_AVX2=1 -pipe -Wno-sign-compare -fno-asynchronous-unwind-tables -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -mno-avx -Wframe-larger-than=2048 -fno-stack-protector -Wno-unused-but-set-variable -fno-omit-frame-pointer -fno-optimize-sibling-calls -fno-var-tracking-assignments -g -pg -mfentry -DCC_USING_FENTRY -fno-inline-functions-called-once -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -Werror=implicit-int -Werror=strict-prototypes -Werror=date-time -DCC_HAVE_ASM_GOTO --sysroot=/scratch/opt/sysroots/i586-poky-linux    -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(sysctl)"  -D"KBUILD_MODNAME=KBUILD_STR(sysctl)" -c -o kernel/.tmp_sysctl.o kernel/sysctl.c
+cmd_kernel/sysctl.o := i586-poky-linux-gcc -Wp,-MD,kernel/.sysctl.o.d  -nostdinc -isystem /scratch/opt/sysroots/x86_64-pokysdk-linux/usr/bin/i586-poky-linux/../../lib/i586-poky-linux/gcc/i586-poky-linux/4.9.1/include -I/scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include -Iarch/x86/include/generated  -Iinclude -I/scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi -Iarch/x86/include/generated/uapi -I/scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi -Iinclude/generated/uapi -include /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/linux/kconfig.h -D__KERNEL__ -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -O2 -m32 -msoft-float -mregparm=3 -freg-struct-return -mno-mmx -mno-sse -fno-pic -mpreferred-stack-boundary=2 -march=i686 -mtune=pentium3 -mtune=generic -maccumulate-outgoing-args -Wa,-mtune=generic32 -ffreestanding -DCONFIG_AS_CFI=1 -DCONFIG_AS_CFI_SIGNAL_FRAME=1 -DCONFIG_AS_CFI_SECTIONS=1 -DCONFIG_AS_CRC32=1 -DCONFIG_AS_AVX=1 -DCONFIG_AS_AVX2=1 -pipe -Wno-sign-compare -fno-asynchronous-unwind-tables -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -mno-avx -Wframe-larger-than=1024 -fno-stack-protector -Wno-unused-but-set-variable -fno-omit-frame-pointer -fno-optimize-sibling-calls -fno-var-tracking-assignments -g -pg -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -Werror=implicit-int -Werror=strict-prototypes -Werror=date-time -DCC_HAVE_ASM_GOTO --sysroot=/scratch/opt/sysroots/i586-poky-linux    -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(sysctl)"  -D"KBUILD_MODNAME=KBUILD_STR(sysctl)" -c -o kernel/sysctl.o kernel/sysctl.c
 
 source_kernel/sysctl.o := kernel/sysctl.c
 
@@ -107,7 +107,7 @@ deps_kernel/sysctl.o := \
   include/linux/compiler-gcc4.h \
     $(wildcard include/config/arch/use/builtin/bswap.h) \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/posix_types.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/posix_types_64.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/posix_types_32.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/asm-generic/posix_types.h \
   include/linux/poison.h \
     $(wildcard include/config/illegal/pointer/value.h) \
@@ -171,24 +171,44 @@ deps_kernel/sysctl.o := \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/page_types.h \
     $(wildcard include/config/physical/start.h) \
     $(wildcard include/config/physical/align.h) \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/page_64_types.h \
-    $(wildcard include/config/randomize/base.h) \
-    $(wildcard include/config/randomize/base/max/offset.h) \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/page_32_types.h \
+    $(wildcard include/config/highmem4g.h) \
+    $(wildcard include/config/highmem64g.h) \
+    $(wildcard include/config/page/offset.h) \
+    $(wildcard include/config/x86/pae.h) \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/ptrace.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/ptrace-abi.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/processor-flags.h \
     $(wildcard include/config/vm86.h) \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/processor-flags.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/paravirt_types.h \
+    $(wildcard include/config/paravirt/debug.h) \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/desc_defs.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/kmap_types.h \
+    $(wildcard include/config/debug/highmem.h) \
+  include/asm-generic/kmap_types.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/pgtable_types.h \
+    $(wildcard include/config/mem/soft/dirty.h) \
+    $(wildcard include/config/compat/vdso.h) \
+    $(wildcard include/config/proc/fs.h) \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/pgtable_32_types.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/pgtable-2level_types.h \
+  include/asm-generic/pgtable-nopud.h \
+  include/asm-generic/pgtable-nopmd.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/spinlock_types.h \
+    $(wildcard include/config/paravirt/spinlocks.h) \
+    $(wildcard include/config/nr/cpus.h) \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/rwlock.h \
   include/asm-generic/ptrace.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/cpufeature.h \
     $(wildcard include/config/x86/debug/static/cpu/has.h) \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/required-features.h \
     $(wildcard include/config/x86/minimum/cpu/family.h) \
     $(wildcard include/config/math/emulation.h) \
-    $(wildcard include/config/x86/pae.h) \
     $(wildcard include/config/x86/use/3dnow.h) \
     $(wildcard include/config/x86/p6/nop.h) \
     $(wildcard include/config/matom.h) \
+  include/asm-generic/bitops/fls64.h \
   include/asm-generic/bitops/find.h \
     $(wildcard include/config/generic/find/first/bit.h) \
   include/asm-generic/bitops/sched.h \
@@ -213,10 +233,20 @@ deps_kernel/sysctl.o := \
     $(wildcard include/config/broken/rodata.h) \
   include/linux/kern_levels.h \
   include/linux/dynamic_debug.h \
+  include/linux/string.h \
+    $(wildcard include/config/binary/printf.h) \
+  include/uapi/linux/string.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/string.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/string_32.h \
+  include/linux/errno.h \
+  include/uapi/linux/errno.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/errno.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/asm-generic/errno.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/asm-generic/errno-base.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/div64.h \
   include/asm-generic/percpu.h \
     $(wildcard include/config/have/setup/per/cpu/area.h) \
   include/linux/threads.h \
-    $(wildcard include/config/nr/cpus.h) \
     $(wildcard include/config/base/small.h) \
   include/linux/percpu-defs.h \
     $(wildcard include/config/debug/force/weak/per/cpu.h) \
@@ -231,9 +261,10 @@ deps_kernel/sysctl.o := \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/thread_info.h \
     $(wildcard include/config/ia32/emulation.h) \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/page.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/page_64.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/page_32.h \
     $(wildcard include/config/debug/virtual.h) \
     $(wildcard include/config/flatmem.h) \
+    $(wildcard include/config/x86/3dnow.h) \
   include/linux/range.h \
   include/asm-generic/memory_model.h \
     $(wildcard include/config/discontigmem.h) \
@@ -249,12 +280,6 @@ deps_kernel/sysctl.o := \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/sigcontext.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/sigcontext.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/current.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/pgtable_types.h \
-    $(wildcard include/config/mem/soft/dirty.h) \
-    $(wildcard include/config/compat/vdso.h) \
-    $(wildcard include/config/proc/fs.h) \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/pgtable_64_types.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/sparsemem.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/msr.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/msr.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/msr-index.h \
@@ -262,9 +287,6 @@ deps_kernel/sysctl.o := \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/ioctl.h \
   include/asm-generic/ioctl.h \
   include/uapi/asm-generic/ioctl.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/errno.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/asm-generic/errno.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/asm-generic/errno-base.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/cpumask.h \
   include/linux/cpumask.h \
     $(wildcard include/config/cpumask/offstack.h) \
@@ -272,14 +294,7 @@ deps_kernel/sysctl.o := \
     $(wildcard include/config/debug/per/cpu/maps.h) \
     $(wildcard include/config/disable/obsolete/cpumask/functions.h) \
   include/linux/bitmap.h \
-  include/linux/string.h \
-    $(wildcard include/config/binary/printf.h) \
-  include/uapi/linux/string.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/string.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/string_64.h \
-  include/linux/errno.h \
-  include/uapi/linux/errno.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/desc_defs.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/paravirt.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/nops.h \
     $(wildcard include/config/mk7.h) \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/special_insns.h \
@@ -287,8 +302,6 @@ deps_kernel/sysctl.o := \
   include/uapi/linux/personality.h \
   include/linux/math64.h \
     $(wildcard include/config/arch/supports/int128.h) \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/div64.h \
-  include/asm-generic/div64.h \
   include/linux/err.h \
   include/linux/irqflags.h \
     $(wildcard include/config/trace/irqflags.h) \
@@ -300,17 +313,14 @@ deps_kernel/sysctl.o := \
     $(wildcard include/config/generic/atomic64.h) \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/atomic.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/cmpxchg.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/cmpxchg_64.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/atomic64_64.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/cmpxchg_32.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/atomic64_32.h \
   include/asm-generic/atomic-long.h \
   include/linux/bottom_half.h \
   include/linux/preempt_mask.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/barrier.h \
     $(wildcard include/config/x86/ppro/fence.h) \
   include/linux/spinlock_types.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/spinlock_types.h \
-    $(wildcard include/config/paravirt/spinlocks.h) \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/rwlock.h \
   include/linux/lockdep.h \
     $(wildcard include/config/lockdep.h) \
     $(wildcard include/config/prove/rcu.h) \
@@ -318,7 +328,6 @@ deps_kernel/sysctl.o := \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/spinlock.h \
   include/linux/jump_label.h \
     $(wildcard include/config/jump/label.h) \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/paravirt.h \
   include/linux/rwlock.h \
   include/linux/spinlock_api_smp.h \
     $(wildcard include/config/inline/spin/lock.h) \
@@ -436,8 +445,14 @@ deps_kernel/sysctl.o := \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/timex.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/tsc.h \
     $(wildcard include/config/x86/tsc.h) \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/mmzone.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/mmzone_64.h \
+  include/linux/topology.h \
+    $(wildcard include/config/sched/smt.h) \
+    $(wildcard include/config/sched/mc.h) \
+    $(wildcard include/config/sched/book.h) \
+    $(wildcard include/config/use/percpu/numa/node/id.h) \
+  include/linux/smp.h \
+  include/linux/llist.h \
+    $(wildcard include/config/arch/have/nmi/safe/cmpxchg.h) \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/smp.h \
     $(wildcard include/config/x86/io/apic.h) \
     $(wildcard include/config/x86/32/smp.h) \
@@ -490,6 +505,7 @@ deps_kernel/sysctl.o := \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/topology.h \
     $(wildcard include/config/x86/ht.h) \
   include/asm-generic/topology.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/numa_32.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/mmu.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/realmode.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/io.h \
@@ -508,24 +524,12 @@ deps_kernel/sysctl.o := \
     $(wildcard include/config/arch/clocksource/data.h) \
     $(wildcard include/config/clocksource/watchdog.h) \
     $(wildcard include/config/clksrc/of.h) \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/clocksource.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/pvclock-abi.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/vsyscall.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/vsyscall.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/vvar.h \
   include/asm-generic/fixmap.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/idle.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/io_apic.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/irq_vectors.h \
     $(wildcard include/config/have/kvm.h) \
-  include/linux/topology.h \
-    $(wildcard include/config/sched/smt.h) \
-    $(wildcard include/config/sched/mc.h) \
-    $(wildcard include/config/sched/book.h) \
-    $(wildcard include/config/use/percpu/numa/node/id.h) \
-  include/linux/smp.h \
-  include/linux/llist.h \
-    $(wildcard include/config/arch/have/nmi/safe/cmpxchg.h) \
   include/linux/percpu.h \
     $(wildcard include/config/need/per/cpu/embed/first/chunk.h) \
     $(wildcard include/config/need/per/cpu/page/first/chunk.h) \
@@ -536,9 +540,11 @@ deps_kernel/sysctl.o := \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/elf.h \
     $(wildcard include/config/x86/x32/abi.h) \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/user.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/user_64.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/user_32.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/auxvec.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/vdso.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/desc.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/ldt.h \
   include/uapi/linux/elf.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/elf-em.h \
   include/linux/kobject.h \
@@ -608,10 +614,13 @@ deps_kernel/sysctl.o := \
     $(wildcard include/config/page/debug/something/else.h) \
   include/linux/uprobes.h \
     $(wildcard include/config/uprobes.h) \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/uprobes.h \
   include/linux/bit_spinlock.h \
   include/linux/shrinker.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/pgtable.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/pgtable_64.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/pgtable_32.h \
+    $(wildcard include/config/highpte.h) \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/pgtable-2level.h \
   include/asm-generic/pgtable.h \
     $(wildcard include/config/have/arch/soft/dirty.h) \
     $(wildcard include/config/arch/uses/numa/prot/none.h) \
@@ -693,6 +702,12 @@ deps_kernel/sysctl.o := \
     $(wildcard include/config/seccomp.h) \
     $(wildcard include/config/seccomp/filter.h) \
   include/uapi/linux/seccomp.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/seccomp.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/seccomp_32.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/unistd.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/unistd.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/unistd.h \
+  arch/x86/include/generated/uapi/asm/unistd_32.h \
   include/linux/rculist.h \
   include/linux/rtmutex.h \
     $(wildcard include/config/debug/rt/mutexes.h) \
@@ -729,8 +744,8 @@ deps_kernel/sysctl.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slab_def.h \
-  include/linux/reciprocal_div.h \
+  include/linux/slub_def.h \
+    $(wildcard include/config/slub/stats.h) \
   include/uapi/linux/xattr.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/libc-compat.h \
   include/linux/fs.h \
@@ -814,7 +829,7 @@ deps_kernel/sysctl.o := \
     $(wildcard include/config/debug/strict/user/copy/checks.h) \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/smap.h \
     $(wildcard include/config/x86/smap.h) \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/uaccess_64.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/uaccess_32.h \
   include/linux/node.h \
     $(wildcard include/config/memory/hotplug/sparse.h) \
   include/linux/device.h \
@@ -862,27 +877,6 @@ deps_kernel/sysctl.o := \
     $(wildcard include/config/arch/want/huge/pmd/share.h) \
     $(wildcard include/config/arch/enable/hugepage/migration.h) \
   include/linux/hugetlb_inline.h \
-  include/linux/mempolicy.h \
-    $(wildcard include/config/tmpfs.h) \
-  include/linux/pagemap.h \
-  include/linux/highmem.h \
-    $(wildcard include/config/debug/highmem.h) \
-  include/linux/uaccess.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/cacheflush.h \
-    $(wildcard include/config/x86/pat.h) \
-    $(wildcard include/config/debug/rodata/test.h) \
-  include/asm-generic/cacheflush.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/kmap_types.h \
-  include/asm-generic/kmap_types.h \
-  include/uapi/linux/mempolicy.h \
-  include/linux/shm.h \
-  include/uapi/linux/shm.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/shmbuf.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/asm-generic/shmbuf.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/shmparam.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/tlbflush.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/hugetlb.h \
-  include/asm-generic/hugetlb.h \
   include/linux/initrd.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/times.h \
   include/linux/dnotify.h \
@@ -894,11 +888,6 @@ deps_kernel/sysctl.o := \
     $(wildcard include/config/clone/backwards.h) \
     $(wildcard include/config/clone/backwards3.h) \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/aio_abi.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/unistd.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/unistd.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/unistd.h \
-  arch/x86/include/generated/uapi/asm/unistd_64.h \
-  arch/x86/include/generated/asm/unistd_64_x32.h \
   include/trace/syscall.h \
     $(wildcard include/config/have/syscall/tracepoints.h) \
   include/linux/ftrace_event.h \
@@ -917,6 +906,7 @@ deps_kernel/sysctl.o := \
     $(wildcard include/config/cpu/sup/amd.h) \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/stacktrace.h \
     $(wildcard include/config/frame/pointer.h) \
+  include/linux/uaccess.h \
   include/linux/ptrace.h \
   include/linux/pid_namespace.h \
     $(wildcard include/config/pid/ns.h) \
@@ -924,7 +914,6 @@ deps_kernel/sysctl.o := \
   include/uapi/linux/ptrace.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/local64.h \
   include/asm-generic/local64.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/local.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/hw_breakpoint.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/hw_breakpoint.h \
   include/linux/kdebug.h \
@@ -937,8 +926,6 @@ deps_kernel/sysctl.o := \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/trace_clock.h \
   include/linux/kallsyms.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/ftrace.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/compat.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/user32.h \
   include/linux/cpu.h \
     $(wildcard include/config/arch/has/cpu/autoprobe.h) \
     $(wildcard include/config/pm/sleep/smp.h) \
@@ -948,6 +935,7 @@ deps_kernel/sysctl.o := \
   include/linux/perf_regs.h \
     $(wildcard include/config/have/perf/regs.h) \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/perf_regs.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/local.h \
   include/linux/nfs_fs.h \
     $(wildcard include/config/nfs/debug.h) \
     $(wildcard include/config/nfs/v4.h) \
@@ -958,6 +946,17 @@ deps_kernel/sysctl.o := \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/magic.h \
   include/linux/in.h \
   include/uapi/linux/in.h \
+  include/linux/pagemap.h \
+  include/linux/highmem.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/cacheflush.h \
+    $(wildcard include/config/x86/pat.h) \
+    $(wildcard include/config/debug/rodata/test.h) \
+  include/asm-generic/cacheflush.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/highmem.h \
+  include/linux/interrupt.h \
+    $(wildcard include/config/irq/forced/threading.h) \
+    $(wildcard include/config/generic/irq/probe.h) \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/tlbflush.h \
   include/linux/sunrpc/debug.h \
     $(wildcard include/config/sunrpc/debug.h) \
   include/uapi/linux/sunrpc/debug.h \
@@ -1012,7 +1011,7 @@ deps_kernel/sysctl.o := \
   include/linux/textsearch.h \
   include/net/checksum.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/checksum.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/checksum_64.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/checksum_32.h \
   include/linux/dmaengine.h \
     $(wildcard include/config/async/tx/enable/channel/switch.h) \
     $(wildcard include/config/dma/engine.h) \
@@ -1077,8 +1076,6 @@ deps_kernel/sysctl.o := \
   include/linux/ethtool.h \
   include/linux/compat.h \
     $(wildcard include/config/compat/old/sigaction.h) \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/if.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/hdlc/ioctl.h \
   include/uapi/linux/ethtool.h \
   include/linux/if_ether.h \
   include/uapi/linux/if_ether.h \
@@ -1112,6 +1109,8 @@ deps_kernel/sysctl.o := \
   include/net/netns/netfilter.h \
   include/linux/netfilter.h \
     $(wildcard include/config/nf/nat/needed.h) \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/if.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/hdlc/ioctl.h \
   include/uapi/linux/netfilter.h \
   include/net/flow.h \
   include/net/netns/x_tables.h \
@@ -1129,8 +1128,6 @@ deps_kernel/sysctl.o := \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/xfrm.h \
   include/linux/seq_file_net.h \
   include/net/dsa.h \
-  include/net/dcbnl.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/dcbnl.h \
   include/net/netprio_cgroup.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/neighbour.h \
   include/linux/netlink.h \
@@ -1255,19 +1252,11 @@ deps_kernel/sysctl.o := \
     $(wildcard include/config/.h) \
     $(wildcard include/config/kexec/jump.h) \
   include/uapi/linux/kexec.h \
-  include/linux/elfcore.h \
-  include/linux/user.h \
-  include/uapi/linux/elfcore.h \
-    $(wildcard include/config/binfmt/elf/fdpic.h) \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/kexec.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/nmi.h \
   include/linux/acct.h \
     $(wildcard include/config/bsd/process/acct/v3.h) \
     $(wildcard include/config/m68k.h) \
   include/uapi/linux/acct.h \
-  include/linux/nmi.h \
-    $(wildcard include/config/have/nmi/watchdog.h) \
-    $(wildcard include/config/hardlockup/detector.h) \
   include/linux/inotify.h \
   include/uapi/linux/inotify.h \
 

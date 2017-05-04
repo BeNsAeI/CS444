@@ -1,1 +1,0 @@
-cmd_drivers/scsi/device_handler/scsi_dh_rdac.ko := i586-poky-linux-ld -r -m elf_x86_64 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o drivers/scsi/device_handler/scsi_dh_rdac.ko drivers/scsi/device_handler/scsi_dh_rdac.o drivers/scsi/device_handler/scsi_dh_rdac.mod.o
