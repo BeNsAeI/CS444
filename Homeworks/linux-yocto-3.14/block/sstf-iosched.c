@@ -1,6 +1,6 @@
 /*
  * LOOK I/O scheduler for OSU CS444 Spring 2017
- * Written by Levi Willmeth, Behnam Saeedi, and Zhaoheng Wang 
+ * Written by Levi Willmeth, Behnam Saeedi, and Zhaoheng Wang
  */
 #include <linux/blkdev.h>
 #include <linux/elevator.h>
@@ -35,9 +35,41 @@ static int sstf_dispatch(struct request_queue *q, int force)
 
 static void sstf_add_request(struct request_queue *q, struct request *rq)
 {
+	/*
+	* Following stepps needed to be taken for this implementation of insertion sort:
+	* Create an instance of sstf_data that points to the elevator data (it is called nd)
+	* nd will contain request queue's elevator's elevator data (pointer)
+	* check if the q->elevator->elevator_data->queue is empty or not
+	* if it is empty or has only one member:
+	* 	- add the new request to end queue list
+	* if the queue has more than 1 memeber in it:
+	* 	- this means there are membesrs of queuelist available in the nd->queue
+	* 	- insert the new request in proper position
+	* 		- create an iterator of type request
+	* 		- go through each member in the nd->queue that is of type queuelist
+	* 		- insert the new request in the list if the current position **
+	*/
+	printk(KERN_DEBUG "adding new request...\n");
 	struct sstf_data *nd = q->elevator->elevator_data;
-
-	list_add_tail(&rq->queuelist, &nd->queue);
+	/* checking if the queue is not empty */
+	if(!list_empty(&nd->queue)) {
+		printk(KERN_DEBUG "queue is not emty, generating an itterator...\n");
+		/* Creatinga n itterator */
+		struct request * it;
+		/* create the distance indecies */
+		int new_distance;
+		/* Itterate: */
+		list_for_each_entry(it, &nd->queue, queuelist) {
+			sector_t new_sector = blk_rq_pos(rq);
+			sector_t current_sector = blk_rq_pos(it);
+			new_distance = new_sector - current_sector;
+			printk(KERN_DEBUG "Distance is %i\n", new_distance);
+			if (new_distance > 0)
+				list_add_tail(&rq->queuelist, &it->queuelist);
+		}
+	}
+	printk(KERN_DEBUG "adding to tail...\n");
+	list_add(&rq->queuelist, &nd->queue);
 }
 
 static struct request *
@@ -120,6 +152,6 @@ module_init(sstf_init);
 module_exit(sstf_exit);
 
 
-MODULE_AUTHOR("Jens Axboe");
+MODULE_AUTHOR("Group 10-03");
 MODULE_LICENSE("GPL");
-MODULE_DESCRIPTION("No-op IO scheduler");
+MODULE_DESCRIPTION("Look - No-op IO scheduler");
