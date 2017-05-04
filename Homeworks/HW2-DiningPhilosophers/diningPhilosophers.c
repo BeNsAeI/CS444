@@ -12,13 +12,9 @@
 #include <stdlib.h>
 #include <sys/types.h>
 #include <sys/syscall.h>
-#define MAXPHILOSOPHERS 4
+#define MAXPHILOSOPHERS 5
 
 pthread_mutex_t forks[MAXPHILOSOPHERS];
-
-struct workaround{
-  int name;
-};
 
 int think(int philosopher)
 {
@@ -38,7 +34,8 @@ int eat(int philosopher)
     return delay;
 }
 
-void get_forks(int philosopher){
+void get_forks(int philosopher)
+{
     // The goal is not to block the forks unless I can pick up both of them.
     int prevFork = (philosopher - 1 + MAXPHILOSOPHERS) % MAXPHILOSOPHERS;
     int nextFork = philosopher;
@@ -51,7 +48,8 @@ void get_forks(int philosopher){
     printf("%d has forks %d and %d.\n", philosopher, prevFork, nextFork);
 }
 
-void put_forks(int philosopher){
+void put_forks(int philosopher)
+{
     // Puts down the forks
     int prevFork = (philosopher - 1 + MAXPHILOSOPHERS) % MAXPHILOSOPHERS;
     int nextFork = philosopher;
@@ -61,7 +59,8 @@ void put_forks(int philosopher){
 }
 
 
-void *add_philosopher(void *n){
+void *add_philosopher(void *n)
+{
     unsigned int tid = pthread_self();
     int name = *((int *) n);
     free(n);
@@ -76,7 +75,8 @@ void *add_philosopher(void *n){
 }
 
 
-int main(int argc, char **argv){
+int main(int argc, char **argv)
+{
     // Create the philosophers
     pthread_t threads[MAXPHILOSOPHERS];
 
