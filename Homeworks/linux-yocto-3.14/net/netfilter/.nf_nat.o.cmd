@@ -1,1 +1,1 @@
-cmd_net/netfilter/nf_nat.o := i586-poky-linux-ld -m elf_i386   -r -o net/netfilter/nf_nat.o net/netfilter/nf_nat_core.o net/netfilter/nf_nat_proto_unknown.o net/netfilter/nf_nat_proto_common.o net/netfilter/nf_nat_proto_udp.o net/netfilter/nf_nat_proto_tcp.o net/netfilter/nf_nat_helper.o 
+cmd_net/netfilter/nf_nat.o := ld -m elf_i386   -r -o net/netfilter/nf_nat.o net/netfilter/nf_nat_core.o net/netfilter/nf_nat_proto_unknown.o net/netfilter/nf_nat_proto_common.o net/netfilter/nf_nat_proto_udp.o net/netfilter/nf_nat_proto_tcp.o net/netfilter/nf_nat_helper.o 

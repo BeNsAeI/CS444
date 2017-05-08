@@ -1,1 +1,1 @@
-cmd_drivers/media/media.ko := i586-poky-linux-ld -r -m elf_i386 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o drivers/media/media.ko drivers/media/media.o drivers/media/media.mod.o
+cmd_drivers/media/media.ko := ld -r -m elf_i386 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o drivers/media/media.ko drivers/media/media.o drivers/media/media.mod.o

@@ -1,1 +1,1 @@
-cmd_drivers/gpu/drm/gma500/gma500_gfx.ko := i586-poky-linux-ld -r -m elf_i386 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o drivers/gpu/drm/gma500/gma500_gfx.ko drivers/gpu/drm/gma500/gma500_gfx.o drivers/gpu/drm/gma500/gma500_gfx.mod.o
+cmd_drivers/gpu/drm/gma500/gma500_gfx.ko := ld -r -m elf_i386 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o drivers/gpu/drm/gma500/gma500_gfx.ko drivers/gpu/drm/gma500/gma500_gfx.o drivers/gpu/drm/gma500/gma500_gfx.mod.o

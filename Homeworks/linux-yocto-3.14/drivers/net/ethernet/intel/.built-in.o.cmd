@@ -1,1 +1,1 @@
-cmd_drivers/net/ethernet/intel/built-in.o :=  i586-poky-linux-ld -m elf_i386   -r -o drivers/net/ethernet/intel/built-in.o drivers/net/ethernet/intel/e100.o drivers/net/ethernet/intel/e1000/built-in.o drivers/net/ethernet/intel/e1000e/built-in.o 
+cmd_drivers/net/ethernet/intel/built-in.o :=  ld -m elf_i386   -r -o drivers/net/ethernet/intel/built-in.o drivers/net/ethernet/intel/e100.o drivers/net/ethernet/intel/e1000/built-in.o drivers/net/ethernet/intel/e1000e/built-in.o 

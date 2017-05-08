@@ -1,1 +1,1 @@
-cmd_fs/debugfs/built-in.o :=  i586-poky-linux-ld -m elf_i386   -r -o fs/debugfs/built-in.o fs/debugfs/debugfs.o 
+cmd_fs/debugfs/built-in.o :=  ld -m elf_i386   -r -o fs/debugfs/built-in.o fs/debugfs/debugfs.o 

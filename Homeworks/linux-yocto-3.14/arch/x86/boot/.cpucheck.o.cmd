@@ -1,11 +1,12 @@
-cmd_arch/x86/boot/cpucheck.o := i586-poky-linux-gcc -Wp,-MD,arch/x86/boot/.cpucheck.o.d  -nostdinc -isystem /scratch/opt/sysroots/x86_64-pokysdk-linux/usr/bin/i586-poky-linux/../../lib/i586-poky-linux/gcc/i586-poky-linux/4.9.1/include -I/scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include -Iarch/x86/include/generated  -Iinclude -I/scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi -Iarch/x86/include/generated/uapi -I/scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi -Iinclude/generated/uapi -include /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/linux/kconfig.h -D__KERNEL__ -m16 -g -Os -D__KERNEL__ -DDISABLE_BRANCH_PROFILING -Wall -Wstrict-prototypes -march=i386 -mregparm=3 -fno-strict-aliasing -fomit-frame-pointer -fno-pic -mno-mmx -mno-sse -ffreestanding -fno-stack-protector -mpreferred-stack-boundary=2 -D_SETUP    -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(cpucheck)"  -D"KBUILD_MODNAME=KBUILD_STR(cpucheck)" -c -o arch/x86/boot/cpucheck.o arch/x86/boot/cpucheck.c
+cmd_arch/x86/boot/cpucheck.o := gcc -Wp,-MD,arch/x86/boot/.cpucheck.o.d  -nostdinc -isystem /usr/lib/gcc/x86_64-redhat-linux/4.4.7/include -I/scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include -Iarch/x86/include/generated  -Iinclude -I/scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi -Iarch/x86/include/generated/uapi -I/scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi -Iinclude/generated/uapi -include /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/linux/kconfig.h -D__KERNEL__ -m32 -include /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/boot/code16gcc.h -fno-toplevel-reorder -g -Os -D__KERNEL__ -DDISABLE_BRANCH_PROFILING -Wall -Wstrict-prototypes -march=i386 -mregparm=3 -fno-strict-aliasing -fomit-frame-pointer -fno-pic -mno-mmx -mno-sse -ffreestanding -fno-stack-protector -D_SETUP    -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(cpucheck)"  -D"KBUILD_MODNAME=KBUILD_STR(cpucheck)" -c -o arch/x86/boot/cpucheck.o arch/x86/boot/cpucheck.c
 
 source_arch/x86/boot/cpucheck.o := arch/x86/boot/cpucheck.c
 
 deps_arch/x86/boot/cpucheck.o := \
     $(wildcard include/config/x86/minimum/cpu/family.h) \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/boot/code16gcc.h \
   arch/x86/boot/boot.h \
-  /scratch/opt/sysroots/x86_64-pokysdk-linux/usr/lib/i586-poky-linux/gcc/i586-poky-linux/4.9.1/include/stdarg.h \
+  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/include/stdarg.h \
   include/linux/types.h \
     $(wildcard include/config/uid16.h) \
     $(wildcard include/config/lbdaf.h) \

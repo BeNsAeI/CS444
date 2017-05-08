@@ -2,6 +2,12 @@ if BLOCK
 
 menu "IO Schedulers"
 
+config IOSCHED_SSTF
+	bool
+	default y
+	---help---
+	  This is the IO scheduler written for CS444 by team 10-03.
+ 
 config IOSCHED_NOOP
 	bool
 	default y
@@ -55,6 +61,9 @@ choice
 	config DEFAULT_NOOP
 		bool "No-op"
 
+	config DEFAULT_SSTF
+		bool "sstf"
+
 endchoice
 
 config DEFAULT_IOSCHED
@@ -62,6 +71,7 @@ config DEFAULT_IOSCHED
 	default "deadline" if DEFAULT_DEADLINE
 	default "cfq" if DEFAULT_CFQ
 	default "noop" if DEFAULT_NOOP
+	default "sstf" if DEFAULT_SSTF
 
 endmenu
 

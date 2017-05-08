@@ -15,7 +15,7 @@ MODULE_INFO(intree, "Y");
 static const char __module_depends[]
 __used
 __attribute__((section(".modinfo"))) =
-"depends=mac80211,rt2x00lib,crc-ccitt";
+"depends=crc-ccitt,rt2x00lib,mac80211";
 
 
 MODULE_INFO(srcversion, "84ED886204599AE8FEBE053");
