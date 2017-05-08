@@ -1,0 +1,9 @@
+Don't forget to use the environment configuration script at:
+If using bash/zsch shell:
+    source /scratch/opt/environment-setup-i586-poky-linux
+If using tcsh/csh shell:
+    source /scratch/opt/environment-setup-i586-poky-linux.csh
+You MUST source this env config file before running qemu, or it won't run.
+
+Run qemu with:
+   qemu-system-i386 -gdb tcp::6503 -S -nographic -kernel bzImage-qemux86.bin -drive file=core-image-lsb-sdk-qemux86.ext3 -enable-kvm -net none -usb -localtime --no-reboot --append "root=/dev/hda rw console=ttyS0 debug" 
