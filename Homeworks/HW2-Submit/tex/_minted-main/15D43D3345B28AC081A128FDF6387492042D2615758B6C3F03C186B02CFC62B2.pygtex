@@ -1,0 +1,100 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cm}{/*}
+\PYG{c+cm}{	OSU - CS444}
+\PYG{c+cm}{	Homework 1 - Dining Philosophers}
+\PYG{c+cm}{	Behnam Saeedi, Levi Willmeth, Zhaoheng Wang}
+\PYG{c+cm}{*/}
+
+\PYG{c+cp}{\PYGZsh{}include <unistd.h>}
+\PYG{c+cp}{\PYGZsh{}include "mt19937ar.c"}
+\PYG{c+cp}{\PYGZsh{}include <pthread.h>}
+\PYG{c+cp}{\PYGZsh{}include <ctype.h>}
+\PYG{c+cp}{\PYGZsh{}include <stdio.h>}
+\PYG{c+cp}{\PYGZsh{}include <stdlib.h>}
+\PYG{c+cp}{\PYGZsh{}include <sys/types.h>}
+\PYG{c+cp}{\PYGZsh{}include <sys/syscall.h>}
+\PYG{c+cp}{\PYGZsh{}define MAXPHILOSOPHERS 5}
+
+\PYG{n}{pthread\PYGZus{}mutex\PYGZus{}t} \PYG{n}{forks}\PYG{p}{[}\PYG{n}{MAXPHILOSOPHERS}\PYG{p}{];}
+
+\PYG{k+kt}{int} \PYG{n+nf}{think}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{philosopher}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+    \PYG{c+c1}{// Waits for 1-20 seconds, inc}
+    \PYG{k+kt}{unsigned} \PYG{k+kt}{int} \PYG{n}{delay} \PYG{o}{=} \PYG{n}{genrand\PYGZus{}int32}\PYG{p}{()} \PYG{o}{\PYGZpc{}} \PYG{l+m+mi}{19} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{;}
+    \PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{"\PYGZpc{}d is thinking for \PYGZpc{}d seconds.}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{"}\PYG{p}{,} \PYG{n}{philosopher}\PYG{p}{,} \PYG{n}{delay}\PYG{p}{);}
+    \PYG{n}{sleep}\PYG{p}{(}\PYG{n}{delay}\PYG{p}{);}
+    \PYG{k}{return} \PYG{n}{delay}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{int} \PYG{n+nf}{eat}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{philosopher}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+    \PYG{c+c1}{// Waits for 2-9 seconds, inc}
+    \PYG{k+kt}{unsigned} \PYG{k+kt}{int} \PYG{n}{delay} \PYG{o}{=} \PYG{n}{genrand\PYGZus{}int32}\PYG{p}{()} \PYG{o}{\PYGZpc{}} \PYG{l+m+mi}{7} \PYG{o}{+} \PYG{l+m+mi}{2}\PYG{p}{;}
+    \PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{"\PYGZpc{}d has begun eating for \PYGZpc{}d seconds.}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{"}\PYG{p}{,} \PYG{n}{philosopher}\PYG{p}{,} \PYG{n}{delay}\PYG{p}{);}
+    \PYG{n}{sleep}\PYG{p}{(}\PYG{n}{delay}\PYG{p}{);}
+    \PYG{k}{return} \PYG{n}{delay}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{void} \PYG{n+nf}{get\PYGZus{}forks}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{philosopher}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+    \PYG{c+c1}{// The goal is not to block the forks unless I can pick up both of them.}
+    \PYG{k+kt}{int} \PYG{n}{prevFork} \PYG{o}{=} \PYG{p}{(}\PYG{n}{philosopher} \PYG{o}{-} \PYG{l+m+mi}{1} \PYG{o}{+} \PYG{n}{MAXPHILOSOPHERS}\PYG{p}{)} \PYG{o}{\PYGZpc{}} \PYG{n}{MAXPHILOSOPHERS}\PYG{p}{;}
+    \PYG{k+kt}{int} \PYG{n}{nextFork} \PYG{o}{=} \PYG{n}{philosopher}\PYG{p}{;}
+    \PYG{k+kt}{int} \PYG{n}{leftHand}\PYG{p}{;}
+    \PYG{k+kt}{int} \PYG{n}{rightHand}\PYG{p}{;}
+
+    \PYG{c+c1}{// printf("\PYGZpc{}d is ready for forks \PYGZpc{}d and \PYGZpc{}d.\PYGZbs{}n", philosopher, prevFork, nextFork);}
+    \PYG{n}{pthread\PYGZus{}mutex\PYGZus{}lock}\PYG{p}{(}\PYG{o}{&}\PYG{n}{forks}\PYG{p}{[}\PYG{n}{nextFork}\PYG{p}{]);}
+    \PYG{n}{pthread\PYGZus{}mutex\PYGZus{}lock}\PYG{p}{(}\PYG{o}{&}\PYG{n}{forks}\PYG{p}{[}\PYG{n}{prevFork}\PYG{p}{]);}
+    \PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{"\PYGZpc{}d has forks \PYGZpc{}d and \PYGZpc{}d.}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{"}\PYG{p}{,} \PYG{n}{philosopher}\PYG{p}{,} \PYG{n}{prevFork}\PYG{p}{,} \PYG{n}{nextFork}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{void} \PYG{n+nf}{put\PYGZus{}forks}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{philosopher}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+    \PYG{c+c1}{// Puts down the forks}
+    \PYG{k+kt}{int} \PYG{n}{prevFork} \PYG{o}{=} \PYG{p}{(}\PYG{n}{philosopher} \PYG{o}{-} \PYG{l+m+mi}{1} \PYG{o}{+} \PYG{n}{MAXPHILOSOPHERS}\PYG{p}{)} \PYG{o}{\PYGZpc{}} \PYG{n}{MAXPHILOSOPHERS}\PYG{p}{;}
+    \PYG{k+kt}{int} \PYG{n}{nextFork} \PYG{o}{=} \PYG{n}{philosopher}\PYG{p}{;}
+    \PYG{n}{pthread\PYGZus{}mutex\PYGZus{}unlock}\PYG{p}{(}\PYG{o}{&}\PYG{n}{forks}\PYG{p}{[}\PYG{n}{nextFork}\PYG{p}{]);}
+    \PYG{n}{pthread\PYGZus{}mutex\PYGZus{}unlock}\PYG{p}{(}\PYG{o}{&}\PYG{n}{forks}\PYG{p}{[}\PYG{n}{prevFork}\PYG{p}{]);}
+    \PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{"\PYGZpc{}d has set down forks \PYGZpc{}d and \PYGZpc{}d.}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{"}\PYG{p}{,} \PYG{n}{philosopher}\PYG{p}{,} \PYG{n}{prevFork}\PYG{p}{,} \PYG{n}{nextFork}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+
+\PYG{k+kt}{void} \PYG{o}{*}\PYG{n+nf}{add\PYGZus{}philosopher}\PYG{p}{(}\PYG{k+kt}{void} \PYG{o}{*}\PYG{n}{n}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{unsigned} \PYG{k+kt}{int} \PYG{n}{tid} \PYG{o}{=} \PYG{n}{pthread\PYGZus{}self}\PYG{p}{();}
+    \PYG{k+kt}{int} \PYG{n}{name} \PYG{o}{=} \PYG{o}{*}\PYG{p}{((}\PYG{k+kt}{int} \PYG{o}{*}\PYG{p}{)} \PYG{n}{n}\PYG{p}{);}
+    \PYG{n}{free}\PYG{p}{(}\PYG{n}{n}\PYG{p}{);}
+    \PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{"'I think, therefor I am!' - Philosopher \PYGZpc{}d.}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{"}\PYG{p}{,} \PYG{n}{name}\PYG{p}{);}
+    \PYG{c+c1}{// Just keep eating}
+    \PYG{k}{while}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)\PYGZob{}}
+        \PYG{n}{think}\PYG{p}{(}\PYG{n}{name}\PYG{p}{);}
+        \PYG{n}{get\PYGZus{}forks}\PYG{p}{(}\PYG{n}{name}\PYG{p}{);}
+        \PYG{n}{eat}\PYG{p}{(}\PYG{n}{name}\PYG{p}{);}
+        \PYG{n}{put\PYGZus{}forks}\PYG{p}{(}\PYG{n}{name}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+
+
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{argc}\PYG{p}{,} \PYG{k+kt}{char} \PYG{o}{**}\PYG{n}{argv}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+    \PYG{c+c1}{// Create the philosophers}
+    \PYG{n}{pthread\PYGZus{}t} \PYG{n}{threads}\PYG{p}{[}\PYG{n}{MAXPHILOSOPHERS}\PYG{p}{];}
+
+    \PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{"CS444 Homework 2: Dining Problem}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{"}\PYG{p}{);}
+    \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i}\PYG{o}{<}\PYG{n}{MAXPHILOSOPHERS}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)\PYGZob{}}
+        \PYG{k+kt}{int} \PYG{o}{*}\PYG{n}{arg} \PYG{o}{=} \PYG{n}{malloc}\PYG{p}{(}\PYG{k}{sizeof}\PYG{p}{(}\PYG{o}{*}\PYG{n}{arg}\PYG{p}{));}
+        \PYG{o}{*}\PYG{n}{arg} \PYG{o}{=} \PYG{n}{i}\PYG{p}{;}
+        \PYG{n}{pthread\PYGZus{}create}\PYG{p}{(}\PYG{o}{&}\PYG{n}{threads}\PYG{p}{[}\PYG{n}{i}\PYG{p}{],} \PYG{n+nb}{NULL}\PYG{p}{,} \PYG{n}{add\PYGZus{}philosopher}\PYG{p}{,} \PYG{n}{arg}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+
+    \PYG{c+c1}{// Wait for all threads to finish}
+    \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i}\PYG{o}{<}\PYG{n}{MAXPHILOSOPHERS}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)\PYGZob{}}
+    		\PYG{k}{if}\PYG{p}{(}\PYG{n}{pthread\PYGZus{}join}\PYG{p}{(}\PYG{n}{threads}\PYG{p}{[}\PYG{n}{i}\PYG{p}{],} \PYG{n+nb}{NULL}\PYG{p}{))\PYGZob{}}
+    		\PYG{n}{fprintf}\PYG{p}{(}\PYG{n}{stderr}\PYG{p}{,} \PYG{l+s}{"Error absorbing philosopher.}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{"}\PYG{p}{);}
+    		\PYG{k}{return} \PYG{l+m+mi}{2}\PYG{p}{;}
+      	\PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}
+	  \PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
