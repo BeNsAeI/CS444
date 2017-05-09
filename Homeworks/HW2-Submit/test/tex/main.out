@@ -1,0 +1,25 @@
+\BOOKMARK [1][-]{section.1}{Look}{}
+\BOOKMARK [2][-]{subsection.1.1}{Look ahead}{section.1}
+\BOOKMARK [2][-]{subsection.1.2}{Bias}{section.1}
+\BOOKMARK [2][-]{subsection.1.3}{Complications}{section.1}
+\BOOKMARK [2][-]{subsection.1.4}{Variants}{section.1}
+\BOOKMARK [3][-]{subsubsection.1.4.1}{C-Look}{subsection.1.4}
+\BOOKMARK [3][-]{subsubsection.1.4.2}{ F-Look, N-Look}{subsection.1.4}
+\BOOKMARK [3][-]{subsubsection.1.4.3}{S-Look}{subsection.1.4}
+\BOOKMARK [2][-]{subsection.1.5}{Our Implementation: C-Look}{section.1}
+\BOOKMARK [2][-]{subsection.1.6}{Code}{section.1}
+\BOOKMARK [1][-]{section.2}{Questions}{}
+\BOOKMARK [2][-]{subsection.2.1}{Response to Homework Questions}{section.2}
+\BOOKMARK [3][-]{subsubsection.2.1.1}{What do you think the main point of this assignment is?}{subsection.2.1}
+\BOOKMARK [3][-]{subsubsection.2.1.2}{How did you personally approach the problem? Design decisions, algorithm, etc.}{subsection.2.1}
+\BOOKMARK [3][-]{subsubsection.2.1.3}{How did you ensure your solution was correct? Testing details, for instance.}{subsection.2.1}
+\BOOKMARK [3][-]{subsubsection.2.1.4}{What did you learn?}{subsection.2.1}
+\BOOKMARK [1][-]{section.3}{Dining Philosopher}{}
+\BOOKMARK [2][-]{subsection.3.1}{Problem}{section.3}
+\BOOKMARK [2][-]{subsection.3.2}{Solution}{section.3}
+\BOOKMARK [2][-]{subsection.3.3}{Application}{section.3}
+\BOOKMARK [2][-]{subsection.3.4}{Implementation}{section.3}
+\BOOKMARK [2][-]{subsection.3.5}{Code}{section.3}
+\BOOKMARK [1][-]{section.4}{Work Log}{}
+\BOOKMARK [2][-]{subsection.4.1}{Hours}{section.4}
+\BOOKMARK [2][-]{subsection.4.2}{Git Log}{section.4}
