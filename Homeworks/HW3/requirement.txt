@@ -1,0 +1,20 @@
+Write a RAM Disk device driver for the Linux Kernel which allocates a chunk of memory and presents it as a block device.
+Using the Linux Kernel's Crypto API, add encryption to your block device such that your device driver encrypts and decrypts data when it is written and read. You will need to look at examples in the kernel for how to do this.
+This will be developed in the drivers/block directory. Remember, as this is a block cypher, you may have more data than fits in one block of the cypher. Further, you need to be able to set the key as a module parameter.
+
+
+You will need to do this as a module, in order to use a module parameter.
+You will need to move the module in to the running VM. I recommend scp.
+Debugging modules externally is...annoying. I recommend doing most of your debugging and testing with your block device built right in to the kernel. Then move it to a module to test your module paramters.
+It is up to you to demonstrate correctness. Note that an incorrect key should return gibberish.
+Create an ext2 file system on the block device (mkfs.ext2).
+
+
+The file requires to change:
+/drivers/block/Makefile
+/drivers/block/Kconfig 
+add the file for drivers we find into drivers/block folder 
+
+
+
+
