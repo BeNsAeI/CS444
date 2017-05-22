@@ -1579,15 +1579,8 @@ static int bq2415x_probe(struct i2c_client *client,
 	if (np) {
 		bq->notify_psy = power_supply_get_by_phandle(np, "ti,usb-charger-detection");
 
-		if (IS_ERR(bq->notify_psy)) {
-			dev_info(&client->dev,
-				"no 'ti,usb-charger-detection' property (err=%ld)\n",
-				PTR_ERR(bq->notify_psy));
-			bq->notify_psy = NULL;
-		} else if (!bq->notify_psy) {
-			ret = -EPROBE_DEFER;
-			goto error_2;
-		}
+		if (!bq->notify_psy)
+			return -EPROBE_DEFER;
 	}
 	else if (pdata->notify_device)
 		bq->notify_psy = power_supply_get_by_name(pdata->notify_device);
@@ -1609,27 +1602,27 @@ static int bq2415x_probe(struct i2c_client *client,
 		ret = of_property_read_u32(np, "ti,current-limit",
 				&bq->init_data.current_limit);
 		if (ret)
-			goto error_2;
+			return ret;
 		ret = of_property_read_u32(np, "ti,weak-battery-voltage",
 				&bq->init_data.weak_battery_voltage);
 		if (ret)
-			goto error_2;
+			return ret;
 		ret = of_property_read_u32(np, "ti,battery-regulation-voltage",
 				&bq->init_data.battery_regulation_voltage);
 		if (ret)
-			goto error_2;
+			return ret;
 		ret = of_property_read_u32(np, "ti,charge-current",
 				&bq->init_data.charge_current);
 		if (ret)
-			goto error_2;
+			return ret;
 		ret = of_property_read_u32(np, "ti,termination-current",
 				&bq->init_data.termination_current);
 		if (ret)
-			goto error_2;
+			return ret;
 		ret = of_property_read_u32(np, "ti,resistor-sense",
 				&bq->init_data.resistor_sense);
 		if (ret)
-			goto error_2;
+			return ret;
 	} else {
 		memcpy(&bq->init_data, pdata, sizeof(bq->init_data));
 	}

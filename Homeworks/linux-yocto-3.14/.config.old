@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 3.14.26 Kernel Configuration
+# Linux/x86 3.14.24 Kernel Configuration
 #
 # CONFIG_64BIT is not set
 CONFIG_X86_32=y
@@ -306,7 +306,6 @@ CONFIG_EFI_PARTITION=y
 #
 # IO Schedulers
 #
-CONFIG_IOSCHED_SSTF=y
 CONFIG_IOSCHED_NOOP=y
 CONFIG_IOSCHED_DEADLINE=y
 CONFIG_IOSCHED_CFQ=y
@@ -1116,6 +1115,7 @@ CONFIG_PNP_DEBUG_MESSAGES=y
 #
 CONFIG_PNPACPI=y
 CONFIG_BLK_DEV=y
+CONFIG_BLK_DEV_RAM_DDD=y
 # CONFIG_BLK_DEV_NULL_BLK is not set
 CONFIG_BLK_DEV_FD=m
 # CONFIG_PARIDE is not set

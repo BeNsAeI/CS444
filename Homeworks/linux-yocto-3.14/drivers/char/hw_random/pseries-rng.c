@@ -25,21 +25,18 @@
 #include <asm/vio.h>
 
 
-static int pseries_rng_read(struct hwrng *rng, void *data, size_t max, bool wait)
+static int pseries_rng_data_read(struct hwrng *rng, u32 *data)
 {
-	u64 buffer[PLPAR_HCALL_BUFSIZE];
-	size_t size = max < 8 ? max : 8;
 	int rc;
 
-	rc = plpar_hcall(H_RANDOM, (unsigned long *)buffer);
+	rc = plpar_hcall(H_RANDOM, (unsigned long *)data);
 	if (rc != H_SUCCESS) {
 		pr_err_ratelimited("H_RANDOM call failed %d\n", rc);
 		return -EIO;
 	}
-	memcpy(data, buffer, size);
 
 	/* The hypervisor interface returns 64 bits */
-	return size;
+	return 8;
 }
 
 /**
@@ -58,7 +55,7 @@ static unsigned long pseries_rng_get_desired_dma(struct vio_dev *vdev)
 
 static struct hwrng pseries_rng = {
 	.name		= KBUILD_MODNAME,
-	.read		= pseries_rng_read,
+	.data_read	= pseries_rng_data_read,
 };
 
 static int __init pseries_rng_probe(struct vio_dev *dev,

@@ -1,1 +1,1 @@
-cmd_sound/isa/sb/built-in.o :=  rm -f sound/isa/sb/built-in.o; ar rcsD sound/isa/sb/built-in.o
+cmd_sound/isa/sb/built-in.o :=  rm -f sound/isa/sb/built-in.o; i586-poky-linux-ar rcsD sound/isa/sb/built-in.o
