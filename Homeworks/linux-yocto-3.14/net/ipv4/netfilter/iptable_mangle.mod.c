@@ -19,5 +19,5 @@ MODULE_INFO(intree, "Y");
 static const char __module_depends[]
 __used
 __attribute__((section(".modinfo"))) =
-"depends=ip_tables,x_tables";
+"depends=x_tables,ip_tables";
 

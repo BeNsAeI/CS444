@@ -19,5 +19,5 @@ MODULE_INFO(intree, "Y");
 static const char __module_depends[]
 __used
 __attribute__((section(".modinfo"))) =
-"depends=nf_conntrack_sip,nf_conntrack,nf_nat";
+"depends=nf_conntrack,nf_conntrack_sip,nf_nat";
 

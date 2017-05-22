@@ -253,6 +253,9 @@ struct charger_manager {
 	struct device *dev;
 	struct charger_desc *desc;
 
+	struct power_supply *fuel_gauge;
+	struct power_supply **charger_stat;
+
 #ifdef CONFIG_THERMAL
 	struct thermal_zone_device *tzd_batt;
 #endif

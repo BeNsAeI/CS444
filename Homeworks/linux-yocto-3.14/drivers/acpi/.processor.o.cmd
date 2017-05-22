@@ -1,1 +1,1 @@
-cmd_drivers/acpi/processor.o := ld -m elf_i386   -r -o drivers/acpi/processor.o drivers/acpi/processor_driver.o drivers/acpi/processor_throttling.o drivers/acpi/processor_idle.o drivers/acpi/processor_thermal.o 
+cmd_drivers/acpi/processor.o := i586-poky-linux-ld -m elf_i386   -r -o drivers/acpi/processor.o drivers/acpi/processor_driver.o drivers/acpi/processor_throttling.o drivers/acpi/processor_idle.o drivers/acpi/processor_thermal.o 

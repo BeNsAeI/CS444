@@ -21,6 +21,10 @@ __used
 __attribute__((section(".modinfo"))) =
 "depends=parport";
 
+MODULE_ALIAS("pnp:dPNP0400*");
+MODULE_ALIAS("acpi*:PNP0400:*");
+MODULE_ALIAS("pnp:dPNP0401*");
+MODULE_ALIAS("acpi*:PNP0401:*");
 MODULE_ALIAS("pci:v00001106d00000686sv*sd*bc*sc*i*");
 MODULE_ALIAS("pci:v00001106d00008231sv*sd*bc*sc*i*");
 MODULE_ALIAS("pci:v00001283d00008872sv*sd*bc*sc*i*");
@@ -65,7 +69,3 @@ MODULE_ALIAS("pci:v00009710d00009901sv0000A000sd00002000bc*sc*i*");
 MODULE_ALIAS("pci:v00009710d00009865sv0000A000sd00001000bc*sc*i*");
 MODULE_ALIAS("pci:v00009710d00009865sv0000A000sd00002000bc*sc*i*");
 MODULE_ALIAS("pci:v0000135Cd00000278sv*sd*bc*sc*i*");
-MODULE_ALIAS("pnp:dPNP0400*");
-MODULE_ALIAS("acpi*:PNP0400:*");
-MODULE_ALIAS("pnp:dPNP0401*");
-MODULE_ALIAS("acpi*:PNP0401:*");

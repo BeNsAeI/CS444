@@ -16,11 +16,6 @@ obj-$(CONFIG_BLK_DEV_THROTTLING)	+= blk-throttle.o
 obj-$(CONFIG_IOSCHED_NOOP)	+= noop-iosched.o
 obj-$(CONFIG_IOSCHED_DEADLINE)	+= deadline-iosched.o
 obj-$(CONFIG_IOSCHED_CFQ)	+= cfq-iosched.o
-<<<<<<< HEAD
-obj-$(CONFIG_IOSCHED_SSTF)       += sstf-iosched.o
-=======
-obj-$(CONFIG_IOSCHED_SSTF)  += sstf-iosched.o
->>>>>>> e9f7caaefb707268a6d0708d8975dbc3bb133fc7
 
 obj-$(CONFIG_BLOCK_COMPAT)	+= compat_ioctl.o
 obj-$(CONFIG_BLK_DEV_INTEGRITY)	+= blk-integrity.o
