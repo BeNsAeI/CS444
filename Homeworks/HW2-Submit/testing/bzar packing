@@ -1,5 +1,0 @@
-tar -cvjf name.tar.bz2  (file need pack)------------ pack the file
-
-tar -tvf name.tar.bz2 -------------------------- check the pack file which inside
-
-tar -xvf name.tar.bz2 --------------------------- unpack the bz2 file 

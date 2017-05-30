@@ -1,1 +1,0 @@
-cmd_drivers/char/built-in.o :=  i586-poky-linux-ld -m elf_i386   -r -o drivers/char/built-in.o drivers/char/mem.o drivers/char/random.o drivers/char/misc.o drivers/char/virtio_console.o drivers/char/hpet.o drivers/char/agp/built-in.o 

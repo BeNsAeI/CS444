@@ -1,1 +1,0 @@
-cmd_drivers/net/ethernet/atheros/atl1e/atl1e.o := i586-poky-linux-ld -m elf_i386   -r -o drivers/net/ethernet/atheros/atl1e/atl1e.o drivers/net/ethernet/atheros/atl1e/atl1e_main.o drivers/net/ethernet/atheros/atl1e/atl1e_hw.o drivers/net/ethernet/atheros/atl1e/atl1e_ethtool.o drivers/net/ethernet/atheros/atl1e/atl1e_param.o 

@@ -1,1 +1,0 @@
-cmd_drivers/pnp/built-in.o :=  i586-poky-linux-ld -m elf_i386   -r -o drivers/pnp/built-in.o drivers/pnp/pnp.o drivers/pnp/pnpacpi/built-in.o 

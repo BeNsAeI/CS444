@@ -1,1 +1,0 @@
-cmd_arch/x86/built-in.o :=  i586-poky-linux-ld -m elf_i386   -r -o arch/x86/built-in.o arch/x86/realmode/built-in.o arch/x86/kernel/built-in.o arch/x86/mm/built-in.o arch/x86/crypto/built-in.o arch/x86/vdso/built-in.o arch/x86/platform/built-in.o arch/x86/net/built-in.o 
