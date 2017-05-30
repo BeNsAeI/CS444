@@ -1,0 +1,50 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+ssh saeedib@os\PYGZhy{}class@engr.oregonstate.edu
+\PYG{c+c1}{\PYGZsh{} if you are oof campus ssh to access.engr.oregonstate.edu first}
+\PYG{c+c1}{\PYGZsh{}Two terminals are needed:}
+screen
+mkdir /scratch/spring2017/10\PYGZhy{}03
+\PYG{c+c1}{\PYGZsh{}terminal 1:}
+\PYG{n+nb}{cd} /scratch/spring2017/
+chmod u+rwx,g+rwx,o+rx 10\PYGZhy{}03
+git clone git://git.yoctoproject.org/linux\PYGZhy{}yocto\PYGZhy{}3.14
+\PYG{n+nb}{cd} linux\PYGZhy{}yocto\PYGZhy{}3.14
+checkout tag/v3.14.26
+\PYG{n+nb}{source} /scratch/opt/environment\PYGZhy{}setup\PYGZhy{}i586\PYGZhy{}poky\PYGZhy{}linux
+cp /scratch/spring2017/files/config\PYGZhy{}3.14.26\PYGZhy{}yocto\PYGZhy{}qemu .config
+make menuconfig
+\PYG{c+c1}{\PYGZsh{} Press /}
+\PYG{c+c1}{\PYGZsh{} Type LOCALVERSION}
+\PYG{c+c1}{\PYGZsh{} Hit Enter}
+\PYG{c+c1}{\PYGZsh{} Hit 1}
+\PYG{c+c1}{\PYGZsh{} Hit Enter}
+\PYG{c+c1}{\PYGZsh{} Change the name to : \PYGZhy{}10\PYGZhy{}03\PYGZhy{}hw1}
+make \PYGZhy{}j4 all
+cp /scratch/spring2017/files/bzImage\PYGZhy{}qemux86.bin
+cp /scratch/spring2017/files/core\PYGZhy{}image\PYGZhy{}lsb\PYGZhy{}sdk\PYGZhy{}qemux86.ext3
+qemu\PYGZhy{}system\PYGZhy{}i386 \PYGZhy{}gdb tcp::6503 \PYGZhy{}S \PYGZhy{}nographic \PYGZhy{}kernel bzImage\PYGZhy{}qemux86.bin
+\PYGZhy{}drive \PYG{n+nv}{file}\PYG{o}{=}core\PYGZhy{}image\PYGZhy{}lsb\PYGZhy{}sdk\PYGZhy{}qemux86.ext3,if\PYG{o}{=}virtio \PYGZhy{}enable\PYGZhy{}kvm \PYGZhy{}net none \PYGZhy{}usb
+\PYGZhy{}localtime \PYGZhy{}\PYGZhy{}no\PYGZhy{}reboot \PYGZhy{}\PYGZhy{}append \PYG{l+s+s2}{\PYGZdq{}root=/dev/vda rw console=ttyS0 debug\PYGZdq{}}
+\PYG{c+c1}{\PYGZsh{}in terminal 2:}
+\PYG{n+nb}{source} /scratch/opt/environment\PYGZhy{}setup\PYGZhy{}i586\PYGZhy{}poky\PYGZhy{}linux
+gdb
+\PYG{c+c1}{\PYGZsh{} enter: target remote :6503}
+\PYG{c+c1}{\PYGZsh{} hit Enter}
+\PYG{c+c1}{\PYGZsh{} back at terminal 1: (QEMU booting into the kernel)}
+\PYG{c+c1}{\PYGZsh{}username is root with no password}
+uname \PYGZhy{}a
+\PYG{c+c1}{\PYGZsh{} Notice the local version is not our home work (it is not supposed to be)}
+shutdown \PYGZhy{}r now
+\PYG{c+c1}{\PYGZsh{}QEMU exits}
+qemu\PYGZhy{}system\PYGZhy{}i386 \PYGZhy{}gdb tcp::6503 \PYGZhy{}S \PYGZhy{}nographic \PYGZhy{}kernel linux\PYGZhy{}yocto\PYGZhy{}3.14/arch/x86/boot/bzImage
+\PYGZhy{}drive \PYG{n+nv}{file}\PYG{o}{=}core\PYGZhy{}image\PYGZhy{}lsb\PYGZhy{}sdk\PYGZhy{}qemux86.ext3,if\PYG{o}{=}virtio \PYGZhy{}enable\PYGZhy{}kvm \PYGZhy{}net none \PYGZhy{}usb \PYGZhy{}localtime
+\PYGZhy{}\PYGZhy{}no\PYGZhy{}reboot \PYGZhy{}\PYGZhy{}append \PYG{l+s+s2}{\PYGZdq{}root=/dev/vda rw console=ttyS0 debug\PYGZdq{}}
+\PYG{c+c1}{\PYGZsh{}in terminal 2:}
+\PYG{c+c1}{\PYGZsh{} enter: target remote :6503}
+\PYG{c+c1}{\PYGZsh{} hit Enter}
+\PYG{c+c1}{\PYGZsh{} back at terminal 1: (QEMU booting into the kernel)}
+\PYG{c+c1}{\PYGZsh{}username is root with no password}
+uname \PYGZhy{}a
+\PYG{c+c1}{\PYGZsh{} Notice the local version IS our home work (it is supposed to be \PYGZdq{}\PYGZhy{}10\PYGZhy{}03\PYGZhy{}hw1\PYGZdq{})}
+shutdown \PYGZhy{}r now
+\end{Verbatim}

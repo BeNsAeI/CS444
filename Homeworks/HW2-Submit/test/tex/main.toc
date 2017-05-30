@@ -1,0 +1,26 @@
+\select@language {english}
+\contentsline {section}{\numberline {1}Look}{3}{section.1}
+\contentsline {subsection}{\numberline {1.1}Look ahead}{3}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Bias}{3}{subsection.1.2}
+\contentsline {subsection}{\numberline {1.3}Complications}{3}{subsection.1.3}
+\contentsline {subsection}{\numberline {1.4}Variants}{3}{subsection.1.4}
+\contentsline {subsubsection}{\numberline {1.4.1}C-Look}{3}{subsubsection.1.4.1}
+\contentsline {subsubsection}{\numberline {1.4.2} F-Look, N-Look}{4}{subsubsection.1.4.2}
+\contentsline {subsubsection}{\numberline {1.4.3}S-Look}{4}{subsubsection.1.4.3}
+\contentsline {subsection}{\numberline {1.5}Our Implementation: C-Look}{4}{subsection.1.5}
+\contentsline {subsection}{\numberline {1.6}Code}{5}{subsection.1.6}
+\contentsline {section}{\numberline {2}Questions}{7}{section.2}
+\contentsline {subsection}{\numberline {2.1}Response to Homework Questions}{7}{subsection.2.1}
+\contentsline {subsubsection}{\numberline {2.1.1}What do you think the main point of this assignment is?}{7}{subsubsection.2.1.1}
+\contentsline {subsubsection}{\numberline {2.1.2}How did you personally approach the problem? Design decisions, algorithm, etc.}{8}{subsubsection.2.1.2}
+\contentsline {subsubsection}{\numberline {2.1.3}How did you ensure your solution was correct? Testing details, for instance.}{8}{subsubsection.2.1.3}
+\contentsline {subsubsection}{\numberline {2.1.4}What did you learn?}{9}{subsubsection.2.1.4}
+\contentsline {section}{\numberline {3}Dining Philosopher}{9}{section.3}
+\contentsline {subsection}{\numberline {3.1}Problem}{9}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Solution}{10}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Application}{10}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}Implementation}{10}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.5}Code}{10}{subsection.3.5}
+\contentsline {section}{\numberline {4}Work Log}{12}{section.4}
+\contentsline {subsection}{\numberline {4.1}Hours}{12}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Git Log}{12}{subsection.4.2}

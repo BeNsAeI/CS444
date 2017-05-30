@@ -1,0 +1,82 @@
+#!/bin/bash
+
+if [ "$#" -eq 1 ]
+then
+    if [[ "$1" == "setup" ]];then
+        echo "$0: setting up..."
+        insmod sbd_enc.ko
+        shred -z /dev/sbd_enc0
+        mkfs.ext2 /dev/sbd_enc0
+        mount /dev/sbd_enc0 /mnt/
+        lsmod
+        echo -e "\n$0: setup complete!";
+        exit 0;
+    elif [[ "$1" == "teardown" ]];then
+        echo "$0: tearing down...";
+        umount /mnt
+        rmmod sbd_enc.ko
+        lsmod
+        echo -e "\n$0: teardown complete!";
+        exit 0;
+    elif [[ "$1" == "demo" ]];then
+        echo -e "\n$0: running demo...";
+
+        echo -e "creating demofile in /mnt/ block device.";
+        touch /mnt/demofile
+        ls -la /mnt/
+        echo -e "\n";
+
+        echo -e "writing 'Hello world!' to /mnt/ block device.";
+        echo -e "using command: echo 'Hello world!' > /mnt/demofile";
+        echo "Hello world!" > /mnt/demofile
+        echo "contents of demofile:";
+        cat /mnt/demofile
+        echo -e "\n";
+
+        echo -e "searching for 'Hello world!' in /dev/sbd_enc0."
+        echo -e "using command: grep -a 'Hello world!' /dev/sbd_enc0";
+        grep -a "Hello world!" /dev/sbd_enc0
+        echo -e "\n";
+        echo -e "If nothing was displayed 'Hello world!' could not be found";
+        echo -e "\n";
+
+        echo -e "To prove encryption of /sbd_enc0 cat'ing its contents";
+        echo -e "using command: cat /dev/sbd_enc0";
+        echo -e "\n";
+        cat /dev/sbd_enc0
+        echo -e "\n";
+        echo -e "gibberish should be displayed above.";
+        echo -e "\n";
+
+        echo -e "encryption and decryption occurs when commands are written to /mnt/"
+        echo -e " cat'ing contents of demofile from /mnt/demofile:";
+        echo -e "using command: cat /mnt/demofile";
+        cat /mnt/demofile
+        echo -e "\n";
+
+        echo "deleting /mnt/demofile";
+        rm /mnt/demofile
+        echo -e "\n$0: demo complete!";
+        exit 0;
+        elif [[ "$1" == "listkey" ]];then
+        echo -e "listing encryption key from dmesg...\n";
+        dmesg | grep -a -m 1 "sbd_enc: enc_key >"
+        echo "if two or more keys appear use 'dmesg -c' to clear dmesg and re run I/O";
+        echo -e "\n";
+    fi
+elif [ "$#" -eq 2 ]
+then
+    if [[ "$1" == "setup" ]];then
+        echo "$0: setting up..."
+        insmod sbd_enc.ko key="$2"
+        shred -z /dev/sbd_enc0
+        mkfs.ext2 /dev/sbd_enc0
+        mount /dev/sbd_enc0 /mnt/
+        lsmod
+        echo -e "\n$0: setup complete!";
+        exit 0;
+    fi
+else
+    echo "$0: {setup | teardown | listkey} {encryptionkey}" >&2;
+    exit 1;
+fi

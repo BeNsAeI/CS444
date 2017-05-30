@@ -1,0 +1,1 @@
+cmd_crypto/serpent_generic.ko := i586-poky-linux-ld -r -m elf_i386 -T /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/scripts/module-common.lds --build-id  -o crypto/serpent_generic.ko crypto/serpent_generic.o crypto/serpent_generic.mod.o

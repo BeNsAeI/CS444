@@ -1,0 +1,144 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cm}{/*}
+\PYG{c+cm}{ * LOOK I/O scheduler for OSU CS444 Spring 2017}
+\PYG{c+cm}{ * Written by Levi Willmeth, Behnam Saeedi, and Zhaoheng Wang}
+\PYG{c+cm}{ */}
+\PYG{c+cp}{\PYGZsh{}include <linux/blkdev.h>}
+\PYG{c+cp}{\PYGZsh{}include <linux/elevator.h>}
+\PYG{c+cp}{\PYGZsh{}include <linux/bio.h>}
+\PYG{c+cp}{\PYGZsh{}include <linux/module.h>}
+\PYG{c+cp}{\PYGZsh{}include <linux/slab.h>}
+\PYG{c+cp}{\PYGZsh{}include <linux/init.h>}
+
+\PYG{k}{struct} \PYG{n}{sstf\PYGZus{}data} \PYG{p}{\PYGZob{}}
+	\PYG{k}{struct} \PYG{n}{list\PYGZus{}head} \PYG{n}{queue}\PYG{p}{;}
+\PYG{p}{\PYGZcb{};}
+
+\PYG{k}{static} \PYG{k+kt}{void} \PYG{n+nf}{sstf\PYGZus{}merged\PYGZus{}requests}\PYG{p}{(}\PYG{k}{struct} \PYG{n}{request\PYGZus{}queue} \PYG{o}{*}\PYG{n}{q}\PYG{p}{,} \PYG{k}{struct} \PYG{n}{request} \PYG{o}{*}\PYG{n}{rq}\PYG{p}{,}
+				 \PYG{k}{struct} \PYG{n}{request} \PYG{o}{*}\PYG{n}{next}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{n}{list\PYGZus{}del\PYGZus{}init}\PYG{p}{(}\PYG{o}{&}\PYG{n}{next}\PYG{o}{->}\PYG{n}{queuelist}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k}{static} \PYG{k+kt}{int} \PYG{n+nf}{sstf\PYGZus{}dispatch}\PYG{p}{(}\PYG{k}{struct} \PYG{n}{request\PYGZus{}queue} \PYG{o}{*}\PYG{n}{q}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{force}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{k}{struct} \PYG{n}{sstf\PYGZus{}data} \PYG{o}{*}\PYG{n}{nd} \PYG{o}{=} \PYG{n}{q}\PYG{o}{->}\PYG{n}{elevator}\PYG{o}{->}\PYG{n}{elevator\PYGZus{}data}\PYG{p}{;}
+
+	\PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n}{list\PYGZus{}empty}\PYG{p}{(}\PYG{o}{&}\PYG{n}{nd}\PYG{o}{->}\PYG{n}{queue}\PYG{p}{))} \PYG{p}{\PYGZob{}}
+		\PYG{k}{struct} \PYG{n}{request} \PYG{o}{*}\PYG{n}{rq}\PYG{p}{;}
+		\PYG{n}{rq} \PYG{o}{=} \PYG{n}{list\PYGZus{}entry}\PYG{p}{(}\PYG{n}{nd}\PYG{o}{->}\PYG{n}{queue}\PYG{p}{.}\PYG{n}{next}\PYG{p}{,} \PYG{k}{struct} \PYG{n}{request}\PYG{p}{,} \PYG{n}{queuelist}\PYG{p}{);}
+		\PYG{n}{list\PYGZus{}del\PYGZus{}init}\PYG{p}{(}\PYG{o}{&}\PYG{n}{rq}\PYG{o}{->}\PYG{n}{queuelist}\PYG{p}{);}
+		\PYG{n}{elv\PYGZus{}dispatch\PYGZus{}sort}\PYG{p}{(}\PYG{n}{q}\PYG{p}{,} \PYG{n}{rq}\PYG{p}{);}
+		\PYG{k}{return} \PYG{l+m+mi}{1}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k}{static} \PYG{k+kt}{void} \PYG{n+nf}{sstf\PYGZus{}add\PYGZus{}request}\PYG{p}{(}\PYG{k}{struct} \PYG{n}{request\PYGZus{}queue} \PYG{o}{*}\PYG{n}{q}\PYG{p}{,} \PYG{k}{struct} \PYG{n}{request} \PYG{o}{*}\PYG{n}{rq}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{n}{printk}\PYG{p}{(}\PYG{n}{KERN\PYGZus{}DEBUG} \PYG{l+s}{"adding new request...}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{"}\PYG{p}{);}
+	\PYG{k}{struct} \PYG{n}{sstf\PYGZus{}data} \PYG{o}{*}\PYG{n}{nd} \PYG{o}{=} \PYG{n}{q}\PYG{o}{->}\PYG{n}{elevator}\PYG{o}{->}\PYG{n}{elevator\PYGZus{}data}\PYG{p}{;}
+	\PYG{c+cm}{/* checking if the queue is not empty */}
+	\PYG{k}{if}\PYG{p}{(}\PYG{o}{!}\PYG{n}{list\PYGZus{}empty}\PYG{p}{(}\PYG{o}{&}\PYG{n}{nd}\PYG{o}{->}\PYG{n}{queue}\PYG{p}{))} \PYG{p}{\PYGZob{}}
+		\PYG{n}{printk}\PYG{p}{(}\PYG{n}{KERN\PYGZus{}DEBUG} \PYG{l+s}{"queue is not emty, generating an itterator...}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{"}\PYG{p}{);}
+		\PYG{c+cm}{/* Creatinga n itterator */}
+		\PYG{k}{struct} \PYG{n}{request} \PYG{o}{*} \PYG{n}{it}\PYG{p}{;}
+		\PYG{c+cm}{/* create the distance indecies */}
+		\PYG{k+kt}{int} \PYG{n}{new\PYGZus{}distance}\PYG{p}{;}
+		\PYG{c+cm}{/* Itterate: */}
+		\PYG{n}{list\PYGZus{}for\PYGZus{}each\PYGZus{}entry}\PYG{p}{(}\PYG{n}{it}\PYG{p}{,} \PYG{o}{&}\PYG{n}{nd}\PYG{o}{->}\PYG{n}{queue}\PYG{p}{,} \PYG{n}{queuelist}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+			\PYG{n}{sector\PYGZus{}t} \PYG{n}{new\PYGZus{}sector} \PYG{o}{=} \PYG{n}{blk\PYGZus{}rq\PYGZus{}pos}\PYG{p}{(}\PYG{n}{rq}\PYG{p}{);}
+			\PYG{n}{sector\PYGZus{}t} \PYG{n}{current\PYGZus{}sector} \PYG{o}{=} \PYG{n}{blk\PYGZus{}rq\PYGZus{}pos}\PYG{p}{(}\PYG{n}{it}\PYG{p}{);}
+			\PYG{n}{new\PYGZus{}distance} \PYG{o}{=} \PYG{n}{new\PYGZus{}sector} \PYG{o}{-} \PYG{n}{current\PYGZus{}sector}\PYG{p}{;}
+			\PYG{n}{printk}\PYG{p}{(}\PYG{n}{KERN\PYGZus{}DEBUG} \PYG{l+s}{"Distance is \PYGZpc{}i}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{"}\PYG{p}{,} \PYG{n}{new\PYGZus{}distance}\PYG{p}{);}
+			\PYG{k}{if} \PYG{p}{(}\PYG{n}{new\PYGZus{}distance} \PYG{o}{<} \PYG{l+m+mi}{0}\PYG{p}{)}
+				\PYG{n}{list\PYGZus{}add\PYGZus{}tail}\PYG{p}{(}\PYG{o}{&}\PYG{n}{rq}\PYG{o}{->}\PYG{n}{queuelist}\PYG{p}{,} \PYG{o}{&}\PYG{n}{it}\PYG{o}{->}\PYG{n}{queuelist}\PYG{p}{);}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{n}{printk}\PYG{p}{(}\PYG{n}{KERN\PYGZus{}DEBUG} \PYG{l+s}{"adding to tail...}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{"}\PYG{p}{);}
+	\PYG{n}{list\PYGZus{}add}\PYG{p}{(}\PYG{o}{&}\PYG{n}{rq}\PYG{o}{->}\PYG{n}{queuelist}\PYG{p}{,} \PYG{o}{&}\PYG{n}{nd}\PYG{o}{->}\PYG{n}{queue}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k}{static} \PYG{k}{struct} \PYG{n}{request} \PYG{o}{*}
+\PYG{n+nf}{sstf\PYGZus{}former\PYGZus{}request}\PYG{p}{(}\PYG{k}{struct} \PYG{n}{request\PYGZus{}queue} \PYG{o}{*}\PYG{n}{q}\PYG{p}{,} \PYG{k}{struct} \PYG{n}{request} \PYG{o}{*}\PYG{n}{rq}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{k}{struct} \PYG{n}{sstf\PYGZus{}data} \PYG{o}{*}\PYG{n}{nd} \PYG{o}{=} \PYG{n}{q}\PYG{o}{->}\PYG{n}{elevator}\PYG{o}{->}\PYG{n}{elevator\PYGZus{}data}\PYG{p}{;}
+
+	\PYG{k}{if} \PYG{p}{(}\PYG{n}{rq}\PYG{o}{->}\PYG{n}{queuelist}\PYG{p}{.}\PYG{n}{prev} \PYG{o}{==} \PYG{o}{&}\PYG{n}{nd}\PYG{o}{->}\PYG{n}{queue}\PYG{p}{)}
+		\PYG{k}{return} \PYG{n+nb}{NULL}\PYG{p}{;}
+	\PYG{k}{return} \PYG{n}{list\PYGZus{}entry}\PYG{p}{(}\PYG{n}{rq}\PYG{o}{->}\PYG{n}{queuelist}\PYG{p}{.}\PYG{n}{prev}\PYG{p}{,} \PYG{k}{struct} \PYG{n}{request}\PYG{p}{,} \PYG{n}{queuelist}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k}{static} \PYG{k}{struct} \PYG{n}{request} \PYG{o}{*}
+\PYG{n+nf}{sstf\PYGZus{}latter\PYGZus{}request}\PYG{p}{(}\PYG{k}{struct} \PYG{n}{request\PYGZus{}queue} \PYG{o}{*}\PYG{n}{q}\PYG{p}{,} \PYG{k}{struct} \PYG{n}{request} \PYG{o}{*}\PYG{n}{rq}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{k}{struct} \PYG{n}{sstf\PYGZus{}data} \PYG{o}{*}\PYG{n}{nd} \PYG{o}{=} \PYG{n}{q}\PYG{o}{->}\PYG{n}{elevator}\PYG{o}{->}\PYG{n}{elevator\PYGZus{}data}\PYG{p}{;}
+
+	\PYG{k}{if} \PYG{p}{(}\PYG{n}{rq}\PYG{o}{->}\PYG{n}{queuelist}\PYG{p}{.}\PYG{n}{next} \PYG{o}{==} \PYG{o}{&}\PYG{n}{nd}\PYG{o}{->}\PYG{n}{queue}\PYG{p}{)}
+		\PYG{k}{return} \PYG{n+nb}{NULL}\PYG{p}{;}
+	\PYG{k}{return} \PYG{n}{list\PYGZus{}entry}\PYG{p}{(}\PYG{n}{rq}\PYG{o}{->}\PYG{n}{queuelist}\PYG{p}{.}\PYG{n}{next}\PYG{p}{,} \PYG{k}{struct} \PYG{n}{request}\PYG{p}{,} \PYG{n}{queuelist}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k}{static} \PYG{k+kt}{int} \PYG{n+nf}{sstf\PYGZus{}init\PYGZus{}queue}\PYG{p}{(}\PYG{k}{struct} \PYG{n}{request\PYGZus{}queue} \PYG{o}{*}\PYG{n}{q}\PYG{p}{,} \PYG{k}{struct} \PYG{n}{elevator\PYGZus{}type} \PYG{o}{*}\PYG{n}{e}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{k}{struct} \PYG{n}{sstf\PYGZus{}data} \PYG{o}{*}\PYG{n}{nd}\PYG{p}{;}
+	\PYG{k}{struct} \PYG{n}{elevator\PYGZus{}queue} \PYG{o}{*}\PYG{n}{eq}\PYG{p}{;}
+
+	\PYG{n}{eq} \PYG{o}{=} \PYG{n}{elevator\PYGZus{}alloc}\PYG{p}{(}\PYG{n}{q}\PYG{p}{,} \PYG{n}{e}\PYG{p}{);}
+	\PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n}{eq}\PYG{p}{)}
+		\PYG{k}{return} \PYG{o}{-}\PYG{n}{ENOMEM}\PYG{p}{;}
+
+	\PYG{n}{nd} \PYG{o}{=} \PYG{n}{kmalloc\PYGZus{}node}\PYG{p}{(}\PYG{k}{sizeof}\PYG{p}{(}\PYG{o}{*}\PYG{n}{nd}\PYG{p}{),} \PYG{n}{GFP\PYGZus{}KERNEL}\PYG{p}{,} \PYG{n}{q}\PYG{o}{->}\PYG{n}{node}\PYG{p}{);}
+	\PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n}{nd}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		\PYG{n}{kobject\PYGZus{}put}\PYG{p}{(}\PYG{o}{&}\PYG{n}{eq}\PYG{o}{->}\PYG{n}{kobj}\PYG{p}{);}
+		\PYG{k}{return} \PYG{o}{-}\PYG{n}{ENOMEM}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{n}{eq}\PYG{o}{->}\PYG{n}{elevator\PYGZus{}data} \PYG{o}{=} \PYG{n}{nd}\PYG{p}{;}
+
+	\PYG{n}{INIT\PYGZus{}LIST\PYGZus{}HEAD}\PYG{p}{(}\PYG{o}{&}\PYG{n}{nd}\PYG{o}{->}\PYG{n}{queue}\PYG{p}{);}
+
+	\PYG{n}{spin\PYGZus{}lock\PYGZus{}irq}\PYG{p}{(}\PYG{n}{q}\PYG{o}{->}\PYG{n}{queue\PYGZus{}lock}\PYG{p}{);}
+	\PYG{n}{q}\PYG{o}{->}\PYG{n}{elevator} \PYG{o}{=} \PYG{n}{eq}\PYG{p}{;}
+	\PYG{n}{spin\PYGZus{}unlock\PYGZus{}irq}\PYG{p}{(}\PYG{n}{q}\PYG{o}{->}\PYG{n}{queue\PYGZus{}lock}\PYG{p}{);}
+	\PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k}{static} \PYG{k+kt}{void} \PYG{n+nf}{sstf\PYGZus{}exit\PYGZus{}queue}\PYG{p}{(}\PYG{k}{struct} \PYG{n}{elevator\PYGZus{}queue} \PYG{o}{*}\PYG{n}{e}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{k}{struct} \PYG{n}{sstf\PYGZus{}data} \PYG{o}{*}\PYG{n}{nd} \PYG{o}{=} \PYG{n}{e}\PYG{o}{->}\PYG{n}{elevator\PYGZus{}data}\PYG{p}{;}
+
+	\PYG{n}{BUG\PYGZus{}ON}\PYG{p}{(}\PYG{o}{!}\PYG{n}{list\PYGZus{}empty}\PYG{p}{(}\PYG{o}{&}\PYG{n}{nd}\PYG{o}{->}\PYG{n}{queue}\PYG{p}{));}
+	\PYG{n}{kfree}\PYG{p}{(}\PYG{n}{nd}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k}{static} \PYG{k}{struct} \PYG{n}{elevator\PYGZus{}type} \PYG{n}{elevator\PYGZus{}sstf} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+	\PYG{p}{.}\PYG{n}{ops} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+		\PYG{p}{.}\PYG{n}{elevator\PYGZus{}merge\PYGZus{}req\PYGZus{}fn}		\PYG{o}{=} \PYG{n}{sstf\PYGZus{}merged\PYGZus{}requests}\PYG{p}{,}
+		\PYG{p}{.}\PYG{n}{elevator\PYGZus{}dispatch\PYGZus{}fn}		\PYG{o}{=} \PYG{n}{sstf\PYGZus{}dispatch}\PYG{p}{,}
+		\PYG{p}{.}\PYG{n}{elevator\PYGZus{}add\PYGZus{}req\PYGZus{}fn}		\PYG{o}{=} \PYG{n}{sstf\PYGZus{}add\PYGZus{}request}\PYG{p}{,}
+		\PYG{p}{.}\PYG{n}{elevator\PYGZus{}former\PYGZus{}req\PYGZus{}fn}		\PYG{o}{=} \PYG{n}{sstf\PYGZus{}former\PYGZus{}request}\PYG{p}{,}
+		\PYG{p}{.}\PYG{n}{elevator\PYGZus{}latter\PYGZus{}req\PYGZus{}fn}		\PYG{o}{=} \PYG{n}{sstf\PYGZus{}latter\PYGZus{}request}\PYG{p}{,}
+		\PYG{p}{.}\PYG{n}{elevator\PYGZus{}init\PYGZus{}fn}		    \PYG{o}{=} \PYG{n}{sstf\PYGZus{}init\PYGZus{}queue}\PYG{p}{,}
+		\PYG{p}{.}\PYG{n}{elevator\PYGZus{}exit\PYGZus{}fn}		    \PYG{o}{=} \PYG{n}{sstf\PYGZus{}exit\PYGZus{}queue}\PYG{p}{,}
+	\PYG{p}{\PYGZcb{},}
+	\PYG{p}{.}\PYG{n}{elevator\PYGZus{}name} \PYG{o}{=} \PYG{l+s}{"sstf"}\PYG{p}{,}
+	\PYG{p}{.}\PYG{n}{elevator\PYGZus{}owner} \PYG{o}{=} \PYG{n}{THIS\PYGZus{}MODULE}\PYG{p}{,}
+\PYG{p}{\PYGZcb{};}
+
+\PYG{k}{static} \PYG{k+kt}{int} \PYG{n}{\PYGZus{}\PYGZus{}init} \PYG{n+nf}{sstf\PYGZus{}init}\PYG{p}{(}\PYG{k+kt}{void}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{k}{return} \PYG{n}{elv\PYGZus{}register}\PYG{p}{(}\PYG{o}{&}\PYG{n}{elevator\PYGZus{}sstf}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k}{static} \PYG{k+kt}{void} \PYG{n}{\PYGZus{}\PYGZus{}exit} \PYG{n+nf}{sstf\PYGZus{}exit}\PYG{p}{(}\PYG{k+kt}{void}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{n}{elv\PYGZus{}unregister}\PYG{p}{(}\PYG{o}{&}\PYG{n}{elevator\PYGZus{}sstf}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{module\PYGZus{}init}\PYG{p}{(}\PYG{n}{sstf\PYGZus{}init}\PYG{p}{);}
+\PYG{n}{module\PYGZus{}exit}\PYG{p}{(}\PYG{n}{sstf\PYGZus{}exit}\PYG{p}{);}
+
+
+\PYG{n}{MODULE\PYGZus{}AUTHOR}\PYG{p}{(}\PYG{l+s}{"Group 10-03"}\PYG{p}{);}
+\PYG{n}{MODULE\PYGZus{}LICENSE}\PYG{p}{(}\PYG{l+s}{"GPL"}\PYG{p}{);}
+\end{Verbatim}

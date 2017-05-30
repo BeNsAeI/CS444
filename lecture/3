@@ -1,0 +1,53 @@
+April 18th
+
+- Linuses guide to INTERCAL
+----------------------------
+
+Inline assembly:
+__asm__ __volatile__ (asm-string
+		      :capture
+		      :input);
+
+32:
+- eax
+- ebx
+- ecx
+- edx
+- edi
+- esi
+- ebp
+- esp
+
+64:
+- rax
+- rbx
+- rcx
+- rdx
+- rdi
+- rsi
+- rbp
+- rsp
+- r8
+- r9
+- r10
+- r11
+- r12
+- r13
+- r14
+- r15
+--------------------------
+- processes
+- linux 2 places spawn processes:
+ - boot (init process 1, it is in all process chains and can addopt)
+ - fork (later clone)
+
+Termination:
+
+- voluntary:
+ - normal exit
+ - error exit
+
+- involuntary:
+ - fatal error
+ - killed
+
