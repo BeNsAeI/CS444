@@ -1,0 +1,11 @@
+Due 5 June 2017, 23:59:59
+
+1 This will be developed in the slob.c file in the mm directory of the linux kernel.
+
+A few useful hints:
+Best fit has to be over all allocated pages, not just the current page.
+Pick a system call number that has never been used.
+Be very careful with your memory tracking. A SLOB is just a list of blocks. A simple one, in fact.
+
+
+

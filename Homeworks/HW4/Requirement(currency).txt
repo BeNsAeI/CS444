@@ -1,0 +1,16 @@
+Due: End of your recitation
+
+Problem 1:
+
+As long as there are fewer than three processes using the resource, new processes can start using it right away.
+Once there are three processes using the resource, all three must leave before any new processes can begin using it.
+
+
+Problem 2:
+
+Some useful constraints:
+Customers invoke get_hair_cut when sitting in the barber chair.
+If the shop is full, a customer exits the shop.
+The barber thread invokes cut_hair.
+cut_hair and get_hair_cut should always be executing concurrently, for the same duration.
+Your solution should be valid for any number of chairs.
