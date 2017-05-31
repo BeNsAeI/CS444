@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Allocate} \PYG{n}{block} \PYG{n}{of} \PYG{n}{memory} \PYG{n}{per} \PYG{n}{request}
+\PYG{n}{make} \PYG{n}{crypto} \PYG{n}{cipher} \PYG{n}{using} \PYG{n}{key}
+\PYG{k}{if} \PYG{n}{writing} \PYG{n}{to} \PYG{n}{memory}\PYG{o}{:}
+	\PYG{n}{memset} \PYG{o}{=} \PYG{p}{(}\PYG{n}{start}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{end}\PYG{p}{)} \PYG{c+c1}{//set the memory to the data}
+	\PYG{n}{data} \PYG{o}{=} \PYG{n}{encrypt}\PYG{p}{(}\PYG{n}{data}\PYG{p}{)}
+\PYG{n+nl}{else:}
+	\PYG{n}{data} \PYG{o}{=} \PYG{n}{decrypt}\PYG{p}{(}\PYG{n}{data}\PYG{p}{)}
+\PYG{k}{return} \PYG{n}{data}
+\end{Verbatim}

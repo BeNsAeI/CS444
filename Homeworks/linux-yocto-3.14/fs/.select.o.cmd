@@ -639,6 +639,7 @@ deps_fs/select.o := \
     $(wildcard include/config/parisc.h) \
     $(wildcard include/config/metag.h) \
     $(wildcard include/config/ksm.h) \
+    $(wildcard include/config/shmem.h) \
     $(wildcard include/config/debug/vm/rb.h) \
     $(wildcard include/config/debug/pagealloc.h) \
     $(wildcard include/config/hugetlbfs.h) \
@@ -813,9 +814,6 @@ deps_fs/select.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   include/linux/file.h \
   include/linux/fdtable.h \
   include/linux/sched/rt.h \
@@ -1020,6 +1018,7 @@ deps_fs/select.o := \
   include/linux/unaligned/packed_struct.h \
   include/net/sock.h \
     $(wildcard include/config/net.h) \
+    $(wildcard include/config/memcg/kmem.h) \
   include/linux/memcontrol.h \
     $(wildcard include/config/memcg/swap.h) \
   include/linux/res_counter.h \

@@ -688,6 +688,7 @@ deps_arch/x86/kernel/stacktrace.o := \
     $(wildcard include/config/parisc.h) \
     $(wildcard include/config/metag.h) \
     $(wildcard include/config/ksm.h) \
+    $(wildcard include/config/shmem.h) \
     $(wildcard include/config/debug/vm/rb.h) \
     $(wildcard include/config/debug/pagealloc.h) \
     $(wildcard include/config/hugetlbfs.h) \

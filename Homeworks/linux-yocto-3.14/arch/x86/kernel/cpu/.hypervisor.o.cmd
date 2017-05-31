@@ -551,6 +551,7 @@ deps_arch/x86/kernel/cpu/hypervisor.o := \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/hypervisor.h \
     $(wildcard include/config/hypervisor/guest.h) \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/kvm_para.h \
+    $(wildcard include/config/debug/rodata.h) \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/kvm_para.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/hyperv.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/xen/hypervisor.h \

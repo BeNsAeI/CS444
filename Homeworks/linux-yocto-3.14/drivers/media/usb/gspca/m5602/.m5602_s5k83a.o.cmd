@@ -621,19 +621,6 @@ deps_drivers/media/usb/gspca/m5602/m5602_s5k83a.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
-  include/linux/kobject.h \
-    $(wildcard include/config/debug/kobject/release.h) \
-  include/linux/sysfs.h \
-  include/linux/kernfs.h \
-  include/linux/idr.h \
-  include/linux/kobject_ns.h \
-  include/linux/stat.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/stat.h \
-  include/uapi/linux/stat.h \
-  include/linux/kref.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/drivers/media/usb/gspca/gspca.h \
     $(wildcard include/config/video/adv/debug.h) \
     $(wildcard include/config/input.h) \
@@ -645,6 +632,9 @@ deps_drivers/media/usb/gspca/m5602/m5602_s5k83a.o := \
     $(wildcard include/config/module/unload.h) \
     $(wildcard include/config/constructors.h) \
     $(wildcard include/config/debug/set/module/ronx.h) \
+  include/linux/stat.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/stat.h \
+  include/uapi/linux/stat.h \
   include/linux/kmod.h \
   include/linux/elf.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/elf.h \
@@ -655,6 +645,13 @@ deps_drivers/media/usb/gspca/m5602/m5602_s5k83a.o := \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/ldt.h \
   include/uapi/linux/elf.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/elf-em.h \
+  include/linux/kobject.h \
+    $(wildcard include/config/debug/kobject/release.h) \
+  include/linux/sysfs.h \
+  include/linux/kernfs.h \
+  include/linux/idr.h \
+  include/linux/kobject_ns.h \
+  include/linux/kref.h \
   include/linux/moduleparam.h \
     $(wildcard include/config/alpha.h) \
     $(wildcard include/config/ia64.h) \

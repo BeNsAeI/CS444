@@ -584,6 +584,7 @@ deps_kernel/module.o := \
     $(wildcard include/config/metag.h) \
     $(wildcard include/config/stack/growsup.h) \
     $(wildcard include/config/ksm.h) \
+    $(wildcard include/config/shmem.h) \
     $(wildcard include/config/debug/vm/rb.h) \
     $(wildcard include/config/debug/pagealloc.h) \
     $(wildcard include/config/hugetlbfs.h) \
@@ -856,9 +857,6 @@ deps_kernel/module.o := \
     $(wildcard include/config/slub.h) \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   include/linux/proc_fs.h \
   include/linux/security.h \
     $(wildcard include/config/security/path.h) \

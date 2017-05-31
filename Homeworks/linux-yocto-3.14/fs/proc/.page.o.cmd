@@ -568,6 +568,7 @@ deps_fs/proc/page.o := \
     $(wildcard include/config/metag.h) \
     $(wildcard include/config/ia64.h) \
     $(wildcard include/config/stack/growsup.h) \
+    $(wildcard include/config/shmem.h) \
     $(wildcard include/config/debug/vm/rb.h) \
     $(wildcard include/config/debug/pagealloc.h) \
     $(wildcard include/config/hugetlbfs.h) \
@@ -747,22 +748,15 @@ deps_fs/proc/page.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
-  include/linux/kobject.h \
-    $(wildcard include/config/debug/kobject/release.h) \
-  include/linux/sysfs.h \
-  include/linux/kernfs.h \
-  include/linux/idr.h \
-  include/linux/kobject_ns.h \
   include/linux/memcontrol.h \
     $(wildcard include/config/memcg/swap.h) \
     $(wildcard include/config/inet.h) \
+    $(wildcard include/config/memcg/kmem.h) \
   include/linux/cgroup.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/cgroupstats.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/taskstats.h \
   include/linux/prio_heap.h \
+  include/linux/idr.h \
   include/linux/xattr.h \
   include/uapi/linux/xattr.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/libc-compat.h \

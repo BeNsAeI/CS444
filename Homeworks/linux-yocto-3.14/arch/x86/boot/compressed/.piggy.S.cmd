@@ -1,1 +1,1 @@
-cmd_arch/x86/boot/compressed/piggy.S := arch/x86/boot/compressed/mkpiggy arch/x86/boot/compressed/vmlinux.bin.gz > arch/x86/boot/compressed/piggy.S || ( rm -f arch/x86/boot/compressed/piggy.S ; false )
+cmd_arch/x86/boot/compressed/piggy.S := arch/x86/boot/compressed/mkpiggy arch/x86/boot/compressed/vmlinux.bin.gz 14110720 > arch/x86/boot/compressed/piggy.S || ( rm -f arch/x86/boot/compressed/piggy.S ; false )

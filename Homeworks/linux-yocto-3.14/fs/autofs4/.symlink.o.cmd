@@ -550,16 +550,6 @@ deps_fs/autofs4/symlink.o := \
     $(wildcard include/config/use/percpu/numa/node/id.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
-  include/linux/kobject.h \
-    $(wildcard include/config/debug/kobject/release.h) \
-  include/linux/sysfs.h \
-  include/linux/kernfs.h \
-  include/linux/idr.h \
-  include/linux/kobject_ns.h \
-  include/linux/kref.h \
   include/linux/sched.h \
     $(wildcard include/config/sched/debug.h) \
     $(wildcard include/config/no/hz/common.h) \

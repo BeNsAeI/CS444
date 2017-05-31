@@ -628,19 +628,6 @@ deps_sound/core/seq/seq_timer.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
-  include/linux/kobject.h \
-    $(wildcard include/config/debug/kobject/release.h) \
-  include/linux/sysfs.h \
-  include/linux/kernfs.h \
-  include/linux/idr.h \
-  include/linux/kobject_ns.h \
-  include/linux/stat.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/stat.h \
-  include/uapi/linux/stat.h \
-  include/linux/kref.h \
   sound/core/seq/seq_timer.h \
   include/sound/timer.h \
   include/sound/asound.h \
@@ -681,6 +668,7 @@ deps_sound/core/seq/seq_timer.o := \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/smap.h \
     $(wildcard include/config/x86/smap.h) \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/uaccess_32.h \
+  include/linux/kref.h \
   include/sound/seq_kernel.h \
   include/sound/asequencer.h \
   include/uapi/sound/asequencer.h \
@@ -705,6 +693,9 @@ deps_sound/core/seq/seq_timer.o := \
   include/linux/lockref.h \
     $(wildcard include/config/arch/use/cmpxchg/lockref.h) \
   include/linux/path.h \
+  include/linux/stat.h \
+  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/stat.h \
+  include/uapi/linux/stat.h \
   include/linux/list_lru.h \
   include/linux/radix-tree.h \
   include/linux/semaphore.h \

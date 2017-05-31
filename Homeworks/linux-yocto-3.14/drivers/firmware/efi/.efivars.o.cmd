@@ -683,9 +683,6 @@ deps_drivers/firmware/efi/efivars.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   include/linux/ucs2_string.h \
 
 drivers/firmware/efi/efivars.o: $(deps_drivers/firmware/efi/efivars.o)

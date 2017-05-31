@@ -555,9 +555,6 @@ deps_fs/configfs/item.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   include/linux/configfs.h \
 
 fs/configfs/item.o: $(deps_fs/configfs/item.o)

@@ -771,9 +771,6 @@ deps_drivers/video/backlight/backlight.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
 
 drivers/video/backlight/backlight.o: $(deps_drivers/video/backlight/backlight.o)
 

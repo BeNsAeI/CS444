@@ -782,9 +782,6 @@ deps_drivers/ptp/ptp_chardev.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   drivers/ptp/ptp_private.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/ptp_clock.h \
   include/linux/ptp_clock_kernel.h \

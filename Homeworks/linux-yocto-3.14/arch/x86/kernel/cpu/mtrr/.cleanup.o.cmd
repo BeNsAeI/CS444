@@ -600,6 +600,7 @@ deps_arch/x86/kernel/cpu/mtrr/cleanup.o := \
     $(wildcard include/config/stack/growsup.h) \
     $(wildcard include/config/transparent/hugepage.h) \
     $(wildcard include/config/ksm.h) \
+    $(wildcard include/config/shmem.h) \
     $(wildcard include/config/debug/vm/rb.h) \
     $(wildcard include/config/debug/pagealloc.h) \
     $(wildcard include/config/hugetlbfs.h) \
@@ -652,9 +653,6 @@ deps_arch/x86/kernel/cpu/mtrr/cleanup.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   include/asm-generic/pci-dma-compat.h \
   include/linux/dma-mapping.h \
     $(wildcard include/config/has/dma.h) \
@@ -695,6 +693,7 @@ deps_arch/x86/kernel/cpu/mtrr/cleanup.o := \
   include/uapi/linux/kvm_para.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/kvm_para.h \
     $(wildcard include/config/kvm/guest.h) \
+    $(wildcard include/config/debug/rodata.h) \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/kvm_para.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/hyperv.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/mtrr.h \

@@ -1,0 +1,171 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include <linux/module.h>}
+\PYG{c+cp}{\PYGZsh{}include <linux/moduleparam.h>}
+\PYG{c+cp}{\PYGZsh{}include <linux/init.h>}
+
+\PYG{c+cp}{\PYGZsh{}include <linux/kernel.h>}
+\PYG{c+cp}{\PYGZsh{}include <linux/fs.h>}
+\PYG{c+cp}{\PYGZsh{}include <linux/errno.h>}
+\PYG{c+cp}{\PYGZsh{}include <linux/types.h>}
+\PYG{c+cp}{\PYGZsh{}include <linux/vmalloc.h>}
+\PYG{c+cp}{\PYGZsh{}include <linux/genhd.h>}
+\PYG{c+cp}{\PYGZsh{}include <linux/blkdev.h>}
+\PYG{c+cp}{\PYGZsh{}include <linux/hdreg.h>}
+
+\PYG{c+cp}{\PYGZsh{}include <linux/crypto.h>}
+
+\PYG{n}{MODULE\PYGZus{}LICENSE}\PYG{p}{(}\PYG{l+s}{"Dual BSD/GPL"}\PYG{p}{);}
+\PYG{k}{static} \PYG{k+kt}{char} \PYG{o}{*}\PYG{n}{Version} \PYG{o}{=} \PYG{l+s}{"1.4"}\PYG{p}{;}
+
+
+\PYG{k}{static} \PYG{k}{struct} \PYG{n}{crypto\PYGZus{}cipher} \PYG{o}{*}\PYG{n}{cipher}\PYG{p}{;}
+
+\PYG{k}{static} \PYG{k+kt}{int} \PYG{n}{major\PYGZus{}num} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{n}{module\PYGZus{}param}\PYG{p}{(}\PYG{n}{major\PYGZus{}num}\PYG{p}{,} \PYG{k+kt}{int}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{);}
+\PYG{k}{static} \PYG{k+kt}{int} \PYG{n}{logical\PYGZus{}block\PYGZus{}size} \PYG{o}{=} \PYG{l+m+mi}{512}\PYG{p}{;}
+\PYG{n}{module\PYGZus{}param}\PYG{p}{(}\PYG{n}{logical\PYGZus{}block\PYGZus{}size}\PYG{p}{,} \PYG{k+kt}{int}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{);}
+\PYG{k}{static} \PYG{k+kt}{int} \PYG{n}{nsectors} \PYG{o}{=} \PYG{l+m+mi}{1024}\PYG{p}{;}
+\PYG{n}{module\PYGZus{}param}\PYG{p}{(}\PYG{n}{nsectors}\PYG{p}{,} \PYG{k+kt}{int}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{);}
+
+\PYG{c+cp}{\PYGZsh{}define KEY\PYGZus{}SZ 8}
+\PYG{k}{static} \PYG{k+kt}{char}\PYG{o}{*} \PYG{n}{key} \PYG{o}{=} \PYG{l+s}{"privateKey"}\PYG{p}{;}
+\PYG{n}{module\PYGZus{}param}\PYG{p}{(}\PYG{n}{key}\PYG{p}{,} \PYG{n}{charp}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{);}
+\PYG{c+cp}{\PYGZsh{}define KERNEL\PYGZus{}SECTOR\PYGZus{}SIZE 512}
+
+\PYG{k}{static} \PYG{k}{struct} \PYG{n}{request\PYGZus{}queue} \PYG{o}{*}\PYG{n}{Queue}\PYG{p}{;}
+
+\PYG{k}{static} \PYG{k}{struct} \PYG{n}{rd2\PYGZus{}device} \PYG{p}{\PYGZob{}}
+\PYG{k+kt}{unsigned} \PYG{k+kt}{long} \PYG{n}{size}\PYG{p}{;}
+\PYG{n}{spinlock\PYGZus{}t} \PYG{n}{lock}\PYG{p}{;}
+\PYG{n}{u8} \PYG{o}{*}\PYG{n}{data}\PYG{p}{;}
+\PYG{k}{struct} \PYG{n}{gendisk} \PYG{o}{*}\PYG{n}{gd}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}} \PYG{n}{Device}\PYG{p}{;}
+
+\PYG{k}{static} \PYG{k+kt}{void} \PYG{n+nf}{rd2\PYGZus{}transfer}\PYG{p}{(}\PYG{k}{struct} \PYG{n}{rd2\PYGZus{}device} \PYG{o}{*}\PYG{n}{dev}\PYG{p}{,} \PYG{n}{sector\PYGZus{}t} \PYG{n}{sector}\PYG{p}{,}
+\PYG{k+kt}{unsigned} \PYG{k+kt}{long} \PYG{n}{nsect}\PYG{p}{,} \PYG{k+kt}{char} \PYG{o}{*}\PYG{n}{buffer}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{write}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+\PYG{k+kt}{unsigned} \PYG{k+kt}{long} \PYG{n}{offset} \PYG{o}{=} \PYG{n}{sector} \PYG{o}{*} \PYG{n}{logical\PYGZus{}block\PYGZus{}size}\PYG{p}{;}
+\PYG{k+kt}{unsigned} \PYG{k+kt}{long} \PYG{n}{nbytes} \PYG{o}{=} \PYG{n}{nsect} \PYG{o}{*} \PYG{n}{logical\PYGZus{}block\PYGZus{}size}\PYG{p}{;}
+\PYG{k+kt}{unsigned} \PYG{k+kt}{int} \PYG{n}{i}\PYG{p}{;}
+
+\PYG{c+c1}{//printk("[KERNEL DEBUG] rd2: transfer\PYGZus{}key > \PYGZpc{}s\PYGZbs{}n",key);}
+
+\PYG{k}{if} \PYG{p}{((}\PYG{n}{offset} \PYG{o}{+} \PYG{n}{nbytes}\PYG{p}{)} \PYG{o}{>} \PYG{n}{dev}\PYG{o}{->}\PYG{n}{size}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+\PYG{n}{printk} \PYG{p}{(}\PYG{n}{KERN\PYGZus{}NOTICE} \PYG{l+s}{"[KERNEL DEBUG] rd2(\PYGZpc{}s): Beyond-end write (\PYGZpc{}ld \PYGZpc{}ld)}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{"}\PYG{p}{,} \PYG{n}{Version}\PYG{p}{,} \PYG{n}{offset}\PYG{p}{,} \PYG{n}{nbytes}\PYG{p}{);}
+\PYG{k}{return}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{crypto\PYGZus{}cipher\PYGZus{}clear\PYGZus{}flags}\PYG{p}{(}\PYG{n}{cipher}\PYG{p}{,} \PYG{o}{\PYGZti{}}\PYG{l+m+mi}{0}\PYG{p}{);}
+\PYG{n}{crypto\PYGZus{}cipher\PYGZus{}setkey}\PYG{p}{(}\PYG{n}{cipher}\PYG{p}{,} \PYG{n}{key}\PYG{p}{,} \PYG{n}{strlen}\PYG{p}{(}\PYG{n}{key}\PYG{p}{));}
+
+\PYG{k}{if}\PYG{p}{(}\PYG{n}{write}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+\PYG{k}{for}\PYG{p}{(}\PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{<} \PYG{n}{nbytes}\PYG{p}{;} \PYG{n}{i} \PYG{o}{+=} \PYG{n}{crypto\PYGZus{}cipher\PYGZus{}blocksize}\PYG{p}{(}\PYG{n}{cipher}\PYG{p}{))} \PYG{p}{\PYGZob{}}
+\PYG{n}{memset}\PYG{p}{(}\PYG{n}{dev}\PYG{o}{->}\PYG{n}{data} \PYG{o}{+} \PYG{n}{offset} \PYG{o}{+} \PYG{n}{i}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{crypto\PYGZus{}cipher\PYGZus{}blocksize}\PYG{p}{(}\PYG{n}{cipher}\PYG{p}{));}
+\PYG{n}{crypto\PYGZus{}cipher\PYGZus{}encrypt\PYGZus{}one}\PYG{p}{(}\PYG{n}{cipher}\PYG{p}{,} \PYG{n}{dev}\PYG{o}{->}\PYG{n}{data} \PYG{o}{+} \PYG{n}{offset} \PYG{o}{+} \PYG{n}{i}\PYG{p}{,} \PYG{n}{buffer} \PYG{o}{+} \PYG{n}{i}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
+\PYG{k}{for}\PYG{p}{(}\PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{<} \PYG{n}{nbytes}\PYG{p}{;} \PYG{n}{i} \PYG{o}{+=} \PYG{n}{crypto\PYGZus{}cipher\PYGZus{}blocksize}\PYG{p}{(}\PYG{n}{cipher}\PYG{p}{))} \PYG{p}{\PYGZob{}}
+\PYG{n}{crypto\PYGZus{}cipher\PYGZus{}decrypt\PYGZus{}one}\PYG{p}{(}\PYG{n}{cipher}\PYG{p}{,} \PYG{n}{buffer} \PYG{o}{+} \PYG{n}{i}\PYG{p}{,} \PYG{n}{dev}\PYG{o}{->}\PYG{n}{data} \PYG{o}{+} \PYG{n}{offset} \PYG{o}{+} \PYG{n}{i}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k}{static} \PYG{k+kt}{void} \PYG{n+nf}{rd2\PYGZus{}request}\PYG{p}{(}\PYG{k}{struct} \PYG{n}{request\PYGZus{}queue} \PYG{o}{*}\PYG{n}{q}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+\PYG{k}{struct} \PYG{n}{request} \PYG{o}{*}\PYG{n}{req}\PYG{p}{;}
+
+\PYG{n}{req} \PYG{o}{=} \PYG{n}{blk\PYGZus{}fetch\PYGZus{}request}\PYG{p}{(}\PYG{n}{q}\PYG{p}{);}
+\PYG{k}{while} \PYG{p}{(}\PYG{n}{req} \PYG{o}{!=} \PYG{n+nb}{NULL}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+\PYG{k}{if} \PYG{p}{(}\PYG{n}{req} \PYG{o}{==} \PYG{n+nb}{NULL} \PYG{o}{||} \PYG{p}{(}\PYG{n}{req}\PYG{o}{->}\PYG{n}{cmd\PYGZus{}type} \PYG{o}{!=} \PYG{n}{REQ\PYGZus{}TYPE\PYGZus{}FS}\PYG{p}{))} \PYG{p}{\PYGZob{}}
+\PYG{n}{\PYGZus{}\PYGZus{}blk\PYGZus{}end\PYGZus{}request\PYGZus{}all}\PYG{p}{(}\PYG{n}{req}\PYG{p}{,} \PYG{o}{-}\PYG{n}{EIO}\PYG{p}{);}
+\PYG{k}{continue}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\PYG{n}{rd2\PYGZus{}transfer}\PYG{p}{(}\PYG{o}{&}\PYG{n}{Device}\PYG{p}{,} \PYG{n}{blk\PYGZus{}rq\PYGZus{}pos}\PYG{p}{(}\PYG{n}{req}\PYG{p}{),} \PYG{n}{blk\PYGZus{}rq\PYGZus{}cur\PYGZus{}sectors}\PYG{p}{(}\PYG{n}{req}\PYG{p}{),}
+\PYG{n}{bio\PYGZus{}data}\PYG{p}{(}\PYG{n}{req}\PYG{o}{->}\PYG{n}{bio}\PYG{p}{),} \PYG{n}{rq\PYGZus{}data\PYGZus{}dir}\PYG{p}{(}\PYG{n}{req}\PYG{p}{));}
+
+\PYG{k}{if} \PYG{p}{(} \PYG{o}{!} \PYG{n}{\PYGZus{}\PYGZus{}blk\PYGZus{}end\PYGZus{}request\PYGZus{}cur}\PYG{p}{(}\PYG{n}{req}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{p}{)} \PYG{p}{\PYGZob{}}
+\PYG{n}{req} \PYG{o}{=} \PYG{n}{blk\PYGZus{}fetch\PYGZus{}request}\PYG{p}{(}\PYG{n}{q}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{int} \PYG{n+nf}{rd2\PYGZus{}getgeo}\PYG{p}{(}\PYG{k}{struct} \PYG{n}{block\PYGZus{}device} \PYG{o}{*} \PYG{n}{block\PYGZus{}device}\PYG{p}{,} \PYG{k}{struct} \PYG{n}{hd\PYGZus{}geometry} \PYG{o}{*} \PYG{n}{geo}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+\PYG{k+kt}{long} \PYG{n}{size}\PYG{p}{;}
+
+\PYG{n}{size} \PYG{o}{=} \PYG{n}{Device}\PYG{p}{.}\PYG{n}{size} \PYG{o}{*} \PYG{p}{(}\PYG{n}{logical\PYGZus{}block\PYGZus{}size} \PYG{o}{/} \PYG{n}{KERNEL\PYGZus{}SECTOR\PYGZus{}SIZE}\PYG{p}{);}
+\PYG{n}{geo}\PYG{o}{->}\PYG{n}{cylinders} \PYG{o}{=} \PYG{p}{(}\PYG{n}{size} \PYG{o}{&} \PYG{o}{\PYGZti{}}\PYG{l+m+mh}{0x3f}\PYG{p}{)} \PYG{o}{>>} \PYG{l+m+mi}{6}\PYG{p}{;}
+\PYG{n}{geo}\PYG{o}{->}\PYG{n}{heads} \PYG{o}{=} \PYG{l+m+mi}{4}\PYG{p}{;}
+\PYG{n}{geo}\PYG{o}{->}\PYG{n}{sectors} \PYG{o}{=} \PYG{l+m+mi}{16}\PYG{p}{;}
+\PYG{n}{geo}\PYG{o}{->}\PYG{n}{start} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k}{static} \PYG{k}{struct} \PYG{n}{block\PYGZus{}device\PYGZus{}operations} \PYG{n}{rd2\PYGZus{}ops} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+\PYG{p}{.}\PYG{n}{owner}  \PYG{o}{=} \PYG{n}{THIS\PYGZus{}MODULE}\PYG{p}{,}
+\PYG{p}{.}\PYG{n}{getgeo} \PYG{o}{=} \PYG{n}{rd2\PYGZus{}getgeo}
+\PYG{p}{\PYGZcb{};}
+
+\PYG{k}{static} \PYG{k+kt}{int} \PYG{n}{\PYGZus{}\PYGZus{}init} \PYG{n+nf}{rd2\PYGZus{}init}\PYG{p}{(}\PYG{k+kt}{void}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+\PYG{n}{Device}\PYG{p}{.}\PYG{n}{size} \PYG{o}{=} \PYG{n}{nsectors} \PYG{o}{*} \PYG{n}{logical\PYGZus{}block\PYGZus{}size}\PYG{p}{;}
+\PYG{n}{spin\PYGZus{}lock\PYGZus{}init}\PYG{p}{(}\PYG{o}{&}\PYG{n}{Device}\PYG{p}{.}\PYG{n}{lock}\PYG{p}{);}
+\PYG{n}{Device}\PYG{p}{.}\PYG{n}{data} \PYG{o}{=} \PYG{n}{vmalloc}\PYG{p}{(}\PYG{n}{Device}\PYG{p}{.}\PYG{n}{size}\PYG{p}{);}
+\PYG{k}{if} \PYG{p}{(}\PYG{n}{Device}\PYG{p}{.}\PYG{n}{data} \PYG{o}{==} \PYG{n+nb}{NULL}\PYG{p}{)}
+\PYG{k}{return} \PYG{o}{-}\PYG{n}{ENOMEM}\PYG{p}{;}
+\PYG{c+cm}{/*}
+\PYG{c+cm}{* Get a request queue.}
+\PYG{c+cm}{*/}
+\PYG{n}{Queue} \PYG{o}{=} \PYG{n}{blk\PYGZus{}init\PYGZus{}queue}\PYG{p}{(}\PYG{n}{rd2\PYGZus{}request}\PYG{p}{,} \PYG{o}{&}\PYG{n}{Device}\PYG{p}{.}\PYG{n}{lock}\PYG{p}{);}
+\PYG{k}{if} \PYG{p}{(}\PYG{n}{Queue} \PYG{o}{==} \PYG{n+nb}{NULL}\PYG{p}{)}
+\PYG{k}{goto} \PYG{n}{out}\PYG{p}{;}
+\PYG{n}{blk\PYGZus{}queue\PYGZus{}logical\PYGZus{}block\PYGZus{}size}\PYG{p}{(}\PYG{n}{Queue}\PYG{p}{,} \PYG{n}{logical\PYGZus{}block\PYGZus{}size}\PYG{p}{);}
+\PYG{c+cm}{/*}
+\PYG{c+cm}{* Get registered.}
+\PYG{c+cm}{*/}
+\PYG{n}{major\PYGZus{}num} \PYG{o}{=} \PYG{n}{register\PYGZus{}blkdev}\PYG{p}{(}\PYG{n}{major\PYGZus{}num}\PYG{p}{,} \PYG{l+s}{"rd2"}\PYG{p}{);}
+\PYG{k}{if} \PYG{p}{(}\PYG{n}{major\PYGZus{}num} \PYG{o}{<} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+\PYG{k}{goto} \PYG{n}{out}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+cm}{/* allocing cipher */}
+\PYG{n}{cipher} \PYG{o}{=} \PYG{n}{crypto\PYGZus{}alloc\PYGZus{}cipher}\PYG{p}{(}\PYG{l+s}{"aes"}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{);}
+\PYG{k}{if}\PYG{p}{(}\PYG{o}{!}\PYG{n}{cipher}\PYG{p}{)\PYGZob{}}
+\PYG{k}{goto} \PYG{n}{out}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{printk}\PYG{p}{(}\PYG{l+s}{"[KERNEL DEBUG] rd2: enc\PYGZus{}key > \PYGZpc{}s}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{"}\PYG{p}{,}\PYG{n}{key}\PYG{p}{);}
+\PYG{n}{crypto\PYGZus{}cipher\PYGZus{}setkey}\PYG{p}{(}\PYG{n}{cipher}\PYG{p}{,}\PYG{n}{key}\PYG{p}{,}\PYG{n}{strlen}\PYG{p}{(}\PYG{n}{key}\PYG{p}{));}
+
+\PYG{c+cm}{/*}
+\PYG{c+cm}{* And the gendisk structure.}
+\PYG{c+cm}{*/}
+\PYG{n}{Device}\PYG{p}{.}\PYG{n}{gd} \PYG{o}{=} \PYG{n}{alloc\PYGZus{}disk}\PYG{p}{(}\PYG{l+m+mi}{16}\PYG{p}{);}
+\PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n}{Device}\PYG{p}{.}\PYG{n}{gd}\PYG{p}{)}
+\PYG{k}{goto} \PYG{n}{out\PYGZus{}unregister}\PYG{p}{;}
+\PYG{n}{Device}\PYG{p}{.}\PYG{n}{gd}\PYG{o}{->}\PYG{n}{major} \PYG{o}{=} \PYG{n}{major\PYGZus{}num}\PYG{p}{;}
+\PYG{n}{Device}\PYG{p}{.}\PYG{n}{gd}\PYG{o}{->}\PYG{n}{first\PYGZus{}minor} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{n}{Device}\PYG{p}{.}\PYG{n}{gd}\PYG{o}{->}\PYG{n}{fops} \PYG{o}{=} \PYG{o}{&}\PYG{n}{rd2\PYGZus{}ops}\PYG{p}{;}
+\PYG{n}{Device}\PYG{p}{.}\PYG{n}{gd}\PYG{o}{->}\PYG{n}{private\PYGZus{}data} \PYG{o}{=} \PYG{o}{&}\PYG{n}{Device}\PYG{p}{;}
+\PYG{n}{strcpy}\PYG{p}{(}\PYG{n}{Device}\PYG{p}{.}\PYG{n}{gd}\PYG{o}{->}\PYG{n}{disk\PYGZus{}name}\PYG{p}{,} \PYG{l+s}{"rd20"}\PYG{p}{);}
+\PYG{n}{set\PYGZus{}capacity}\PYG{p}{(}\PYG{n}{Device}\PYG{p}{.}\PYG{n}{gd}\PYG{p}{,} \PYG{n}{nsectors}\PYG{p}{);}
+\PYG{n}{Device}\PYG{p}{.}\PYG{n}{gd}\PYG{o}{->}\PYG{n}{queue} \PYG{o}{=} \PYG{n}{Queue}\PYG{p}{;}
+\PYG{n}{add\PYGZus{}disk}\PYG{p}{(}\PYG{n}{Device}\PYG{p}{.}\PYG{n}{gd}\PYG{p}{);}
+\PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+
+\PYG{n+nl}{out\PYGZus{}unregister:}
+\PYG{n}{unregister\PYGZus{}blkdev}\PYG{p}{(}\PYG{n}{major\PYGZus{}num}\PYG{p}{,} \PYG{l+s}{"rd2"}\PYG{p}{);}
+\PYG{n+nl}{out:}
+\PYG{n}{vfree}\PYG{p}{(}\PYG{n}{Device}\PYG{p}{.}\PYG{n}{data}\PYG{p}{);}
+\PYG{k}{return} \PYG{o}{-}\PYG{n}{ENOMEM}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k}{static} \PYG{k+kt}{void} \PYG{n}{\PYGZus{}\PYGZus{}exit} \PYG{n}{rd2\PYGZus{}exit}\PYG{p}{(}\PYG{k+kt}{void}\PYG{p}{)\PYGZob{}}
+
+\PYG{n}{crypto\PYGZus{}free\PYGZus{}cipher}\PYG{p}{(}\PYG{n}{cipher}\PYG{p}{);}
+
+\PYG{n}{del\PYGZus{}gendisk}\PYG{p}{(}\PYG{n}{Device}\PYG{p}{.}\PYG{n}{gd}\PYG{p}{);}
+\PYG{n}{put\PYGZus{}disk}\PYG{p}{(}\PYG{n}{Device}\PYG{p}{.}\PYG{n}{gd}\PYG{p}{);}
+\PYG{n}{unregister\PYGZus{}blkdev}\PYG{p}{(}\PYG{n}{major\PYGZus{}num}\PYG{p}{,} \PYG{l+s}{"rd2"}\PYG{p}{);}
+\PYG{n}{blk\PYGZus{}cleanup\PYGZus{}queue}\PYG{p}{(}\PYG{n}{Queue}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{module\PYGZus{}init}\PYG{p}{(}\PYG{n}{rd2\PYGZus{}init}\PYG{p}{);}
+\PYG{n}{module\PYGZus{}exit}\PYG{p}{(}\PYG{n}{rd2\PYGZus{}exit}\PYG{p}{);}
+\end{Verbatim}

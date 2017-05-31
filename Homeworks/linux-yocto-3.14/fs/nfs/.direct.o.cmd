@@ -619,6 +619,7 @@ deps_fs/nfs/direct.o := \
     $(wildcard include/config/metag.h) \
     $(wildcard include/config/ia64.h) \
     $(wildcard include/config/ksm.h) \
+    $(wildcard include/config/shmem.h) \
     $(wildcard include/config/debug/vm/rb.h) \
     $(wildcard include/config/debug/pagealloc.h) \
     $(wildcard include/config/hugetlbfs.h) \
@@ -742,15 +743,6 @@ deps_fs/nfs/direct.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
-  include/linux/kobject.h \
-    $(wildcard include/config/debug/kobject/release.h) \
-  include/linux/sysfs.h \
-  include/linux/kernfs.h \
-  include/linux/idr.h \
-  include/linux/kobject_ns.h \
   include/linux/task_io_accounting_ops.h \
   include/linux/module.h \
     $(wildcard include/config/module/sig.h) \
@@ -770,6 +762,12 @@ deps_fs/nfs/direct.o := \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/ldt.h \
   include/uapi/linux/elf.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/elf-em.h \
+  include/linux/kobject.h \
+    $(wildcard include/config/debug/kobject/release.h) \
+  include/linux/sysfs.h \
+  include/linux/kernfs.h \
+  include/linux/idr.h \
+  include/linux/kobject_ns.h \
   include/linux/moduleparam.h \
     $(wildcard include/config/alpha.h) \
     $(wildcard include/config/ppc64.h) \
@@ -1049,6 +1047,7 @@ deps_fs/nfs/direct.o := \
     $(wildcard include/config/tcp/md5sig.h) \
   include/net/sock.h \
     $(wildcard include/config/net.h) \
+    $(wildcard include/config/memcg/kmem.h) \
   include/linux/memcontrol.h \
     $(wildcard include/config/memcg/swap.h) \
     $(wildcard include/config/inet.h) \

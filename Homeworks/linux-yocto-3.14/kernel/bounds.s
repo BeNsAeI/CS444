@@ -641,8 +641,6 @@ foo:
 	.string	"PCG_LOCK"
 .LASF45:
 	.string	"ZONE_HIGHMEM"
-.LASF59:
-	.string	"/scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14"
 .LASF4:
 	.string	"unsigned int"
 .LASF57:
@@ -651,8 +649,8 @@ foo:
 	.ascii	"mulate-outgoing-args -mno-sse -mno-mmx -mno-sse2 -mno-3dnow "
 	.ascii	"-mno-avx -g -O2 -p -fno-strict-aliasing -fno"
 	.string	"-common -fno-delete-null-pointer-checks -freg-struct-return -fno-pic -ffreestanding -fno-asynchronous-unwind-tables -fno-stack-protector -fno-omit-frame-pointer -fno-optimize-sibling-calls -fno-var-tracking-assignments -fno-strict-overflow -fconserve-stack"
-.LASF13:
-	.string	"PG_error"
+.LASF59:
+	.string	"/scratch/spring2017/10-03/linux-yocto-3.14"
 .LASF6:
 	.string	"long long unsigned int"
 .LASF38:
@@ -683,6 +681,8 @@ foo:
 	.string	"PCG_USED"
 .LASF21:
 	.string	"PG_arch_1"
+.LASF13:
+	.string	"PG_error"
 .LASF40:
 	.string	"PG_slob_free"
 .LASF46:

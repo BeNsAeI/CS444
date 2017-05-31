@@ -572,9 +572,6 @@ deps_drivers/base/class.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   include/linux/genhd.h \
     $(wildcard include/config/fail/make/request.h) \
     $(wildcard include/config/blk/dev/integrity.h) \

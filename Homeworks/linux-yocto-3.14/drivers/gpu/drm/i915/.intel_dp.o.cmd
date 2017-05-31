@@ -659,9 +659,6 @@ deps_drivers/gpu/drm/i915/intel_dp.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   include/drm/drmP.h \
     $(wildcard include/config/agp.h) \
     $(wildcard include/config/debug/fs.h) \
@@ -745,6 +742,7 @@ deps_drivers/gpu/drm/i915/intel_dp.o := \
     $(wildcard include/config/metag.h) \
     $(wildcard include/config/ia64.h) \
     $(wildcard include/config/ksm.h) \
+    $(wildcard include/config/shmem.h) \
     $(wildcard include/config/debug/vm/rb.h) \
     $(wildcard include/config/debug/pagealloc.h) \
     $(wildcard include/config/hugetlbfs.h) \

@@ -677,9 +677,6 @@ deps_drivers/media/usb/cpia2/cpia2_v4l.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   include/linux/videodev2.h \
   include/uapi/linux/videodev2.h \
     $(wildcard include/config/video/adv/debug.h) \

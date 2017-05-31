@@ -493,9 +493,12 @@ deps_sound/core/timer.o := \
   include/linux/pfn.h \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
+  include/linux/device.h \
+    $(wildcard include/config/debug/devres.h) \
+    $(wildcard include/config/pinctrl.h) \
+    $(wildcard include/config/dma/cma.h) \
+    $(wildcard include/config/devtmpfs.h) \
+    $(wildcard include/config/sysfs/deprecated.h) \
   include/linux/kobject.h \
     $(wildcard include/config/debug/kobject/release.h) \
   include/linux/sysfs.h \
@@ -509,12 +512,6 @@ deps_sound/core/timer.o := \
     $(wildcard include/config/user/ns.h) \
   include/linux/highuid.h \
   include/linux/kref.h \
-  include/linux/device.h \
-    $(wildcard include/config/debug/devres.h) \
-    $(wildcard include/config/pinctrl.h) \
-    $(wildcard include/config/dma/cma.h) \
-    $(wildcard include/config/devtmpfs.h) \
-    $(wildcard include/config/sysfs/deprecated.h) \
   include/linux/klist.h \
   include/linux/pinctrl/devinfo.h \
   include/linux/ratelimit.h \

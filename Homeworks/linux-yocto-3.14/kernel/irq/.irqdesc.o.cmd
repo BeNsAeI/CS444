@@ -511,22 +511,6 @@ deps_kernel/irq/irqdesc.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
-  include/linux/kobject.h \
-    $(wildcard include/config/debug/kobject/release.h) \
-  include/linux/sysfs.h \
-  include/linux/kernfs.h \
-  include/linux/idr.h \
-  include/linux/kobject_ns.h \
-  include/linux/stat.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/stat.h \
-  include/uapi/linux/stat.h \
-  include/linux/uidgid.h \
-    $(wildcard include/config/user/ns.h) \
-  include/linux/highuid.h \
-  include/linux/kref.h \
   include/linux/interrupt.h \
     $(wildcard include/config/irq/forced/threading.h) \
     $(wildcard include/config/generic/irq/probe.h) \
@@ -547,6 +531,7 @@ deps_kernel/irq/irqdesc.o := \
     $(wildcard include/config/high/res/timers.h) \
     $(wildcard include/config/timerfd.h) \
   include/linux/timerqueue.h \
+  include/linux/kref.h \
   include/linux/kernel_stat.h \
   include/linux/sched.h \
     $(wildcard include/config/sched/debug.h) \
@@ -618,6 +603,9 @@ deps_kernel/irq/irqdesc.o := \
   include/linux/sem.h \
   include/uapi/linux/sem.h \
   include/linux/ipc.h \
+  include/linux/uidgid.h \
+    $(wildcard include/config/user/ns.h) \
+  include/linux/highuid.h \
   include/uapi/linux/ipc.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/ipcbuf.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/asm-generic/ipcbuf.h \

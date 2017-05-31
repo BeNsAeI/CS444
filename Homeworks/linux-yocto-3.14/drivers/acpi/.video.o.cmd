@@ -668,6 +668,7 @@ deps_drivers/acpi/video.o := \
     $(wildcard include/config/stack/growsup.h) \
     $(wildcard include/config/transparent/hugepage.h) \
     $(wildcard include/config/ksm.h) \
+    $(wildcard include/config/shmem.h) \
     $(wildcard include/config/debug/vm/rb.h) \
     $(wildcard include/config/debug/pagealloc.h) \
     $(wildcard include/config/hugetlbfs.h) \
@@ -717,9 +718,6 @@ deps_drivers/acpi/video.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   include/asm-generic/pci-dma-compat.h \
   include/linux/dma-mapping.h \
     $(wildcard include/config/has/dma.h) \
@@ -757,6 +755,7 @@ deps_drivers/acpi/video.o := \
     $(wildcard include/config/memcg/swap.h) \
   include/linux/memcontrol.h \
     $(wildcard include/config/inet.h) \
+    $(wildcard include/config/memcg/kmem.h) \
   include/linux/cgroup.h \
     $(wildcard include/config/cgroups.h) \
   include/linux/sched.h \

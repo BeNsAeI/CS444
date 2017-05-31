@@ -572,9 +572,6 @@ deps_drivers/media/usb/gspca/t613.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   drivers/media/usb/gspca/gspca.h \
     $(wildcard include/config/video/adv/debug.h) \
   include/linux/module.h \

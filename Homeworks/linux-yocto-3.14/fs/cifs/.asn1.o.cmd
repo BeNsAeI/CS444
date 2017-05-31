@@ -553,6 +553,7 @@ deps_fs/cifs/asn1.o := \
     $(wildcard include/config/stack/growsup.h) \
     $(wildcard include/config/transparent/hugepage.h) \
     $(wildcard include/config/ksm.h) \
+    $(wildcard include/config/shmem.h) \
     $(wildcard include/config/debug/vm/rb.h) \
     $(wildcard include/config/debug/pagealloc.h) \
     $(wildcard include/config/hugetlbfs.h) \
@@ -605,9 +606,6 @@ deps_fs/cifs/asn1.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   fs/cifs/cifspdu.h \
     $(wildcard include/config/cifs/weak/pw/hash.h) \
     $(wildcard include/config/cifs/posix.h) \
@@ -621,6 +619,7 @@ deps_fs/cifs/asn1.o := \
     $(wildcard include/config/xfrm.h) \
     $(wildcard include/config/cgroup/net/prio.h) \
     $(wildcard include/config/security.h) \
+    $(wildcard include/config/memcg/kmem.h) \
   include/linux/hardirq.h \
   include/linux/ftrace_irq.h \
     $(wildcard include/config/ftrace/nmi/enter.h) \

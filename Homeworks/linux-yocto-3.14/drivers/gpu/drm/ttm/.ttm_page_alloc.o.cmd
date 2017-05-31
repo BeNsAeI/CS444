@@ -512,6 +512,7 @@ deps_drivers/gpu/drm/ttm/ttm_page_alloc.o := \
     $(wildcard include/config/hugetlb/page.h) \
     $(wildcard include/config/numa/balancing.h) \
     $(wildcard include/config/ksm.h) \
+    $(wildcard include/config/shmem.h) \
     $(wildcard include/config/have/memblock/node/map.h) \
     $(wildcard include/config/have/arch/early/pfn/to/nid.h) \
     $(wildcard include/config/debug/vm/rb.h) \
@@ -791,9 +792,6 @@ deps_drivers/gpu/drm/ttm/ttm_page_alloc.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   include/linux/dma-mapping.h \
     $(wildcard include/config/has/dma.h) \
     $(wildcard include/config/arch/has/dma/set/coherent/mask.h) \

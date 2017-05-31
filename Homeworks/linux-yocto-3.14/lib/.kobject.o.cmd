@@ -500,9 +500,6 @@ deps_lib/kobject.o := \
   include/linux/pfn.h \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   include/linux/random.h \
     $(wildcard include/config/arch/random.h) \
   include/uapi/linux/random.h \

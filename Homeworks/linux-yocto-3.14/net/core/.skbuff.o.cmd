@@ -579,6 +579,7 @@ deps_net/core/skbuff.o := \
     $(wildcard include/config/metag.h) \
     $(wildcard include/config/stack/growsup.h) \
     $(wildcard include/config/ksm.h) \
+    $(wildcard include/config/shmem.h) \
     $(wildcard include/config/debug/vm/rb.h) \
     $(wildcard include/config/debug/pagealloc.h) \
     $(wildcard include/config/hugetlbfs.h) \
@@ -668,9 +669,6 @@ deps_net/core/skbuff.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   include/linux/tcp.h \
     $(wildcard include/config/tcp/md5sig.h) \
     $(wildcard include/config/net/dma.h) \
@@ -750,6 +748,7 @@ deps_net/core/skbuff.o := \
     $(wildcard include/config/rps.h) \
     $(wildcard include/config/cgroup/net/prio.h) \
     $(wildcard include/config/security.h) \
+    $(wildcard include/config/memcg/kmem.h) \
   include/linux/list_nulls.h \
   include/linux/netdevice.h \
     $(wildcard include/config/dcb.h) \

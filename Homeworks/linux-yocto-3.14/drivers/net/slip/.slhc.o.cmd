@@ -556,9 +556,6 @@ deps_drivers/net/slip/slhc.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   include/net/slhc_vj.h \
   include/linux/ip.h \
   include/linux/skbuff.h \
@@ -655,6 +652,7 @@ deps_drivers/net/slip/slhc.o := \
     $(wildcard include/config/metag.h) \
     $(wildcard include/config/stack/growsup.h) \
     $(wildcard include/config/ksm.h) \
+    $(wildcard include/config/shmem.h) \
     $(wildcard include/config/debug/vm/rb.h) \
     $(wildcard include/config/debug/pagealloc.h) \
     $(wildcard include/config/hugetlbfs.h) \
@@ -719,6 +717,7 @@ deps_drivers/net/slip/slhc.o := \
     $(wildcard include/config/rps.h) \
     $(wildcard include/config/cgroup/net/prio.h) \
     $(wildcard include/config/security.h) \
+    $(wildcard include/config/memcg/kmem.h) \
   include/linux/hardirq.h \
   include/linux/ftrace_irq.h \
     $(wildcard include/config/ftrace/nmi/enter.h) \

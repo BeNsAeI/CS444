@@ -555,9 +555,6 @@ deps_net/dns_resolver/dns_query.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   include/linux/dns_resolver.h \
   include/keys/dns_resolver-type.h \
   include/linux/key-type.h \

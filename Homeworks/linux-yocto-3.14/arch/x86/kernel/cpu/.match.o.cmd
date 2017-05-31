@@ -579,9 +579,6 @@ deps_arch/x86/kernel/cpu/match.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
 
 arch/x86/kernel/cpu/match.o: $(deps_arch/x86/kernel/cpu/match.o)
 

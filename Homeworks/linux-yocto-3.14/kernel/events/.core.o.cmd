@@ -5,6 +5,7 @@ source_kernel/events/core.o := kernel/events/core.c
 deps_kernel/events/core.o := \
     $(wildcard include/config/cgroup/perf.h) \
     $(wildcard include/config/no/hz/full.h) \
+    $(wildcard include/config/compat.h) \
     $(wildcard include/config/event/tracing.h) \
     $(wildcard include/config/have/hw/breakpoint.h) \
     $(wildcard include/config/hotplug/cpu.h) \
@@ -207,7 +208,6 @@ deps_kernel/events/core.o := \
   include/linux/percpu-defs.h \
     $(wildcard include/config/debug/force/weak/per/cpu.h) \
   include/linux/thread_info.h \
-    $(wildcard include/config/compat.h) \
     $(wildcard include/config/debug/stack/usage.h) \
   include/linux/bug.h \
     $(wildcard include/config/generic/bug.h) \
@@ -516,6 +516,7 @@ deps_kernel/events/core.o := \
     $(wildcard include/config/hugetlb/page.h) \
     $(wildcard include/config/numa/balancing.h) \
     $(wildcard include/config/ksm.h) \
+    $(wildcard include/config/shmem.h) \
     $(wildcard include/config/have/memblock/node/map.h) \
     $(wildcard include/config/have/arch/early/pfn/to/nid.h) \
     $(wildcard include/config/debug/vm/rb.h) \
@@ -639,9 +640,6 @@ deps_kernel/events/core.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   include/linux/hash.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/hash.h \
   include/linux/tick.h \
@@ -853,6 +851,8 @@ deps_kernel/events/core.o := \
     $(wildcard include/config/cgroup/net/classid.h) \
     $(wildcard include/config/cgroup/net/prio.h) \
     $(wildcard include/config/cgroup/hugetlb.h) \
+  include/linux/compat.h \
+    $(wildcard include/config/compat/old/sigaction.h) \
   kernel/events/internal.h \
     $(wildcard include/config/perf/use/vmalloc.h) \
     $(wildcard include/config/have/perf/user/stack/dump.h) \

@@ -18,4 +18,4 @@ __attribute__((section(".modinfo"))) =
 "depends=mac80211,cfg80211";
 
 
-MODULE_INFO(srcversion, "EA9B435DE64F977010AFB3F");
+MODULE_INFO(srcversion, "70C62352CB48EB004FF785F");

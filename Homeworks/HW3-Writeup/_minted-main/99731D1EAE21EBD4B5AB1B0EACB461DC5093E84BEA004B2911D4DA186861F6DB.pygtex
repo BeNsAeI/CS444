@@ -1,0 +1,74 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+commit 29f3058a70efc8de21af6ab6b90c887afbc0e480
+Author: Levi Willmeth <levi.willmeth@gmail.com>
+Date:   2017-05-22
+
+    Update Kconfig and Makefile to working versions
+
+commit b3b0c6db967cc7ae85ed892111fd05782429b735
+Author: Levi Willmeth <levi.willmeth@gmail.com>
+Date:   2017-05-22
+
+    Add rd2 files, update Makefile and Kconfig
+
+commit acf53576d3fc0a25128e9f76de41dbda9452b918
+Author: Levi Willmeth <levi.willmeth@gmail.com>
+Date:   2017-05-22
+
+    Merge in testing branch
+
+commit 0ae768ede536e97d9134e81f439a103411e6648c
+Author: wangdaye123 <wangzhao@oregonstate.edu>
+Date:   2017-05-15
+
+    delete unnessary file
+
+commit c5b6ba77d07e996be3b7cbcfcb1272aa8cac283b
+Merge: 72a4443 5629be4
+Author: wangdaye123 <wangzhao@oregonstate.edu>
+Date:   2017-05-15
+
+    Merge branch \PYG{l+s+s1}{'master'} of https://github.com/BeNsAeI/CS444
+
+commit 5629be4e2a8ed0d839c7dbe204968e67a2947d1b
+Author: wangdaye123 <wangzhao@oregonstate.edu>
+Date:   2017-05-15
+
+    delete the file
+
+commit 51d07eec0d70d2b644e2bb8806aa9e70e09dac70
+Author: wangdaye123 <wangzhao@oregonstate.edu>
+Date:   2017-05-15
+
+    upload the file need to change
+
+commit 490998a4ae14dadded40e12bdf0dc5fccff8060b
+Author: wangdaye123 <wangzhao@oregonstate.edu>
+Date:   2017-05-15
+
+    upload requirement of hw3
+
+commit 72a4443cd53ea10763b755eb35f566c40f2b2b34
+Author: wangdaye123 <wangzhao@oregonstate.edu>
+Date:   2017-05-15
+
+    add hw3 requirement and file need to change
+
+commit ef3752d958a125b8f5db236a8ed812c6def6ce08
+Author: BeNsAeI <behnam.saeidi@gmail.com>
+Date:   2017-05-10
+
+    added sstf.cfile
+
+commit f660de28c8c30bb3bf558dffae2ceae88c19fbe6
+Author: Behnam Saeedi <saeedib@os-class.engr.oregonstate.edu>
+Date:   2017-05-10
+
+    backup files
+
+commit 53780e85fd233b72b073bdea2caf50cbcd28d5ea
+Author: BeNsAeI <behnam.saeidi@gmail.com>
+Date:   2017-05-09
+
+    added lecture notes \PYG{k}{for }9th lecture
+\end{Verbatim}

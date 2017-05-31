@@ -790,9 +790,6 @@ deps_drivers/usb/core/config.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   drivers/usb/core/usb.h \
   include/linux/acpi.h \
     $(wildcard include/config/acpi/initrd/table/override.h) \

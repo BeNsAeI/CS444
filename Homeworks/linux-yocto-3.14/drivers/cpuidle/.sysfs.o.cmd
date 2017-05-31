@@ -506,12 +506,6 @@ deps_drivers/cpuidle/sysfs.o := \
     $(wildcard include/config/use/percpu/numa/node/id.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
-  include/linux/kobject.h \
-    $(wildcard include/config/debug/kobject/release.h) \
-  include/linux/kref.h \
   include/linux/cpu.h \
     $(wildcard include/config/arch/has/cpu/autoprobe.h) \
     $(wildcard include/config/pm/sleep/smp.h) \
@@ -524,6 +518,9 @@ deps_drivers/cpuidle/sysfs.o := \
     $(wildcard include/config/dma/cma.h) \
     $(wildcard include/config/devtmpfs.h) \
     $(wildcard include/config/sysfs/deprecated.h) \
+  include/linux/kobject.h \
+    $(wildcard include/config/debug/kobject/release.h) \
+  include/linux/kref.h \
   include/linux/klist.h \
   include/linux/pinctrl/devinfo.h \
   include/linux/ratelimit.h \

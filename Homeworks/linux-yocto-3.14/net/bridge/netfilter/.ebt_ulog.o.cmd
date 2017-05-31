@@ -555,9 +555,6 @@ deps_net/bridge/netfilter/ebt_ulog.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   include/linux/socket.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/socket.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/asm-generic/socket.h \
@@ -652,6 +649,7 @@ deps_net/bridge/netfilter/ebt_ulog.o := \
     $(wildcard include/config/metag.h) \
     $(wildcard include/config/stack/growsup.h) \
     $(wildcard include/config/ksm.h) \
+    $(wildcard include/config/shmem.h) \
     $(wildcard include/config/debug/vm/rb.h) \
     $(wildcard include/config/debug/pagealloc.h) \
     $(wildcard include/config/hugetlbfs.h) \
@@ -1021,6 +1019,7 @@ deps_net/bridge/netfilter/ebt_ulog.o := \
   include/uapi/linux/if_pppol2tp.h \
   include/net/sock.h \
     $(wildcard include/config/net.h) \
+    $(wildcard include/config/memcg/kmem.h) \
   include/linux/uaccess.h \
   include/linux/memcontrol.h \
     $(wildcard include/config/memcg/swap.h) \

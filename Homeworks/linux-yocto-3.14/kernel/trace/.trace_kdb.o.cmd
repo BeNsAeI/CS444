@@ -636,6 +636,7 @@ deps_kernel/trace/trace_kdb.o := \
     $(wildcard include/config/metag.h) \
     $(wildcard include/config/ia64.h) \
     $(wildcard include/config/ksm.h) \
+    $(wildcard include/config/shmem.h) \
     $(wildcard include/config/debug/vm/rb.h) \
     $(wildcard include/config/debug/pagealloc.h) \
     $(wildcard include/config/hugetlbfs.h) \

@@ -750,9 +750,6 @@ deps_drivers/usb/storage/initializers.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   include/linux/pagemap.h \
   include/linux/mm.h \
     $(wildcard include/config/ppc.h) \
@@ -760,6 +757,7 @@ deps_drivers/usb/storage/initializers.o := \
     $(wildcard include/config/metag.h) \
     $(wildcard include/config/ia64.h) \
     $(wildcard include/config/ksm.h) \
+    $(wildcard include/config/shmem.h) \
     $(wildcard include/config/debug/vm/rb.h) \
     $(wildcard include/config/debug/pagealloc.h) \
     $(wildcard include/config/hugetlbfs.h) \

@@ -537,6 +537,7 @@ deps_fs/ioctl.o := \
     $(wildcard include/config/stack/growsup.h) \
     $(wildcard include/config/hugetlb/page.h) \
     $(wildcard include/config/ksm.h) \
+    $(wildcard include/config/shmem.h) \
     $(wildcard include/config/have/memblock/node/map.h) \
     $(wildcard include/config/have/arch/early/pfn/to/nid.h) \
     $(wildcard include/config/debug/vm/rb.h) \
@@ -820,9 +821,6 @@ deps_fs/ioctl.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   include/linux/writeback.h \
   include/linux/buffer_head.h \
   include/linux/pagemap.h \

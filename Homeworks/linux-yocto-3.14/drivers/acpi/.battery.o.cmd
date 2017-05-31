@@ -562,9 +562,6 @@ deps_drivers/acpi/battery.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   include/linux/suspend.h \
     $(wildcard include/config/vt.h) \
     $(wildcard include/config/suspend.h) \
@@ -580,6 +577,7 @@ deps_drivers/acpi/battery.o := \
   include/linux/memcontrol.h \
     $(wildcard include/config/transparent/hugepage.h) \
     $(wildcard include/config/inet.h) \
+    $(wildcard include/config/memcg/kmem.h) \
   include/linux/cgroup.h \
     $(wildcard include/config/cgroups.h) \
   include/linux/sched.h \
@@ -820,6 +818,7 @@ deps_drivers/acpi/battery.o := \
     $(wildcard include/config/parisc.h) \
     $(wildcard include/config/metag.h) \
     $(wildcard include/config/ksm.h) \
+    $(wildcard include/config/shmem.h) \
     $(wildcard include/config/debug/vm/rb.h) \
     $(wildcard include/config/debug/pagealloc.h) \
   include/linux/debug_locks.h \

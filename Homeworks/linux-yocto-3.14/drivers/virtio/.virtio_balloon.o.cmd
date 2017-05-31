@@ -189,6 +189,7 @@ deps_drivers/virtio/virtio_balloon.o := \
     $(wildcard include/config/sparsemem/vmemmap.h) \
     $(wildcard include/config/numa/balancing.h) \
     $(wildcard include/config/ksm.h) \
+    $(wildcard include/config/shmem.h) \
     $(wildcard include/config/have/memblock/node/map.h) \
     $(wildcard include/config/have/arch/early/pfn/to/nid.h) \
     $(wildcard include/config/debug/vm/rb.h) \
@@ -581,9 +582,6 @@ deps_drivers/virtio/virtio_balloon.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/virtio_balloon.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/virtio_ids.h \
   include/linux/virtio_config.h \
@@ -599,6 +597,7 @@ deps_drivers/virtio/virtio_balloon.o := \
     $(wildcard include/config/memcg/swap.h) \
   include/linux/memcontrol.h \
     $(wildcard include/config/inet.h) \
+    $(wildcard include/config/memcg/kmem.h) \
   include/linux/cgroup.h \
     $(wildcard include/config/cgroups.h) \
   include/linux/sched.h \

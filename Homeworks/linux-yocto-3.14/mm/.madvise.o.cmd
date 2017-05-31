@@ -26,6 +26,7 @@ deps_mm/madvise.o := \
     $(wildcard include/config/sparsemem/vmemmap.h) \
     $(wildcard include/config/numa/balancing.h) \
     $(wildcard include/config/highmem.h) \
+    $(wildcard include/config/shmem.h) \
     $(wildcard include/config/have/memblock/node/map.h) \
     $(wildcard include/config/have/arch/early/pfn/to/nid.h) \
     $(wildcard include/config/debug/vm/rb.h) \
@@ -834,9 +835,6 @@ deps_mm/madvise.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   include/uapi/linux/mempolicy.h \
   include/linux/page-isolation.h \
   include/linux/hugetlb.h \
@@ -864,6 +862,7 @@ deps_mm/madvise.o := \
   include/linux/memcontrol.h \
     $(wildcard include/config/memcg/swap.h) \
     $(wildcard include/config/inet.h) \
+    $(wildcard include/config/memcg/kmem.h) \
   include/linux/file.h \
   include/linux/blkdev.h \
     $(wildcard include/config/blk/dev/bsg.h) \

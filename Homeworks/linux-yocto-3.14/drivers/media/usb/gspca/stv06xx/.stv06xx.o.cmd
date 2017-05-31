@@ -574,9 +574,6 @@ deps_drivers/media/usb/gspca/stv06xx/stv06xx.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/drivers/media/usb/gspca/gspca.h \
     $(wildcard include/config/video/adv/debug.h) \
   include/linux/module.h \

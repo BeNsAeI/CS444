@@ -511,19 +511,6 @@ deps_ipc/msgutil.o := \
   include/linux/pfn.h \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
-  include/linux/kobject.h \
-    $(wildcard include/config/debug/kobject/release.h) \
-  include/linux/sysfs.h \
-  include/linux/kernfs.h \
-  include/linux/idr.h \
-  include/linux/kobject_ns.h \
-  include/linux/stat.h \
-  /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/stat.h \
-  include/uapi/linux/stat.h \
-  include/linux/kref.h \
   include/linux/ipc.h \
   include/uapi/linux/ipc.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/ipcbuf.h \
@@ -534,6 +521,7 @@ deps_ipc/msgutil.o := \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/asm-generic/msgbuf.h \
   include/linux/ipc_namespace.h \
     $(wildcard include/config/posix/mqueue/sysctl.h) \
+  include/linux/idr.h \
   include/linux/nsproxy.h \
   include/linux/sched.h \
     $(wildcard include/config/sched/debug.h) \
@@ -648,6 +636,7 @@ deps_ipc/msgutil.o := \
   include/linux/utsname.h \
     $(wildcard include/config/uts/ns.h) \
     $(wildcard include/config/proc/sysctl.h) \
+  include/linux/kref.h \
   include/uapi/linux/utsname.h \
   include/linux/proc_ns.h \
   include/linux/uaccess.h \

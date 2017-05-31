@@ -556,9 +556,6 @@ deps_fs/sysfs/file.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   include/linux/seq_file.h \
   fs/sysfs/sysfs.h \
   fs/sysfs/../kernfs/kernfs-internal.h \

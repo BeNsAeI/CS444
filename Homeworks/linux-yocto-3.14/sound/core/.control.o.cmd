@@ -600,9 +600,6 @@ deps_sound/core/control.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   include/sound/core.h \
     $(wildcard include/config/snd/dynamic/minors.h) \
     $(wildcard include/config/snd/max/cards.h) \

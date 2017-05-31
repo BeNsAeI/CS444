@@ -95,7 +95,7 @@ void *add_searcher(void *head_ref)
 		int num = rand() % 5;
 		int result = search(head, num);
 		printf("(%d)\t%d was %sfound\n", tid, num, (result==1)?"":"not ");
-		sleep(1);
+		sleep(2);
 	}
 }
 
@@ -109,7 +109,7 @@ void *add_inserter(void* head_ref)
 		int num = rand() % 5;
 		insert(head, num);
 		printf("(%d)\t%d was added\n", tid, num);
-		sleep(1);
+		sleep(2);
 	}
 }
 
@@ -122,7 +122,7 @@ void *add_deleter(void *head_ref)
 		int num = rand() % 5;
 		int result = delete(head, num);
 		printf("(%d)\t%d was %sdeleted\n", tid, num, (result==1)?"":"not ");
-		sleep(1);
+		sleep(2);
 	}
 }
 

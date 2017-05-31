@@ -557,9 +557,6 @@ deps_lib/list_sort.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
 
 lib/list_sort.o: $(deps_lib/list_sort.o)
 

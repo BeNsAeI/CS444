@@ -719,9 +719,6 @@ deps_drivers/acpi/processor_thermal.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   include/acpi/platform/acgcc.h \
   include/acpi/actypes.h \
   include/acpi/acnames.h \

@@ -490,9 +490,18 @@ deps_lib/radix-tree.o := \
     $(wildcard include/config/use/percpu/numa/node/id.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
+  include/linux/cpu.h \
+    $(wildcard include/config/arch/has/cpu/autoprobe.h) \
+    $(wildcard include/config/pm/sleep/smp.h) \
+  include/linux/node.h \
+    $(wildcard include/config/memory/hotplug/sparse.h) \
+    $(wildcard include/config/hugetlbfs.h) \
+  include/linux/device.h \
+    $(wildcard include/config/debug/devres.h) \
+    $(wildcard include/config/pinctrl.h) \
+    $(wildcard include/config/dma/cma.h) \
+    $(wildcard include/config/devtmpfs.h) \
+    $(wildcard include/config/sysfs/deprecated.h) \
   include/linux/kobject.h \
     $(wildcard include/config/debug/kobject/release.h) \
   include/linux/sysfs.h \
@@ -506,18 +515,6 @@ deps_lib/radix-tree.o := \
     $(wildcard include/config/user/ns.h) \
   include/linux/highuid.h \
   include/linux/kref.h \
-  include/linux/cpu.h \
-    $(wildcard include/config/arch/has/cpu/autoprobe.h) \
-    $(wildcard include/config/pm/sleep/smp.h) \
-  include/linux/node.h \
-    $(wildcard include/config/memory/hotplug/sparse.h) \
-    $(wildcard include/config/hugetlbfs.h) \
-  include/linux/device.h \
-    $(wildcard include/config/debug/devres.h) \
-    $(wildcard include/config/pinctrl.h) \
-    $(wildcard include/config/dma/cma.h) \
-    $(wildcard include/config/devtmpfs.h) \
-    $(wildcard include/config/sysfs/deprecated.h) \
   include/linux/klist.h \
   include/linux/pinctrl/devinfo.h \
   include/linux/ratelimit.h \

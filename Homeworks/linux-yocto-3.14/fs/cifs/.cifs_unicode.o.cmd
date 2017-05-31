@@ -546,16 +546,6 @@ deps_fs/cifs/cifs_unicode.o := \
     $(wildcard include/config/use/percpu/numa/node/id.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
-  include/linux/kobject.h \
-    $(wildcard include/config/debug/kobject/release.h) \
-  include/linux/sysfs.h \
-  include/linux/kernfs.h \
-  include/linux/idr.h \
-  include/linux/kobject_ns.h \
-  include/linux/kref.h \
   fs/cifs/cifs_unicode.h \
   include/linux/nls.h \
   fs/cifs/cifs_uniupr.h \
@@ -571,6 +561,7 @@ deps_fs/cifs/cifs_unicode.o := \
     $(wildcard include/config/net/dma.h) \
     $(wildcard include/config/xfrm.h) \
     $(wildcard include/config/cgroup/net/prio.h) \
+    $(wildcard include/config/memcg/kmem.h) \
   include/linux/hardirq.h \
   include/linux/ftrace_irq.h \
     $(wildcard include/config/ftrace/nmi/enter.h) \
@@ -644,6 +635,13 @@ deps_fs/cifs/cifs_unicode.o := \
     $(wildcard include/config/dma/cma.h) \
     $(wildcard include/config/devtmpfs.h) \
     $(wildcard include/config/sysfs/deprecated.h) \
+  include/linux/kobject.h \
+    $(wildcard include/config/debug/kobject/release.h) \
+  include/linux/sysfs.h \
+  include/linux/kernfs.h \
+  include/linux/idr.h \
+  include/linux/kobject_ns.h \
+  include/linux/kref.h \
   include/linux/klist.h \
   include/linux/pinctrl/devinfo.h \
   include/linux/ratelimit.h \
@@ -673,6 +671,7 @@ deps_fs/cifs/cifs_unicode.o := \
     $(wildcard include/config/stack/growsup.h) \
     $(wildcard include/config/transparent/hugepage.h) \
     $(wildcard include/config/ksm.h) \
+    $(wildcard include/config/shmem.h) \
     $(wildcard include/config/debug/vm/rb.h) \
     $(wildcard include/config/debug/pagealloc.h) \
     $(wildcard include/config/hugetlbfs.h) \

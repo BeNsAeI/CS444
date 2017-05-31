@@ -580,9 +580,6 @@ deps_net/netfilter/nf_conntrack_netlink.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   include/linux/skbuff.h \
     $(wildcard include/config/nf/conntrack.h) \
     $(wildcard include/config/bridge/netfilter.h) \
@@ -677,6 +674,7 @@ deps_net/netfilter/nf_conntrack_netlink.o := \
     $(wildcard include/config/metag.h) \
     $(wildcard include/config/stack/growsup.h) \
     $(wildcard include/config/ksm.h) \
+    $(wildcard include/config/shmem.h) \
     $(wildcard include/config/debug/vm/rb.h) \
     $(wildcard include/config/debug/pagealloc.h) \
     $(wildcard include/config/hugetlbfs.h) \
@@ -867,6 +865,7 @@ deps_net/netfilter/nf_conntrack_netlink.o := \
     $(wildcard include/config/ipv6.h) \
     $(wildcard include/config/rps.h) \
     $(wildcard include/config/cgroup/net/prio.h) \
+    $(wildcard include/config/memcg/kmem.h) \
   include/linux/netdevice.h \
     $(wildcard include/config/dcb.h) \
     $(wildcard include/config/wlan.h) \

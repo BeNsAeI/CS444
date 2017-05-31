@@ -24,6 +24,7 @@ deps_net/ipv4/tcp_minisocks.o := \
     $(wildcard include/config/numa/balancing.h) \
     $(wildcard include/config/highmem.h) \
     $(wildcard include/config/ksm.h) \
+    $(wildcard include/config/shmem.h) \
     $(wildcard include/config/have/memblock/node/map.h) \
     $(wildcard include/config/have/arch/early/pfn/to/nid.h) \
     $(wildcard include/config/debug/vm/rb.h) \
@@ -607,9 +608,6 @@ deps_net/ipv4/tcp_minisocks.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   include/net/tcp.h \
     $(wildcard include/config/syn/cookies.h) \
     $(wildcard include/config/net/dma.h) \
@@ -717,6 +715,7 @@ deps_net/ipv4/tcp_minisocks.o := \
     $(wildcard include/config/rps.h) \
     $(wildcard include/config/cgroup/net/prio.h) \
     $(wildcard include/config/security.h) \
+    $(wildcard include/config/memcg/kmem.h) \
   include/linux/hardirq.h \
   include/linux/ftrace_irq.h \
     $(wildcard include/config/ftrace/nmi/enter.h) \

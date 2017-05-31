@@ -555,6 +555,7 @@ deps_net/sunrpc/clnt.o := \
     $(wildcard include/config/stack/growsup.h) \
     $(wildcard include/config/transparent/hugepage.h) \
     $(wildcard include/config/ksm.h) \
+    $(wildcard include/config/shmem.h) \
     $(wildcard include/config/debug/vm/rb.h) \
     $(wildcard include/config/debug/pagealloc.h) \
     $(wildcard include/config/hugetlbfs.h) \
@@ -616,9 +617,6 @@ deps_net/sunrpc/clnt.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   include/linux/utsname.h \
     $(wildcard include/config/uts/ns.h) \
     $(wildcard include/config/proc/sysctl.h) \
@@ -1033,6 +1031,7 @@ deps_net/sunrpc/clnt.o := \
     $(wildcard include/config/tcp/md5sig.h) \
   include/net/sock.h \
     $(wildcard include/config/net.h) \
+    $(wildcard include/config/memcg/kmem.h) \
   include/linux/uaccess.h \
   include/linux/memcontrol.h \
     $(wildcard include/config/memcg/swap.h) \

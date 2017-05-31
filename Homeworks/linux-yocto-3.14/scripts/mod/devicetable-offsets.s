@@ -1006,6 +1006,8 @@ main:
 	.string	"long unsigned int"
 .LASF6:
 	.string	"long long unsigned int"
+.LASF14:
+	.string	"/scratch/spring2017/10-03/linux-yocto-3.14"
 .LASF1:
 	.string	"unsigned char"
 .LASF9:
@@ -1024,7 +1026,5 @@ main:
 	.string	"short int"
 .LASF8:
 	.string	"sizetype"
-.LASF14:
-	.string	"/scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14"
 	.ident	"GCC: (GNU) 4.9.1"
 	.section	.note.GNU-stack,"",@progbits

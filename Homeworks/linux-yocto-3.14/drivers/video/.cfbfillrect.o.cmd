@@ -767,9 +767,6 @@ deps_drivers/video/cfbfillrect.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   drivers/video/fb_draw.h \
     $(wildcard include/config/fb/cfb/rev/pixels/in/byte.h) \
 

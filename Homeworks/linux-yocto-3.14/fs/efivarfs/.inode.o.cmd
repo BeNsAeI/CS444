@@ -633,9 +633,6 @@ deps_fs/efivarfs/inode.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   fs/efivarfs/internal.h \
 
 fs/efivarfs/inode.o: $(deps_fs/efivarfs/inode.o)

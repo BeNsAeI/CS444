@@ -541,9 +541,6 @@ deps_net/core/dev.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   include/linux/sched.h \
     $(wildcard include/config/sched/debug.h) \
     $(wildcard include/config/no/hz/common.h) \
@@ -675,6 +672,7 @@ deps_net/core/dev.o := \
     $(wildcard include/config/metag.h) \
     $(wildcard include/config/ia64.h) \
     $(wildcard include/config/ksm.h) \
+    $(wildcard include/config/shmem.h) \
     $(wildcard include/config/debug/vm/rb.h) \
     $(wildcard include/config/debug/pagealloc.h) \
   include/linux/debug_locks.h \
@@ -962,6 +960,7 @@ deps_net/core/dev.o := \
   include/linux/unaligned/generic.h \
   include/net/sock.h \
     $(wildcard include/config/net.h) \
+    $(wildcard include/config/memcg/kmem.h) \
   include/linux/uaccess.h \
   include/linux/memcontrol.h \
     $(wildcard include/config/memcg/swap.h) \

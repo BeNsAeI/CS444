@@ -181,6 +181,7 @@ deps_arch/x86/kernel/head.o := \
     $(wildcard include/config/sparsemem/vmemmap.h) \
     $(wildcard include/config/numa/balancing.h) \
     $(wildcard include/config/ksm.h) \
+    $(wildcard include/config/shmem.h) \
     $(wildcard include/config/have/arch/early/pfn/to/nid.h) \
     $(wildcard include/config/debug/vm/rb.h) \
     $(wildcard include/config/debug/pagealloc.h) \

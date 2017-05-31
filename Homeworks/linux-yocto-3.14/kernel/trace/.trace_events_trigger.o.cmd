@@ -558,9 +558,6 @@ deps_kernel/trace/trace_events_trigger.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   kernel/trace/trace.h \
     $(wildcard include/config/ftrace/syscalls.h) \
     $(wildcard include/config/tracer/max/trace.h) \
@@ -741,6 +738,7 @@ deps_kernel/trace/trace_events_trigger.o := \
     $(wildcard include/config/parisc.h) \
     $(wildcard include/config/metag.h) \
     $(wildcard include/config/ksm.h) \
+    $(wildcard include/config/shmem.h) \
     $(wildcard include/config/debug/vm/rb.h) \
     $(wildcard include/config/debug/pagealloc.h) \
     $(wildcard include/config/hugetlbfs.h) \

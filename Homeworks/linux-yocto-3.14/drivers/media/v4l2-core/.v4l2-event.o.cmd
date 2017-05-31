@@ -708,9 +708,6 @@ deps_drivers/media/v4l2-core/v4l2-event.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
 
 drivers/media/v4l2-core/v4l2-event.o: $(deps_drivers/media/v4l2-core/v4l2-event.o)
 

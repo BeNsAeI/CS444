@@ -709,9 +709,6 @@ deps_sound/sound_core.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   include/linux/sound.h \
   include/uapi/linux/sound.h \
   include/linux/fs.h \

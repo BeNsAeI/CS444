@@ -620,9 +620,6 @@ deps_drivers/input/mouse/lifebook.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   drivers/input/mouse/psmouse.h \
   drivers/input/mouse/lifebook.h \
     $(wildcard include/config/mouse/ps2/lifebook.h) \

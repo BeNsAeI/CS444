@@ -626,9 +626,6 @@ deps_drivers/input/serio/i8042.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   drivers/input/serio/i8042.h \
     $(wildcard include/config/mach/jazz.h) \
     $(wildcard include/config/sgi/has/i8042.h) \

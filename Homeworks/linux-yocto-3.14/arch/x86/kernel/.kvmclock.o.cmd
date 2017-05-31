@@ -339,6 +339,7 @@ deps_arch/x86/kernel/kvmclock.o := \
   include/uapi/linux/kvm_para.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/kvm_para.h \
     $(wildcard include/config/kvm/guest.h) \
+    $(wildcard include/config/debug/rodata.h) \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/kvm_para.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/hyperv.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/pvclock.h \
@@ -514,7 +515,6 @@ deps_arch/x86/kernel/kvmclock.o := \
   include/linux/profile.h \
     $(wildcard include/config/profiling.h) \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/sections.h \
-    $(wildcard include/config/debug/rodata.h) \
   include/asm-generic/sections.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/uaccess.h \
     $(wildcard include/config/x86/intel/usercopy.h) \
@@ -534,6 +534,7 @@ deps_arch/x86/kernel/kvmclock.o := \
     $(wildcard include/config/stack/growsup.h) \
     $(wildcard include/config/transparent/hugepage.h) \
     $(wildcard include/config/ksm.h) \
+    $(wildcard include/config/shmem.h) \
     $(wildcard include/config/debug/vm/rb.h) \
     $(wildcard include/config/debug/pagealloc.h) \
     $(wildcard include/config/hugetlbfs.h) \

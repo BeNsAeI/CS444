@@ -15,9 +15,6 @@ menuconfig BLK_DEV
 
 if BLK_DEV
 
-config BLK_DEV_RD2
-	tristate "RD2 DRIVER TEST 10-03"
-
 config BLK_DEV_NULL_BLK
 	tristate "Null test block driver"
 

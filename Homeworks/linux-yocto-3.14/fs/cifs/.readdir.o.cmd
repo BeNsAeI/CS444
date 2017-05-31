@@ -513,6 +513,7 @@ deps_fs/cifs/readdir.o := \
     $(wildcard include/config/hugetlb/page.h) \
     $(wildcard include/config/numa/balancing.h) \
     $(wildcard include/config/ksm.h) \
+    $(wildcard include/config/shmem.h) \
     $(wildcard include/config/have/memblock/node/map.h) \
     $(wildcard include/config/have/arch/early/pfn/to/nid.h) \
     $(wildcard include/config/debug/vm/rb.h) \
@@ -739,15 +740,6 @@ deps_fs/cifs/readdir.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
-  include/linux/kobject.h \
-    $(wildcard include/config/debug/kobject/release.h) \
-  include/linux/sysfs.h \
-  include/linux/kernfs.h \
-  include/linux/idr.h \
-  include/linux/kobject_ns.h \
   fs/cifs/cifspdu.h \
     $(wildcard include/config/cifs/weak/pw/hash.h) \
     $(wildcard include/config/cifs/posix.h) \
@@ -760,6 +752,7 @@ deps_fs/cifs/readdir.o := \
     $(wildcard include/config/net/dma.h) \
     $(wildcard include/config/xfrm.h) \
     $(wildcard include/config/cgroup/net/prio.h) \
+    $(wildcard include/config/memcg/kmem.h) \
   include/linux/list_nulls.h \
   include/linux/netdevice.h \
     $(wildcard include/config/dcb.h) \
@@ -794,6 +787,12 @@ deps_fs/cifs/readdir.o := \
     $(wildcard include/config/dma/cma.h) \
     $(wildcard include/config/devtmpfs.h) \
     $(wildcard include/config/sysfs/deprecated.h) \
+  include/linux/kobject.h \
+    $(wildcard include/config/debug/kobject/release.h) \
+  include/linux/sysfs.h \
+  include/linux/kernfs.h \
+  include/linux/idr.h \
+  include/linux/kobject_ns.h \
   include/linux/klist.h \
   include/linux/pinctrl/devinfo.h \
   include/linux/ratelimit.h \

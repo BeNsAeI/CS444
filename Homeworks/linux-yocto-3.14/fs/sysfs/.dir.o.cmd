@@ -552,9 +552,6 @@ deps_fs/sysfs/dir.o := \
     $(wildcard include/config/use/percpu/numa/node/id.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   fs/sysfs/sysfs.h \
 
 fs/sysfs/dir.o: $(deps_fs/sysfs/dir.o)

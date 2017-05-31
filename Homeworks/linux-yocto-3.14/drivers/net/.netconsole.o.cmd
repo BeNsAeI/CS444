@@ -23,6 +23,7 @@ deps_drivers/net/netconsole.o := \
     $(wildcard include/config/numa/balancing.h) \
     $(wildcard include/config/highmem.h) \
     $(wildcard include/config/ksm.h) \
+    $(wildcard include/config/shmem.h) \
     $(wildcard include/config/have/memblock/node/map.h) \
     $(wildcard include/config/have/arch/early/pfn/to/nid.h) \
     $(wildcard include/config/debug/vm/rb.h) \
@@ -606,9 +607,6 @@ deps_drivers/net/netconsole.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   include/linux/console.h \
     $(wildcard include/config/hw/console.h) \
     $(wildcard include/config/tty.h) \

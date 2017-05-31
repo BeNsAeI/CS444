@@ -555,9 +555,6 @@ deps_drivers/input/mouse/cypress_ps2.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   include/linux/serio.h \
   include/linux/interrupt.h \
     $(wildcard include/config/irq/forced/threading.h) \

@@ -677,6 +677,7 @@ deps_arch/x86/kernel/kvm.o := \
   include/uapi/linux/kvm_para.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/kvm_para.h \
     $(wildcard include/config/kvm/guest.h) \
+    $(wildcard include/config/debug/rodata.h) \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/kvm_para.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/uapi/asm/hyperv.h \
   include/linux/cpu.h \
@@ -704,6 +705,7 @@ deps_arch/x86/kernel/kvm.o := \
     $(wildcard include/config/parisc.h) \
     $(wildcard include/config/metag.h) \
     $(wildcard include/config/ksm.h) \
+    $(wildcard include/config/shmem.h) \
     $(wildcard include/config/debug/vm/rb.h) \
     $(wildcard include/config/debug/pagealloc.h) \
   include/linux/debug_locks.h \
@@ -798,7 +800,6 @@ deps_arch/x86/kernel/kvm.o := \
   include/linux/profile.h \
     $(wildcard include/config/profiling.h) \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/sections.h \
-    $(wildcard include/config/debug/rodata.h) \
   include/asm-generic/sections.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/cacheflush.h \
     $(wildcard include/config/x86/pat.h) \
@@ -823,9 +824,6 @@ deps_arch/x86/kernel/kvm.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   include/linux/kprobes.h \
     $(wildcard include/config/kretprobes.h) \
     $(wildcard include/config/kprobes/sanity/test.h) \

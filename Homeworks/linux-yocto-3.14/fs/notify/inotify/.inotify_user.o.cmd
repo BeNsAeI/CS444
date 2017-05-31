@@ -670,15 +670,6 @@ deps_fs/notify/inotify/inotify_user.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
-  include/linux/kobject.h \
-    $(wildcard include/config/debug/kobject/release.h) \
-  include/linux/sysfs.h \
-  include/linux/kernfs.h \
-  include/linux/kobject_ns.h \
-  include/linux/kref.h \
   include/linux/syscalls.h \
     $(wildcard include/config/ftrace/syscalls.h) \
     $(wildcard include/config/old/sigsuspend.h) \
@@ -702,6 +693,7 @@ deps_fs/notify/inotify/inotify_user.o := \
     $(wildcard include/config/parisc.h) \
     $(wildcard include/config/metag.h) \
     $(wildcard include/config/ksm.h) \
+    $(wildcard include/config/shmem.h) \
     $(wildcard include/config/debug/vm/rb.h) \
     $(wildcard include/config/debug/pagealloc.h) \
     $(wildcard include/config/hugetlbfs.h) \
@@ -778,6 +770,7 @@ deps_fs/notify/inotify/inotify_user.o := \
   include/linux/pid_namespace.h \
     $(wildcard include/config/pid/ns.h) \
   include/linux/nsproxy.h \
+  include/linux/kref.h \
   include/uapi/linux/ptrace.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/arch/x86/include/asm/local64.h \
   include/asm-generic/local64.h \
@@ -807,6 +800,11 @@ deps_fs/notify/inotify/inotify_user.o := \
     $(wildcard include/config/dma/cma.h) \
     $(wildcard include/config/devtmpfs.h) \
     $(wildcard include/config/sysfs/deprecated.h) \
+  include/linux/kobject.h \
+    $(wildcard include/config/debug/kobject/release.h) \
+  include/linux/sysfs.h \
+  include/linux/kernfs.h \
+  include/linux/kobject_ns.h \
   include/linux/klist.h \
   include/linux/pinctrl/devinfo.h \
   include/linux/ratelimit.h \

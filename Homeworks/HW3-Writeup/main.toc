@@ -1,0 +1,21 @@
+\select@language {english}
+\contentsline {section}{\numberline {1}Design}{3}{section.1}
+\contentsline {subsection}{\numberline {1.1}Description of concept}{3}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Application}{3}{subsection.1.2}
+\contentsline {subsection}{\numberline {1.3}Algorithm}{3}{subsection.1.3}
+\contentsline {subsection}{\numberline {1.4}Pseudo Codes}{3}{subsection.1.4}
+\contentsline {section}{\numberline {2}Q\&A}{3}{section.2}
+\contentsline {subsection}{\numberline {2.1}Questions}{3}{subsection.2.1}
+\contentsline {subsubsection}{\numberline {2.1.1}What do you think the main point of this assignment is?}{3}{subsubsection.2.1.1}
+\contentsline {subsubsection}{\numberline {2.1.2}How did you personally approach the problem? Design decisions, algorithm, etc.}{4}{subsubsection.2.1.2}
+\contentsline {subsubsection}{\numberline {2.1.3}How did you ensure your solution was correct? Testing details, for instance.}{4}{subsubsection.2.1.3}
+\contentsline {subsubsection}{\numberline {2.1.4}What did you learn?}{4}{subsubsection.2.1.4}
+\contentsline {section}{\numberline {3}Logs}{4}{section.3}
+\contentsline {subsection}{\numberline {3.1}Work-flow and scheduling}{4}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Work log}{4}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Git commit log}{5}{subsection.3.3}
+\contentsline {section}{\numberline {4}Code}{6}{section.4}
+\contentsline {subsection}{\numberline {4.1}rd2.c}{6}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Kconfig}{9}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Makefile}{19}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Patch}{20}{subsection.4.4}

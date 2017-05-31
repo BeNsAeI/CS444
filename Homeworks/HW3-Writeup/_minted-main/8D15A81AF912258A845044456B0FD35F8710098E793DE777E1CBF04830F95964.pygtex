@@ -1,0 +1,52 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c}{\PYGZsh{}}
+\PYG{c}{\PYGZsh{} Makefile for the kernel block device drivers.}
+\PYG{c}{\PYGZsh{}}
+\PYG{c}{\PYGZsh{} 12 June 2000, Christoph Hellwig <hch@infradead.org>}
+\PYG{c}{\PYGZsh{} Rewritten to use lists instead of if-statements.}
+\PYG{c}{\PYGZsh{}}
+
+\PYG{err}{obj-}\PYG{k}{\PYGZdl{}(}CONFIG\PYGZus{}MAC\PYGZus{}FLOPPY\PYG{k}{)}        +\PYG{o}{=} swim3.o
+obj-\PYG{k}{\PYGZdl{}(}CONFIG\PYGZus{}BLK\PYGZus{}DEV\PYGZus{}SWIM\PYG{k}{)}      +\PYG{o}{=} swim\PYGZus{}mod.o
+obj-\PYG{k}{\PYGZdl{}(}CONFIG\PYGZus{}BLK\PYGZus{}DEV\PYGZus{}FD\PYG{k}{)}        +\PYG{o}{=} floppy.o
+obj-\PYG{k}{\PYGZdl{}(}CONFIG\PYGZus{}AMIGA\PYGZus{}FLOPPY\PYG{k}{)}      +\PYG{o}{=} amiflop.o
+obj-\PYG{k}{\PYGZdl{}(}CONFIG\PYGZus{}PS3\PYGZus{}DISK\PYG{k}{)}          +\PYG{o}{=} ps3disk.o
+obj-\PYG{k}{\PYGZdl{}(}CONFIG\PYGZus{}PS3\PYGZus{}VRAM\PYG{k}{)}          +\PYG{o}{=} ps3vram.o
+obj-\PYG{k}{\PYGZdl{}(}CONFIG\PYGZus{}ATARI\PYGZus{}FLOPPY\PYG{k}{)}      +\PYG{o}{=} ataflop.o
+obj-\PYG{k}{\PYGZdl{}(}CONFIG\PYGZus{}AMIGA\PYGZus{}Z2RAM\PYG{k}{)}       +\PYG{o}{=} z2ram.o
+obj-\PYG{k}{\PYGZdl{}(}CONFIG\PYGZus{}BLK\PYGZus{}DEV\PYGZus{}RAM\PYG{k}{)}       +\PYG{o}{=} brd.o
+obj-\PYG{k}{\PYGZdl{}(}CONFIG\PYGZus{}BLK\PYGZus{}DEV\PYGZus{}LOOP\PYG{k}{)}      +\PYG{o}{=} loop.o
+obj-\PYG{k}{\PYGZdl{}(}CONFIG\PYGZus{}BLK\PYGZus{}CPQ\PYGZus{}DA\PYG{k}{)}        +\PYG{o}{=} cpqarray.o
+obj-\PYG{k}{\PYGZdl{}(}CONFIG\PYGZus{}BLK\PYGZus{}CPQ\PYGZus{}CISS\PYGZus{}DA\PYG{k}{)}  +\PYG{o}{=} cciss.o
+obj-\PYG{k}{\PYGZdl{}(}CONFIG\PYGZus{}BLK\PYGZus{}DEV\PYGZus{}DAC960\PYG{k}{)}    +\PYG{o}{=} DAC960.o
+obj-\PYG{k}{\PYGZdl{}(}CONFIG\PYGZus{}XILINX\PYGZus{}SYSACE\PYG{k}{)}     +\PYG{o}{=} xsysace.o
+obj-\PYG{k}{\PYGZdl{}(}CONFIG\PYGZus{}CDROM\PYGZus{}PKTCDVD\PYG{k}{)}     +\PYG{o}{=} pktcdvd.o
+obj-\PYG{k}{\PYGZdl{}(}CONFIG\PYGZus{}MG\PYGZus{}DISK\PYG{k}{)}           +\PYG{o}{=} mg\PYGZus{}disk.o
+obj-\PYG{k}{\PYGZdl{}(}CONFIG\PYGZus{}SUNVDC\PYG{k}{)}            +\PYG{o}{=} sunvdc.o
+obj-\PYG{k}{\PYGZdl{}(}CONFIG\PYGZus{}BLK\PYGZus{}DEV\PYGZus{}NVME\PYG{k}{)}      +\PYG{o}{=} nvme.o
+obj-\PYG{k}{\PYGZdl{}(}CONFIG\PYGZus{}BLK\PYGZus{}DEV\PYGZus{}SKD\PYG{k}{)}       +\PYG{o}{=} skd.o
+obj-\PYG{k}{\PYGZdl{}(}CONFIG\PYGZus{}BLK\PYGZus{}DEV\PYGZus{}OSD\PYG{k}{)}       +\PYG{o}{=} osdblk.o
+
+obj-\PYG{k}{\PYGZdl{}(}CONFIG\PYGZus{}BLK\PYGZus{}DEV\PYGZus{}UMEM\PYG{k}{)}      +\PYG{o}{=} umem.o
+obj-\PYG{k}{\PYGZdl{}(}CONFIG\PYGZus{}BLK\PYGZus{}DEV\PYGZus{}NBD\PYG{k}{)}       +\PYG{o}{=} nbd.o
+obj-\PYG{k}{\PYGZdl{}(}CONFIG\PYGZus{}BLK\PYGZus{}DEV\PYGZus{}CRYPTOLOOP\PYG{k}{)} +\PYG{o}{=} cryptoloop.o
+obj-\PYG{k}{\PYGZdl{}(}CONFIG\PYGZus{}VIRTIO\PYGZus{}BLK\PYG{k}{)}        +\PYG{o}{=} virtio\PYGZus{}blk.o
+
+obj-\PYG{k}{\PYGZdl{}(}CONFIG\PYGZus{}BLK\PYGZus{}DEV\PYGZus{}SX8\PYG{k}{)}       +\PYG{o}{=} sx8.o
+obj-\PYG{k}{\PYGZdl{}(}CONFIG\PYGZus{}BLK\PYGZus{}DEV\PYGZus{}HD\PYG{k}{)}        +\PYG{o}{=} hd.o
+
+obj-\PYG{k}{\PYGZdl{}(}CONFIG\PYGZus{}XEN\PYGZus{}BLKDEV\PYGZus{}FRONTEND\PYG{k}{)}       +\PYG{o}{=} xen-blkfront.o
+obj-\PYG{k}{\PYGZdl{}(}CONFIG\PYGZus{}XEN\PYGZus{}BLKDEV\PYGZus{}BACKEND\PYG{k}{)}        +\PYG{o}{=} xen-blkback/
+obj-\PYG{k}{\PYGZdl{}(}CONFIG\PYGZus{}BLK\PYGZus{}DEV\PYGZus{}DRBD\PYG{k}{)}     +\PYG{o}{=} drbd/
+obj-\PYG{k}{\PYGZdl{}(}CONFIG\PYGZus{}BLK\PYGZus{}DEV\PYGZus{}RBD\PYG{k}{)}     +\PYG{o}{=} rbd.o
+obj-\PYG{k}{\PYGZdl{}(}CONFIG\PYGZus{}BLK\PYGZus{}DEV\PYGZus{}PCIESSD\PYGZus{}MTIP32XX\PYG{k}{)}  +\PYG{o}{=} mtip32xx/
+
+obj-\PYG{k}{\PYGZdl{}(}CONFIG\PYGZus{}BLK\PYGZus{}DEV\PYGZus{}RSXX\PYG{k}{)} +\PYG{o}{=} rsxx/
+obj-\PYG{k}{\PYGZdl{}(}CONFIG\PYGZus{}BLK\PYGZus{}DEV\PYGZus{}NULL\PYGZus{}BLK\PYG{k}{)}  +\PYG{o}{=} null\PYGZus{}blk.o
+obj-\PYG{k}{\PYGZdl{}(}CONFIG\PYGZus{}ZRAM\PYG{k}{)} +\PYG{o}{=} zram/
+obj-\PYG{k}{\PYGZdl{}(}CONFIG\PYGZus{}BLK\PYGZus{}DEV\PYGZus{}RD2\PYG{k}{)} +\PYG{o}{=} rd2.o
+
+nvme-y          :\PYG{o}{=} nvme-core.o nvme-scsi.o
+skd-y           :\PYG{o}{=} skd\PYGZus{}main.o
+swim\PYGZus{}mod-y      :\PYG{o}{=} swim.o swim\PYGZus{}asm.o
+\end{Verbatim}

@@ -604,6 +604,7 @@ deps_kernel/power/suspend.o := \
     $(wildcard include/config/metag.h) \
     $(wildcard include/config/stack/growsup.h) \
     $(wildcard include/config/ksm.h) \
+    $(wildcard include/config/shmem.h) \
     $(wildcard include/config/debug/vm/rb.h) \
     $(wildcard include/config/debug/pagealloc.h) \
   include/linux/debug_locks.h \
@@ -822,9 +823,6 @@ deps_kernel/power/suspend.o := \
     $(wildcard include/config/debug/slab.h) \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/memcg/kmem.h) \
   include/linux/suspend.h \
     $(wildcard include/config/vt.h) \
     $(wildcard include/config/suspend.h) \
@@ -836,6 +834,7 @@ deps_kernel/power/suspend.o := \
     $(wildcard include/config/memcg/swap.h) \
   include/linux/memcontrol.h \
     $(wildcard include/config/inet.h) \
+    $(wildcard include/config/memcg/kmem.h) \
   include/linux/cgroup.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/cgroupstats.h \
   /scratch/spring2017/10-03/CS444/Homeworks/linux-yocto-3.14/include/uapi/linux/taskstats.h \
