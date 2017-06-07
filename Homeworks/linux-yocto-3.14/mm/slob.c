@@ -207,55 +207,23 @@ static void *slob_page_alloc(struct page *sp, size_t size, int align)
 /*
  * slob_alloc: entry point into the slob allocator.
  */
+struct fit{
+	struct page * index;
+	int align;
+};
 static void *slob_alloc(size_t size, gfp_t gfp, int align, int node)
 {
-	/* Variables:
-	 * int mySize: size of the data we are trying to write
-	 * bool isAddrFree(addr): checks if the memory at given address available
-	 * int freeCount = 0; Holds the number of contiguous free memory blocks
-	 * unsigned int index = 0: gives the index of the where we are in the memory
-	 * struct bestFit{
-	 *	unsigned int address;
-	 *	unsigned int size;
-	 * }; Contains the size and address of best fit
-	 *
-	 *
-	 * Steps:
-	 * struct bestFit myBestFit;
-	 * myBestFit.size = SIZE_OF_RAM;
-	 * myBestFit.addr = END_OF_RAM;
-	 *
-	 * while(index < END_OF_RAM){
-	 * 	if(isAddrFree(index)){
-	 * 		freeCount++;
-	 * 		index++;
-	 * 	}else{
-	 * 		if(freeCount >= mySize){
-	 * 			if(freeCount < myBestFit.size){
-	 * 				myBestFit.size = freeCount;
-	 * 				myBestFit.addr = index;
-	 * 			}
-	 * 			if(myBestFit.size == mySize)
-	 * 				break;
-	 * 			freeCount = 0;
-	 * 			index++;
-	 * 		}else{
-	 * 			freeCount = 0;
-	 * 			index++;
-	 * 		}
-	 * 	}
-	 * }
-	 * if(myBestFit.addr != END_OF_RAM)
-	 * 	use(myBestFit.address)
-	 * else
-	 * 	printk(KERNEL_ERR "No space left in RAM. Low memory.\n");
-	 */
+	struct fit bestFit;
 	struct page *sp;
 	struct list_head *prev;
 	struct list_head *slob_list;
 	slob_t *b = NULL;
 	unsigned long flags;
+	unsigned long counter;
 
+	bestFit.index = NULL;
+	bestFit.align = 0;
+	counter = 0;
 	if (size < SLOB_BREAK1)
 		slob_list = &free_slob_small;
 	else if (size < SLOB_BREAK2)
@@ -279,18 +247,54 @@ static void *slob_alloc(size_t size, gfp_t gfp, int align, int node)
 			continue;
 
 		/* Attempt to alloc */
+		if(!bestFit.index)
+		{
+			bestFit.index = sp;
+			bestFit.align = align;
+		}
+		if(bestFit.index->units > sp->units){
+			bestFit.index = sp;
+			bestFit.align = align;
+		}
+		if(bestFit.index->units == SLOB_UNITS(size))
+		{
+			prev = sp->list.prev;
+			b = slob_page_alloc(sp, size, align);
+			if (!b)
+				continue;
+			if (prev != slob_list->prev &&
+				slob_list->next != prev->next)
+				list_move_tail(slob_list, prev->next);
+			break;
+		}
+		if(counter < 178000)
+			continue;
+		
+		prev = bestFit.index->list.prev;
+		b = slob_page_alloc(bestFit.index, size, bestFit.align);
+		if (!b){
+			prev = sp->list.prev;
+			b = slob_page_alloc(sp, size, align);
+			if (!b)
+				continue;
+			if (prev != slob_list->prev &&
+				slob_list->next != prev->next)
+				list_move_tail(slob_list, prev->next);
+			break;
+		}
+		if (prev != slob_list->prev && slob_list->next != prev->next)
+			list_move_tail(slob_list, prev->next);
+		break;
+/*
 		prev = sp->list.prev;
 		b = slob_page_alloc(sp, size, align);
 		if (!b)
 			continue;
-
-		/* Improve fragment distribution and reduce our average
-		 * search time by starting our next search here. (see
-		 * Knuth vol 1, sec 2.5, pg 449) */
 		if (prev != slob_list->prev &&
 				slob_list->next != prev->next)
 			list_move_tail(slob_list, prev->next);
 		break;
+*/
 	}
 	spin_unlock_irqrestore(&slob_lock, flags);
 
