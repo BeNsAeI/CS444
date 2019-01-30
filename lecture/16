@@ -1,0 +1,52 @@
+Time:
+- HZ  tick rate allways 100 from user space
+ - Less latency at higher tickrates
+- jiffies
+ - Number of ticks since boof
+ - time-after
+ - time-before
+- Syncronization
+ - Atomic variables:
+  - indivisible
+  - cannot be subdivided
+  - cannot seperate and update
+  - Gauranteed to happen
+  - Atomic noop still happens or notification of failure
+  - Ordering is not gauranteed
+  - integer types only
+ - spinlock
+  - Busy waiting
+  - you need to know how much you have to wait
+  - use onky for periodic events
+   - Timer interrupt
+  - do not use for user I/O
+ - semaphors -> general purpose construct.
+  - binary -> mutex
+  - mutex type
+ - Mutex
+  - NOT SAME AS LAST ONE!
+ - Barrier
+
+- Deadlock:
+ - system stops when every one is waiting on a recource some one else is holding on to
+ - Programatic solution:
+  - numerical ID and inquire resources in numerical order
+
+- Filesystem:
+ - Capabilities
+ - abstractions
+ - implementation details
+ - 3 main requirments:
+  - Hold large amount of data
+  - persistant storage
+  - Multi access  at the same time
+ - stored in sequence of bytes
+ - not contiguous physically but logically are
+ - record base <- refs (Re- FS)
+ - hierarchical structure -> HDF, netCDM
+
+- FileType
+ - magic number
+ - file extention
+
+- File attributes -> meta data

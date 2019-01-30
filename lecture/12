@@ -1,0 +1,68 @@
+SLOB SLAB:
+- data structure cache
+- simplest of blocks
+- make a system call
+- best fit
+- track free or used blocks
+- systemcall: calculate fragmentation
+____________________________________________
+
+-x86 paging modes:
+ - nopaging
+  - 4 GB limit
+ - 32 bit mode
+  - 32 bit logical address width
+  - <= 40 bit physical address width
+ - PAE Mode
+  - 32 bit LAW
+  - <= 52 bit PAW
+ - IA-32e (Intel architecture 32 bit extended or 64 bit)
+  - 48 bit LAW
+  - <= 52 bit PAW
+   __________      ______________      ____________________________      __________
+- |Page Table| -> |Page Directory| -> |Page Directory Pointer Table| -> |PML4 Table|
+  |__________|    |______________|    |____________________________|    |__________|
+
+
+ 63    48|47   39|38   31|30 22|21 12|11      0
+  _______ _______ _______ _____ _____ ________
+ | empty | PML4e | PDPTE | PDE | PTE | Offset |
+ |_______|_______|_______|_____|_____|________|
+
+              chapter 4 volume 3
+      figure 4-8 linear address Translation
+
+_______________________________________________
+- Linux uses a 3 layer paging on x86
+- what happens when run out of memory:
+ - On real systems, it doesn't happen (unless you try!)
+ - Page swapping! it stores it on disk
+ - Swap partitions
+ - worst case is called thrashing (bad swappin pattern or worst swapping patterns)
+
+- virtual memory:
+ - flat address space
+  - contiguous (adjacent and seperable) and linear
+ - what if a block dies?
+
+- NX
+- DEP (disable execution protection)
+ - marks memory as not executable
+- ASLR (Address space Linear Randomization)
+ - randomize the space
+
+- Getting memory in kernel (Physically contiguous addresses):
+ - alloc_pages(mask, order) order: 2nd order (1,2,4,8.,..)
+ - free_page(page,order)
+ - subpage: kmalloc,kfree
+- Virtually contiguous address:
+ - vmalloc
+ - vfree
+ 
+SLAB:
+ - Cache
+ - pattern is allocate use free
+ - stays between kernel to re use the same memory faster
+ - holds on to old memory
+ - this is why when we get a memory back it is not empty (security?)
+ - 

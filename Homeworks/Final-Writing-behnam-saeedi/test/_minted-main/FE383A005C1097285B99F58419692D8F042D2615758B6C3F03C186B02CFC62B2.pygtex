@@ -1,0 +1,103 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{ \PYGZsh{}include <sys/queue.h>}
+     \PYG{n}{SLIST\PYGZus{}CLASS\PYGZus{}ENTRY}\PYG{p}{(}\PYG{n}{CLASSTYPE}\PYG{p}{);}
+     \PYG{n}{SLIST\PYGZus{}CLASS\PYGZus{}HEAD}\PYG{p}{(}\PYG{n}{HEADNAME}\PYG{p}{,}	\PYG{n}{CLASSTYPE}\PYG{p}{);}
+     \PYG{n}{SLIST\PYGZus{}EMPTY}\PYG{p}{(}\PYG{n}{SLIST\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{);}
+     \PYG{n}{SLIST\PYGZus{}ENTRY}\PYG{p}{(}\PYG{n}{TYPE}\PYG{p}{);}
+     \PYG{n}{SLIST\PYGZus{}FIRST}\PYG{p}{(}\PYG{n}{SLIST\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{);}
+     \PYG{n}{SLIST\PYGZus{}FOREACH}\PYG{p}{(}\PYG{n}{TYPE}	\PYG{o}{*}\PYG{n}{var}\PYG{p}{,} \PYG{n}{SLIST\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{,}	\PYG{n}{SLIST\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{);}
+     \PYG{n}{SLIST\PYGZus{}FOREACH\PYGZus{}FROM}\PYG{p}{(}\PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{var}\PYG{p}{,} \PYG{n}{SLIST\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{,} \PYG{n}{SLIST\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{);}
+     \PYG{n}{SLIST\PYGZus{}FOREACH\PYGZus{}FROM\PYGZus{}SAFE}\PYG{p}{(}\PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{var}\PYG{p}{,}	\PYG{n}{SLIST\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{,} \PYG{n}{SLIST\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{,}
+	 \PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{temp\PYGZus{}var}\PYG{p}{);}
+     \PYG{n}{SLIST\PYGZus{}FOREACH\PYGZus{}SAFE}\PYG{p}{(}\PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{var}\PYG{p}{,} \PYG{n}{SLIST\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{,} \PYG{n}{SLIST\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{,}
+	 \PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{temp\PYGZus{}var}\PYG{p}{);}
+     \PYG{n}{SLIST\PYGZus{}HEAD}\PYG{p}{(}\PYG{n}{HEADNAME}\PYG{p}{,} \PYG{n}{TYPE}\PYG{p}{);}
+     \PYG{n}{SLIST\PYGZus{}HEAD\PYGZus{}INITIALIZER}\PYG{p}{(}\PYG{n}{SLIST\PYGZus{}HEAD} \PYG{n}{head}\PYG{p}{);}
+     \PYG{n}{SLIST\PYGZus{}INIT}\PYG{p}{(}\PYG{n}{SLIST\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{);}
+     \PYG{n}{SLIST\PYGZus{}INSERT\PYGZus{}AFTER}\PYG{p}{(}\PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{listelm}\PYG{p}{,} \PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{elm}\PYG{p}{,} \PYG{n}{SLIST\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{);}
+     \PYG{n}{SLIST\PYGZus{}INSERT\PYGZus{}HEAD}\PYG{p}{(}\PYG{n}{SLIST\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{,} \PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{elm}\PYG{p}{,} \PYG{n}{SLIST\PYGZus{}ENTRY}	\PYG{n}{NAME}\PYG{p}{);}
+     \PYG{n}{SLIST\PYGZus{}NEXT}\PYG{p}{(}\PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{elm}\PYG{p}{,} \PYG{n}{SLIST\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{);}
+     \PYG{n}{SLIST\PYGZus{}REMOVE}\PYG{p}{(}\PYG{n}{SLIST\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{,} \PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{elm}\PYG{p}{,} \PYG{n}{TYPE}\PYG{p}{,} \PYG{n}{SLIST\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{);}
+     \PYG{n}{SLIST\PYGZus{}REMOVE\PYGZus{}AFTER}\PYG{p}{(}\PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{elm}\PYG{p}{,} \PYG{n}{SLIST\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{);}
+     \PYG{n}{SLIST\PYGZus{}REMOVE\PYGZus{}HEAD}\PYG{p}{(}\PYG{n}{SLIST\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{,} \PYG{n}{SLIST\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{);}
+     \PYG{n}{SLIST\PYGZus{}SWAP}\PYG{p}{(}\PYG{n}{SLIST\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head1}\PYG{p}{,} \PYG{n}{SLIST\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head2}\PYG{p}{,} \PYG{n}{SLIST\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{);}
+     \PYG{n}{STAILQ\PYGZus{}CLASS\PYGZus{}ENTRY}\PYG{p}{(}\PYG{n}{CLASSTYPE}\PYG{p}{);}
+     \PYG{n}{STAILQ\PYGZus{}CLASS\PYGZus{}HEAD}\PYG{p}{(}\PYG{n}{HEADNAME}\PYG{p}{,} \PYG{n}{CLASSTYPE}\PYG{p}{);}
+     \PYG{n}{STAILQ\PYGZus{}CONCAT}\PYG{p}{(}\PYG{n}{STAILQ\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head1}\PYG{p}{,} \PYG{n}{STAILQ\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head2}\PYG{p}{);}
+     \PYG{n}{STAILQ\PYGZus{}EMPTY}\PYG{p}{(}\PYG{n}{STAILQ\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{);}
+     \PYG{n}{STAILQ\PYGZus{}ENTRY}\PYG{p}{(}\PYG{n}{TYPE}\PYG{p}{);}
+     \PYG{n}{STAILQ\PYGZus{}FIRST}\PYG{p}{(}\PYG{n}{STAILQ\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{);}
+     \PYG{n}{STAILQ\PYGZus{}FOREACH}\PYG{p}{(}\PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{var}\PYG{p}{,} \PYG{n}{STAILQ\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{,} \PYG{n}{STAILQ\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{);}
+     \PYG{n}{STAILQ\PYGZus{}FOREACH\PYGZus{}FROM}\PYG{p}{(}\PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{var}\PYG{p}{,} \PYG{n}{STAILQ\PYGZus{}HEAD}	\PYG{o}{*}\PYG{n}{head}\PYG{p}{,} \PYG{n}{STAILQ\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{);}
+     \PYG{n}{STAILQ\PYGZus{}FOREACH\PYGZus{}FROM\PYGZus{}SAFE}\PYG{p}{(}\PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{var}\PYG{p}{,} \PYG{n}{STAILQ\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{,} \PYG{n}{STAILQ\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{,}
+	 \PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{temp\PYGZus{}var}\PYG{p}{);}
+     \PYG{n}{STAILQ\PYGZus{}FOREACH\PYGZus{}SAFE}\PYG{p}{(}\PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{var}\PYG{p}{,} \PYG{n}{STAILQ\PYGZus{}HEAD}	\PYG{o}{*}\PYG{n}{head}\PYG{p}{,} \PYG{n}{STAILQ\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{,}
+	 \PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{temp\PYGZus{}var}\PYG{p}{);}
+     \PYG{n}{STAILQ\PYGZus{}HEAD}\PYG{p}{(}\PYG{n}{HEADNAME}\PYG{p}{,} \PYG{n}{TYPE}\PYG{p}{);}
+     \PYG{n}{STAILQ\PYGZus{}HEAD\PYGZus{}INITIALIZER}\PYG{p}{(}\PYG{n}{STAILQ\PYGZus{}HEAD} \PYG{n}{head}\PYG{p}{);}
+     \PYG{n}{STAILQ\PYGZus{}INIT}\PYG{p}{(}\PYG{n}{STAILQ\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{);}
+     \PYG{n}{STAILQ\PYGZus{}INSERT\PYGZus{}AFTER}\PYG{p}{(}\PYG{n}{STAILQ\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{,} \PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{listelm}\PYG{p}{,} \PYG{n}{TYPE}	\PYG{o}{*}\PYG{n}{elm}\PYG{p}{,}
+	 \PYG{n}{STAILQ\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{);}
+     \PYG{n}{STAILQ\PYGZus{}INSERT\PYGZus{}HEAD}\PYG{p}{(}\PYG{n}{STAILQ\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{,} \PYG{n}{TYPE}	\PYG{o}{*}\PYG{n}{elm}\PYG{p}{,} \PYG{n}{STAILQ\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{);}
+     \PYG{n}{STAILQ\PYGZus{}INSERT\PYGZus{}TAIL}\PYG{p}{(}\PYG{n}{STAILQ\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{,} \PYG{n}{TYPE}	\PYG{o}{*}\PYG{n}{elm}\PYG{p}{,} \PYG{n}{STAILQ\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{);}
+     \PYG{n}{STAILQ\PYGZus{}LAST}\PYG{p}{(}\PYG{n}{STAILQ\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{,} \PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{elm}\PYG{p}{,} \PYG{n}{STAILQ\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{);}
+     \PYG{n}{STAILQ\PYGZus{}NEXT}\PYG{p}{(}\PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{elm}\PYG{p}{,} \PYG{n}{STAILQ\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{);}
+     \PYG{n}{STAILQ\PYGZus{}REMOVE}\PYG{p}{(}\PYG{n}{STAILQ\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{,} \PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{elm}\PYG{p}{,} \PYG{n}{TYPE}\PYG{p}{,} \PYG{n}{STAILQ\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{);}
+     \PYG{n}{STAILQ\PYGZus{}REMOVE\PYGZus{}AFTER}\PYG{p}{(}\PYG{n}{STAILQ\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{,} \PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{elm}\PYG{p}{,} \PYG{n}{STAILQ\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{);}
+     \PYG{n}{STAILQ\PYGZus{}REMOVE\PYGZus{}HEAD}\PYG{p}{(}\PYG{n}{STAILQ\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{,} \PYG{n}{STAILQ\PYGZus{}ENTRY}	\PYG{n}{NAME}\PYG{p}{);}
+     \PYG{n}{STAILQ\PYGZus{}SWAP}\PYG{p}{(}\PYG{n}{STAILQ\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head1}\PYG{p}{,} \PYG{n}{STAILQ\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head2}\PYG{p}{,} \PYG{n}{STAILQ\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{);}
+     \PYG{n}{LIST\PYGZus{}CLASS\PYGZus{}ENTRY}\PYG{p}{(}\PYG{n}{CLASSTYPE}\PYG{p}{);}
+     \PYG{n}{LIST\PYGZus{}CLASS\PYGZus{}HEAD}\PYG{p}{(}\PYG{n}{HEADNAME}\PYG{p}{,} \PYG{n}{CLASSTYPE}\PYG{p}{);}
+     \PYG{n}{LIST\PYGZus{}EMPTY}\PYG{p}{(}\PYG{n}{LIST\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{);}
+     \PYG{n}{LIST\PYGZus{}ENTRY}\PYG{p}{(}\PYG{n}{TYPE}\PYG{p}{);}
+     \PYG{n}{LIST\PYGZus{}FIRST}\PYG{p}{(}\PYG{n}{LIST\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{);}
+     \PYG{n}{LIST\PYGZus{}FOREACH}\PYG{p}{(}\PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{var}\PYG{p}{,} \PYG{n}{LIST\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{,} \PYG{n}{LIST\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{);}
+     \PYG{n}{LIST\PYGZus{}FOREACH\PYGZus{}FROM}\PYG{p}{(}\PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{var}\PYG{p}{,} \PYG{n}{LIST\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{,} \PYG{n}{LIST\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{);}
+     \PYG{n}{LIST\PYGZus{}FOREACH\PYGZus{}FROM\PYGZus{}SAFE}\PYG{p}{(}\PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{var}\PYG{p}{,} \PYG{n}{LIST\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{,}	\PYG{n}{LIST\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{,}
+	 \PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{temp\PYGZus{}var}\PYG{p}{);}
+     \PYG{n}{LIST\PYGZus{}FOREACH\PYGZus{}SAFE}\PYG{p}{(}\PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{var}\PYG{p}{,} \PYG{n}{LIST\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{,} \PYG{n}{LIST\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{,}
+	 \PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{temp\PYGZus{}var}\PYG{p}{);}
+     \PYG{n}{LIST\PYGZus{}HEAD}\PYG{p}{(}\PYG{n}{HEADNAME}\PYG{p}{,} \PYG{n}{TYPE}\PYG{p}{);}
+     \PYG{n}{LIST\PYGZus{}HEAD\PYGZus{}INITIALIZER}\PYG{p}{(}\PYG{n}{LIST\PYGZus{}HEAD} \PYG{n}{head}\PYG{p}{);}
+     \PYG{n}{LIST\PYGZus{}INIT}\PYG{p}{(}\PYG{n}{LIST\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{);}
+     \PYG{n}{LIST\PYGZus{}INSERT\PYGZus{}AFTER}\PYG{p}{(}\PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{listelm}\PYG{p}{,} \PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{elm}\PYG{p}{,} \PYG{n}{LIST\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{);}
+     \PYG{n}{LIST\PYGZus{}INSERT\PYGZus{}BEFORE}\PYG{p}{(}\PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{listelm}\PYG{p}{,} \PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{elm}\PYG{p}{,} \PYG{n}{LIST\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{);}
+     \PYG{n}{LIST\PYGZus{}INSERT\PYGZus{}HEAD}\PYG{p}{(}\PYG{n}{LIST\PYGZus{}HEAD}	\PYG{o}{*}\PYG{n}{head}\PYG{p}{,} \PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{elm}\PYG{p}{,} \PYG{n}{LIST\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{);}
+     \PYG{n}{LIST\PYGZus{}NEXT}\PYG{p}{(}\PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{elm}\PYG{p}{,} \PYG{n}{LIST\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{);}
+     \PYG{n}{LIST\PYGZus{}PREV}\PYG{p}{(}\PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{elm}\PYG{p}{,} \PYG{n}{LIST\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{,} \PYG{n}{TYPE}\PYG{p}{,} \PYG{n}{LIST\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{);}
+     \PYG{n}{LIST\PYGZus{}REMOVE}\PYG{p}{(}\PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{elm}\PYG{p}{,} \PYG{n}{LIST\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{);}
+     \PYG{n}{LIST\PYGZus{}SWAP}\PYG{p}{(}\PYG{n}{LIST\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head1}\PYG{p}{,} \PYG{n}{LIST\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head2}\PYG{p}{,} \PYG{n}{TYPE}\PYG{p}{,} \PYG{n}{LIST\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{);}
+     \PYG{n}{TAILQ\PYGZus{}CLASS\PYGZus{}ENTRY}\PYG{p}{(}\PYG{n}{CLASSTYPE}\PYG{p}{);}
+     \PYG{n}{TAILQ\PYGZus{}CLASS\PYGZus{}HEAD}\PYG{p}{(}\PYG{n}{HEADNAME}\PYG{p}{,}	\PYG{n}{CLASSTYPE}\PYG{p}{);}
+     \PYG{n}{TAILQ\PYGZus{}CONCAT}\PYG{p}{(}\PYG{n}{TAILQ\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head1}\PYG{p}{,} \PYG{n}{TAILQ\PYGZus{}HEAD}	\PYG{o}{*}\PYG{n}{head2}\PYG{p}{,}	\PYG{n}{TAILQ\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{);}
+     \PYG{n}{TAILQ\PYGZus{}EMPTY}\PYG{p}{(}\PYG{n}{TAILQ\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{);}
+     \PYG{n}{TAILQ\PYGZus{}ENTRY}\PYG{p}{(}\PYG{n}{TYPE}\PYG{p}{);}
+     \PYG{n}{TAILQ\PYGZus{}FIRST}\PYG{p}{(}\PYG{n}{TAILQ\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{);}
+     \PYG{n}{TAILQ\PYGZus{}FOREACH}\PYG{p}{(}\PYG{n}{TYPE}	\PYG{o}{*}\PYG{n}{var}\PYG{p}{,} \PYG{n}{TAILQ\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{,}	\PYG{n}{TAILQ\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{);}
+     \PYG{n}{TAILQ\PYGZus{}FOREACH\PYGZus{}FROM}\PYG{p}{(}\PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{var}\PYG{p}{,} \PYG{n}{TAILQ\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{,} \PYG{n}{TAILQ\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{);}
+     \PYG{n}{TAILQ\PYGZus{}FOREACH\PYGZus{}FROM\PYGZus{}SAFE}\PYG{p}{(}\PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{var}\PYG{p}{,}	\PYG{n}{TAILQ\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{,} \PYG{n}{TAILQ\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{,}
+	 \PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{temp\PYGZus{}var}\PYG{p}{);}
+     \PYG{n}{TAILQ\PYGZus{}FOREACH\PYGZus{}REVERSE}\PYG{p}{(}\PYG{n}{TYPE}	\PYG{o}{*}\PYG{n}{var}\PYG{p}{,} \PYG{n}{TAILQ\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{,}	\PYG{n}{HEADNAME}\PYG{p}{,}
+	 \PYG{n}{TAILQ\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{);}
+     \PYG{n}{TAILQ\PYGZus{}FOREACH\PYGZus{}REVERSE\PYGZus{}FROM}\PYG{p}{(}\PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{var}\PYG{p}{,} \PYG{n}{TAILQ\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{,} \PYG{n}{HEADNAME}\PYG{p}{,}
+	 \PYG{n}{TAILQ\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{);}
+     \PYG{n}{TAILQ\PYGZus{}FOREACH\PYGZus{}REVERSE\PYGZus{}FROM\PYGZus{}SAFE}\PYG{p}{(}\PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{var}\PYG{p}{,}	\PYG{n}{TAILQ\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{,} \PYG{n}{HEADNAME}\PYG{p}{,}
+	 \PYG{n}{TAILQ\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{,} \PYG{n}{TYPE}	\PYG{o}{*}\PYG{n}{temp\PYGZus{}var}\PYG{p}{);}
+     \PYG{n}{TAILQ\PYGZus{}FOREACH\PYGZus{}REVERSE\PYGZus{}SAFE}\PYG{p}{(}\PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{var}\PYG{p}{,} \PYG{n}{TAILQ\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{,} \PYG{n}{HEADNAME}\PYG{p}{,}
+	 \PYG{n}{TAILQ\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{,} \PYG{n}{TYPE}	\PYG{o}{*}\PYG{n}{temp\PYGZus{}var}\PYG{p}{);}
+     \PYG{n}{TAILQ\PYGZus{}FOREACH\PYGZus{}SAFE}\PYG{p}{(}\PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{var}\PYG{p}{,} \PYG{n}{TAILQ\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{,} \PYG{n}{TAILQ\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{,}
+	 \PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{temp\PYGZus{}var}\PYG{p}{);}
+     \PYG{n}{TAILQ\PYGZus{}HEAD}\PYG{p}{(}\PYG{n}{HEADNAME}\PYG{p}{,} \PYG{n}{TYPE}\PYG{p}{);}
+     \PYG{n}{TAILQ\PYGZus{}HEAD\PYGZus{}INITIALIZER}\PYG{p}{(}\PYG{n}{TAILQ\PYGZus{}HEAD} \PYG{n}{head}\PYG{p}{);}
+     \PYG{n}{TAILQ\PYGZus{}INIT}\PYG{p}{(}\PYG{n}{TAILQ\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{);}
+     \PYG{n}{TAILQ\PYGZus{}INSERT\PYGZus{}AFTER}\PYG{p}{(}\PYG{n}{TAILQ\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{,} \PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{listelm}\PYG{p}{,} \PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{elm}\PYG{p}{,}
+	 \PYG{n}{TAILQ\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{);}
+     \PYG{n}{TAILQ\PYGZus{}INSERT\PYGZus{}BEFORE}\PYG{p}{(}\PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{listelm}\PYG{p}{,}	\PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{elm}\PYG{p}{,} \PYG{n}{TAILQ\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{);}
+     \PYG{n}{TAILQ\PYGZus{}INSERT\PYGZus{}HEAD}\PYG{p}{(}\PYG{n}{TAILQ\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{,} \PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{elm}\PYG{p}{,} \PYG{n}{TAILQ\PYGZus{}ENTRY}	\PYG{n}{NAME}\PYG{p}{);}
+     \PYG{n}{TAILQ\PYGZus{}INSERT\PYGZus{}TAIL}\PYG{p}{(}\PYG{n}{TAILQ\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{,} \PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{elm}\PYG{p}{,} \PYG{n}{TAILQ\PYGZus{}ENTRY}	\PYG{n}{NAME}\PYG{p}{);}
+     \PYG{n}{TAILQ\PYGZus{}LAST}\PYG{p}{(}\PYG{n}{TAILQ\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{,} \PYG{n}{HEADNAME}\PYG{p}{);}
+     \PYG{n}{TAILQ\PYGZus{}NEXT}\PYG{p}{(}\PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{elm}\PYG{p}{,} \PYG{n}{TAILQ\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{);}
+     \PYG{n}{TAILQ\PYGZus{}PREV}\PYG{p}{(}\PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{elm}\PYG{p}{,} \PYG{n}{HEADNAME}\PYG{p}{,} \PYG{n}{TAILQ\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{);}
+     \PYG{n}{TAILQ\PYGZus{}REMOVE}\PYG{p}{(}\PYG{n}{TAILQ\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head}\PYG{p}{,} \PYG{n}{TYPE} \PYG{o}{*}\PYG{n}{elm}\PYG{p}{,} \PYG{n}{TAILQ\PYGZus{}ENTRY} \PYG{n}{NAME}\PYG{p}{);}
+     \PYG{n}{TAILQ\PYGZus{}SWAP}\PYG{p}{(}\PYG{n}{TAILQ\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head1}\PYG{p}{,} \PYG{n}{TAILQ\PYGZus{}HEAD} \PYG{o}{*}\PYG{n}{head2}\PYG{p}{,} \PYG{n}{TYPE}\PYG{p}{,} \PYG{n}{TAILQ\PYGZus{}ENTRY}	\PYG{n}{NAME}\PYG{p}{);}
+\end{Verbatim}

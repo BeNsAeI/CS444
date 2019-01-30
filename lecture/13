@@ -1,0 +1,56 @@
+File systems:
+- Old days:
+ - They did not exist in early days
+ - often used hard coding
+ - magnetic cores
+ - large , slow, unreliable with numerical access (knew start and length)
+ - "file command" tells us what for mat the file is
+ - directory -> index
+ - some kind of hierarchy
+
+- common fs:
+ - NTFS
+ - HFS
+ - FAT (File Allocation Table, big table at the beginning of the file system)
+ - EXT
+ - BTFS (B tree file system : butterfs)
+ - ZFS
+
+Virtual file system
+ - abstraction layer that sits on top of all filesystems
+ - VFS 
+
+         Syscall -> Write -> VFSWrite -> fs-specific write -> driver
+            (user space)      (vfs)           (fs)            (media)
+                             |<-          KERNEL space            ->|
+                             
+- files
+ - Represents an open file
+ - logical construct of an open file
+ - contain everything you need to manipulate the file
+ - includes file pointers
+
+- dentries
+ - not directory entries
+ - they are path components
+ - /bin/vi has 3 dentries ((root implied)/, bin, vi)
+ - "walking a ffile system" treversing a tree
+
+- mount points / super blocks
+ - superblock: all the files in one space
+ - in memory representation for metadata of mounted file system
+
+- inodes
+ - Meta data
+ - list of inodes
+ - limmited pointers and needs indirections
+ - abstract -> in memory representation of inode (metadata leading to file)
+ - logical construct
+
+- Namespace
+ - container storing
+ - c groups
+ - child processes get new  namespaces
+ - children can't go beyond it
+ - rarely get used
+ - chroot utility uses this

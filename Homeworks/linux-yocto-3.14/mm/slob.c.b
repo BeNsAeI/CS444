@@ -1,61 +1,3 @@
-/*
- * SLOB Allocator: Simple List Of Blocks
- *
- * Matt Mackall <mpm@selenic.com> 12/30/03
- *
- * NUMA support by Paul Mundt, 2007.
- *
- * How SLOB works:
- *
- * The core of SLOB is a traditional K&R style heap allocator, with
- * support for returning aligned objects. The granularity of this
- * allocator is as little as 2 bytes, however typically most architectures
- * will require 4 bytes on 32-bit and 8 bytes on 64-bit.
- *
- * The slob heap is a set of linked list of pages from alloc_pages(),
- * and within each page, there is a singly-linked list of free blocks
- * (slob_t). The heap is grown on demand. To reduce fragmentation,
- * heap pages are segregated into three lists, with objects less than
- * 256 bytes, objects less than 1024 bytes, and all other objects.
- *
- * Allocation from heap involves first searching for a page with
- * sufficient free blocks (using a next-fit-like approach) followed by
- * a first-fit scan of the page. Deallocation inserts objects back
- * into the free list in address order, so this is effectively an
- * address-ordered first fit.
- *
- * Above this is an implementation of kmalloc/kfree. Blocks returned
- * from kmalloc are prepended with a 4-byte header with the kmalloc size.
- * If kmalloc is asked for objects of PAGE_SIZE or larger, it calls
- * alloc_pages() directly, allocating compound pages so the page order
- * does not have to be separately tracked.
- * These objects are detected in kfree() because PageSlab()
- * is false for them.
- *
- * SLAB is emulated on top of SLOB by simply calling constructors and
- * destructors for every SLAB allocation. Objects are returned with the
- * 4-byte alignment unless the SLAB_HWCACHE_ALIGN flag is set, in which
- * case the low-level allocator will fragment blocks to create the proper
- * alignment. Again, objects of page-size or greater are allocated by
- * calling alloc_pages(). As SLAB objects know their size, no separate
- * size bookkeeping is necessary and there is essentially no allocation
- * space overhead, and compound pages aren't needed for multi-page
- * allocations.
- *
- * NUMA support in SLOB is fairly simplistic, pushing most of the real
- * logic down to the page allocator, and simply doing the node accounting
- * on the upper levels. In the event that a node id is explicitly
- * provided, alloc_pages_exact_node() with the specified node id is used
- * instead. The common case (or when the node id isn't explicitly provided)
- * will default to the current node, as per numa_node_id().
- *
- * Node aware pages are still inserted in to the global freelist, and
- * these are scanned for by matching against the node id encoded in the
- * page flags. As a result, block allocations that can be satisfied from
- * the freelist will only be done so on pages residing on the same node,
- * in order to prevent random node placement.
- */
-
 #include <linux/kernel.h>
 #include <linux/slab.h>
 
@@ -267,6 +209,47 @@ static void *slob_page_alloc(struct page *sp, size_t size, int align)
  */
 static void *slob_alloc(size_t size, gfp_t gfp, int align, int node)
 {
+	/* Variables:
+	 * int mySize: size of the data we are trying to write
+	 * bool isAddrFree(addr): checks if the memory at given address available
+	 * int freeCount = 0; Holds the number of contiguous free memory blocks
+	 * unsigned int index = 0: gives the index of the where we are in the memory
+	 * struct bestFit{
+	 *	unsigned int address;
+	 *	unsigned int size;
+	 * }; Contains the size and address of best fit
+	 *
+	 *
+	 * Steps:
+	 * struct bestFit myBestFit;
+	 * myBestFit.size = SIZE_OF_RAM;
+	 * myBestFit.addr = END_OF_RAM;
+	 *
+	 * while(index < END_OF_RAM){
+	 * 	if(isAddrFree(index)){
+	 * 		freeCount++;
+	 * 		index++;
+	 * 	}else{
+	 * 		if(freeCount >= mySize){
+	 * 			if(freeCount < myBestFit.size){
+	 * 				myBestFit.size = freeCount;
+	 * 				myBestFit.addr = index;
+	 * 			}
+	 * 			if(myBestFit.size == mySize)
+	 * 				break;
+	 * 			freeCount = 0;
+	 * 			index++;
+	 * 		}else{
+	 * 			freeCount = 0;
+	 * 			index++;
+	 * 		}
+	 * 	}
+	 * }
+	 * if(myBestFit.addr != END_OF_RAM)
+	 * 	use(myBestFit.address)
+	 * else
+	 * 	printk(KERNEL_ERR "No space left in RAM. Low memory.\n");
+	 */
 	struct page *sp;
 	struct list_head *prev;
 	struct list_head *slob_list;

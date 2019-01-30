@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nv}{\PYGZdl{} }ps fax | grep \PYG{o}{[}i\PYG{o}{]}nit
+    1 ?        Ss     0:06 /sbin/init splash
+\end{Verbatim}

@@ -1,0 +1,30 @@
+\BOOKMARK [1][-]{section.1}{Linux}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Memory Management}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Services}{section.1}% 3
+\BOOKMARK [3][-]{subsubsection.1.2.1}{VM}{subsection.1.2}% 4
+\BOOKMARK [3][-]{subsubsection.1.2.2}{Address Space Protection}{subsection.1.2}% 5
+\BOOKMARK [3][-]{subsubsection.1.2.3}{Memory Mapping}{subsection.1.2}% 6
+\BOOKMARK [2][-]{subsection.1.3}{Pages}{section.1}% 7
+\BOOKMARK [3][-]{subsubsection.1.3.1}{Efficiency and demand paging}{subsection.1.3}% 8
+\BOOKMARK [2][-]{subsection.1.4}{Features}{section.1}% 9
+\BOOKMARK [3][-]{subsubsection.1.4.1}{Cache}{subsection.1.4}% 10
+\BOOKMARK [3][-]{subsubsection.1.4.2}{Swapping}{subsection.1.4}% 11
+\BOOKMARK [3][-]{subsubsection.1.4.3}{Threads}{subsection.1.4}% 12
+\BOOKMARK [3][-]{subsubsection.1.4.4}{Shared Virtual memory}{subsection.1.4}% 13
+\BOOKMARK [3][-]{subsubsection.1.4.5}{Access Control}{subsection.1.4}% 14
+\BOOKMARK [3][-]{subsubsection.1.4.6}{Paging tables}{subsection.1.4}% 15
+\BOOKMARK [1][-]{section.2}{Windows}{}% 16
+\BOOKMARK [2][-]{subsection.2.1}{Memory Management}{section.2}% 17
+\BOOKMARK [2][-]{subsection.2.2}{Size}{section.2}% 18
+\BOOKMARK [2][-]{subsection.2.3}{Services}{section.2}% 19
+\BOOKMARK [2][-]{subsection.2.4}{Pages}{section.2}% 20
+\BOOKMARK [2][-]{subsection.2.5}{Features}{section.2}% 21
+\BOOKMARK [2][-]{subsection.2.6}{Comparing to Linux}{section.2}% 22
+\BOOKMARK [1][-]{section.3}{FreeBSD}{}% 23
+\BOOKMARK [2][-]{subsection.3.1}{Memory Management}{section.3}% 24
+\BOOKMARK [2][-]{subsection.3.2}{Pages}{section.3}% 25
+\BOOKMARK [3][-]{subsubsection.3.2.1}{States of memory}{subsection.3.2}% 26
+\BOOKMARK [3][-]{subsubsection.3.2.2}{Swapping}{subsection.3.2}% 27
+\BOOKMARK [2][-]{subsection.3.3}{Services and features}{section.3}% 28
+\BOOKMARK [3][-]{subsubsection.3.3.1}{Generic VM Object}{subsection.3.3}% 29
+\BOOKMARK [2][-]{subsection.3.4}{FreeBSD and Linux Comparison}{section.3}% 30

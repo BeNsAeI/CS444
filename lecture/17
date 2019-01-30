@@ -1,0 +1,47 @@
+** Use for final paper
+- ZFS
+ - FreeBSD
+- NTFS
+ - Windows
+
+File operations
+- Create
+- Delete
+- Open
+- Close
+- read
+- write
+- append (open, seek, write -> optimized in one function)
+- seek
+- get-attributes
+- set-attributes
+- rename/move
+- lock
+
+Directories:
+- Special files
+- all operations apply
+
+ZFS:
+- Most file systems were developed in 70s and 80s
+- Mac -> HFS
+- ZFS is an extended version of HFS
+- Zetabyte file system (scales to zeta bytes)
+- inhearent versioning system
+- Transaction based FS
+- inhearent data integrity
+- RAID (Redundant array of inexpensive disks)
+
+NTFS
+- Native windows file
+- 64 bit cluster addresses
+- 256 terabyte limit is the artificially imposed before win 7 (programatic limitation)
+- alternating data streams.
+- support 
+ - holes in files
+ - native compressions
+ - links
+ - Native encryption (Bit locker)
+ - raid
+ - btree
+ - Storage pools

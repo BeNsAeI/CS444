@@ -1,0 +1,28 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nv}{\PYGZdl{} }pstree
+systemd─┬─ModemManager─┬─\PYG{o}{\PYGZob{}}gdbus\PYG{o}{\PYGZcb{}}
+        │              └─\PYG{o}{\PYGZob{}}gmain\PYG{o}{\PYGZcb{}}
+        ├─NetworkManager─┬─dhclient
+        │                ├─dnsmasq
+        │                ├─\PYG{o}{\PYGZob{}}gdbus\PYG{o}{\PYGZcb{}}
+        │                └─\PYG{o}{\PYGZob{}}gmain\PYG{o}{\PYGZcb{}}
+        ├─Xvfb─┬─\PYG{o}{\PYGZob{}}llvmpipe-0\PYG{o}{\PYGZcb{}}
+        │      ├─\PYG{o}{\PYGZob{}}llvmpipe-1\PYG{o}{\PYGZcb{}}
+        │      ├─\PYG{o}{\PYGZob{}}llvmpipe-2\PYG{o}{\PYGZcb{}}
+        │      └─\PYG{o}{\PYGZob{}}llvmpipe-3\PYG{o}{\PYGZcb{}}
+        ├─accounts-daemon─┬─\PYG{o}{\PYGZob{}}gdbus\PYG{o}{\PYGZcb{}}
+        │                 └─\PYG{o}{\PYGZob{}}gmain\PYG{o}{\PYGZcb{}}
+        ├─acpid
+        ├─agetty
+        ├─at-spi-bus-laun─┬─dbus-daemon
+        │                 ├─\PYG{o}{\PYGZob{}}dconf worker\PYG{o}{\PYGZcb{}}
+        │                 ├─\PYG{o}{\PYGZob{}}gdbus\PYG{o}{\PYGZcb{}}
+        │                 └─\PYG{o}{\PYGZob{}}gmain\PYG{o}{\PYGZcb{}}
+        ├─at-spi2-registr─┬─\PYG{o}{\PYGZob{}}gdbus\PYG{o}{\PYGZcb{}}
+        │                 └─\PYG{o}{\PYGZob{}}gmain\PYG{o}{\PYGZcb{}}
+        ├─avahi-daemon───avahi-daemon
+        ├─bluetoothd
+\PYG{c}{\PYGZsh{}			.}
+\PYG{c}{\PYGZsh{}			.}
+\PYG{c}{\PYGZsh{}			.}
+\end{Verbatim}

@@ -1,0 +1,238 @@
+\documentclass[journal,10pt,onecolumn,compsoc,letterpaper,draftclsnofoot,table,xcdraw]{IEEEtran} \usepackage[margin=0.75in]{geometry}
+\usepackage{pdfpages}
+\usepackage{minted}
+\usepackage{graphicx,float} 
+\usepackage{listings}
+\usepackage{verbatim}
+\usepackage{url}
+\usepackage{nameref}
+\usepackage{setspace} \singlespacing
+\graphicspath{/graphics} \setlength{\parskip}{\baselineskip} \setlength\parindent{24pt}
+\usepackage[english]{babel}
+\usepackage{fullpage}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+\title{Writing Topic 2: I/O}
+\author{Behnam Saeedi\\ CS444: Operating systems II}
+\date{\today}
+\begin{document}
+\maketitle
+\begin{centering}
+Spring 2017
+\begin{abstract}
+\noindent In this document we are going to have a look at three operating systems: Linux, Windows and FreeBSD and compare and analyze them based on the data structures, schedulers, algorithms, cryptography and I/O scheduling. We will start by talking about linux as a control and then provide an explanation of many features integrated in Linux Kernel by providing sources. This document will atempts to discuss some of the advantages and disadvantages they have with respect to one another.
+\end{abstract}
+\end{centering}
+%--------------------------------------------------------------
+\newpage
+\tableofcontents
+\newpage
+%--------------------------------------------------------------
+\section{Linux}
+\noindent In this assignment we are going to have a closer look on the I/O aspect of three common operating systems. These Operating systems are Linux, Windows and FreeBSD. In the first section we will cover the Linux in order to hold it a control to compare the other two operating system s to it. In this section we will talk about data structures, I/O scheduling, Cryptography and implementations.
+\subsection{data structures}
+\noindent According to Linux documentation the Linux Kernel provides various versions of double linked list specifically purposed for I/O. Some examples of these data structures are doubly linked list, B+ tree, priority heap and many many more. \cite{1}. Everything that requires a data structure in Linux is dependent on these few models. The thing to consider is that the Linux actually does not create a data based structure. Instead it provides the pointers needed in order to link them. The developers can create their own structs and include this pointer structure into their data containers. This has an interesting and useful side effect. Due to this method of implementation user has the capability to generate a linked list where the type of the data elements does not need to match. This means a link containing and integer could be followed by a link that contains character.
+
+\subsection{Algorithms}
+\noindent There are many different scheduling algorithms. These algorithms include: 
+\begin{itemize}
+\item Random scheduling (RSS)
+\item First In, First Out (FIFO), also known as First Come First Served (FCFS)
+\item Last In, First Out (LIFO)
+\item Shortest seek first, also known as Shortest Seek / Service Time First (SSTF)
+\item Elevator algorithm, also known as SCAN (including its variants, C-SCAN, LOOK, and C-LOOK)
+\item N-Step-SCAN SCAN of N records at a time
+\item FSCAN, N-Step-SCAN where N equals queue size at start of the SCAN cycle
+\item Completely Fair Queuing (CFQ) on Linux
+\item Anticipatory scheduling
+\item Noop scheduler
+\item Deadline scheduler
+\item mClock scheduler \cite{2}
+\item Budget Fair Queueing (BFQ) scheduler \cite{3}
+\item Kyber \cite{4}
+\end{itemize}
+
+\subsection{I/O scheduling}
+\noindent Checking the Linux kernel files we can see that the algorithms which Linux supports are NOOP, deadline, and CFQ. In previous assignment we implemented the SSTF version for Linux. (it is good to note that there are 3rd party implementations of that available).
+\subsection{Cryptography}
+\noindent Linux provides one of the most extensive cryptographic APIs available. It supports a wide variety of algorithms available for memory. There is an extensive list of cypher alogrithms available: \cite{5}
+\begin{itemize}
+\item Symmetric ciphers
+\item AEAD ciphers
+\item Message digest, including keyed message digest
+\item Random number generation
+\item User space interface
+\end{itemize}
+\noindent These algorithms are used in order to create the following templates available to the users: \cite{6}
+\begin{itemize}
+\item aes: or The Advanced Encryption Standard is a symmetric block cypher
+\item ecb(aes): or Electronic Codebook and block mode of operations
+\item cmac(aes): or Cipher-based Message Authentication Code
+\item ccm(aes): or  Counter with CBC-MAC
+\item rfc4106(gcm(aes)): Galois/Counter Mode (GCM) in Advanced Encryption Standard
+\item sha1: or Secure Hash Algorithm 1 which is crypto-hash function
+\item hmac(sha1): or Keyed-hash message authentication code (HMAC) 
+\end{itemize}
+\noindent As mentioned, the Linux Kernel provides both synchronous and asynchronous operations depending on the users need.
+%--------------------------------------------------------------
+\section{Windows}
+\noindent The next element which we are going to look into is the Windows, We are going to look into data structures used in Windows I/O, I/O scheduling, Windows Cryptography and finally a brief comparison of Windows performance stacked next to Linux.
+\subsection{data structures}
+\noindent Windows has a radically different approach to data structures than Linux. Windows has a specific data structure in place known as IRP or Input/Output Request Packets. \cite{7}. According to windows documentation, Unlike Linux, this data structure contains two elements. a pointer to a DEVICE\_OBJECT and a pointer to an IRP. The IRQs are large data files containing all of the necessary driver critical information. This seems to be an inefficient approach to data structure design.
+\subsection{I/O scheduling}
+\noindent Windows scheduler is a very complex setup that could be throughly covered in a full document of its own. In the source found, it is clear that windows uses a variation of multilevel feedback queue. \cite{8}. As covered in earlier assignment, it works based on setting a specific value for the priority of each task described through a set of classes.\cite{9}. This value could be set through task manager. A similar concept to this exists in Linux which is known as niceness of a program. A program can decide how much of CPU time it would like to have. The nicer a program the lower the scheduling priority becomes. The idea behind this concept is based on the fact that true concurrency does not exist. The CPU creates the illusion of concurrency by switching the process that is running and making sure that all of the processes get access to resources.
+\subsection{Cryptography}
+\noindent Windows has a service known as Cryptographic Service Providers or CSP. The task of this contains a vast library of cryptographic standard and algorithms. \cite{10}. According to this documentation minimum requirement for the CSP assets are DLLs containing implementation the functions in CryptoSPI (a system program interface). The algorithms used are consistent of:
+\begin{itemize}
+\item \textbf{Digital signature algorithm:} In this algorithm, every type specifies only one key exchange algorithm. Then using the application's specification, provide type is selected.
+\item \textbf{Key BLOB formats:} Similar to last element with the exception that  the tool creates a digital signature by selecting the appropriate type.
+\item \textbf{Digital signature format:} The Type is determined as the format of the key BLOB is used to export keys from the CSP and to import keys into a CSP.
+\item \textbf{Session key derivation scheme:} A session key is generated by hash which leads to selection of the type.
+\item \textbf{Key length:} Public and private keys are used.
+\item \textbf{Default modes:} Block  encryption padding.
+\end{itemize}
+\noindent Some of the implementations include:
+\begin{itemize}
+\item PROV\_RSA\_FULL
+\item PROV\_RSA\_AES
+\item PROV\_RSA\_SIG
+\item PROV\_RSA\_SCHANNEL
+\item PROV\_DSS
+\item PROV\_DSS\_DH
+\item PROV\_DH\_SCHANNEL
+\item PROV\_FORTEZZA
+\item PROV\_MS\_EXCHANGE
+\item PROV\_SSL
+\end{itemize}
+\noindent It is not as simple to compare the cryptography methods that are available. However we can definitely see some familiar types that are present in windows version such as AES and SSL.
+
+%--------------------------------------------------------------
+\section{FreeBSD}
+\noindent In this section we are going to dive into the FreeBSD kernel and have a look at the data structures, I/O scheduling, cryptography and implementations of them. Then we are going to compare those to Linux kernel and its features.
+\subsection{data structures}
+\noindent In the section bellow titled, "Kernel System Queue Synopsis" a synopsis of the system queue library is provided. \cite{11}. This is identical to Linux approach to data structures. This meas FreeBSD too provides only a pointer for the developer to include in their own costume container providing a flexible linked list.
+\subsection{I/O scheduling}
+\noindent FreeBSD Kernel has two available schedulers. The ULE scheduler first introduced in FreeBSD 5.0 and The 4.4BSD scheduler.
+\begin{itemize}
+\item \textbf{4.4BSD scheduler:} his scheduler was originally designed for Linux kernel in order to address interactivity issues. This scheduler has a single run-queue and is variation of Round-Robin. This queue is in fact a double linked list and is shared across all the CPUs. The reason to that is to avoid complex load balance algorithms.\cite{freebsdpdf}[Page 2].
+\item \textbf{ULE scheduler:} ULE scheduler is based on the BSD scheduler and improves on some of its features in order to improve efficiency specially with single processor systems. This scheduler is disabled by default in favor of the traditional BSD scheduler. Furthermore, it is fair by default but it could be set to favor specific processes.
+\end{itemize}
+\subsection{cryptography}
+\noindent The FreeBSD takes advantage of Linux OpenCrypto, crypto and cryptodev libraries. They have been working constantly to significantly reduce the overhead involved with using this API. \cite{12}. Another supported encryption method is the OpenSSL cryptographics based on libcrypto.\cite{13}.
+
+\subsection{Kernel System Queue Synopsis}
+\noindent The following code could be found at FreeBSD library manual. \cite{11}. This tool is capable of providing kernel and user-level to hardware crypto device for  hash handling purposes. 
+\begin{minted}{c}
+ #include <sys/queue.h>
+     SLIST_CLASS_ENTRY(CLASSTYPE);
+     SLIST_CLASS_HEAD(HEADNAME,	CLASSTYPE);
+     SLIST_EMPTY(SLIST_HEAD *head);
+     SLIST_ENTRY(TYPE);
+     SLIST_FIRST(SLIST_HEAD *head);
+     SLIST_FOREACH(TYPE	*var, SLIST_HEAD *head,	SLIST_ENTRY NAME);
+     SLIST_FOREACH_FROM(TYPE *var, SLIST_HEAD *head, SLIST_ENTRY NAME);
+     SLIST_FOREACH_FROM_SAFE(TYPE *var,	SLIST_HEAD *head, SLIST_ENTRY NAME,
+	 TYPE *temp_var);
+     SLIST_FOREACH_SAFE(TYPE *var, SLIST_HEAD *head, SLIST_ENTRY NAME,
+	 TYPE *temp_var);
+     SLIST_HEAD(HEADNAME, TYPE);
+     SLIST_HEAD_INITIALIZER(SLIST_HEAD head);
+     SLIST_INIT(SLIST_HEAD *head);
+     SLIST_INSERT_AFTER(TYPE *listelm, TYPE *elm, SLIST_ENTRY NAME);
+     SLIST_INSERT_HEAD(SLIST_HEAD *head, TYPE *elm, SLIST_ENTRY	NAME);
+     SLIST_NEXT(TYPE *elm, SLIST_ENTRY NAME);
+     SLIST_REMOVE(SLIST_HEAD *head, TYPE *elm, TYPE, SLIST_ENTRY NAME);
+     SLIST_REMOVE_AFTER(TYPE *elm, SLIST_ENTRY NAME);
+     SLIST_REMOVE_HEAD(SLIST_HEAD *head, SLIST_ENTRY NAME);
+     SLIST_SWAP(SLIST_HEAD *head1, SLIST_HEAD *head2, SLIST_ENTRY NAME);
+     STAILQ_CLASS_ENTRY(CLASSTYPE);
+     STAILQ_CLASS_HEAD(HEADNAME, CLASSTYPE);
+     STAILQ_CONCAT(STAILQ_HEAD *head1, STAILQ_HEAD *head2);
+     STAILQ_EMPTY(STAILQ_HEAD *head);
+     STAILQ_ENTRY(TYPE);
+     STAILQ_FIRST(STAILQ_HEAD *head);
+     STAILQ_FOREACH(TYPE *var, STAILQ_HEAD *head, STAILQ_ENTRY NAME);
+     STAILQ_FOREACH_FROM(TYPE *var, STAILQ_HEAD	*head, STAILQ_ENTRY NAME);
+     STAILQ_FOREACH_FROM_SAFE(TYPE *var, STAILQ_HEAD *head, STAILQ_ENTRY NAME,
+	 TYPE *temp_var);
+     STAILQ_FOREACH_SAFE(TYPE *var, STAILQ_HEAD	*head, STAILQ_ENTRY NAME,
+	 TYPE *temp_var);
+     STAILQ_HEAD(HEADNAME, TYPE);
+     STAILQ_HEAD_INITIALIZER(STAILQ_HEAD head);
+     STAILQ_INIT(STAILQ_HEAD *head);
+     STAILQ_INSERT_AFTER(STAILQ_HEAD *head, TYPE *listelm, TYPE	*elm,
+	 STAILQ_ENTRY NAME);
+     STAILQ_INSERT_HEAD(STAILQ_HEAD *head, TYPE	*elm, STAILQ_ENTRY NAME);
+     STAILQ_INSERT_TAIL(STAILQ_HEAD *head, TYPE	*elm, STAILQ_ENTRY NAME);
+     STAILQ_LAST(STAILQ_HEAD *head, TYPE *elm, STAILQ_ENTRY NAME);
+     STAILQ_NEXT(TYPE *elm, STAILQ_ENTRY NAME);
+     STAILQ_REMOVE(STAILQ_HEAD *head, TYPE *elm, TYPE, STAILQ_ENTRY NAME);
+     STAILQ_REMOVE_AFTER(STAILQ_HEAD *head, TYPE *elm, STAILQ_ENTRY NAME);
+     STAILQ_REMOVE_HEAD(STAILQ_HEAD *head, STAILQ_ENTRY	NAME);
+     STAILQ_SWAP(STAILQ_HEAD *head1, STAILQ_HEAD *head2, STAILQ_ENTRY NAME);
+     LIST_CLASS_ENTRY(CLASSTYPE);
+     LIST_CLASS_HEAD(HEADNAME, CLASSTYPE);
+     LIST_EMPTY(LIST_HEAD *head);
+     LIST_ENTRY(TYPE);
+     LIST_FIRST(LIST_HEAD *head);
+     LIST_FOREACH(TYPE *var, LIST_HEAD *head, LIST_ENTRY NAME);
+     LIST_FOREACH_FROM(TYPE *var, LIST_HEAD *head, LIST_ENTRY NAME);
+     LIST_FOREACH_FROM_SAFE(TYPE *var, LIST_HEAD *head,	LIST_ENTRY NAME,
+	 TYPE *temp_var);
+     LIST_FOREACH_SAFE(TYPE *var, LIST_HEAD *head, LIST_ENTRY NAME,
+	 TYPE *temp_var);
+     LIST_HEAD(HEADNAME, TYPE);
+     LIST_HEAD_INITIALIZER(LIST_HEAD head);
+     LIST_INIT(LIST_HEAD *head);
+     LIST_INSERT_AFTER(TYPE *listelm, TYPE *elm, LIST_ENTRY NAME);
+     LIST_INSERT_BEFORE(TYPE *listelm, TYPE *elm, LIST_ENTRY NAME);
+     LIST_INSERT_HEAD(LIST_HEAD	*head, TYPE *elm, LIST_ENTRY NAME);
+     LIST_NEXT(TYPE *elm, LIST_ENTRY NAME);
+     LIST_PREV(TYPE *elm, LIST_HEAD *head, TYPE, LIST_ENTRY NAME);
+     LIST_REMOVE(TYPE *elm, LIST_ENTRY NAME);
+     LIST_SWAP(LIST_HEAD *head1, LIST_HEAD *head2, TYPE, LIST_ENTRY NAME);
+     TAILQ_CLASS_ENTRY(CLASSTYPE);
+     TAILQ_CLASS_HEAD(HEADNAME,	CLASSTYPE);
+     TAILQ_CONCAT(TAILQ_HEAD *head1, TAILQ_HEAD	*head2,	TAILQ_ENTRY NAME);
+     TAILQ_EMPTY(TAILQ_HEAD *head);
+     TAILQ_ENTRY(TYPE);
+     TAILQ_FIRST(TAILQ_HEAD *head);
+     TAILQ_FOREACH(TYPE	*var, TAILQ_HEAD *head,	TAILQ_ENTRY NAME);
+     TAILQ_FOREACH_FROM(TYPE *var, TAILQ_HEAD *head, TAILQ_ENTRY NAME);
+     TAILQ_FOREACH_FROM_SAFE(TYPE *var,	TAILQ_HEAD *head, TAILQ_ENTRY NAME,
+	 TYPE *temp_var);
+     TAILQ_FOREACH_REVERSE(TYPE	*var, TAILQ_HEAD *head,	HEADNAME,
+	 TAILQ_ENTRY NAME);
+     TAILQ_FOREACH_REVERSE_FROM(TYPE *var, TAILQ_HEAD *head, HEADNAME,
+	 TAILQ_ENTRY NAME);
+     TAILQ_FOREACH_REVERSE_FROM_SAFE(TYPE *var,	TAILQ_HEAD *head, HEADNAME,
+	 TAILQ_ENTRY NAME, TYPE	*temp_var);
+     TAILQ_FOREACH_REVERSE_SAFE(TYPE *var, TAILQ_HEAD *head, HEADNAME,
+	 TAILQ_ENTRY NAME, TYPE	*temp_var);
+     TAILQ_FOREACH_SAFE(TYPE *var, TAILQ_HEAD *head, TAILQ_ENTRY NAME,
+	 TYPE *temp_var);
+     TAILQ_HEAD(HEADNAME, TYPE);
+     TAILQ_HEAD_INITIALIZER(TAILQ_HEAD head);
+     TAILQ_INIT(TAILQ_HEAD *head);
+     TAILQ_INSERT_AFTER(TAILQ_HEAD *head, TYPE *listelm, TYPE *elm,
+	 TAILQ_ENTRY NAME);
+     TAILQ_INSERT_BEFORE(TYPE *listelm,	TYPE *elm, TAILQ_ENTRY NAME);
+     TAILQ_INSERT_HEAD(TAILQ_HEAD *head, TYPE *elm, TAILQ_ENTRY	NAME);
+     TAILQ_INSERT_TAIL(TAILQ_HEAD *head, TYPE *elm, TAILQ_ENTRY	NAME);
+     TAILQ_LAST(TAILQ_HEAD *head, HEADNAME);
+     TAILQ_NEXT(TYPE *elm, TAILQ_ENTRY NAME);
+     TAILQ_PREV(TYPE *elm, HEADNAME, TAILQ_ENTRY NAME);
+     TAILQ_REMOVE(TAILQ_HEAD *head, TYPE *elm, TAILQ_ENTRY NAME);
+     TAILQ_SWAP(TAILQ_HEAD *head1, TAILQ_HEAD *head2, TYPE, TAILQ_ENTRY	NAME);
+\end{minted}
+%--------------------------------------------------------------
+\newpage
+\bibliographystyle{IEEEtran}
+\bibliography{sources}
+\end{document}

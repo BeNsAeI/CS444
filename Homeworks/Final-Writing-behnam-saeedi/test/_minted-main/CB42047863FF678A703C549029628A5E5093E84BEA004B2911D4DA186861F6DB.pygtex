@@ -1,0 +1,35 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nv}{\PYGZdl{} }ps -T -p \PYG{k}{\PYGZdl{}(}ps efax | grep \PYG{o}{[}m\PYG{o}{]}y-app | awk \PYG{l+s+s1}{'\PYGZob{}print \PYGZdl{}1\PYGZcb{}'}\PYG{k}{)}
+\PYG{c}{\PYGZsh{} replace my-app with name of a program such as mysqld -> [m]ysqld}
+\PYG{n+nv}{\PYGZdl{} }ps -T -p \PYG{k}{\PYGZdl{}(}ps efax | grep \PYG{o}{[}m\PYG{o}{]}ysqld | awk \PYG{l+s+s1}{'\PYGZob{}print \PYGZdl{}1\PYGZcb{}'}\PYG{k}{)}
+
+  PID  SPID TTY          TIME CMD
+ 8302  8302 ?        00:00:00 mysqld
+ 8302  8307 ?        00:00:00 mysqld
+ 8302  8308 ?        00:00:03 mysqld
+ 8302  8309 ?        00:00:04 mysqld
+ 8302  8310 ?        00:00:03 mysqld
+ 8302  8311 ?        00:00:03 mysqld
+ 8302  8312 ?        00:00:03 mysqld
+ 8302  8313 ?        00:00:03 mysqld
+ 8302  8314 ?        00:00:03 mysqld
+ 8302  8315 ?        00:00:03 mysqld
+ 8302  8316 ?        00:00:03 mysqld
+ 8302  8317 ?        00:00:03 mysqld
+ 8302  8318 ?        00:00:03 mysqld
+ 8302  8320 ?        00:00:03 mysqld
+ 8302  8321 ?        00:00:05 mysqld
+ 8302  8322 ?        00:00:00 mysqld
+ 8302  8323 ?        00:00:04 mysqld
+ 8302  8324 ?        00:00:00 mysqld
+ 8302  8325 ?        00:00:00 mysqld
+ 8302  8326 ?        00:00:00 mysqld
+ 8302  8327 ?        00:00:00 mysqld
+ 8302  8328 ?        00:00:00 mysqld
+ 8302  8329 ?        00:00:00 mysqld
+ 8302  8330 ?        00:00:00 mysqld
+ 8302  8331 ?        00:00:00 mysqld
+ 8302  8332 ?        00:00:00 mysqld
+ 8302  8333 ?        00:00:00 mysqld
+ 8302  8336 ?        00:00:00 mysqld
+\end{Verbatim}

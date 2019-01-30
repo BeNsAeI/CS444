@@ -1,0 +1,27 @@
+Paging
+- vPage -> pPage mapping
+ - Large table is simplest approach
+ - p address indexing
+
+	 _______
+	| paddr | 32 bits
+	|_______|
+	|       |
+	|_______|
+	|   .   |
+	|_______|
+	|   .   |
+	|_______|
+	|   .   |
+	|_______|
+	|       |
+	|_______|
+
+
+	31              12 11      0
+	 _________________ ________
+	|     Page #      | offset |
+	|_________________|________|
+	        ^
+	        |
+	       2^20

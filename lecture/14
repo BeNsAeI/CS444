@@ -1,0 +1,46 @@
+Time:
+- CPU
+- world clock
+- reletive
+- absolute (every one has the same refrence EPOC)
+- HZ tick rate of system (100 on default on system)
+
+___
+Caching (memoization)
+- locality
+ - time: guessing reuse of a file
+ - space: if one block of the file is used, other might be used soon
+- faster i/o on average
+- amertization
+ - (hit rate * cache access time) + ((1- hit rate)(disk access time))
+- backing store
+ - source of data (canonical)
+- data gets cached several times on the hard drive
+ - hardware and software level
+- writing
+ - write through
+ - write back
+ - sometimes we need atomic variable access
+  - every change occures, no compiler ptimization
+  - set by system configuration, OS gives you options
+
+- Ideal eviction strategy:
+ - throw out the least useful block
+ - LRU least recent used
+ - LRU-n, n is 2 in linux: LRU-2:
+
+	  Hot list
+	    _ _ _
+	   |_|_|_|
+   
+	  Cold list
+	 _ _ _ _ _ _
+	|_|_|_|_|_|_|
+  - stores as radix tree
+
+
+- i9
+ - l3 is now non inclusive cache
+ - increase hit rate
+ - increase l2
+ - 

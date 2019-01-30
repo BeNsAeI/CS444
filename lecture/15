@@ -1,0 +1,44 @@
+Memory mannagement:
+- Windows
+ - 32 bit processes 2GBin size by default
+ - can be increased to 3GB/4GB on 32/64 bit windows
+ - 64-bit process have 8182 GB of VM space
+ - provices multiple services
+  - address mapping
+  - paging
+  - memory mapped files
+  - copy on write memory
+  - physical memory allocation and use
+ - working set ->set of pages physically present
+ - 5 key parts:
+  - working set mannager
+  - process / stack swapper
+  - modified page writer
+  - mapped page writer
+  - zero page thread (hardware zero)
+ - 2 page sizes -> large (2 MB), small (4 KB)
+ - (fine grain locking structure, even memory sub system has fine grain locking)
+  - linux locks the entire kernel
+ - page states
+  - free
+  - reserved -> requested but not currently in use, private
+  - commited -> private, valid mapping, resident, demand - zero
+  - sharable -> valid mapping, resident
+ - Process is a container of threads
+  - falls on a process group
+  - atleast has to have a thread in it
+  - you can create heap, stack or multiple one of them if you chose too
+  - you can swap stacks on the fly
+  - Fibers are schedulable user level threads (kernel sees all of them as one thread)
+
+- FreeBSD
+ - very similarly to linux
+  - page tables
+  - address mapping
+ - VM is slightly different with Linux
+
+- Linux and FreeBSD
+ - Very similar
+ - licensing
+ - they are slower but improve on linux features (provide the alternative)
+
